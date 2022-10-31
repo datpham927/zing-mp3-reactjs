@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
+    scrollbar-width: none; /* sử dụng Firefox */
+    overflow-y: scroll; 
+}
+html::-webkit-scrollbar{
+    display: none;
+}
+:root{
+    --color-white:#dadada;
+    --background-while:rgba(225, 225, 225, 0.05);
+    --background-black: rgba(0, 0, 0, 0.8);
+    --background-modal: rgba(0, 0, 0, 0.6);
+    --background-btn: rgba(0, 0, 0, 0.4);
+    --primary-bg:#432275;
+    --color-small:rgba(225, 225, 225, 0.5);
+    --color-pink:#f12d94;
+    --background-music2:#5a1eae;
+    --background-music1:rgba(225, 225, 225, 0.1);
+    --height-footer:60px;
+    --height-header:70px;
+    --Width-sidebar:240px;
+}
+body{
+    height: 100vh;
+}

@@ -1,33 +1,56 @@
-*{
+* {
     margin: 0;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
 }
-html{
+html {
+    font-size: 62.5%;
+}
+body {
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5rem;
+    //kích thước ban đầu của trình duyệt
     font-size: 1.6rem;
+    //tối ưu tốc độ hiển thi font
+    text-rendering: optimizeSpeed;
+    overflow-y: overlay;
     -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
     scrollbar-width: none; /* sử dụng Firefox */
-    overflow-y: scroll; 
+    overflow-y: scroll;
+    height: 100vh;
 }
-html::-webkit-scrollbar{
+body::-webkit-scrollbar {
     display: none;
 }
-:root{
-    --color-white:#dadada;
-    --background-while:rgba(225, 225, 225, 0.05);
-    --background-black: rgba(0, 0, 0, 0.8);
-    --background-modal: rgba(0, 0, 0, 0.6);
-    --background-btn: rgba(0, 0, 0, 0.4);
-    --primary-bg:#432275;
-    --color-small:rgba(225, 225, 225, 0.5);
-    --color-pink:#f12d94;
-    --background-music2:#5a1eae;
-    --background-music1:rgba(225, 225, 225, 0.1);
-    --height-footer:60px;
-    --height-header:70px;
-    --Width-sidebar:240px;
+:root {
+    --color-pink: #f12d94;
+    --navigation-text: #a0a0a0;
+    --text-primary: #fff;
+    //chữ nhỏ
+    --text-secondary: hsla(0, 0%, 100%, 0.5);
+    --purple-primary: #ed2b91;
+    --link-text-hover: #fe63da;
+    --search-text: #eee;
+    --text-placeholder: #dadada;
+    // đổi màu bgr khi click
+    --alpha-bg: hsla(0, 0%, 100%, 0.1);
+    --setting-icon-text: #d8d8d8;
+    // -webkit-text-stroke: 1px
+    --color-top-1: #4a90e2;
+    --color-top-2: #50e3c2;
+    --color-top-3: #e35050;
+    --height-footer: 60px;
+    --height-header: 70px;
+    --Width-sidebar: 240px;
 }
-body{
-    height: 100vh;
+
+button {
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
 }

@@ -1,5 +1,10 @@
+import classNames from 'classnames/bind';
+import style from './Private.module.scss';
+
+const cx = classNames.bind(style);
+
 function Private() {
-  return <h1>Private</h1>;
+    return <div className={cx('wrapper')}>Private</div>;
 }
 
 export default Private;

@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 * {
     margin: 0;
     padding: 0;
@@ -42,6 +44,7 @@ body::-webkit-scrollbar {
     --height-footer: 60px;
     --height-header: 70px;
     --Width-sidebar: 240px;
+    --padding-section: 59px;
 }
 
 button {

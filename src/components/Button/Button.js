@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import PropTypes from 'prop-types';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import style from './Button.module.scss';
+// import { forwardRef } from 'react';
 const cx = classNames.bind(style);
 
 function Button({
@@ -18,6 +21,7 @@ function Button({
     className,
     onclick,
     children,
+    content,
     ...passProps
 }) {
     const classNames = cx('wrapper', {
@@ -40,15 +44,20 @@ function Button({
         props.href = href;
         Comp = 'a';
     }
-    return (
+    return !src ? (
+        <Tippy delay={[0, 50]} content={content}>
+            <Comp className={classNames} {...props}>
+                {iconLeft && <span className={cx('iconLeft')}>{iconLeft}</span>}
+                {type && (
+                    <span className={cx('iconLeft')}>
+                        <label for="upload">{type}</label>
+                        <input type="file" hidden id="upload" />
+                    </span>
+                )}
+            </Comp>
+        </Tippy>
+    ) : (
         <Comp className={classNames} {...props}>
-            {iconLeft && <span className={cx('iconLeft')}>{iconLeft}</span>}
-            {type && (
-                <span className={cx('iconLeft')}>
-                    <label for="upload">{type}</label>
-                    <input type="file" hidden id="upload" />
-                </span>
-            )}
             {src && <img className={cx('image')} src={src} />}
             <span className={cx('content')}>{children}</span>
         </Comp>

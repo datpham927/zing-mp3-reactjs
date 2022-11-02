@@ -25,22 +25,24 @@ body::-webkit-scrollbar {
     display: none;
 }
 :root {
+    --alpha-bg: hsla(0, 0%, 100%, 0.1);
+    --primary-bg: #4b1178;
     --color-pink: #f12d94;
-    --navigation-text: #a0a0a0;
-    --text-primary: #fff;
-    //chữ nhỏ
-    --text-secondary: hsla(0, 0%, 100%, 0.5);
     --purple-primary: #ed2b91;
+    // -------- text ------------------
+    --navigation-text: #a0a0a0;
+    --text-secondary: hsla(0, 0%, 100%, 0.5);
+    --text-primary: #fff;
     --link-text-hover: #fe63da;
     --search-text: #eee;
     --text-placeholder: #dadada;
     // đổi màu bgr khi click
-    --alpha-bg: hsla(0, 0%, 100%, 0.1);
     --setting-icon-text: #d8d8d8;
     // -webkit-text-stroke: 1px
     --color-top-1: #4a90e2;
     --color-top-2: #50e3c2;
     --color-top-3: #e35050;
+    // -------------------
     --height-footer: 60px;
     --height-header: 70px;
     --Width-sidebar: 240px;
@@ -54,6 +56,7 @@ button {
     border: none;
 }
 a {
+    color: var(--text-primary);
     text-decoration: none;
     cursor: pointer;
 }

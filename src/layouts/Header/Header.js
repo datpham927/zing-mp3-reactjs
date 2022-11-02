@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-pascal-case */
-
 import classNames from 'classnames/bind';
 import Button from '~/components/Button';
 import Search from '../Search';

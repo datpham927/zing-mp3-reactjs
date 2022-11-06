@@ -1,0 +1,25 @@
+.item {
+    display: flex;
+    line-height: 40px;
+    border-radius: 4px;
+    padding: 0 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    &:hover {
+        background-color: rgba(225, 225, 225, 0.1);
+        color: var(--color-pink);
+    }
+    span {
+        font-size: 14px;
+        margin-right: 10px;
+        text-transform: capitalize;
+        cursor: pointer;
+        i {
+            font-size: 12px;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+    }
+}

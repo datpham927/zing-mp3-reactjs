@@ -9,20 +9,20 @@ const cx = classNames.bind(style);
 function ThemeItem({ data }) {
     const dispatch = useDispatch();
 
-    const handleSelection = () => {
-        dispatch(zingCounter.actions.backgroundIndex(data.id));
+    const handleSelection = (data) => {
+        dispatch(zingCounter.actions.backgroundIndex(data));
         dispatch(zingCounter.actions.booleanPreview(false));
     };
-    const handlePreview = () => {
+    const handlePreview = (data) => {
+        dispatch(zingCounter.actions.previewBgrIndex(data));
         dispatch(zingCounter.actions.booleanPreview(true));
-        dispatch(zingCounter.actions.previewBgrIndex(data.id));
     };
     return (
         <div className={cx('topic-theme') + ' l-2-4 c-6 m-2-4 '}>
             <div className={cx('topic-theme-img')}>
                 <img src={data.link} alt="" />
                 <div className={cx('action-theme') + ' m-0 c-0 '}>
-                    <button className={cx('theme-btn', 'primary')} onClick={handleSelection}>
+                    <button className={cx('theme-btn', 'primary')} onClick={() => handleSelection(data.id)}>
                         Áp dụng
                     </button>
                     <button className={cx('theme-btn')} onClick={() => handlePreview(data.id)}>

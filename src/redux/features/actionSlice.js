@@ -8,6 +8,8 @@ const initialState = {
     // xem trước background
     booleanPreviewBgr: false,
     previewBgrIndex: 0,
+    // show kết quả ô search
+    booleanShowResult: false,
 };
 
 export const zingCounter = createSlice({
@@ -29,9 +31,14 @@ export const zingCounter = createSlice({
         previewBgrIndex: (state, action) => {
             state.previewBgrIndex = action.payload;
         },
+        // show kết quả ô search
+        ShowResultSearch: (state, action) => {
+            state.booleanShowResult = action.payload;
+        },
     },
 });
 
-export const { modalTheme, backgroundIndex, previewBackground, previewBackgroundIndex } = zingCounter.actions;
+export const { modalTheme, backgroundIndex, previewBackground, previewBackgroundIndex, ShowResultSearch } =
+    zingCounter.actions;
 
 export default zingCounter.reducer;

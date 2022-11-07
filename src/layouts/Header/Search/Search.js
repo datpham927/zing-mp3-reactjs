@@ -30,6 +30,7 @@ function Search() {
         if (!debouncedValue.trim()) {
             setSearchResult([]);
             setShowResult(true);
+            setBorderRadius(true);
             setShowBtn(false);
             return;
         }
@@ -40,6 +41,7 @@ function Search() {
 
         fetchApi();
     }, [debouncedValue]);
+
     useEffect(() => {
         const fetchApi = async () => {
             const data = await searchApi.top100();
@@ -60,7 +62,7 @@ function Search() {
         setValue('');
         setOpen(false);
         setSearchResult([]);
-        setShowResult(false);
+        setShowResult(true);
         ref.current.focus();
     };
     const appearInput = () => {
@@ -68,15 +70,21 @@ function Search() {
         setBorderRadius(true);
         setShowResult(true);
     };
-    // hiện box round inout
-
+    // ẩn khung kết quả
+    window.onclick = (e) => {
+        if (!e.target.closest('.Search_menu-search__mVQK0') && !e.target.closest('input')) {
+            setOpen(false);
+            setBorderRadius(false);
+            setSearchResult([]);
+        }
+    };
     // eslint-disable-next-line no-lone-blocks
 
     return (
         <div
             className={cx(
                 'search',
-                ((searchSuggest.length > 0 && borderRadius) || searchResult.length > 0) && 'borderRadius',
+                (searchSuggest.length > 0 || searchResult.length > 0) && borderRadius && 'borderRadius',
             )}
         >
             <div className={cx('icon-search')}>

@@ -22,6 +22,6 @@ function SuggestMenu({ data }) {
     );
 }
 SuggestMenu.propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.node.isRequired,
 };
 export default SuggestMenu;

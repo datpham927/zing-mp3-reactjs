@@ -35,7 +35,7 @@ const background = [
     },
     {
         id: 8,
-        path: require('~/assets/background/backroundThemes/7.jpg'),
+        path: require('~/assets/background/backroundThemes/8.jpg'),
     },
 ];
 

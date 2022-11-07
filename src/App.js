@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
     return (
-        <>
+        <div>
             <BrowserRouter>
                 <div className="App">
                     <Routes>
@@ -26,7 +26,7 @@ function App() {
                     </Routes>
                 </div>
             </BrowserRouter>
-        </>
+        </div>
     );
 }
 

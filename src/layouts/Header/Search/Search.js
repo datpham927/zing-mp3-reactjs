@@ -30,15 +30,14 @@ function Search() {
         if (!debouncedValue.trim()) {
             setSearchResult([]);
             setShowResult(true);
-            setBorderRadius(true);
             setShowBtn(false);
+            setBorderRadius(true);
             return;
         }
         const fetchApi = async () => {
             const data = await searchApi.search(debouncedValue);
             setSearchResult(data.songs || []);
         };
-
         fetchApi();
     }, [debouncedValue]);
 
@@ -50,7 +49,7 @@ function Search() {
         fetchApi();
     }, []);
     const handleValueChange = (e) => {
-        setBorderRadius(false);
+        setBorderRadius(true);
         setValue(e);
         setShowBtn(true);
         setShowResult(false);
@@ -68,23 +67,31 @@ function Search() {
     const appearInput = () => {
         setOpen(true);
         setBorderRadius(true);
+        setSearchResult([]);
         setShowResult(true);
     };
     // ẩn khung kết quả
     window.onclick = (e) => {
-        if (!e.target.closest('.Search_menu-search__mVQK0') && !e.target.closest('input')) {
-            setOpen(false);
-            setBorderRadius(false);
-            setSearchResult([]);
+        if (
+            !e.target.closest('.Search_icon-search__TdugZ') &&
+            !e.target.closest('.Search_menu-search__mVQK0') &&
+            !e.target.closest('input')
+        ) {
+            if (e.target.closest('.Search_close__S-Oy5')) {
+                hideBtnClose();
+            } else {
+                setOpen(false);
+                setBorderRadius(false);
+            }
         }
     };
-    // eslint-disable-next-line no-lone-blocks
 
     return (
         <div
             className={cx(
                 'search',
-                (searchSuggest.length > 0 || searchResult.length > 0) && borderRadius && 'borderRadius',
+                ((searchSuggest.length > 0 && borderRadius) || (searchResult.length > 0 && borderRadius)) &&
+                    'bgrHeader',
             )}
         >
             <div className={cx('icon-search')}>
@@ -98,9 +105,7 @@ function Search() {
                 placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
                 onFocus={appearInput}
             />
-            <div className={cx('icon-search')} onClick={hideBtnClose}>
-                {showBtn && <ion-icon name="close-outline"></ion-icon>}
-            </div>
+            <div className={cx('close')}>{showBtn && <ion-icon name="close-outline"></ion-icon>}</div>
 
             {searchSuggest.length > 0 &&
                 open &&
@@ -112,17 +117,20 @@ function Search() {
                         </div>
                     </div>
                 ) : (
-                    searchResult.length > 0 && (
-                        <div className={cx('menu-search')}>
-                            <div className={cx('show')}>
-                                {/* ------------ từ khóa liên quan ----------- */}
-                                <KeywordsMenu data={searchResult} />
-                                {/* ------------ ----------------- */}
-                                <KeywordsItem data={`Tim kiếm "${value}"`} />
-                                <RecentlyMenu data={searchResult} />
+                    <div className={cx('menu-search')}>
+                        <div className={cx('show')}>
+                            {/* ------------ từ khóa liên quan ----------- */}
+                            <div className={cx('Keywords')}>
+                                <div className={cx('Keywords-header')}>
+                                    <h1>Từ Khóa Liên Quan</h1>
+                                    {searchResult.length > 0 && <KeywordsMenu data={searchResult} />}
+                                    <KeywordsItem data={`Tim kiếm "${value}"`} />
+                                </div>
                             </div>
+                            {/* ------------ ----------------- */}
+                            {searchResult.length > 0 && <RecentlyMenu data={searchResult} />}
                         </div>
-                    )
+                    </div>
                 ))}
         </div>
     );

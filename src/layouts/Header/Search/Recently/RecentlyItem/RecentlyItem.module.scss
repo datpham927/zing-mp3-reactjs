@@ -4,6 +4,7 @@
     justify-content: space-between;
     padding: 8px 10px;
     border-radius: 6px;
+
     &:hover {
         background-color: var(--alpha-bg);
     }
@@ -31,10 +32,10 @@
             top: 0;
             background-color: var(--alpha-bg);
             text-align: center;
-            line-height: 46px;
-            font-size: 20px;
+            line-height: 5.2rem;
+            font-size: 2rem;
             display: none;
-            color: var(--alpha-bg);
+            color: #fff;
         }
     }
     .title {
@@ -59,8 +60,11 @@
             font-size: 1.2rem;
             margin-top: 4px;
         }
-        span:hover {
-            color: var(--color-pink);
+        & span:hover {
+            color: var(--link-text-hover);
         }
+    }
+    &:hover .icon {
+        display: block;
     }
 }

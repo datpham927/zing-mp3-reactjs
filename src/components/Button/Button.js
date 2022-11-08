@@ -6,30 +6,33 @@ import 'tippy.js/dist/tippy.css';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import style from './Button.module.scss';
+import { forwardRef } from 'react';
 // import { forwardRef } from 'react';
 const cx = classNames.bind(style);
 
-function Button({
-    to,
-    href,
-    type,
-    src,
-    primary = false,
-    outline = false,
-    iconLeft,
-    sidebar = false,
-    className,
-    onclick,
-    children,
-    content,
-    ...passProps
-}) {
+function Button(
+    {
+        to,
+        href,
+        type,
+        src,
+        primary = false,
+        outline = false,
+        iconLeft,
+        sidebar = false,
+        className,
+        onclick,
+        children,
+        content,
+        ...passProps
+    },
+    ref,
+) {
     const classNames = cx('wrapper', {
         [className]: className,
         primary,
         outline,
         sidebar,
-        iconLeft,
     });
     const props = {
         onclick,
@@ -44,12 +47,13 @@ function Button({
         props.href = href;
         Comp = 'a';
     }
+
     return !src ? (
         <Tippy delay={[0, 50]} content={content}>
             <Comp className={classNames} {...props}>
-                {iconLeft && <span className={cx('iconLeft')}>{iconLeft}</span>}
+                {iconLeft && <span>{iconLeft}</span>}
                 {type && (
-                    <span className={cx('iconLeft')}>
+                    <span>
                         <label for="upload">{type}</label>
                         <input type="file" hidden id="upload" />
                     </span>
@@ -57,7 +61,7 @@ function Button({
             </Comp>
         </Tippy>
     ) : (
-        <Comp className={classNames} {...props}>
+        <Comp ref={ref} className={classNames} {...props}>
             {src && <img className={cx('image')} src={src} />}
             <span className={cx('content')}>{children}</span>
         </Comp>
@@ -74,4 +78,4 @@ Button.propTypes = {
     onClick: PropTypes.func,
     className: PropTypes.string,
 };
-export default Button;
+export default forwardRef(Button);

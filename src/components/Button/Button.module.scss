@@ -4,14 +4,12 @@
     justify-content: center;
     min-height: 40px;
     min-width: 40px;
-    .iconLeft {
-        ion-icon,
-        i {
-            color: var(--setting-icon-text);
-            display: flex;
-            line-height: 40px;
-            font-size: 1.9rem;
-        }
+    ion-icon,
+    i {
+        color: var(--setting-icon-text);
+        display: flex;
+        line-height: 40px;
+        font-size: 1.9rem;
     }
     + .wrapper {
         margin-left: 12px;

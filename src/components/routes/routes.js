@@ -2,6 +2,7 @@ import config from '../config';
 
 import { Private, Following, Radio, ZingChart, Discover } from '../pages';
 import Album from '../pages/Album';
+import Block from '../pages/Block';
 import ResultSearch from '../pages/ResultSearch';
 
 // public router
@@ -14,6 +15,7 @@ const publicRouter = [
     // ---------------------------
     { path: config.routes.resultSearch, component: ResultSearch },
     { path: config.routes.album, component: Album },
+    { path: config.routes.block, component: Block },
 ];
 
 // public router

@@ -6,7 +6,7 @@
         border-radius: 5px;
         width: 100%;
         height: auto;
-        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+        border: 1px solid var(--primary-bg);
         & img {
             display: block;
             width: 100%;
@@ -23,8 +23,9 @@
             left: 0;
             text-align: center;
             padding-top: 20px;
-            background-color: var(--background-btn);
+            background-color: var(--dark-alpha-50);
             display: none;
+
             .theme-btn {
                 background: none;
                 padding: 5px 30px;
@@ -37,7 +38,7 @@
                 margin: 5px 0;
                 font-weight: 600;
                 text-transform: uppercase;
-                background-color: rgba(0, 0, 0, 0.3);
+                background-color: var(--dark-alpha-30);
                 color: var(--text-primary);
             }
             .primary {
@@ -50,6 +51,23 @@
         font-size: 12px;
         line-height: 30px;
         color: var(--text-primary);
+    }
+    .border.topic-theme-img {
+        border: 1px solid var(--purple-primary);
+    }
+
+    .check {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        background-color: var(--purple-primary);
+        border-radius: 50%;
+        overflow: hidden;
+        i {
+            font-size: 1.2rem;
+            padding: 4px 5px;
+            color: #fff;
+        }
     }
     &:hover .action-theme {
         display: block;

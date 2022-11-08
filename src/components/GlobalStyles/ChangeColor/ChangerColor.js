@@ -33,6 +33,8 @@ const ChangerColor = ({ children }) => {
         if (kq === 1) {
             document.documentElement.style.setProperty('--primary-bg', '#363636');
             document.documentElement.style.setProperty('--layout-bg', '#282828');
+            document.documentElement.style.setProperty('--purple-primary', '#9b4de0');
+            document.documentElement.style.setProperty('--link-text-hover', '#c273ed');
         }
         if (kq === 2) {
             document.documentElement.style.setProperty('--primary-bg', '#1A3570');
@@ -97,7 +99,6 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--purple-primary', '#8919AE');
             document.documentElement.style.setProperty('--text-item-hover', '#2a5e6b');
             document.documentElement.style.setProperty('--link-text-hover', '#6F1F89');
-            // document.documentElement.style.setProperty('--alpha-bg', 'hsla(0,0%,100%,0.3)');
         }
         if (kq === 7) {
             document.documentElement.style.setProperty('--primary-bg', '#FFFFFF');

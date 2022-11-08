@@ -29,12 +29,14 @@ body::-webkit-scrollbar {
     --primary-bg: #4b1178;
     --color-pink: #f12d94;
     --purple-primary: #ed2b91;
-    --background-modal: rgba(0, 0, 0, 0.6);
-    --background-while: rgba(225, 225, 225, 0.05);
-    --background-black: rgba(0, 0, 0, 0.8);
-    --background-modal: rgba(0, 0, 0, 0.6);
-    --background-btn: rgba(0, 0, 0, 0.4);
+    --sticky-header-box-shadow: rgba(0, 0, 0, 0.1);
     --primary-bg: #432275;
+    --loading-bg: rgba(0, 0, 0, 0.05);
+    --dark-alpha-10: rgba(0, 0, 0, 0.1);
+    --dark-alpha-30: rgba(0, 0, 0, 0.3);
+    --dark-alpha-50: rgba(0, 0, 0, 0.5);
+    --dark-alpha-70: rgba(0, 0, 0, 0.7);
+    --dark-alpha-80: rgba(0, 0, 0, 0.8);
     // -------- text ------------------
     --navigation-text: #a0a0a0;
     --text-secondary: hsla(0, 0%, 100%, 0.5);

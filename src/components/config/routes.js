@@ -6,6 +6,7 @@ const routes = {
     radio: `/radio`,
     resultSearch: '/result-search',
     album: '/album',
+    block: '/blocked',
 };
 
 export default routes;

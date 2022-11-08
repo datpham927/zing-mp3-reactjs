@@ -1,3 +1,8 @@
+body #tippy-10 {
+    position: absolute;
+    top: 50px;
+}
+
 body .tippy-box {
     background-color: #333;
     color: #fff;

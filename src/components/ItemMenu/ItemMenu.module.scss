@@ -1,0 +1,27 @@
+.item {
+    height: 100%;
+    width: 100%;
+    &:hover {
+        background-color: var(--alpha-bg);
+        color: var(--text-item-hover);
+    }
+    .wrapper {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px 12px 17px;
+        .iconRight,
+        .iconLeft {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+        }
+        .iconLeft {
+            margin-right: 10px;
+        }
+        .title {
+            display: flex;
+            flex: 1;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+        }
+    }
+}

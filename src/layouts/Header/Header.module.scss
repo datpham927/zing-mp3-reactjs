@@ -27,3 +27,16 @@
         text-align: center;
     }
 }
+.bgrHeader.wrapper {
+    background-color: var(--layout-bg);
+    box-shadow: 0 3px 5px var(--sticky-header-box-shadow);
+}
+.box {
+    position: absolute;
+    background-color: var(--primary-bg);
+    width: 240px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+    right: 10px;
+}

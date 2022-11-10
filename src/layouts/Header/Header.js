@@ -9,7 +9,7 @@ import 'tippy.js/dist/tippy.css';
 import { useRef, useState } from 'react';
 import { zingCounter } from '~/redux/actionSlice';
 
-import SettingMenu from './settingMenu/SetttingMenu';
+import TippyMenu from '~/components/menu/tippyMenu/TippyMenu';
 import config from '~/components/config';
 const cx = classNames.bind(style);
 const MENU_ITEM = [
@@ -24,6 +24,7 @@ const MENU_ITEM = [
         title: 'Chất lượng nhạc',
         iconLeft: <i className="icon ic-20-quaility-SQ"></i>,
         iconRight: <ion-icon name="chevron-forward-outline"></ion-icon>,
+        type: 'quality',
         children: {
             data: [
                 {
@@ -45,11 +46,30 @@ const MENU_ITEM = [
         id: 2,
         title: 'Giới thiệu',
         iconLeft: <i className="icon ic-20-info"></i>,
+        type: 'separate',
     },
     {
         id: 3,
         title: 'Liên hệ',
         iconLeft: <i className="icon ic-20-Call"></i>,
+    },
+];
+const MENU_AVATAR = [
+    {
+        id: 0,
+        title: 'Nâng cấp VIP',
+        iconLeft: <Icon.iconVip />,
+    },
+    {
+        id: 1,
+        title: 'Mua code VIP',
+        iconLeft: <i className="icon ic-20-quaility-SQ"></i>,
+    },
+    {
+        id: 1,
+        title: 'Mua code VIP',
+        iconLeft: <i class="icon ic-log-out"></i>,
+        type: 'separate',
     },
 ];
 function Header() {
@@ -74,30 +94,38 @@ function Header() {
                     <span className={cx('icon')}>
                         <Icon.iconRight />
                     </span>
-                    {/* search */}
+                    {/* ------ search ------ */}
                     <Search />
                 </div>
                 <div className={cx('right')}>
-                    {/* theme */}
+                    {/* ------ theme ------ */}
                     <Button
                         primary
                         iconLeft={<Icon.iconTopic />}
                         content="Chủ đề"
                         onClick={() => dispatch(zingCounter.actions.modalTheme(true))}
                     />
-                    {/* vip */}
-                    <Button primary iconLeft={<Icon.iconVip />} content="Nâng cấp VIP" />
-                    {/* tải file */}
+                    {/* ------ vip ------ */}
+                    <Button primary disabled iconLeft={<Icon.iconVip />} content="Nâng cấp VIP" />
+                    {/* ------ tải file ------*/}
                     <Button primary type={<Icon.upload />} content="Tải lên" />
-                    {/* setting */}
-                    <SettingMenu MENU_ITEM={MENU_ITEM} />
+                    {/* ------ setting ------*/}
+                    <TippyMenu MENU_ITEM={MENU_ITEM}>
+                        <div className={cx('setting')}>
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </div>
+                    </TippyMenu>
                     {currentUser ? (
-                        <Button
-                            ref={refAvatar}
-                            src="https://3.bp.blogspot.com/-dNqe_M2-wQE/W-_crKMFCBI/AAAAAAAACYw/H13b7yXBYkICwwPkIz9pbg_ijnAn2NeKACLcBGAs/s1600/gai-xinh-4k-17.jpg"
-                        />
+                        //------ đã đăng nhập ------
+                        <TippyMenu MENU_ITEM={MENU_AVATAR}>
+                            <Button
+                                ref={refAvatar}
+                                src="https://3.bp.blogspot.com/-dNqe_M2-wQE/W-_crKMFCBI/AAAAAAAACYw/H13b7yXBYkICwwPkIz9pbg_ijnAn2NeKACLcBGAs/s1600/gai-xinh-4k-17.jpg"
+                            />
+                        </TippyMenu>
                     ) : (
-                        <Button primary src="https://avatar.talk.zdn.vn/default" onClick={() => console.log('hihi')} />
+                        //------ chưa  đăng nhập ------
+                        <Button src="https://avatar.talk.zdn.vn/default" onClick={() => console.log('hihi')} />
                     )}
                 </div>
             </div>

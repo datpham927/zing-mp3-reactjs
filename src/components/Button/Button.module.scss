@@ -17,6 +17,11 @@
         margin-left: 12px;
     }
 }
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
 .primary {
     display: flex;
     align-items: center;
@@ -34,4 +39,7 @@
     width: 3.8rem;
     height: 3.8rem;
     object-fit: cover;
+}
+.logout {
+    margin-top: 20px;
 }

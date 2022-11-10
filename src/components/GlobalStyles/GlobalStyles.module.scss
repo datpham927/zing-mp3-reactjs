@@ -47,6 +47,7 @@ body::-webkit-scrollbar {
     --color-pink: #f12d94;
     --purple-primary: #ed2b91;
     --sticky-header-box-shadow: rgba(0, 0, 0, 0.1);
+    --border-primary: hsla(0, 0%, 100%, 0.03);
     --primary-bg: #432275;
     --loading-bg: rgba(0, 0, 0, 0.05);
     --dark-alpha-10: rgba(0, 0, 0, 0.1);
@@ -55,10 +56,10 @@ body::-webkit-scrollbar {
     --dark-alpha-70: rgba(0, 0, 0, 0.7);
     --dark-alpha-80: rgba(0, 0, 0, 0.8);
     // -------- text ------------------
-    --navigation-text: #a0a0a0;
+    --navigation-text: #dadada;
     --text-secondary: hsla(0, 0%, 100%, 0.5);
     --text-primary: #fff;
-    --link-text-hover: #fe63da;
+    --text-item-hover: #fe63da;
     --search-text: #eee;
     --text-placeholder: #dadada;
     // đổi màu bgr khi click

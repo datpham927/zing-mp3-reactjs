@@ -19,6 +19,7 @@ function Button(
         primary = false,
         outline = false,
         iconLeft,
+        disable,
         className,
         onclick,
         children,
@@ -30,6 +31,7 @@ function Button(
     const classNames = cx('wrapper', {
         [className]: className,
         primary,
+        disable,
         outline,
     });
     const props = {
@@ -44,6 +46,13 @@ function Button(
     if (href) {
         props.href = href;
         Comp = 'a';
+    }
+    if (disable) {
+        Object.keys(props).forEach((key) => {
+            if (key.startsWith('on') && typeof props[key] === 'function') {
+                delete props[key];
+            }
+        });
     }
 
     return !src ? (
@@ -68,8 +77,6 @@ function Button(
 Button.propTypes = {
     to: PropTypes.string,
     href: PropTypes.string,
-    disabled: PropTypes.bool,
-    outline: PropTypes.bool,
     iconLeft: PropTypes.node,
     children: PropTypes.node,
     onClick: PropTypes.func,

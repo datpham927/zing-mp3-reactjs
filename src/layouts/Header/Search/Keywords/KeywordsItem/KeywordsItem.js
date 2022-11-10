@@ -11,7 +11,12 @@ function SuggestItem({ data }) {
     return (
         <Link to={config.routes.resultSearch} className={cx('item')}>
             <span>
-                <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
+                <ion-icon
+                    name="search-outline"
+                    role="img"
+                    className="md hydrated"
+                    aria-label="search outline"
+                ></ion-icon>
             </span>
             <span className={cx('title')}>{data}</span>
         </Link>

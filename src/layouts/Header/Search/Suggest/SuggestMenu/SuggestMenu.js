@@ -1,13 +1,13 @@
 /* eslint-disable array-callback-return */
 import classNames from 'classnames/bind';
-import PropTypes from 'prop-types';
+import { memo } from 'react';
 
 import SuggestItem from '../SuggestItem/SuggestItem';
 import styles from './SuggestMenu.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SuggestMenu({ data }) {
+function SuggestMenu({ data = [] }) {
     return (
         <div className={cx('Keywords')}>
             <div className={cx('Keywords-header')}>
@@ -21,7 +21,4 @@ function SuggestMenu({ data }) {
         </div>
     );
 }
-SuggestMenu.propTypes = {
-    data: PropTypes.node.isRequired,
-};
-export default SuggestMenu;
+export default memo(SuggestMenu);

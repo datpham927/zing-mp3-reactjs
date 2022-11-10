@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './ItemMenu.module.scss';
 import { zingCounter } from '~/redux/actionSlice';
-import { Icon } from '../Icons';
+import { Icon } from '../../Icons';
 const cx = classNames.bind(style);
 
 function ItemMenu({ type, iconLeft, iconRight, children, to, id, onClick, onChange }) {
@@ -22,8 +22,16 @@ function ItemMenu({ type, iconLeft, iconRight, children, to, id, onClick, onChan
         onChange();
         dispatch(zingCounter.actions.BooleanQualitySong(true));
     };
-    return id === 1 ? (
+    return type === 'quality' ? (
         <Comp to={to} className={cx('item')} onClick={onClick}>
+            <div className={cx('wrapper')}>
+                <span className={cx('iconLeft')}>{quality === true ? <Icon.iconHQ /> : iconLeft}</span>
+                <span className={cx('title')}>{children}</span>
+                {iconRight && <span className={cx('iconRight')}>{iconRight}</span>}
+            </div>
+        </Comp>
+    ) : type === 'separate' ? (
+        <Comp to={to} className={cx('item', 'log-out')} onClick={onClick}>
             <div className={cx('wrapper')}>
                 <span className={cx('iconLeft')}>{quality === true ? <Icon.iconHQ /> : iconLeft}</span>
                 <span className={cx('title')}>{children}</span>
@@ -40,7 +48,14 @@ function ItemMenu({ type, iconLeft, iconRight, children, to, id, onClick, onChan
                     <span className={cx('iconLeft')}>{iconLeft}</span>
                     <span className={cx('title')}>{children}</span>
                     {((type === 'SQ' && !quality) || (type === 'HQ' && quality)) && (
-                        <span className={cx('iconRight')}>{<Icon.iconCheck />}</span>
+                        <span
+                            className={cx(
+                                'iconRight',
+                                ((type === 'SQ' && !quality) || (type === 'HQ' && quality)) && 'quality',
+                            )}
+                        >
+                            {<Icon.iconCheck />}
+                        </span>
                     )}
                 </div>
             </Comp>

@@ -104,3 +104,6 @@ body .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
 .ic-check:before {
     content: '\65';
 }
+.ic-log-out:before {
+    content: '\3a';
+}

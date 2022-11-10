@@ -31,3 +31,25 @@
     background-color: var(--layout-bg);
     box-shadow: 0 3px 5px var(--sticky-header-box-shadow);
 }
+
+// ----------------
+.setting {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    min-width: 40px;
+    background-color: var(--alpha-bg);
+    border-radius: 999px;
+    margin: 0 12px;
+    &:hover {
+        opacity: 0.9;
+    }
+    ion-icon {
+        color: var(--setting-icon-text);
+        display: flex;
+        line-height: 40px;
+        font-size: 1.9rem;
+    }
+}

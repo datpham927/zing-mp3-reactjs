@@ -304,7 +304,7 @@ const iconHQ = () => {
     return <i className="icon ic-20-quaility"></i>;
 };
 const iconCheck = () => {
-    return <i class="icon ic-check"></i>;
+    return <i className="icon ic-check"></i>;
 };
 export {
     IconMessage,

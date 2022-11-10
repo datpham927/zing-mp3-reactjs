@@ -7,7 +7,7 @@ const ChangerColor = ({ children }) => {
     var kq;
     b ? (kq = p) : (kq = t);
     if (kq === 0 || kq === 1 || kq === 2 || kq === 8) {
-        document.documentElement.style.setProperty('--navigation-text', '#a0a0a0');
+        document.documentElement.style.setProperty('--navigation-text', '#dadada');
         document.documentElement.style.setProperty('--text-secondary', 'hsla(0, 0%, 100%, 0.5)');
         document.documentElement.style.setProperty('--text-primary', '#fff');
         document.documentElement.style.setProperty('--search-text', '#eee');
@@ -69,7 +69,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--primary-bg', '#EFEDEB');
             document.documentElement.style.setProperty('--link-text-hover', '#AC3E82');
             document.documentElement.style.setProperty('--purple-primary', '#C24793');
-            document.documentElement.style.setProperty('--layout-bg', '#061641');
+            document.documentElement.style.setProperty('--layout-bg', '#E6E1DE');
             document.documentElement.style.setProperty('--box-hot-item-bg-hove', 'rgba(254,255,255,0.4)');
             document.documentElement.style.setProperty('--box-hot-item-bg', 'rgba(254,255,255,0.3)');
             document.documentElement.style.setProperty('--text-item-hover', '#AC3E82');
@@ -105,6 +105,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--purple-primary', '#8D22C3');
             document.documentElement.style.setProperty('--link-text-hover', '#8D22C3');
             document.documentElement.style.setProperty('--text-item-hover', '#8D22C3');
+            document.documentElement.style.setProperty('--layout-bg', '#fff');
         }
     }
 

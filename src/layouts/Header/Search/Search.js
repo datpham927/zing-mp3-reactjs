@@ -112,7 +112,7 @@ function Search() {
                 (showResult ? (
                     <div className={cx('menu-search')}>
                         <div className={cx('show')}>
-                            {/* ----------- gợi ý ----------- */}
+                            {/* -----------Đề Xuất Cho Bạn ----------- */}
                             <SuggestMenu data={searchSuggest} />
                         </div>
                     </div>

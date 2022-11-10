@@ -289,7 +289,22 @@ const iconTopic = () => {
     );
 };
 const iconVip = () => {
-    return <i class="icon ic-upload"></i>;
+    return <i className="icon ic-20-VIP-2"></i>;
+};
+const upload = () => {
+    return <i className="icon ic-upload"></i>;
+};
+const iconLeft = () => {
+    return <i className="icon ic-back"></i>;
+};
+const iconRight = () => {
+    return <i className="icon ic-forward"></i>;
+};
+const iconHQ = () => {
+    return <i className="icon ic-20-quaility"></i>;
+};
+const iconCheck = () => {
+    return <i class="icon ic-check"></i>;
 };
 export {
     IconMessage,
@@ -301,7 +316,12 @@ export {
     IconSettings,
     IconView,
     IconLoad,
+    upload,
     IconClose,
     iconTopic,
+    iconRight,
+    iconLeft,
     iconVip,
+    iconHQ,
+    iconCheck,
 };

@@ -10,6 +10,7 @@ const initialState = {
     previewBgrIndex: 0,
     // show kết quả ô search
     booleanShowResult: false,
+    qualitySong: false,
 };
 
 export const zingCounter = createSlice({
@@ -35,10 +36,20 @@ export const zingCounter = createSlice({
         ShowResultSearch: (state, action) => {
             state.booleanShowResult = action.payload;
         },
+        // chất lượng nhạc
+        BooleanQualitySong: (state, action) => {
+            state.qualitySong = action.payload;
+        },
     },
 });
 
-export const { modalTheme, backgroundIndex, previewBackground, previewBackgroundIndex, ShowResultSearch } =
-    zingCounter.actions;
+export const {
+    modalTheme,
+    backgroundIndex,
+    previewBackground,
+    previewBackgroundIndex,
+    ShowResultSearch,
+    BooleanQualitySong,
+} = zingCounter.actions;
 
 export default zingCounter.reducer;

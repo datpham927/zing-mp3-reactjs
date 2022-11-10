@@ -1,0 +1,31 @@
+.box {
+    position: absolute;
+    background-color: var(--primary-bg);
+    width: 240px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+    right: 10px;
+    right: 0;
+    top: 10px;
+}
+.setting {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    min-width: 40px;
+    background-color: var(--alpha-bg);
+    border-radius: 999px;
+    margin: 0 12px;
+    &:hover {
+        opacity: 0.9;
+    }
+    ion-icon {
+        color: var(--setting-icon-text);
+        display: flex;
+        line-height: 40px;
+        font-size: 1.9rem;
+    }
+}

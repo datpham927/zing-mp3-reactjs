@@ -4,6 +4,8 @@
     justify-content: center;
     min-height: 40px;
     min-width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
     ion-icon,
     i {
         color: var(--setting-icon-text);
@@ -20,7 +22,6 @@
     align-items: center;
     justify-content: center;
     background-color: var(--alpha-bg);
-    border-radius: 999px;
     &:hover {
         opacity: 0.9;
     }
@@ -28,24 +29,9 @@
 .outline {
     background-color: transparent;
 }
-.sidebar {
-    width: 100%;
-    padding: 10px 25px;
-    span {
-        color: var(--navigation-text);
-        display: flex;
-        font-size: 1.4rem;
-        align-items: center;
-        font-weight: 600;
-    }
-    .iconLeft {
-        color: var(--navigation-text);
-        margin-right: 10px;
-    }
-}
+
 .image {
     width: 3.8rem;
     height: 3.8rem;
-    border-radius: 50%;
     object-fit: cover;
 }

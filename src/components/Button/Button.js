@@ -19,7 +19,6 @@ function Button(
         primary = false,
         outline = false,
         iconLeft,
-        sidebar = false,
         className,
         onclick,
         children,
@@ -32,7 +31,6 @@ function Button(
         [className]: className,
         primary,
         outline,
-        sidebar,
     });
     const props = {
         onclick,
@@ -72,7 +70,6 @@ Button.propTypes = {
     href: PropTypes.string,
     disabled: PropTypes.bool,
     outline: PropTypes.bool,
-    sidebar: PropTypes.bool,
     iconLeft: PropTypes.node,
     children: PropTypes.node,
     onClick: PropTypes.func,

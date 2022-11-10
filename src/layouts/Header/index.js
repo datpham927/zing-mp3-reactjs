@@ -1,2 +1,1 @@
-export { default } from "./Header";
-hihih
+export { default } from './Header';

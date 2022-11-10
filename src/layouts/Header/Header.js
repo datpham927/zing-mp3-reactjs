@@ -8,44 +8,50 @@ import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
 import { useRef, useState } from 'react';
 import { zingCounter } from '~/redux/actionSlice';
-import Tippy from '@tippyjs/react';
-import ItemMenu from '~/components/ItemMenu/ItemMenu';
+
+import SettingMenu from './settingMenu/SetttingMenu';
 import config from '~/components/config';
 const cx = classNames.bind(style);
-
 const MENU_ITEM = [
     {
-        id: 1,
+        id: 0,
         title: 'Danh sách chặn',
-        iconLeft: <i class="fas fa-ban"></i>,
+        iconLeft: <i className="icon ic-20-Block"></i>,
         path: config.routes.block,
-        chidren: [
-            {
-                id: 1,
-            },
-            {
-                id: 1,
-            },
-        ],
+    },
+    {
+        id: 1,
+        title: 'Chất lượng nhạc',
+        iconLeft: <i className="icon ic-20-quaility-SQ"></i>,
+        iconRight: <ion-icon name="chevron-forward-outline"></ion-icon>,
+        children: {
+            data: [
+                {
+                    id: 4,
+                    title: 'SQ • 128',
+                    iconLeft: <i className="icon ic-20-quaility-SQ"></i>,
+                    type: 'SQ',
+                },
+                {
+                    id: 5,
+                    title: 'HQ • 320',
+                    iconLeft: <i className="icon ic-20-quaility"></i>,
+                    type: 'HQ',
+                },
+            ],
+        },
     },
     {
         id: 2,
-        title: 'Chất lượng nhạc',
-        iconLeft: <i class="far fa-play-circle"></i>,
-        iconRight: <ion-icon name="chevron-forward-outline"></ion-icon>,
+        title: 'Giới thiệu',
+        iconLeft: <i className="icon ic-20-info"></i>,
     },
     {
         id: 3,
-        title: 'Giới thiệu',
-        iconLeft: <i class="fas fa-info-circle"></i>,
-    },
-    {
-        id: 4,
         title: 'Liên hệ',
-        iconLeft: <i class="fas fa-phone-alt"></i>,
+        iconLeft: <i className="icon ic-20-Call"></i>,
     },
 ];
-
 function Header() {
     const currentUser = true;
     const [bgrHeader, setBgrHeader] = useState(false);
@@ -63,10 +69,10 @@ function Header() {
             <div className={cx('wrapper', bgrHeader && 'bgrHeader')}>
                 <div className={cx('left')}>
                     <span className={cx('icon')}>
-                        <ion-icon name="arrow-back-outline"></ion-icon>
+                        <Icon.iconLeft />
                     </span>
                     <span className={cx('icon')}>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>{' '}
+                        <Icon.iconRight />
                     </span>
                     {/* search */}
                     <Search />
@@ -80,42 +86,16 @@ function Header() {
                         onClick={() => dispatch(zingCounter.actions.modalTheme(true))}
                     />
                     {/* vip */}
-                    <Button primary iconLeft={<ion-icon name="diamond-outline"></ion-icon>} content="Nâng cấp VIP" />
+                    <Button primary iconLeft={<Icon.iconVip />} content="Nâng cấp VIP" />
                     {/* tải file */}
-                    <Button primary type={<ion-icon name="cloud-upload-outline"></ion-icon>} content="Tải lên" />
+                    <Button primary type={<Icon.upload />} content="Tải lên" />
                     {/* setting */}
-                    <Button primary iconLeft={<ion-icon name="settings-outline"></ion-icon>} content="Cài đặc" />
+                    <SettingMenu MENU_ITEM={MENU_ITEM} />
                     {currentUser ? (
-                        <Tippy
-                            visible
-                            interactive
-                            placement="bottom-start"
-                            render={(attrs) => (
-                                <div className={cx('box')} tabIndex="-1" {...attrs}>
-                                    {MENU_ITEM.map((data) =>
-                                        data.id === 2 ? (
-                                            <ItemMenu key={data.id} iconLeft={data.iconLeft} iconRight={data.iconRight}>
-                                                {data.title}
-                                            </ItemMenu>
-                                        ) : (
-                                            <ItemMenu
-                                                key={data.id}
-                                                iconLeft={data.iconLeft}
-                                                iconRight={data.iconRight}
-                                                to={data.path}
-                                            >
-                                                {data.title}
-                                            </ItemMenu>
-                                        ),
-                                    )}
-                                </div>
-                            )}
-                        >
-                            <Button
-                                ref={refAvatar}
-                                src="https://3.bp.blogspot.com/-dNqe_M2-wQE/W-_crKMFCBI/AAAAAAAACYw/H13b7yXBYkICwwPkIz9pbg_ijnAn2NeKACLcBGAs/s1600/gai-xinh-4k-17.jpg"
-                            />
-                        </Tippy>
+                        <Button
+                            ref={refAvatar}
+                            src="https://3.bp.blogspot.com/-dNqe_M2-wQE/W-_crKMFCBI/AAAAAAAACYw/H13b7yXBYkICwwPkIz9pbg_ijnAn2NeKACLcBGAs/s1600/gai-xinh-4k-17.jpg"
+                        />
                     ) : (
                         <Button primary src="https://avatar.talk.zdn.vn/default" onClick={() => console.log('hihi')} />
                     )}

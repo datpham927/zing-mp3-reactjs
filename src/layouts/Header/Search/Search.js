@@ -1,6 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
@@ -12,15 +9,16 @@ import SuggestMenu from './Suggest/SuggestMenu';
 
 import * as searchApi from '~/components/servicesApi/searchService';
 import KeywordsItem from './Keywords/KeywordsItem';
+import { Icon } from '~/components/Icons';
 const cx = classNames.bind(style);
 
 function Search() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [searchResult, setSearchResult] = useState([]);
     const [searchSuggest, setSearchSuggest] = useState([]);
     const [value, setValue] = useState('');
     const [showResult, setShowResult] = useState(false);
     const [showBtn, setShowBtn] = useState(false);
+    const [changeBtn, setChangeBtn] = useState(false);
     const [borderRadius, setBorderRadius] = useState(false);
     const [open, setOpen] = useState(false);
 
@@ -37,6 +35,7 @@ function Search() {
         const fetchApi = async () => {
             const data = await searchApi.search(debouncedValue);
             setSearchResult(data.songs || []);
+            setChangeBtn(false);
         };
         fetchApi();
     }, [debouncedValue]);
@@ -50,6 +49,7 @@ function Search() {
     }, []);
     const handleValueChange = (e) => {
         setBorderRadius(true);
+        setChangeBtn(true);
         setValue(e);
         setShowBtn(true);
         setShowResult(false);
@@ -61,14 +61,11 @@ function Search() {
         setValue('');
         setOpen(false);
         setSearchResult([]);
-        setShowResult(true);
         ref.current.focus();
     };
     const appearInput = () => {
         setOpen(true);
         setBorderRadius(true);
-        setSearchResult([]);
-        setShowResult(true);
     };
     // ẩn khung kết quả
     window.onclick = (e) => {
@@ -82,10 +79,10 @@ function Search() {
             } else {
                 setOpen(false);
                 setBorderRadius(false);
+                setShowResult(false);
             }
         }
     };
-
     return (
         <div
             className={cx(
@@ -105,8 +102,18 @@ function Search() {
                 placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
                 onFocus={appearInput}
             />
-            <div className={cx('close')}>{showBtn && <ion-icon name="close-outline"></ion-icon>}</div>
-
+            <div className={cx('icon-action')}>
+                {showBtn && (
+                    <>
+                        {changeBtn ? (
+                            <span className={cx('close')}>{<Icon.IconLoad />} </span>
+                        ) : (
+                            <span className={cx('close')}>{<Icon.IconClose />}</span>
+                        )}
+                    </>
+                )}
+            </div>
+            {}
             {searchSuggest.length > 0 &&
                 open &&
                 (showResult ? (

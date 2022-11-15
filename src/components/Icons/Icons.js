@@ -75,7 +75,7 @@ const IconSettings = ({ className }) => {
 const IconCoins = ({ className }) => {
     return (
         <svg
-            className="className"
+            className={className}
             width="1em"
             height="1em"
             viewBox="0 0 48 48"
@@ -145,44 +145,11 @@ const IconHelp = ({ className }) => {
         </svg>
     );
 };
-const IconLoad = ({ className }) => {
-    return (
-        <svg
-            className={className}
-            width="1em"
-            height="1em"
-            viewBox="0 0 48 48"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M24 12.5C17.6487 12.5 12.5 17.6487 12.5 24C12.5 30.3513 17.6487 35.5 24 35.5C26.8172 35.5 29.3919 34.4902 31.3919 32.8101C32.4491 31.9219 34.026 32.059 34.9142 33.1161C35.8023 34.1733 35.6653 35.7503 34.6081 36.6384C31.741 39.0471 28.0369 40.5 24 40.5C14.8873 40.5 7.5 33.1127 7.5 24C7.5 14.8873 14.8873 7.5 24 7.5C33.1127 7.5 40.5 14.8873 40.5 24C40.5 25.3807 39.3807 26.5 38 26.5C36.6193 26.5 35.5 25.3807 35.5 24C35.5 17.6487 30.3513 12.5 24 12.5Z"
-            ></path>
-        </svg>
-    );
-};
 const IconClose = ({ className }) => {
-    return (
-        <svg
-            className={className}
-            width="1em"
-            height="1em"
-            viewBox="0 0 48 48"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M24 46C36.1503 46 46 36.1503 46 24C46 11.8497 36.1503 2 24 2C11.8497 2 2 11.8497 2 24C2 36.1503 11.8497 46 24 46ZM15.1466 30.7323L21.8788 24.0001L15.1466 17.2679C14.756 16.8774 14.756 16.2442 15.1466 15.8537L15.8537 15.1466C16.2442 14.756 16.8774 14.756 17.2679 15.1466L24.0001 21.8788L30.7323 15.1466C31.1229 14.756 31.756 14.756 32.1466 15.1466L32.8537 15.8537C33.2442 16.2442 33.2442 16.8774 32.8537 17.2679L26.1214 24.0001L32.8537 30.7323C33.2442 31.1229 33.2442 31.756 32.8537 32.1466L32.1466 32.8537C31.756 33.2442 31.1229 33.2442 30.7323 32.8537L24.0001 26.1214L17.2679 32.8537C16.8774 33.2442 16.2442 33.2442 15.8537 32.8537L15.1466 32.1466C14.756 31.756 14.756 31.1229 15.1466 30.7323Z"
-            ></path>
-        </svg>
-    );
+    return <ion-icon name="close-outline"></ion-icon>;
 };
 
-const iconTopic = () => {
+const IconTopic = () => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20">
             <defs>
@@ -288,23 +255,184 @@ const iconTopic = () => {
         </svg>
     );
 };
-const iconVip = () => {
+const IconVip = () => {
     return <i className="icon ic-20-VIP-2"></i>;
 };
 const upload = () => {
     return <i className="icon ic-upload"></i>;
 };
-const iconLeft = () => {
+const IconLeft = () => {
     return <i className="icon ic-back"></i>;
 };
-const iconRight = () => {
+const IconRight = () => {
     return <i className="icon ic-forward"></i>;
 };
-const iconHQ = () => {
+const IconHQ = () => {
     return <i className="icon ic-20-quaility"></i>;
 };
-const iconCheck = () => {
+const IconCheck = () => {
     return <i className="icon ic-check"></i>;
+};
+
+const IconLoad = ({ className }) => {
+    return (
+        <svg
+            className={className}
+            width="40px"
+            height="40px"
+            fill="#f1f1f1"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="xMidYMid"
+        >
+            <g transform="rotate(0 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.9166666666666666s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(30 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.8333333333333334s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(60 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.75s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(90 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.6666666666666666s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(120 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.5833333333333334s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(150 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.5s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(180 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.4166666666666667s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(210 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.3333333333333333s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(240 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.25s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(270 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.16666666666666666s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(300 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="-0.08333333333333333s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+            <g transform="rotate(330 50 50)">
+                <rect x="47" y="24" rx="3.7600000000000002" ry="1.92" width="6" height="12">
+                    <animate
+                        attributeName="opacity"
+                        values="1;0"
+                        keyTimes="0;1"
+                        dur="1s"
+                        begin="0s"
+                        repeatCount="indefinite"
+                    ></animate>
+                </rect>
+            </g>
+        </svg>
+    );
+};
+const IconMusic = () => {
+    return <i class="icon  ic-24-NewReleaseTab"></i>;
 };
 export {
     IconMessage,
@@ -318,10 +446,11 @@ export {
     IconLoad,
     upload,
     IconClose,
-    iconTopic,
-    iconRight,
-    iconLeft,
-    iconVip,
-    iconHQ,
-    iconCheck,
+    IconTopic,
+    IconRight,
+    IconLeft,
+    IconVip,
+    IconHQ,
+    IconCheck,
+    IconMusic,
 };

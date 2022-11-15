@@ -19,7 +19,7 @@ function Button(
         primary = false,
         outline = false,
         iconLeft,
-        disable,
+        disable = false,
         className,
         onclick,
         children,
@@ -53,6 +53,7 @@ function Button(
                 delete props[key];
             }
         });
+        Comp = 'button';
     }
 
     return !src ? (

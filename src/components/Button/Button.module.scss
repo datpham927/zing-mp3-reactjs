@@ -17,8 +17,12 @@
         margin-left: 12px;
     }
 }
-.disabled {
+.disable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     pointer-events: none;
+    background-color: var(--alpha-bg);
     opacity: 0.6;
 }
 

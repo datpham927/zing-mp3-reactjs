@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-pascal-case */
 import classNames from 'classnames/bind';
 import Button from '~/components/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Search from './Search';
 import { Icon } from '../../components/Icons';
 import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { zingCounter } from '~/redux/actionSlice';
 
 import TippyMenu from '~/components/menu/tippyMenu/TippyMenu';
@@ -54,11 +54,11 @@ const MENU_ITEM = [
         iconLeft: <i className="icon ic-20-Call"></i>,
     },
 ];
-const MENU_AVATAR = [
+const MENU_LOGOUT = [
     {
         id: 0,
         title: 'Nâng cấp VIP',
-        iconLeft: <Icon.iconVip />,
+        iconLeft: <Icon.IconVip />,
     },
     {
         id: 1,
@@ -67,32 +67,26 @@ const MENU_AVATAR = [
     },
     {
         id: 1,
-        title: 'Mua code VIP',
+        title: 'Đăng xuất',
         iconLeft: <i class="icon ic-log-out"></i>,
         type: 'separate',
     },
 ];
-function Header() {
-    const currentUser = true;
-    const [bgrHeader, setBgrHeader] = useState(false);
+function Header({ bgrHeader }) {
+    const currentUser = useSelector((state) => state.counter.currentUser);
+
     const dispatch = useDispatch();
     const refAvatar = useRef();
-    window.addEventListener('scroll', () => {
-        if (window.scrollY === 0) {
-            setBgrHeader(false);
-        } else {
-            setBgrHeader(true);
-        }
-    });
+
     return (
         <>
             <div className={cx('wrapper', bgrHeader && 'bgrHeader')}>
                 <div className={cx('left')}>
                     <span className={cx('icon')}>
-                        <Icon.iconLeft />
+                        <Icon.IconLeft />
                     </span>
                     <span className={cx('icon')}>
-                        <Icon.iconRight />
+                        <Icon.IconRight />
                     </span>
                     {/* ------ search ------ */}
                     <Search />
@@ -101,12 +95,12 @@ function Header() {
                     {/* ------ theme ------ */}
                     <Button
                         primary
-                        iconLeft={<Icon.iconTopic />}
+                        iconLeft={<Icon.IconTopic />}
                         content="Chủ đề"
                         onClick={() => dispatch(zingCounter.actions.modalTheme(true))}
                     />
                     {/* ------ vip ------ */}
-                    <Button primary disabled iconLeft={<Icon.iconVip />} content="Nâng cấp VIP" />
+                    <Button disable iconLeft={<Icon.IconVip />} content="Nâng cấp VIP" />
                     {/* ------ tải file ------*/}
                     <Button primary type={<Icon.upload />} content="Tải lên" />
                     {/* ------ setting ------*/}
@@ -117,7 +111,7 @@ function Header() {
                     </TippyMenu>
                     {currentUser ? (
                         //------ đã đăng nhập ------
-                        <TippyMenu MENU_ITEM={MENU_AVATAR}>
+                        <TippyMenu MENU_ITEM={MENU_LOGOUT}>
                             <Button
                                 ref={refAvatar}
                                 src="https://3.bp.blogspot.com/-dNqe_M2-wQE/W-_crKMFCBI/AAAAAAAACYw/H13b7yXBYkICwwPkIz9pbg_ijnAn2NeKACLcBGAs/s1600/gai-xinh-4k-17.jpg"

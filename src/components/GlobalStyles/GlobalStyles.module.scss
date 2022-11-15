@@ -13,20 +13,13 @@ html {
     font-family: ZingMp3;
     src: url('/assets/font/mp3-zing.2a3edced.woff');
 }
-@font-face {
-    font-family: font1;
-    src: url('/assets/font/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2');
-}
-@font-face {
-    font-family: font2;
-    src: url('/assets/font/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2');
-}
+
 i {
-    font-family: ZingMp3, font1, font2;
+    font-family: ZingMp3;
     font-style: normal !important;
 }
 body {
-    font-family: font1, font2;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5rem;
     //kích thước ban đầu của trình duyệt
     font-size: 1.6rem;
@@ -47,7 +40,7 @@ body::-webkit-scrollbar {
     --color-pink: #f12d94;
     --purple-primary: #ed2b91;
     --sticky-header-box-shadow: rgba(0, 0, 0, 0.1);
-    --border-primary: hsla(0, 0%, 100%, 0.03);
+    --border-primary: hsla(0, 0%, 100%, 0.1);
     --primary-bg: #432275;
     --loading-bg: rgba(0, 0, 0, 0.05);
     --dark-alpha-10: rgba(0, 0, 0, 0.1);
@@ -59,7 +52,6 @@ body::-webkit-scrollbar {
     --navigation-text: #dadada;
     --text-secondary: hsla(0, 0%, 100%, 0.5);
     --text-primary: #fff;
-    --text-item-hover: #fe63da;
     --search-text: #eee;
     --text-placeholder: #dadada;
     // đổi màu bgr khi click

@@ -14,6 +14,8 @@ const ChangerColor = ({ children }) => {
         document.documentElement.style.setProperty('--text-placeholder', '#dadada');
         document.documentElement.style.setProperty('--setting-icon-text', '#d8d8d8');
         document.documentElement.style.setProperty('--alpha-bg', 'hsla(0,0%,100%,0.1)');
+        document.documentElement.style.setProperty('--text-item-hover', '#fff');
+        document.documentElement.style.setProperty('--sidebar-bg', 'hsla(0, 0%, 100%, 0.05)');
 
         if (kq === 0) {
             document.documentElement.style.setProperty(
@@ -29,6 +31,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--layout-bg', '#37075d');
             document.documentElement.style.setProperty('--primary-bg', '#4B1178');
             document.documentElement.style.setProperty('--layout-bg', '#37075d');
+            document.documentElement.style.setProperty('--text-item-hover', '#fff');
         }
         if (kq === 1) {
             document.documentElement.style.setProperty('--primary-bg', '#363636');
@@ -42,6 +45,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--link-text-hover', '#4C7CFF');
             document.documentElement.style.setProperty('--purple-primary', '#3560F5');
             document.documentElement.style.setProperty('--layout-bg', '#061641');
+            document.documentElement.style.setProperty('--text-item-hover', '#fff');
         }
         if (kq === 8) {
             document.documentElement.style.setProperty('--layout-bg', '#767269');
@@ -64,6 +68,9 @@ const ChangerColor = ({ children }) => {
         document.documentElement.style.setProperty('--text-placeholder', '#757575');
         document.documentElement.style.setProperty('--setting-icon-text', '#495057');
         document.documentElement.style.setProperty('--alpha-bg', 'rgba(0,0,0,0.05)');
+        document.documentElement.style.setProperty('--sidebar-bg', 'hsla(0,0%,100%,0.3)');
+        document.documentElement.style.setProperty('--border-primary', 'rgba(0,0,0,0.03)');
+
         if (kq === 3) {
             document.documentElement.style.setProperty('--layout-bg', '#E6E1DE');
             document.documentElement.style.setProperty('--primary-bg', '#EFEDEB');

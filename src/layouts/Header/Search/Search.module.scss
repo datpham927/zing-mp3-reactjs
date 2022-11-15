@@ -7,15 +7,21 @@
     padding: 5px;
     flex: 1;
     border-radius: 5.2rem;
+    .icon-action,
     .close,
+    .icon-load,
     .icon-search {
         font-size: 2.3rem;
         margin-right: 10px;
         margin-left: 5px;
-        display: flex;
         width: 2rem;
+        display: flex;
         align-items: center;
         cursor: pointer;
+    }
+    .icon-load {
+        width: 30px;
+        height: 100%;
     }
     & input {
         flex: 1;

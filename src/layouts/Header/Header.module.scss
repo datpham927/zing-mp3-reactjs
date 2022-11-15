@@ -1,9 +1,8 @@
 .wrapper {
     position: sticky;
     top: 0;
-    width: 100%;
     padding: 0 var(--padding-section);
-    height: 70px;
+    height: var(--height-header);
     display: flex;
     justify-content: space-between;
     z-index: 10;

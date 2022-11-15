@@ -107,3 +107,9 @@ body .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
 .ic-log-out:before {
     content: '\3a';
 }
+.ic-24-HomeTab:before {
+    content: '\e905';
+}
+.ic-24-Top100Tab:before {
+    content: '\e925';
+}

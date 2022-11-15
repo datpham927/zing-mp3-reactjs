@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+    // đăng nhập
+    currentUser: false,
     //mở modal lựa chọn background
     booleanTheme: false,
     // index background
@@ -17,6 +19,10 @@ export const zingCounter = createSlice({
     name: 'zing',
     initialState,
     reducers: {
+        // đăng nhập
+        setCurrentUser: (state, action) => {
+            state.currentUser = action.payload;
+        },
         //mở modal lựa chọn background
         modalTheme: (state, action) => {
             state.booleanTheme = action.payload;
@@ -50,6 +56,7 @@ export const {
     previewBackgroundIndex,
     ShowResultSearch,
     BooleanQualitySong,
+    setCurrentUser,
 } = zingCounter.actions;
 
 export default zingCounter.reducer;

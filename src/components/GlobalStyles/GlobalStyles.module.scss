@@ -20,20 +20,15 @@ i {
 }
 body {
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5rem;
+    line-height: 1.5;
     //kích thước ban đầu của trình duyệt
     font-size: 1.6rem;
     //tối ưu tốc độ hiển thi font
     text-rendering: optimizeSpeed;
-    overflow-y: overlay;
-    -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
-    scrollbar-width: none; /* sử dụng Firefox */
-    overflow-y: scroll;
+
     height: 100vh;
 }
-body::-webkit-scrollbar {
-    display: none;
-}
+
 :root {
     --alpha-bg: hsla(0, 0%, 100%, 0.1);
     --primary-bg: #4b1178;
@@ -43,6 +38,7 @@ body::-webkit-scrollbar {
     --border-primary: hsla(0, 0%, 100%, 0.1);
     --primary-bg: #432275;
     --loading-bg: rgba(0, 0, 0, 0.05);
+    --box-hot-item-bg-hover: rgba(254, 255, 255, 0.2);
     --dark-alpha-10: rgba(0, 0, 0, 0.1);
     --dark-alpha-30: rgba(0, 0, 0, 0.3);
     --dark-alpha-50: rgba(0, 0, 0, 0.5);
@@ -75,4 +71,11 @@ button {
 a {
     text-decoration: none;
     cursor: pointer;
+}
+h1 {
+    color: var(--text-primary);
+}
+
+span {
+    color: var(--text-secondary);
 }

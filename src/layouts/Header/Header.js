@@ -10,7 +10,7 @@ import { useRef } from 'react';
 import { zingCounter } from '~/redux/actionSlice';
 
 import TippyMenu from '~/components/menu/tippyMenu/TippyMenu';
-import config from '~/components/config';
+import config from '~/routes/config';
 const cx = classNames.bind(style);
 const MENU_ITEM = [
     {
@@ -68,7 +68,7 @@ const MENU_LOGOUT = [
     {
         id: 1,
         title: 'Đăng xuất',
-        iconLeft: <i class="icon ic-log-out"></i>,
+        iconLeft: <i className="icon ic-log-out"></i>,
         type: 'separate',
     },
 ];

@@ -31,7 +31,7 @@ function ThemeItem({ data }) {
                 </div>
                 {data.id === index && (
                     <div className={cx('check')}>
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                     </div>
                 )}
             </div>

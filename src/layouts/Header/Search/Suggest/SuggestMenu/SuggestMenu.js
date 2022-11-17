@@ -14,9 +14,7 @@ function SuggestMenu({ data = [] }) {
                 <h1>Đề Xuất Cho Bạn</h1>
             </div>
             <div className={cx('Keywords-body')}>
-                {data.map((item, index) => (
-                    <SuggestItem key={index} data={item} />
-                ))}
+                {data.map((item, index) => index < 5 && <SuggestItem key={index} data={item} />)}
             </div>
         </div>
     );

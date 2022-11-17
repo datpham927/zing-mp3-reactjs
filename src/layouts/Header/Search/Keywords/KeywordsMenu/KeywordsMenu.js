@@ -1,7 +1,5 @@
 /* eslint-disable array-callback-return */
 import classNames from 'classnames/bind';
-import PropTypes from 'prop-types';
-
 import SuggestItem from '../KeywordsItem/KeywordsItem';
 import styles from './KeywordsMenu.module.scss';
 
@@ -10,13 +8,9 @@ const cx = classNames.bind(styles);
 function KeywordsMenu({ data }) {
     return (
         <div className={cx('Keywords-body')}>
-            {data.map((item, index) => (
-                <SuggestItem key={index} data={item.title} />
-            ))}
+            {data.map((item, index) => index < 4 && <SuggestItem key={index} data={item.title} />)}
         </div>
     );
 }
-KeywordsMenu.propTypes = {
-    data: PropTypes.object,
-};
+
 export default KeywordsMenu;

@@ -404,8 +404,8 @@
 /* PC medium resolution > */
 @media (min-width: 1024px) and (max-width: 4260px) {
     .row {
-        margin-left: -8px;
-        margin-right: -8px;
+        margin-left: -14px;
+        margin-right: -14px;
     }
 
     .row.sm-gutter {
@@ -414,8 +414,8 @@
     }
 
     .col {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 14px;
+        padding-right: 14px;
     }
 
     .row.sm-gutter .col {

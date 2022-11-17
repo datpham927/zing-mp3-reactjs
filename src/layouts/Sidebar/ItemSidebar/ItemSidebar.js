@@ -5,13 +5,13 @@ const cx = classNames.bind(style);
 
 function ItemSidebar({ data }) {
     return (
-        <NavLink title={data.title} className={(nav) => cx('navbar', { active: nav.isActive })} to={data.path} end>
+        <NavLink end title={data.title} className={(nav) => cx('navbar', { active: nav.isActive })} to={data.path}>
             <div className={cx('wrapper')}>
                 {data.icon}
                 <h1>{data.title}</h1>
                 {data.type && (
                     <div className={cx('play')}>
-                        <i class="icon ic-20-Play-Outline"></i>
+                        <i className="icon ic-20-Play-Outline"></i>
                     </div>
                 )}
             </div>

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import config from '~/components/config';
+import config from '~/routes/config';
 import { Icon } from '~/components/Icons';
 import ItemSidebar from './ItemSidebar/ItemSidebar';
 import style from './Sidebar.module.scss';
@@ -49,7 +49,7 @@ const MENU_SCROLL = [
         id: 0,
         title: 'Nhạc Mới',
         icon: <Icon.IconMusic />,
-        path: config.routes.musicNew,
+        path: config.routes.songNew,
         type: true,
     },
     {
@@ -84,16 +84,16 @@ function Sidebar() {
             </div>
 
             <div className={cx('menu', 'c-0')}>
-                {MENU_SIDEBAR.map((item) => (
-                    <ItemSidebar data={item} />
+                {MENU_SIDEBAR.map((item, index) => (
+                    <ItemSidebar key={index} data={item} />
                 ))}
                 <div className={cx('divide')}></div>
             </div>
 
             <div className={cx('navbar')}>
                 <div className={cx('navbar-menu')}>
-                    {MENU_SCROLL.map((item) => (
-                        <ItemSidebar data={item} />
+                    {MENU_SCROLL.map((item, index) => (
+                        <ItemSidebar key={index} data={item} />
                     ))}
                 </div>
                 <div className={cx('login', 'c-0')}>
@@ -103,7 +103,7 @@ function Sidebar() {
             </div>
             <div className={cx('create-list', 'm-0 ')}>
                 <ion-icon className="m-0" name="add-outline"></ion-icon>
-                <span class="m-0">Tạo playlist mới</span>
+                <span className="m-0">Tạo playlist mới</span>
             </div>
         </div>
     );

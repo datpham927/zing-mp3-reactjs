@@ -13,6 +13,7 @@ const initialState = {
     // show kết quả ô search
     booleanShowResult: false,
     qualitySong: false,
+    booleanOpenInput: false,
 };
 
 export const zingCounter = createSlice({
@@ -46,6 +47,10 @@ export const zingCounter = createSlice({
         BooleanQualitySong: (state, action) => {
             state.qualitySong = action.payload;
         },
+        //input
+        setOpenInput: (state, action) => {
+            state.booleanOpenInput = action.payload;
+        },
     },
 });
 
@@ -57,6 +62,7 @@ export const {
     ShowResultSearch,
     BooleanQualitySong,
     setCurrentUser,
+    setOpenInput,
 } = zingCounter.actions;
 
 export default zingCounter.reducer;

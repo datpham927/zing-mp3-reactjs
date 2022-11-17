@@ -11,14 +11,14 @@
         background-color: rgba(225, 225, 225, 0.1);
         color: var(--link-text-hover);
     }
-    span {
+    & span {
         font-size: 14px;
         margin-right: 10px;
         text-transform: capitalize;
         color: var(--text-primary);
         cursor: pointer;
-        i {
-            font-size: 12px;
+        & i {
+            font-size: 1.6rem;
             cursor: pointer;
             color: var(--text-secondary);
         }

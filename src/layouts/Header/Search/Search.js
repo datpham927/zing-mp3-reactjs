@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import style from './Search.module.scss';
@@ -10,9 +10,17 @@ import SuggestMenu from './Suggest/SuggestMenu';
 import * as searchApi from '~/components/servicesApi/searchService';
 import KeywordsItem from './Keywords/KeywordsItem';
 import { Icon } from '~/components/Icons';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { zingCounter } from '~/redux/actionSlice';
 const cx = classNames.bind(style);
+export const ThemeContext = createContext();
 
 function Search() {
+    const valueRef = useRef();
+    const dispatch = useDispatch();
+    //điều hướng đường dẫn
+    const navigate = useNavigate();
     const [searchResult, setSearchResult] = useState([]);
     const [searchSuggest, setSearchSuggest] = useState([]);
     const [value, setValue] = useState('');
@@ -20,9 +28,8 @@ function Search() {
     const [showBtn, setShowBtn] = useState(false);
     const [changeBtn, setChangeBtn] = useState(false);
     const [borderRadius, setBorderRadius] = useState(false);
-    const [open, setOpen] = useState(false);
 
-    const ref = useRef();
+    const open = useSelector((state) => state.counter.booleanOpenInput);
     const debouncedValue = useDebounce(value, 500);
     useEffect(() => {
         if (!debouncedValue.trim()) {
@@ -50,22 +57,28 @@ function Search() {
     const handleValueChange = (e) => {
         setBorderRadius(true);
         setChangeBtn(true);
-        setValue(e);
+        setValue(e.target.value);
         setShowBtn(true);
         setShowResult(false);
     };
-
     const hideBtnClose = () => {
         setBorderRadius(false);
         setShowBtn(false);
         setValue('');
-        setOpen(false);
+        dispatch(zingCounter.actions.setOpenInput(false));
         setSearchResult([]);
-        ref.current.focus();
+        valueRef.current.focus();
     };
     const appearInput = () => {
-        setOpen(true);
+        dispatch(zingCounter.actions.setOpenInput(true));
         setBorderRadius(true);
+    };
+
+    const handleSubmit = () => {
+        if (valueRef.current.value) {
+            dispatch(zingCounter.actions.setOpenInput(false));
+            navigate(`/tim-kiem/tat-ca/${valueRef.current.value}`);
+        }
     };
     // ẩn khung kết quả
     window.onclick = (e) => {
@@ -77,7 +90,7 @@ function Search() {
             if (e.target.closest('.Search_close__S-Oy5')) {
                 hideBtnClose();
             } else {
-                setOpen(false);
+                dispatch(zingCounter.actions.setOpenInput(false));
                 setBorderRadius(false);
                 setShowResult(false);
             }
@@ -87,17 +100,18 @@ function Search() {
         <div
             className={cx(
                 'search',
-                ((searchSuggest.length > 0 && borderRadius) || (searchResult.length > 0 && borderRadius)) &&
+                ((searchSuggest.length > 0 && borderRadius && open) ||
+                    (searchResult.length > 0 && borderRadius && open)) &&
                     'bgrHeader',
             )}
         >
-            <div className={cx('icon-search')}>
-                <ion-icon name="search-outline"></ion-icon>
+            <div className={cx('icon-search')} onClick={(e) => handleSubmit(e)}>
+                <i class="icon ic-search"></i>
             </div>
             <input
-                ref={ref}
+                ref={valueRef}
                 value={value}
-                onChange={(e) => handleValueChange(e.target.value)}
+                onChange={(e) => handleValueChange(e)}
                 type="text"
                 placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
                 onFocus={appearInput}
@@ -117,12 +131,14 @@ function Search() {
             {searchSuggest.length > 0 &&
                 open &&
                 (showResult ? (
-                    <div className={cx('menu-search')}>
-                        <div className={cx('show')}>
-                            {/* -----------Đề Xuất Cho Bạn ----------- */}
-                            <SuggestMenu data={searchSuggest} />
+                    <>
+                        <div className={cx('menu-search')}>
+                            <div className={cx('show')}>
+                                {/* -----------Đề Xuất Cho Bạn ----------- */}
+                                <SuggestMenu data={searchSuggest} />
+                            </div>
                         </div>
-                    </div>
+                    </>
                 ) : (
                     <div className={cx('menu-search')}>
                         <div className={cx('show')}>
@@ -130,8 +146,10 @@ function Search() {
                             <div className={cx('Keywords')}>
                                 <div className={cx('Keywords-header')}>
                                     <h1>Từ Khóa Liên Quan</h1>
-                                    {searchResult.length > 0 && <KeywordsMenu data={searchResult} />}
-                                    <KeywordsItem data={`Tim kiếm "${value}"`} />
+                                    {searchResult.length > 0 && (
+                                        <KeywordsMenu data={searchResult} onSubmit={(e) => handleSubmit(e)} />
+                                    )}
+                                    <KeywordsItem data={`Tim kiếm "${value}"`} onSubmit={(e) => handleSubmit(e)} />
                                 </div>
                             </div>
                             {/* ------------ ----------------- */}

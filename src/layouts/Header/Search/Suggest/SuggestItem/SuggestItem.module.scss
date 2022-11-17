@@ -14,7 +14,8 @@
         text-transform: capitalize;
         cursor: pointer;
         i {
-            font-size: 12px;
+            color: var(--text-secondary);
+            font-size: 1.6rem;
             cursor: pointer;
         }
     }

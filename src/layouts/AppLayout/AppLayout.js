@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from './DefaultLayout.module.scss';
+import styles from './AppLayout.module.scss';
 import Sidebar from '../Sidebar';
 import PropTypes from 'prop-types';
 import Header from '../Header';
@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function DefaultLayout({ children }) {
+function AppLayout({ children }) {
     const [bgrHeader, setBgrHeader] = useState(false);
     const handleScroll = (e) => {
         if (e.currentTarget.scrollTop === 0) {
@@ -22,7 +22,7 @@ function DefaultLayout({ children }) {
         <>
             <Theme />
             <div className={cx('Wrapper')}>
-                <Sidebar />
+                <Sidebar key={1} />
                 <div className={cx('main')} onScroll={(e) => handleScroll(e)}>
                     <Header bgrHeader={bgrHeader} />
                     <div className={cx('container')}>{children}</div>
@@ -31,7 +31,7 @@ function DefaultLayout({ children }) {
         </>
     );
 }
-DefaultLayout.propTypes = {
+AppLayout.propTypes = {
     children: PropTypes.node.isRequired,
 };
-export default DefaultLayout;
+export default AppLayout;

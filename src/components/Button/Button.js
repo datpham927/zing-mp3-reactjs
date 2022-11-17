@@ -7,7 +7,6 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import style from './Button.module.scss';
 import { forwardRef } from 'react';
-// import { forwardRef } from 'react';
 const cx = classNames.bind(style);
 
 function Button(
@@ -21,7 +20,7 @@ function Button(
         iconLeft,
         disable = false,
         className,
-        onclick,
+        onClick,
         children,
         content,
         ...passProps
@@ -35,7 +34,7 @@ function Button(
         outline,
     });
     const props = {
-        onclick,
+        onClick,
         ...passProps,
     };
     let Comp = 'button';
@@ -62,7 +61,7 @@ function Button(
                 {iconLeft && <span>{iconLeft}</span>}
                 {type && (
                     <span>
-                        <label for="upload">{type}</label>
+                        <label htmlFor="upload">{type}</label>
                         <input type="file" hidden id="upload" />
                     </span>
                 )}

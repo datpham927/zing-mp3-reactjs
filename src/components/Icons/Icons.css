@@ -113,3 +113,15 @@ body .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
 .ic-24-Top100Tab:before {
     content: '\e925';
 }
+.ic-search:before {
+    content: '\e000';
+}
+.ic-trend:before {
+    content: '\37';
+}
+.ic-play:before {
+    content: '\5e';
+}
+.ic-24-Shuffle:before {
+    content: '\e9b0';
+}

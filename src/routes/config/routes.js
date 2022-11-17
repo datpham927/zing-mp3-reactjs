@@ -1,16 +1,15 @@
 const routes = {
     private: `/mymusic`,
     discover: `/`,
-    following: `/following`,
+    following: `/the-loai-nghe-si`,
     zingchart: `/zing-chart`,
     radio: `/radio`,
-    resultSearch: '/result-search',
     album: '/album',
     block: '/blocked',
-    category: '/category',
-    musicNew: '/musicNew',
+    category: '/hub',
+    songNew: '/moi-phat-hanh',
     top100: '/top100',
-    mv: '/mv',
+    mv: '/the-loai-video',
 };
 
 export default routes;

@@ -1,3 +1,4 @@
+import './Icons.css';
 const IconMessage = ({ className }) => {
     return (
         <svg
@@ -83,7 +84,7 @@ const IconCoins = ({ className }) => {
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 clip-rule="evenodd"
                 d="M24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6ZM2 24C2 11.8497 11.8497 2 24 2C36.1503 2 46 11.8497 46 24C46 36.1503 36.1503 46 24 46C11.8497 46 2 36.1503 2 24ZM24.0909 15C22.172 15 20.3433 16.2292 19.2617 18.61C19.0332 19.1128 18.4726 19.4 17.9487 19.2253L16.0513 18.5929C15.5274 18.4182 15.2406 17.8497 15.4542 17.3405C16.9801 13.7031 20.0581 11 24.0909 11C28.459 11 32 14.541 32 18.9091C32 21.2138 30.7884 23.4606 29.2167 25.074C27.8157 26.5121 25.5807 27.702 22.9988 27.9518C22.4491 28.0049 22.0001 27.5523 22.0001 27V25C22.0001 24.4477 22.4504 24.0057 22.9955 23.9167C24.2296 23.7153 25.5034 23.1533 26.3515 22.2828C27.4389 21.1666 28 19.8679 28 18.9091C28 16.7502 26.2498 15 24.0909 15ZM24 36C22.3431 36 21 34.6569 21 33C21 31.3431 22.3431 30 24 30C25.6569 30 27 31.3431 27 33C27 34.6569 25.6569 36 24 36Z"
             ></path>
@@ -102,7 +103,7 @@ const IconLogOut = ({ className }) => {
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 clip-rule="evenodd"
                 d="M24.1716 26L7 26C6.44771 26 6 25.5523 6 25L6 23C6 22.4477 6.44771 22 7 22L24.1716 22L20.2929 18.1213C19.9024 17.7308 19.9024 17.0976 20.2929 16.7071L21.7071 15.2929C22.0976 14.9024 22.7308 14.9024 23.1213 15.2929L30.4142 22.5858C31.1953 23.3668 31.1953 24.6332 30.4142 25.4142L23.1213 32.7071C22.7308 33.0976 22.0976 33.0976 21.7071 32.7071L20.2929 31.2929C19.9024 30.9024 19.9024 30.2692 20.2929 29.8787L24.1716 26ZM36 43L27 43C26.4477 43 26 42.5523 26 42L26 40C26 39.4477 26.4477 39 27 39L36 39C37.1046 39 38 38.1046 38 37L38 11C38 9.89543 37.1046 9 36 9L27 9C26.4477 9 26 8.55228 26 8L26 6C26 5.44771 26.4477 5 27 5L36 5C39.3137 5 42 7.68629 42 11L42 37C42 40.3137 39.3137 43 36 43Z"
             ></path>
@@ -120,7 +121,7 @@ const IconLanguage = ({ className }) => {
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 clip-rule="evenodd"
                 d="M11 2C7.68629 2 5 4.68629 5 8V40C5 43.3137 7.68629 46 11 46H37C40.3137 46 43 43.3137 43 40V8C43 4.68629 40.3137 2 37 2H11ZM9 8C9 6.89543 9.89543 6 11 6H37C38.1046 6 39 6.89543 39 8V40C39 41.1046 38.1046 42 37 42H11C9.89543 42 9 41.1046 9 40V8ZM26.063 14.1175C25.7306 13.4415 25.0465 13.0096 24.2933 13.0002C23.54 12.9907 22.8453 13.4054 22.4961 14.0729L15.6945 27.0746L12.4672 33.1814C12.2092 33.6697 12.3958 34.2747 12.8841 34.5328L14.6524 35.4672C15.1407 35.7253 15.7457 35.5386 16.0038 35.0503L18.6718 30.0017H29.4421L32.0324 35.0274C32.2854 35.5183 32.8885 35.7112 33.3794 35.4581L35.1572 34.5419C35.6481 34.2888 35.8409 33.6858 35.5879 33.1948L32.4477 27.1022L26.063 14.1175ZM27.4492 26.0017H20.77L24.213 19.4202L27.4492 26.0017Z"
             ></path>
@@ -138,7 +139,7 @@ const IconHelp = ({ className }) => {
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 clip-rule="evenodd"
                 d="M24 6C14.0589 6 6 14.0589 6 24C6 33.9411 14.0589 42 24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6ZM2 24C2 11.8497 11.8497 2 24 2C36.1503 2 46 11.8497 46 24C46 36.1503 36.1503 46 24 46C11.8497 46 2 36.1503 2 24ZM24.0909 15C22.172 15 20.3433 16.2292 19.2617 18.61C19.0332 19.1128 18.4726 19.4 17.9487 19.2253L16.0513 18.5929C15.5274 18.4182 15.2406 17.8497 15.4542 17.3405C16.9801 13.7031 20.0581 11 24.0909 11C28.459 11 32 14.541 32 18.9091C32 21.2138 30.7884 23.4606 29.2167 25.074C27.8157 26.5121 25.5807 27.702 22.9988 27.9518C22.4491 28.0049 22.0001 27.5523 22.0001 27V25C22.0001 24.4477 22.4504 24.0057 22.9955 23.9167C24.2296 23.7153 25.5034 23.1533 26.3515 22.2828C27.4389 21.1666 28 19.8679 28 18.9091C28 16.7502 26.2498 15 24.0909 15ZM24 36C22.3431 36 21 34.6569 21 33C21 31.3431 22.3431 30 24 30C25.6569 30 27 31.3431 27 33C27 34.6569 25.6569 36 24 36Z"
             ></path>
@@ -154,20 +155,20 @@ const IconTopic = () => {
         <svg width="20" height="20" viewBox="0 0 20 20">
             <defs>
                 <linearGradient id="j32lhg93hd" x1="62.206%" x2="18.689%" y1="70.45%" y2="39.245%">
-                    <stop offset="0%" stop-color="#F81212"></stop>
-                    <stop offset="100%" stop-color="red"></stop>
+                    <stop offset="0%" stopColor="#F81212"></stop>
+                    <stop offset="100%" stopColor="red"></stop>
                 </linearGradient>
                 <linearGradient id="hjoavsus6g" x1="50%" x2="11.419%" y1="23.598%" y2="71.417%">
-                    <stop offset="0%" stop-color="#00F"></stop>
-                    <stop offset="100%" stop-color="#0031FF"></stop>
+                    <stop offset="0%" stopColor="#00F"></stop>
+                    <stop offset="100%" stopColor="#0031FF"></stop>
                 </linearGradient>
                 <linearGradient id="la1y5u3dvi" x1="65.655%" x2="25.873%" y1="18.825%" y2="56.944%">
-                    <stop offset="0%" stop-color="#FFA600"></stop>
-                    <stop offset="100%" stop-color="orange"></stop>
+                    <stop offset="0%" stopColor="#FFA600"></stop>
+                    <stop offset="100%" stopColor="orange"></stop>
                 </linearGradient>
                 <linearGradient id="2dsmrlvdik" x1="24.964%" x2="63.407%" y1="8.849%" y2="55.625%">
-                    <stop offset="0%" stop-color="#13EFEC"></stop>
-                    <stop offset="100%" stop-color="#00E8DF"></stop>
+                    <stop offset="0%" stopColor="#13EFEC"></stop>
+                    <stop offset="100%" stopColor="#00E8DF"></stop>
                 </linearGradient>
                 <filter id="4a7imk8mze" width="230%" height="230%" x="-65%" y="-65%" filterUnits="objectBoundingBox">
                     <feGaussianBlur in="SourceGraphic" stdDeviation="3.9"></feGaussianBlur>
@@ -205,11 +206,11 @@ const IconTopic = () => {
                     d="M3.333 14.167V5.833l-1.666.834L0 3.333 3.333 0h3.334c.04 1.57.548 2.4 1.524 2.492l.142.008C9.403 2.478 9.958 1.645 10 0h3.333l3.334 3.333L15 6.667l-1.667-.834v8.334h-10z"
                 ></path>
             </defs>
-            <g fill="none" fill-rule="evenodd" transform="translate(2 3)">
+            <g fill="none" fillRule="evenodd" transform="translate(2 3)">
                 <mask id="tinejqaasb" fill="#fff">
                     <use xlinkHref="#qtpqrj1oda"></use>
                 </mask>
-                <use fill="#FFF" fill-opacity="0" xlinkHref="#qtpqrj1oda"></use>
+                <use fill="#FFF" fillOpacity="0" xlinkHref="#qtpqrj1oda"></use>
                 <g mask="url(#tinejqaasb)">
                     <g transform="translate(-2 -3)">
                         <mask id="uf3ckvfvpf" fill="#fff">
@@ -250,7 +251,7 @@ const IconTopic = () => {
                         ></circle>
                     </g>
                 </g>
-                <use fill="#FFF" fill-opacity="0.05" xlinkHref="#2eiwxjmc7m"></use>
+                <use fill="#FFF" fillOpacity="0.05" xlinkHref="#2eiwxjmc7m"></use>
             </g>
         </svg>
     );
@@ -432,7 +433,7 @@ const IconLoad = ({ className }) => {
     );
 };
 const IconMusic = () => {
-    return <i class="icon  ic-24-NewReleaseTab"></i>;
+    return <i className="icon  ic-24-NewReleaseTab"></i>;
 };
 export {
     IconMessage,

@@ -2,8 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 40px;
-    min-width: 40px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     overflow: hidden;
     ion-icon,
@@ -17,6 +17,7 @@
         margin-left: 12px;
     }
 }
+
 .disable {
     display: flex;
     align-items: center;
@@ -46,4 +47,20 @@
 }
 .logout {
     margin-top: 20px;
+}
+.small {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    &:hover {
+        background-color: hsla(0, 0%, 100%, 0.1);
+    }
+}
+.play {
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    &:hover {
+        opacity: 0.9;
+    }
 }

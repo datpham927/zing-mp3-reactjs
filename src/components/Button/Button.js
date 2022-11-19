@@ -19,6 +19,8 @@ function Button(
         outline = false,
         iconLeft,
         disable = false,
+        small = false,
+        play = false,
         className,
         onClick,
         children,
@@ -32,6 +34,8 @@ function Button(
         primary,
         disable,
         outline,
+        small,
+        play,
     });
     const props = {
         onClick,
@@ -54,8 +58,29 @@ function Button(
         });
         Comp = 'button';
     }
+    if (small) {
+        Comp = 'button';
+    }
+    if (play) {
+        Comp = 'button';
+    }
 
-    return !src ? (
+    return src ? (
+        <Comp ref={ref} className={classNames} {...props}>
+            {src && <img className={cx('image')} src={src} />}
+            <span className={cx('content')}>{children}</span>
+        </Comp>
+    ) : play ? (
+        <Comp className={classNames} {...props}>
+            {iconLeft && <span>{iconLeft}</span>}
+            {type && (
+                <span>
+                    <label htmlFor="upload">{type}</label>
+                    <input type="file" hidden id="upload" />
+                </span>
+            )}
+        </Comp>
+    ) : (
         <Tippy delay={[0, 50]} content={content}>
             <Comp className={classNames} {...props}>
                 {iconLeft && <span>{iconLeft}</span>}
@@ -67,11 +92,6 @@ function Button(
                 )}
             </Comp>
         </Tippy>
-    ) : (
-        <Comp ref={ref} className={classNames} {...props}>
-            {src && <img className={cx('image')} src={src} />}
-            <span className={cx('content')}>{children}</span>
-        </Comp>
     );
 }
 Button.propTypes = {

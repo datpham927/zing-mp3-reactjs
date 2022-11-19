@@ -18,8 +18,8 @@
                 width: 100%;
                 height: 100%;
             }
-            .icon-play-song,
-            .the-song-icon-play {
+            .song-play,
+            .play {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -32,16 +32,15 @@
                 line-height: 100%;
                 background-color: var(--dark-alpha-50);
                 justify-content: center;
-
                 display: none;
             }
-            .icon-play-song {
+            .song-play {
                 & img {
                     width: 3rem;
                     height: 3rem;
                 }
             }
-            .the-song-icon-play {
+            .play {
                 & i {
                     font-size: 2.6rem;
                 }
@@ -59,9 +58,12 @@
                 font-weight: 400;
                 color: var(--text-secondary);
             }
-            .singer :hover {
-                color: var(--link-text-hover);
-                text-decoration: underline;
+            .singer {
+                line-height: 2rem;
+                & :hover {
+                    color: var(--link-text-hover);
+                    text-decoration: underline;
+                }
             }
 
             .type,
@@ -79,19 +81,18 @@
             .title span {
                 color: var(--text-primary);
                 margin-bottom: 2px;
-                font-size: 1.4rem;
                 font-weight: 700;
                 pointer-events: none;
             }
         }
         .content-artist {
-            .singer a {
-                font-size: 1.4rem;
-                color: var(--text-primary);
+            .singer {
                 margin-bottom: 2px;
-
+                & a {
+                    color: var(--text-primary);
+                }
                 & :hover {
-                    color: var(--link-text-hover);
+                    text-decoration: none;
                 }
             }
             .title span {
@@ -104,7 +105,7 @@
     &:hover {
         background-color: var(--box-hot-item-bg-hover);
     }
-    &:hover .wrapper .the-song-icon-play {
+    &:hover .wrapper .play {
         display: flex;
     }
 }

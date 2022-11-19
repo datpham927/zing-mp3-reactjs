@@ -13,6 +13,9 @@ body .tippy-box {
 body .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
     top: -6px;
 }
+body .tippy-content {
+    padding: 3px 9px;
+}
 /* --------------- */
 .ic-20-info:before {
     content: '';
@@ -124,4 +127,22 @@ body .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
 }
 .ic-24-Shuffle:before {
     content: '\e9b0';
+}
+.ic-like:before {
+    content: '\3b';
+}
+.ic-like:before {
+    content: '\3b';
+}
+.ic-more:before {
+    content: '\4a';
+}
+.ic-more:before {
+    content: '\4a';
+}
+.ic-like-full:before {
+    content: '\3c';
+}
+.ic-play-circle-outline:before {
+    content: '\5f';
 }

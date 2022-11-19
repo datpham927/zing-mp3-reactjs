@@ -22,7 +22,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
     //kích thước ban đầu của trình duyệt
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     //tối ưu tốc độ hiển thi font
     text-rendering: optimizeSpeed;
 
@@ -75,7 +75,6 @@ a {
 h1 {
     color: var(--text-primary);
 }
-
-span {
-    color: var(--text-secondary);
+li {
+    list-style: none;
 }

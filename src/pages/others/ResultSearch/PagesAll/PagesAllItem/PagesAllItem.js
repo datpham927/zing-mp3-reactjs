@@ -14,10 +14,10 @@ function PagesAllItem({ data, type = '' }) {
                             src="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg"
                             alt=""
                         />
-                        <div className={cx('the-song-icon-play')}>
+                        <div className={cx('play')}>
                             <i class="icon action-play ic-play"></i>
                         </div>
-                        <div className={cx('icon-play-song')}>
+                        <div className={cx('song-play')}>
                             <img
                                 src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                 alt=""
@@ -30,7 +30,7 @@ function PagesAllItem({ data, type = '' }) {
                             <span>Quên Hay Tha Thứ</span>
                         </div>
                         <div className={cx('singer')}>
-                            <Link to={'/nghe-si/songtung'}>Sơn Tùng MTP</Link>
+                            <Link to={'/songtung'}>Sơn Tùng MTP</Link>
                         </div>
                     </div>
                 </div>
@@ -45,10 +45,10 @@ function PagesAllItem({ data, type = '' }) {
                             src="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg"
                             alt=""
                         />
-                        <div className={cx('the-song-icon-play')}>
+                        <div className={cx('play')}>
                             <i class="icon action-play ic-24-Shuffle"></i>
                         </div>
-                        <div className={cx('icon-play-song')}>
+                        <div className={cx('song-play')}>
                             <img
                                 src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                 alt=""
@@ -76,10 +76,10 @@ function PagesAllItem({ data, type = '' }) {
                             src="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg"
                             alt=""
                         />
-                        <div className={cx('the-song-icon-play')}>
+                        <div className={cx('play')}>
                             <i class="icon action-play ic-24-Shuffle"></i>
                         </div>
-                        <div className={cx('icon-play-song')}>
+                        <div className={cx('song-play')}>
                             <img
                                 src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                 alt=""

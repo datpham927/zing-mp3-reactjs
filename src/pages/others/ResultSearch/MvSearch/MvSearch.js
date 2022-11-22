@@ -1,10 +1,23 @@
-import classNames from 'classnames/bind';
-import styles from './MvSearch.module.scss';
-
-const cx = classNames.bind(styles);
+import { useSelector } from 'react-redux';
+import Container from '~/components/container/container';
+import ItemVideo from '~/components/ItemVideo/ItemVideo';
+import NoContent from '../NoConTent';
 
 function MvSearch() {
-    return <div>MvSearch</div>;
+    const data = useSelector((state) => state.counter.dataSearch);
+    return (
+        <>
+            {data.videos ? (
+                <Container title="MV">
+                    {data.videos.map((item, index) => (
+                        <ItemVideo key={index} data={item} />
+                    ))}
+                </Container>
+            ) : (
+                <NoContent />
+            )}
+        </>
+    );
 }
 
 export default MvSearch;

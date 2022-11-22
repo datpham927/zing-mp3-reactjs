@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import style from './Search.module.scss';
@@ -14,13 +14,14 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { zingCounter } from '~/redux/actionSlice';
 const cx = classNames.bind(style);
-export const ThemeContext = createContext();
 
 function Search() {
     const valueRef = useRef();
     const dispatch = useDispatch();
+
     //điều hướng đường dẫn
     const navigate = useNavigate();
+
     const [searchResult, setSearchResult] = useState([]);
     const [searchSuggest, setSearchSuggest] = useState([]);
     const [value, setValue] = useState('');
@@ -39,12 +40,15 @@ function Search() {
             setBorderRadius(true);
             return;
         }
+        dispatch(zingCounter.actions.setValueSearch(debouncedValue));
         const fetchApi = async () => {
             const data = await searchApi.search(debouncedValue);
             setSearchResult(data.songs || []);
             setChangeBtn(false);
+            dispatch(zingCounter.actions.setDataSearch(data));
         };
         fetchApi();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debouncedValue]);
 
     useEffect(() => {
@@ -57,7 +61,9 @@ function Search() {
     const handleValueChange = (e) => {
         setBorderRadius(true);
         setChangeBtn(true);
-        setValue(e.target.value);
+        if (!e.target.value.startsWith(' ')) {
+            setValue(e.target.value);
+        }
         setShowBtn(true);
         setShowResult(false);
     };
@@ -96,6 +102,14 @@ function Search() {
             }
         }
     };
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            if (valueRef.current.value !== '') {
+                navigate(`/tim-kiem/tat-ca/${valueRef.current.value}`);
+                dispatch(zingCounter.actions.setOpenInput(false));
+            }
+        }
+    };
     return (
         <div
             className={cx(
@@ -115,6 +129,7 @@ function Search() {
                 type="text"
                 placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
                 onFocus={appearInput}
+                onKeyDown={(e) => handleEnter(e)}
             />
             <div className={cx('icon-action')}>
                 {showBtn && (

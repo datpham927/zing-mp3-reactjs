@@ -8,9 +8,7 @@ const cx = classNames.bind(style);
 function ResultSearch() {
     const { id } = useParams();
     // lấy đường dẫn hiện tại sau dấu  /:
-    const title = id.replace(/\s/g, '%20');
-    console.log(title);
-    console.log(id);
+    // const title = id.replace(/\s/g, '%20');
 
     // lấy ra đường dẫn
     let location = useLocation();

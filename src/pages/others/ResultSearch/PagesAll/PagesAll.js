@@ -1,77 +1,86 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
-import Button from '~/components/Button';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from '~/components/container/container';
-import ItemPlayList from '~/components/ItemPlayList/ItemPlayList';
+import ItemArtists from '~/components/ItemArtists/ItemArtists';
+import ItemPlayList from '~/components/ItemAlbum/ItemAlbum';
+import ItemSong from '~/components/ItemSong/ItemSong';
+import ItemVideo from '~/components/ItemVideo/ItemVideo';
+import ItemPagesAll from './ItemPagesAll/ItemPagesAll';
 import styles from './PagesAll.module.scss';
-import PagesAllItem from './PagesAllItem/PagesAllItem';
+import NoContent from '../NoConTent';
 
 const cx = classNames.bind(styles);
-
 function PagesAll() {
+    const navigate = useNavigate();
+    const data = useSelector((state) => state.counter.dataSearch);
+    const value = useSelector((state) => state.counter.value);
+    if (!data.songs) return <NoContent />;
     return (
         <div className={cx('page-search')}>
-            <Container title="Nổi Bật">
-                <PagesAllItem type="song" />
-                <PagesAllItem type="artist" />
-                <PagesAllItem type="artist" />
-            </Container>
+            {data && (
+                <Container title="Nổi Bật">
+                    {data.artists && <ItemPagesAll type="artist" data={data.artists[0]} />}
+                    {data.playlists && <ItemPagesAll type="playlist" data={data.playlists[0]} />}
+                    {data.songs && <ItemPagesAll key={1} data={data.songs[0]} type="song" />}
+                </Container>
+            )}
+            {/* ---------------------- */}
+            {data.top && data.top.objectType === 'artist' && (
+                <div className={cx('playList')}>
+                    <div className={cx('header')}>
+                        <div className={cx('image')}>
+                            <img src={data.top.thumbnail} alt="" />
+                        </div>
+                        <div className={cx('content')}>
+                            <p className={cx('subtitle')}>PLAYLIST NỔI BẬT</p>
+                            <h1 className={cx('title')}>
+                                <Link to={`/${data.top.name}`}>{data.top.name}</Link>
+                            </h1>
+                        </div>
+                    </div>
+                    <div className={cx('body')}>
+                        <Container>
+                            {data.playlists.map(
+                                (item, index) => index >= 4 && index < 8 && <ItemPlayList key={index} data={item} />,
+                            )}
+                        </Container>
+                    </div>
+                </div>
+            )}
+            {/* ---------------------- */}
+            {data.songs && (
+                <div className={cx('songs')}>
+                    <Container title="Bài Hát" all onClick={() => navigate(`/tim-kiem/bai-hat/${value}`)}>
+                        {data.songs.map((item, index) => index < 6 && <ItemSong key={item.encodeId} data={item} />)}
+                    </Container>
+                </div>
+            )}
+            {/* ---------------------- */}
+            {data.playlists && (
+                <div className={cx('playList')}>
+                    <Container title="Playlist/Album" all onClick={() => navigate(`/tim-kiem/playlist/${value}`)}>
+                        {data.playlists.map((item, index) => index < 4 && <ItemPlayList key={index} data={item} />)}
+                    </Container>
+                </div>
+            )}
+            {/* ---------------------- */}
+            {data.videos && (
+                <div className={cx('mv')}>
+                    <Container title="MV" all onClick={() => navigate(`/tim-kiem/video/${value}`)}>
+                        {data.videos.map((item, index) => index < 3 && <ItemVideo key={index} data={item} />)}
+                    </Container>
+                </div>
+            )}
             {/* ---------------------- */}
 
-            <div className={cx('playList')}>
-                <div className={cx('header')}>
-                    <div className={cx('image')}>
-                        <img
-                            src="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg"
-                            alt=""
-                        />
-                    </div>
-                    <div className={cx('content')}>
-                        <p className={cx('subtitle')}>hihi</p>
-                        <h1 className={cx('title')}>
-                            <Link to={'/sontung'}>Sơn Tùng MTP</Link>
-                        </h1>
-                    </div>
+            {data.artists && (
+                <div className={cx('artists')}>
+                    <Container title="Nghệ Sĩ/OA" all onClick={() => navigate(`/tim-kiem/artist/ ${value}`)}>
+                        {data.artists.map((item, index) => index < 4 && <ItemArtists key={index} data={item} />)}
+                    </Container>
                 </div>
-                {/* ------------------------ */}
-                <div className={cx('body') + ' l-12 m-12 c-12 row'}>
-                    <ItemPlayList />
-                    <ItemPlayList />
-                    <ItemPlayList />
-                    <ItemPlayList />
-                </div>
-            </div>
-
-            <div className={cx('songs')}>
-                <Container title="Bài Hát">
-                    <li className={cx('media') + ' l-6 col'}>
-                        <div className={cx('media-wrapper')}>
-                            <div className={cx('media-left')}>
-                                <div className={cx('thumb')}>
-                                    <img
-                                        src="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg"
-                                        alt=""
-                                    ></img>
-                                    <div className={cx('play')}>
-                                        <i class="icon action-play ic-24-Shuffle"></i>
-                                    </div>
-                                    <div className={cx('song-play')}>
-                                        <img
-                                            src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                            alt=""
-                                        />
-                                    </div>
-                                </div>
-                                <div className={cx('info')}>
-                                    <h3 className={cx('title')}>Em Của Ngày Hôm Qua</h3>
-                                    <span className={cx('singer')}>Sơn Tùng mtp</span>
-                                </div>
-                            </div>
-                            <div className={cx('media-right')}></div>
-                        </div>
-                    </li>
-                </Container>
-            </div>
+            )}
         </div>
     );
 }

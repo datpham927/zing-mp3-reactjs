@@ -16,7 +16,6 @@ function AppLayout({ children }) {
         } else {
             setBgrHeader(true);
         }
-        console.log();
     };
     return (
         <>

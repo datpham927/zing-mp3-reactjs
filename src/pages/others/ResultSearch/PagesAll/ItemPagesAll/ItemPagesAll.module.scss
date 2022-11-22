@@ -10,6 +10,7 @@
             position: relative;
             width: 80px;
             height: 80px;
+            flex-shrink: 0;
             border-radius: 5px;
             margin-right: 16px;
             cursor: pointer;
@@ -24,7 +25,7 @@
                 top: 0;
                 left: 0;
                 right: 0;
-                height: 100%;
+                bottom: 0;
                 text-align: center;
                 align-items: center;
                 color: white;
@@ -55,14 +56,18 @@
             .singer a {
                 font-size: 1.2rem;
                 line-height: 1.8rem;
-                font-weight: 400;
+                font-weight: 600;
                 color: var(--text-secondary);
             }
             .singer {
+                display: flex;
                 line-height: 2rem;
                 & :hover {
                     color: var(--link-text-hover);
                     text-decoration: underline;
+                }
+                span {
+                    color: var(--text-secondary);
                 }
             }
 
@@ -87,6 +92,10 @@
         }
         .content-artist {
             .singer {
+                & a {
+                    font-size: 1.4rem;
+                }
+
                 margin-bottom: 2px;
                 & a {
                     color: var(--text-primary);

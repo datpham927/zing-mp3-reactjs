@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import config from '~/routes/config';
 import { Icon } from '~/components/Icons';
 import ItemSidebar from './ItemSidebar/ItemSidebar';
 import style from './Sidebar.module.scss';
@@ -11,35 +10,35 @@ const MENU_SIDEBAR = [
         id: 0,
         title: 'Cá Nhân',
         icon: <i className="icon  ic-24-LibraryTab"></i>,
-        path: config.routes.private,
+        path: '/mymusic',
         type: false,
     },
     {
         id: 0,
         title: 'Khám Phá',
         icon: <i className="icon  ic-24-HomeTab"></i>,
-        path: config.routes.discover,
+        path: '/',
         type: false,
     },
     {
         id: 0,
         title: '#zingchart',
         icon: <i className="icon  ic-24-ChartTab"></i>,
-        path: config.routes.zingchart,
+        path: '/zing-chart',
         type: true,
     },
     {
         id: 0,
         title: 'Radio',
         icon: <i className="icon  ic-24-RadioTab"></i>,
-        path: config.routes.radio,
+        path: `/radio`,
         type: true,
     },
     {
         id: 0,
         title: 'Theo Dõi',
         icon: <i className="icon  ic-24-FeedTab"></i>,
-        path: config.routes.following,
+        path: `/the-loai-nghe-si`,
         type: false,
     },
 ];
@@ -49,28 +48,28 @@ const MENU_SCROLL = [
         id: 0,
         title: 'Nhạc Mới',
         icon: <Icon.IconMusic />,
-        path: config.routes.songNew,
+        path: '/moi-phat-hanh',
         type: true,
     },
     {
         id: 0,
         title: 'Thể Loại',
         icon: <i className="icon  ic-24-GenreTab"></i>,
-        path: config.routes.category,
+        path: '/hub',
         type: false,
     },
     {
         id: 0,
         title: 'Top 100',
         icon: <i className="icon  ic-24-Top100Tab"></i>,
-        path: config.routes.top100,
+        path: '/top100',
         type: false,
     },
     {
         id: 0,
         title: 'MV',
         icon: <i className="icon  ic-24-MVTab"></i>,
-        path: config.routes.mv,
+        path: '/the-loai-video',
         type: false,
     },
 ];

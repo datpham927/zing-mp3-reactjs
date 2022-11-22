@@ -21,8 +21,9 @@ i {
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
-    //kích thước ban đầu của trình duyệt
     font-size: 1.4rem;
+
+    //kích thước ban đầu của trình duyệt
     //tối ưu tốc độ hiển thi font
     text-rendering: optimizeSpeed;
 
@@ -33,12 +34,15 @@ body {
     --alpha-bg: hsla(0, 0%, 100%, 0.1);
     --primary-bg: #4b1178;
     --color-pink: #f12d94;
+    --song-item-action: hsla(0, 0%, 100%, 0.5);
     --purple-primary: #ed2b91;
     --sticky-header-box-shadow: rgba(0, 0, 0, 0.1);
     --border-primary: hsla(0, 0%, 100%, 0.1);
     --primary-bg: #432275;
-    --loading-bg: rgba(0, 0, 0, 0.05);
+    --loading-bg: hsla(0, 0%, 100%, 0.1);
+    --loading-bg-animation: hsla(0, 0%, 100%, 0.1);
     --box-hot-item-bg-hover: rgba(254, 255, 255, 0.2);
+    --border-secondary: hsla(0, 0%, 100%, 0.05);
     --dark-alpha-10: rgba(0, 0, 0, 0.1);
     --dark-alpha-30: rgba(0, 0, 0, 0.3);
     --dark-alpha-50: rgba(0, 0, 0, 0.5);

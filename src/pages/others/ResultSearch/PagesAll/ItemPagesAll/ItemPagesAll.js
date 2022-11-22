@@ -1,19 +1,16 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import styles from './PagesAllItem.module.scss';
+import styles from './ItemPagesAll.module.scss';
 
 const cx = classNames.bind(styles);
 
-function PagesAllItem({ data, type = '' }) {
+function ItemPagesAll({ data = [], type = '' }) {
     return type === 'song' ? (
         <div className=" l-4 col">
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb')}>
-                        <img
-                            src="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg"
-                            alt=""
-                        />
+                        <img src={data.thumbnail} alt="" />
                         <div className={cx('play')}>
                             <i class="icon action-play ic-play"></i>
                         </div>
@@ -25,12 +22,17 @@ function PagesAllItem({ data, type = '' }) {
                         </div>
                     </div>
                     <div className={cx('content')}>
-                        <span className={cx('type')}>bài hát</span>
+                        <span className={cx('type')}>Bài hát</span>
                         <div className={cx('title')}>
-                            <span>Quên Hay Tha Thứ</span>
+                            <span>{data.title}</span>
                         </div>
                         <div className={cx('singer')}>
-                            <Link to={'/songtung'}>Sơn Tùng MTP</Link>
+                            {data.artistsNames.split(',').map((i, index) => (
+                                <>
+                                    <Link to={`/${i}`}>{i}</Link>
+                                    <span>{index < data.artistsNames.split(',').length - 1 && ', '}</span>
+                                </>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -41,10 +43,7 @@ function PagesAllItem({ data, type = '' }) {
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb', 'artist')}>
-                        <img
-                            src="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg"
-                            alt=""
-                        />
+                        <img src={data.thumbnail} alt="" />
                         <div className={cx('play')}>
                             <i class="icon action-play ic-24-Shuffle"></i>
                         </div>
@@ -58,10 +57,12 @@ function PagesAllItem({ data, type = '' }) {
                     <div className={cx('content', 'content-artist')}>
                         <span className={cx('type')}>Nghệ Sĩ</span>
                         <div className={cx('singer')}>
-                            <Link to={'/nghesi'}>Đóa Hồng Nhạc Việt</Link>
+                            <Link to={`/${data.name}`}>{data.name}</Link>
                         </div>
                         <div className={cx('title')}>
-                            <span>Quên Hay Tha Thứ</span>
+                            <span>
+                                {data.totalFollow && data.totalFollow.toString().substring(0, 2) / 10 + 'M quan tâm'}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -72,10 +73,7 @@ function PagesAllItem({ data, type = '' }) {
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb', 'artist')}>
-                        <img
-                            src="https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_webp/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg"
-                            alt=""
-                        />
+                        <img src={data.thumbnail} alt="" />
                         <div className={cx('play')}>
                             <i class="icon action-play ic-24-Shuffle"></i>
                         </div>
@@ -89,10 +87,10 @@ function PagesAllItem({ data, type = '' }) {
                     <div className={cx('content', 'content-artist')}>
                         <span className={cx('type')}>Playlist</span>
                         <div className={cx('singer')}>
-                            <Link to={'/nghesi'}>Đóa Hồng Nhạc Việt</Link>
+                            <Link to={`/${data.title}`}>{data.title}</Link>
                         </div>
                         <div className={cx('title')}>
-                            <span>Quên Hay Tha Thứ</span>
+                            <span>{data.sortDescription}</span>
                         </div>
                     </div>
                 </div>
@@ -103,4 +101,4 @@ function PagesAllItem({ data, type = '' }) {
     );
 }
 
-export default PagesAllItem;
+export default ItemPagesAll;

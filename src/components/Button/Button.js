@@ -20,7 +20,7 @@ function Button(
         iconLeft,
         disable = false,
         small = false,
-        play = false,
+        noContent = false,
         className,
         onClick,
         children,
@@ -35,7 +35,7 @@ function Button(
         disable,
         outline,
         small,
-        play,
+        noContent,
     });
     const props = {
         onClick,
@@ -61,7 +61,7 @@ function Button(
     if (small) {
         Comp = 'button';
     }
-    if (play) {
+    if (noContent) {
         Comp = 'button';
     }
 
@@ -70,7 +70,7 @@ function Button(
             {src && <img className={cx('image')} src={src} />}
             <span className={cx('content')}>{children}</span>
         </Comp>
-    ) : play ? (
+    ) : noContent ? (
         <Comp className={classNames} {...props}>
             {iconLeft && <span>{iconLeft}</span>}
             {type && (
@@ -79,6 +79,7 @@ function Button(
                     <input type="file" hidden id="upload" />
                 </span>
             )}
+            <span className={cx('content')}>{children}</span>
         </Comp>
     ) : (
         <Tippy delay={[0, 50]} content={content}>

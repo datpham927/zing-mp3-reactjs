@@ -12,7 +12,6 @@ import Mv from '~/pages/primary/Mv';
 import Private from '~/pages/primary/Private';
 import SongNew from '~/pages/primary/SongNew';
 import Top100 from '~/pages/primary/Top100';
-import config from './config';
 
 const RouterPage = () => {
     const location = useLocation();
@@ -20,15 +19,15 @@ const RouterPage = () => {
     return (
         <div className="container">
             <Routes location={location} key={location.pathname}>
-                <Route path={config.routes.private} element={<Private />}></Route>
-                <Route path={config.routes.discover} element={<Discover />}></Route>
-                <Route path={config.routes.zingchart} element={<ZingChart />}></Route>
-                <Route path={config.routes.radio} element={<Radio />}></Route>
-                <Route path={config.routes.following} element={<Following />}></Route>
-                <Route path={config.routes.songNew} element={<SongNew />}></Route>
-                <Route path={config.routes.category} element={<Category />}></Route>
-                <Route path={config.routes.top100} element={<Top100 />}></Route>
-                <Route path={config.routes.mv} element={<Mv />}></Route>
+                <Route path={'/mymusic'} element={<Private />}></Route>
+                <Route path={'/'} element={<Discover />}></Route>
+                <Route path={'/zing-chart'} element={<ZingChart />}></Route>
+                <Route path={`/radio`} element={<Radio />}></Route>
+                <Route path={`/the-loai-nghe-si`} element={<Following />}></Route>
+                <Route path={'/moi-phat-hanh'} element={<SongNew />}></Route>
+                <Route path={'/hub'} element={<Category />}></Route>
+                <Route path={'/top100'} element={<Top100 />}></Route>
+                <Route path={'/the-loai-video'} element={<Mv />}></Route>
 
                 {/* ----------------- */}
                 <Route path="tim-kiem" element={<ResultSearch />}>
@@ -38,6 +37,7 @@ const RouterPage = () => {
                     <Route path="artist/:id" element={<Artist />}></Route>
                     <Route path="video/:id" element={<MvSearch />}></Route>
                 </Route>
+                <Route path={'/:name'} element={<Artist />}></Route>
             </Routes>
         </div>
     );

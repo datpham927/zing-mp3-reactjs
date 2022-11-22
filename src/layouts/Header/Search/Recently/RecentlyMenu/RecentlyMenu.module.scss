@@ -3,8 +3,8 @@
     border-top: 1px solid var(--alpha-bg);
     .header {
         margin: 10px;
-        font-size: 1.2rem;
-        h1 {
+        & h1 {
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--text-primary);
         }

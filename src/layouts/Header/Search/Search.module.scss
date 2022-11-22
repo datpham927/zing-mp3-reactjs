@@ -77,7 +77,8 @@
 }
 // -----------
 .Keywords-header {
-    h1 {
+    & h1 {
+        font-size: 1.6rem;
         margin: 5px 0 10px 10px;
         font-weight: 700;
         color: var(--text-primary);

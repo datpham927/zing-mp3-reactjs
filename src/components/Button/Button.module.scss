@@ -56,9 +56,7 @@
         background-color: hsla(0, 0%, 100%, 0.1);
     }
 }
-.play {
-    width: auto;
-    height: auto;
+.noContent {
     background-color: transparent;
     &:hover {
         opacity: 0.9;

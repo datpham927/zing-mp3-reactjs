@@ -6,6 +6,7 @@
         height: 100%;
         border-radius: 4px;
         overflow: hidden;
+
         .image-hover {
             .container-image {
                 position: relative;
@@ -50,6 +51,7 @@
                     }
                 }
             }
+
             &:hover .container-image img {
                 transform: scale(1.1);
                 border-radius: 4px;
@@ -65,23 +67,33 @@
                     line-height: 2.5rem;
                     align-items: center;
                     color: var(--text-primary);
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
                 }
                 & :hover {
                     color: var(--link-text-hover);
                 }
             }
             .subtitle {
-                & a {
-                    color: var(--text-secondary);
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    cursor: pointer;
-                    overflow: hidden;
+                display: flex;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                cursor: pointer;
+                overflow: hidden;
+                span {
+                    & a {
+                        color: var(--text-secondary);
+                    }
+                    &:hover a {
+                        color: var(--link-text-hover);
+                        text-decoration: underline;
+                    }
                 }
-                & :hover {
-                    color: var(--link-text-hover);
-                    text-decoration: underline;
+                & span {
+                    color: var(--text-secondary);
                 }
             }
         }

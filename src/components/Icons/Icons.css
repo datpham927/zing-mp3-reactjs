@@ -146,3 +146,18 @@ body .tippy-content {
 .ic-play-circle-outline:before {
     content: '\5f';
 }
+.ic-balance:before {
+    content: '\54';
+}
+.is-center {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+.ic-addfriend:before {
+    content: '\68';
+}
+.ic-go-right:before {
+    content: '\41';
+}

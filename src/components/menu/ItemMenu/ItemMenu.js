@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './ItemMenu.module.scss';
-import { zingCounter } from '~/redux/actionSlice';
+import { zingCounter } from '~/redux/action';
 import { Icon } from '../../Icons';
 const cx = classNames.bind(style);
 

@@ -5,10 +5,10 @@ import styles from './KeywordsMenu.module.scss';
 
 const cx = classNames.bind(styles);
 
-function KeywordsMenu({ data }) {
+function KeywordsMenu({ data, onSubmit }) {
     return (
         <div className={cx('Keywords-body')}>
-            {data.map((item, index) => index < 4 && <SuggestItem key={index} data={item.title} />)}
+            {data.map((item, index) => index < 4 && <SuggestItem key={index} data={item.title} onSubmit={onSubmit} />)}
         </div>
     );
 }

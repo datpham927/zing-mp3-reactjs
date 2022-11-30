@@ -62,3 +62,27 @@
         opacity: 0.9;
     }
 }
+
+.btn {
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    background-color: var(--alpha-bg);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    padding: 9px 24px;
+    border-radius: 999px;
+    & span {
+        margin-right: 8px;
+    }
+    &:hover {
+        opacity: 0.8;
+    }
+}
+.btn.action {
+    background-color: var(--purple-primary);
+    border-color: var(--purple-primary);
+    margin-right: 10px;
+    color: #fff;
+}

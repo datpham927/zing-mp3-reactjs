@@ -161,3 +161,12 @@ body .tippy-content {
 .ic-go-right:before {
     content: '\41';
 }
+.ic-close:before {
+    content: '\6f';
+}
+.ic-song:before {
+    content: '\e004';
+}
+.ic-24-Sort:before {
+    content: '\e9b2';
+}

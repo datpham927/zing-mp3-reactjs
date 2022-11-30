@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './ThemeItem.module.scss';
-import { zingCounter } from '~/redux/actionSlice';
+import { zingCounter } from '~/redux/action';
 
 const cx = classNames.bind(style);
 

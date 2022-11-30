@@ -1,15 +1,16 @@
 import { useSelector } from 'react-redux';
+
 import Container from '~/components/container/container';
 import ItemSong from '~/components/ItemSong/ItemSong';
-import NoContent from '../NoConTent';
+import NoContent from '~/components/noContent/NoConTent';
 function SongPages() {
-    const data = useSelector((state) => state.counter.dataSearch);
+    const data = useSelector((state) => state.data.dataSearch);
     return (
         <div>
             {data.songs ? (
                 <Container title="Bài Hát">
                     {data.songs.map((item, index) => (
-                        <ItemSong type="song" key={item.encodeId} data={item} />
+                        <ItemSong type="song-12" key={index} data={item} timeLoad={0} />
                     ))}
                 </Container>
             ) : (

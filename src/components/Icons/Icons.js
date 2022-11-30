@@ -147,7 +147,7 @@ const IconHelp = ({ className }) => {
     );
 };
 const IconClose = ({ className }) => {
-    return <ion-icon name="close-outline"></ion-icon>;
+    return <i className="icon ic-close"></i>;
 };
 
 const IconTopic = () => {

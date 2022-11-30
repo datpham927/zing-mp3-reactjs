@@ -14,10 +14,9 @@ const initialState = {
     booleanShowResult: false,
     qualitySong: false,
     booleanOpenInput: false,
-    //data search
-    dataSearch: [],
     // value search
     value: '',
+    idPlayList: 0,
 };
 
 export const zingCounter = createSlice({
@@ -55,13 +54,13 @@ export const zingCounter = createSlice({
         setOpenInput: (state, action) => {
             state.booleanOpenInput = action.payload;
         },
-        //data search
-        setDataSearch: (state, action) => {
-            state.dataSearch = action.payload;
-        },
+
         // value search
         setValueSearch: (state, action) => {
             state.value = action.payload;
+        },
+        setIdPlayList: (state, action) => {
+            state.idPlayList = action.payload;
         },
     },
 });

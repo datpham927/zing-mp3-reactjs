@@ -6,41 +6,43 @@ import LoadImg from '../loadImg/LoadImg';
 import styles from './ItemVideo.module.scss';
 
 const cx = classNames.bind(styles);
-function ItemVideo({ data }) {
+function ItemVideo({ data, timeLoad = 2000 }) {
     return (
-        <li className={cx('item') + ' l-4 col'}>
-            <div className={cx('wrapper')}>
-                {data.thumbnail && (
-                    <div className={cx('video-img')}>
-                        <img src={data.thumbnail} alt="" />
-                        <div className={cx('play')}>
-                            <i class="icon ic-play-circle-outline"></i>
+        data && (
+            <li className={cx('item') + ' l-4 col'}>
+                <div className={cx('wrapper')}>
+                    <LoadImg timeLoad={timeLoad} className={cx('load-video')}>
+                        <div className={cx('video-img')}>
+                            <img src={data?.thumbnailM} alt="" />
+                            <div className={cx('play')}>
+                                <i className="icon ic-play-circle-outline"></i>
+                            </div>
+                            <div className={cx('time')}>
+                                <span>{<Duration duration={data?.duration} />}</span>
+                            </div>
                         </div>
-                        <div className={cx('time')}>
-                            <span>{<Duration duration={data.duration} />}</span>
+                    </LoadImg>
+                    <div className={cx('video-info')}>
+                        <div className={cx('info-img')}>
+                            <LoadImg radius timeLoad={timeLoad}>
+                                <img src={data?.thumbnail} alt="" />
+                            </LoadImg>
                         </div>
-                    </div>
-                )}
-                <div className={cx('video-info')}>
-                    <div className={cx('info-img')}>
-                        <img src={data.artist.thumbnail} alt="" />
-                    </div>
-                    <div className={cx('content')}>
-                        <h3 className={cx('title')}>{data.title}</h3>
-                        <span className={cx('singer')}>
-                            {data.artistsNames.split(',').map((i, index) => (
-                                <>
-                                    <span>
-                                        <Link to={`/${i}`}>{i}</Link>
-                                    </span>
-                                    <span>{index < data.artistsNames.split(',').length - 1 && ', '}</span>
-                                </>
-                            ))}
-                        </span>
+                        <div className={cx('content')}>
+                            <h3 className={cx('title')}>{data.title}</h3>
+                            <div className={cx('singer')}>
+                                {data?.artists?.map((i, index) => (
+                                    <>
+                                        <Link to={`/nghesi/${i.alias}`}>{i.name}</Link>
+                                        {index < data?.artists.length - 1 && ', '}
+                                    </>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
+            </li>
+        )
     );
 }
 

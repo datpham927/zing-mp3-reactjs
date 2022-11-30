@@ -7,12 +7,12 @@ import KeywordsMenu from './Keywords/KeywordsMenu';
 import useDebounce from '~/components/hooks/useDebounce';
 import SuggestMenu from './Suggest/SuggestMenu';
 
-import * as searchApi from '~/components/servicesApi/searchService';
+import * as searchApi from '~/components/Api/Service';
 import KeywordsItem from './Keywords/KeywordsItem';
 import { Icon } from '~/components/Icons';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { zingCounter } from '~/redux/actionSlice';
+import { useDispatch } from 'react-redux';
+import { zingCounter } from '~/redux/action';
 const cx = classNames.bind(style);
 
 function Search() {
@@ -24,13 +24,13 @@ function Search() {
 
     const [searchResult, setSearchResult] = useState([]);
     const [searchSuggest, setSearchSuggest] = useState([]);
-    const [value, setValue] = useState('');
     const [showResult, setShowResult] = useState(false);
     const [showBtn, setShowBtn] = useState(false);
     const [changeBtn, setChangeBtn] = useState(false);
     const [borderRadius, setBorderRadius] = useState(false);
+    const [value, setValue] = useState('');
+    const [open, setOpenInput] = useState(false);
 
-    const open = useSelector((state) => state.counter.booleanOpenInput);
     const debouncedValue = useDebounce(value, 500);
     useEffect(() => {
         if (!debouncedValue.trim()) {
@@ -40,12 +40,10 @@ function Search() {
             setBorderRadius(true);
             return;
         }
-        dispatch(zingCounter.actions.setValueSearch(debouncedValue));
         const fetchApi = async () => {
             const data = await searchApi.search(debouncedValue);
             setSearchResult(data.songs || []);
             setChangeBtn(false);
-            dispatch(zingCounter.actions.setDataSearch(data));
         };
         fetchApi();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,7 +52,7 @@ function Search() {
     useEffect(() => {
         const fetchApi = async () => {
             const data = await searchApi.top100();
-            setSearchSuggest(data.newRelease || []);
+            setSearchSuggest(data?.newRelease || []);
         };
         fetchApi();
     }, []);
@@ -71,20 +69,21 @@ function Search() {
         setBorderRadius(false);
         setShowBtn(false);
         setValue('');
-        dispatch(zingCounter.actions.setOpenInput(false));
+        setOpenInput(false);
         setSearchResult([]);
         valueRef.current.focus();
     };
     const appearInput = () => {
-        dispatch(zingCounter.actions.setOpenInput(true));
+        setOpenInput(true);
         setBorderRadius(true);
     };
 
     const handleSubmit = () => {
         if (valueRef.current.value) {
-            dispatch(zingCounter.actions.setOpenInput(false));
+            setOpenInput(false);
             navigate(`/tim-kiem/tat-ca/${valueRef.current.value}`);
         }
+        dispatch(zingCounter.actions.setValueSearch(value));
     };
     // ẩn khung kết quả
     window.onclick = (e) => {
@@ -96,7 +95,7 @@ function Search() {
             if (e.target.closest('.Search_close__S-Oy5')) {
                 hideBtnClose();
             } else {
-                dispatch(zingCounter.actions.setOpenInput(false));
+                setOpenInput(false);
                 setBorderRadius(false);
                 setShowResult(false);
             }
@@ -106,7 +105,8 @@ function Search() {
         if (e.key === 'Enter') {
             if (valueRef.current.value !== '') {
                 navigate(`/tim-kiem/tat-ca/${valueRef.current.value}`);
-                dispatch(zingCounter.actions.setOpenInput(false));
+                setOpenInput(false);
+                dispatch(zingCounter.actions.setValueSearch(value));
             }
         }
     };
@@ -120,7 +120,7 @@ function Search() {
             )}
         >
             <div className={cx('icon-search')} onClick={(e) => handleSubmit(e)}>
-                <i class="icon ic-search"></i>
+                <i className="icon ic-search"></i>
             </div>
             <input
                 ref={valueRef}
@@ -150,7 +150,7 @@ function Search() {
                         <div className={cx('menu-search')}>
                             <div className={cx('show')}>
                                 {/* -----------Đề Xuất Cho Bạn ----------- */}
-                                <SuggestMenu data={searchSuggest} />
+                                <SuggestMenu data={searchSuggest} setValue={setValue} onSubmit={handleSubmit} />
                             </div>
                         </div>
                     </>
@@ -162,9 +162,9 @@ function Search() {
                                 <div className={cx('Keywords-header')}>
                                     <h1>Từ Khóa Liên Quan</h1>
                                     {searchResult.length > 0 && (
-                                        <KeywordsMenu data={searchResult} onSubmit={(e) => handleSubmit(e)} />
+                                        <KeywordsMenu data={searchResult} onSubmit={handleSubmit} />
                                     )}
-                                    <KeywordsItem data={`Tim kiếm "${value}"`} onSubmit={(e) => handleSubmit(e)} />
+                                    <KeywordsItem data={`Tim kiếm "${value}"`} onSubmit={handleSubmit} />
                                 </div>
                             </div>
                             {/* ------------ ----------------- */}

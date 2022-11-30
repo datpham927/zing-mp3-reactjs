@@ -72,9 +72,9 @@
                 }
 
                 .info {
+                    width: calc(100% - 100px);
                     .title {
                         font-size: 1.4rem;
-                        width: calc(100% - 30px);
                         font-weight: 500;
                         color: var(--text-primary);
                     }
@@ -157,4 +157,48 @@
             display: none;
         }
     }
+}
+.action-checkbox {
+    display: flex;
+    width: 25px;
+    align-items: center;
+    & > i {
+        color: var(--song-item-action);
+    }
+
+    .checkbox {
+        display: none;
+        & input {
+            position: relative;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: 1px solid var(--border-box);
+            padding: 6px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        & input:checked::after {
+            content: ' ';
+            border-left-color: #fff;
+            border-bottom: 2px solid #fff;
+            border-right: 2px solid #fff;
+            border-top-color: #fff;
+            height: 47%;
+            width: 20%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -63%) rotate(45deg);
+        }
+        & input:checked {
+            border: 1px solid #fff;
+        }
+    }
+}
+.add.item:hover .action-checkbox .checkbox {
+    display: block;
+}
+.add.item:hover .action-checkbox > i {
+    display: none;
 }

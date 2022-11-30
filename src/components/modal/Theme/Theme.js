@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
-import { zingCounter } from '~/redux/actionSlice';
+import { zingCounter } from '~/redux/action';
 import style from './Theme.module.scss';
 import ThemeContainer from './ThemeContainer/ThemeContainer';
 const cx = classNames.bind(style);
@@ -82,7 +82,6 @@ function Theme() {
     };
     return (
         <>
-            {modalTheme && <div className={cx('modal')}></div>}
             {modalTheme && (
                 <div className={cx('modal-topic')} onClick={(e) => handelModal(e)}>
                     <div className={cx('topic')}>

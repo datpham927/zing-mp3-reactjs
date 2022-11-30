@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Header from '../Header';
 import Theme from '~/components/modal/Theme/Theme';
 import { useState } from 'react';
+import Modal from '~/components/modal/Modal';
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +20,7 @@ function AppLayout({ children }) {
     };
     return (
         <>
-            <Theme />
+            <Modal />
             <div className={cx('Wrapper')}>
                 <Sidebar key={1} />
                 <div className={cx('main')} onScroll={(e) => handleScroll(e)}>

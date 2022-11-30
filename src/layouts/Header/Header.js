@@ -7,7 +7,7 @@ import { Icon } from '../../components/Icons';
 import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
 import { useRef } from 'react';
-import { zingCounter } from '~/redux/actionSlice';
+import { zingCounter } from '~/redux/action';
 
 import TippyMenu from '~/components/menu/tippyMenu/TippyMenu';
 import config from '~/routes/config';

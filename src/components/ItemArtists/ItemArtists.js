@@ -5,30 +5,31 @@ import styles from './ItemArtists.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ItemArtists({ data }) {
+function ItemArtists({ data, timeLoad = 2000 }) {
     return (
         <li className={cx('item') + ' l-3 col'}>
             <div className={cx('wrapper')}>
-                {!data.thumbnail && <LoadImg radius />}
-                {data.thumbnail && (
-                    <div className={cx('image')}>
-                        <img src={data.thumbnail} alt="" />
-                        <div className={cx('play')}>
-                            <i class="icon action-play ic-24-Shuffle"></i>
+                <LoadImg radius timeLoad={timeLoad}>
+                    <Link to={`/nghesi/${data.alias}`}>
+                        <div className={cx('image')}>
+                            <img src={data.thumbnail} alt="" />
+                            <div className={cx('play')}>
+                                <i className="icon action-play ic-24-Shuffle"></i>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    </Link>
+                </LoadImg>
                 <div className={cx('info')}>
                     <div className={cx('content')}>
                         <div className={cx('singer')}>
-                            <Link to={`/${data.name}`}>{data.name}</Link>
+                            <Link to={`/nghesi/${data.alias}`}>{data.name}</Link>
                         </div>
                         <span className={cx('follow')}>
-                            {data.totalFollow && data.totalFollow.toString().substring(0, 2) / 10 + 'M quan tâm'}
+                            {data?.totalFollow.toString().substring(0, 2) / 10 + 'M quan tâm'}
                         </span>
                     </div>
                     <button>
-                        <i class="icon ic-addfriend"></i>
+                        <i className="icon ic-addfriend"></i>
                         <span>Quan tâm</span>
                     </button>
                 </div>

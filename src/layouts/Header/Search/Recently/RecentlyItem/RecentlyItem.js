@@ -1,18 +1,12 @@
 import classNames from 'classnames/bind';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { zingCounter } from '~/redux/actionSlice';
 import styles from './RecentlyItem.module.scss';
 
 const cx = classNames.bind(styles);
 
 function RecentlyItem({ data }) {
-    const dispatch = useDispatch();
-    const handleOnClick = () => {
-        dispatch(zingCounter.actions.setOpenInput(false));
-    };
     return (
-        <Link to={`/play-list/${data.alias}/${data.encodeId}.html`} className={cx('song-item')} onClick={handleOnClick}>
+        <Link to={`/play-list/${data.alias}/${data.encodeId}.html`} className={cx('song-item')}>
             <div className={cx('wrapper-image')}>
                 <img src={data.thumbnail} alt="" className={cx('image')} />
                 <div className={cx('icon')}>

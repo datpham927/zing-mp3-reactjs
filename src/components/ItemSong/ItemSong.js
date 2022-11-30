@@ -2,37 +2,39 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
 import Duration from '../duration/Duration';
+import LoadImg from '../loadImg/LoadImg';
 import styles from './ItemSong.module.scss';
 
 const cx = classNames.bind(styles);
-function ItemSong({ data, type = '' }) {
-    return type === 'song' ? (
+function ItemSong({ data, type = '', timeLoad = 2000 }) {
+    return type === 'song-12' ? (
         <li className={cx('item') + ' l-12 col'}>
             <div className={cx('media')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
-                            <img src={data.thumbnail} alt="" />
-                            <div className={cx('play')}>
-                                <i className="icon action-play ic-play"></i>
-                            </div>
-
-                            <div className={cx('song-play')}>
-                                <img
-                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                    alt=""
-                                />
-                            </div>
+                            <LoadImg timeLoad={timeLoad}>
+                                <img src={data.thumbnail} alt="" />
+                                <div className={cx('play')}>
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                                <div className={cx('song-play')}>
+                                    <img
+                                        src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                        alt=""
+                                    />
+                                </div>
+                            </LoadImg>
                         </div>
                         <div className={cx('info')}>
                             <h3 className={cx('title')}>{data.title}</h3>
                             <span className={cx('singer')}>
-                                {data.artistsNames.split(',').map((i, index) => (
+                                {data?.artists?.map((i, index) => (
                                     <>
                                         <span>
-                                            <Link to={`/${i}`}>{i}</Link>
+                                            <Link to={`/nghesi/${i.alias}`}>{i.name}</Link>
                                         </span>
-                                        <span>{index < data.artistsNames.split(',').length - 1 && ', '}</span>
+                                        {index < data?.artists.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>
@@ -76,31 +78,33 @@ function ItemSong({ data, type = '' }) {
                     <div className={cx('media-ratings')}>
                         <h1 className={cx('number')}>1</h1>
                         <h1 className={cx('sort')}>
-                            <i class="fa-solid fa-minus"></i>
+                            <i className="fa-solid fa-minus"></i>
                         </h1>
                     </div>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
-                            <img src={data.thumbnail} alt="" />
-                            <div className={cx('play')}>
-                                <i className="icon action-play ic-play"></i>
-                            </div>
-                            <div className={cx('song-play')}>
-                                <img
-                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                    alt=""
-                                />
-                            </div>
+                            <LoadImg timeLoad={timeLoad}>
+                                <img src={data.thumbnail} alt="" />
+                                <div className={cx('play')}>
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                                <div className={cx('song-play')}>
+                                    <img
+                                        src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                        alt=""
+                                    />
+                                </div>
+                            </LoadImg>
                         </div>
                         <div className={cx('info')}>
                             <h3 className={cx('title')}>{data.title}</h3>
                             <span className={cx('singer')}>
-                                {data.artistsNames.split(',').map((i, index) => (
+                                {data?.artists?.map((i, index) => (
                                     <>
                                         <span>
-                                            <Link to={`/${i}`}>{i}</Link>
+                                            <Link to={`/nghesi/${i.alias}`}>{i.name}</Link>
                                         </span>
-                                        <span>{index < data.artistsNames.split(',').length - 1 && ', '}</span>
+                                        {index < data?.artists.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>
@@ -143,26 +147,28 @@ function ItemSong({ data, type = '' }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
-                            <img src={data.thumbnail} alt="" />
-                            <div className={cx('play')}>
-                                <i className="icon action-play ic-play"></i>
-                            </div>
-                            <div className={cx('song-play')}>
-                                <img
-                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                    alt=""
-                                />
-                            </div>
+                            <LoadImg timeLoad={timeLoad}>
+                                <img src={data.thumbnail} alt="" />
+                                <div className={cx('play')}>
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                                <div className={cx('song-play')}>
+                                    <img
+                                        src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                        alt=""
+                                    />
+                                </div>
+                            </LoadImg>
                         </div>
                         <div className={cx('info', 'weight')}>
                             <h3 className={cx('title')}>{data.title}</h3>
                             <span className={cx('singer')}>
-                                {data.artistsNames.split(',').map((i, index) => (
+                                {data?.artists?.map((i, index) => (
                                     <>
                                         <span>
-                                            <Link to={`/${i}`}>{i}</Link>
+                                            <Link to={`/nghesi/${i.alias}`}>{i.name}</Link>
                                         </span>
-                                        <span>{index < data.artistsNames.split(',').length - 1 && ', '}</span>
+                                        {index < data?.artists.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>

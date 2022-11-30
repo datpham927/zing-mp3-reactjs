@@ -3,19 +3,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './KeywordsItem.module.scss';
 import { Link } from 'react-router-dom';
-import { zingCounter } from '~/redux/actionSlice';
-import { useDispatch } from 'react-redux';
 const cx = classNames.bind(styles);
 
-function SuggestItem({ data }) {
-    const dispatch = useDispatch();
-    const handleOnClick = () => {
-        dispatch(zingCounter.actions.setOpenInput(false));
-    };
+function SuggestItem({ data, onSubmit }) {
     return (
-        <Link to={`/tim-kiem/tat-ca/${data}`} className={cx('item')} onClick={handleOnClick}>
+        <Link to={`/tim-kiem/tat-ca/${data}`} className={cx('item')} onClick={onSubmit}>
             <span>
-                <i class="icon ic-search"></i>
+                <i className="icon ic-search"></i>
             </span>
             <span className={cx('title')}>{data}</span>
         </Link>

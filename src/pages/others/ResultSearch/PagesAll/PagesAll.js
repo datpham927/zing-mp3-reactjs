@@ -1,28 +1,41 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classNames from 'classnames/bind';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 import Container from '~/components/container/container';
 import ItemArtists from '~/components/ItemArtists/ItemArtists';
 import ItemPlayList from '~/components/ItemAlbum/ItemAlbum';
 import ItemSong from '~/components/ItemSong/ItemSong';
 import ItemVideo from '~/components/ItemVideo/ItemVideo';
-import ItemPagesAll from './ItemPagesAll/ItemPagesAll';
+import TopPagesAll from './TopPagesAll/TopPagesAll';
 import styles from './PagesAll.module.scss';
-import NoContent from '../NoConTent';
-
+import LoadImg from '~/components/loadImg/LoadImg';
+import * as searchApi from '~/components/Api/Service';
+import NoContent from '~/components/noContent/NoConTent';
+import { zingArtist } from '~/redux/data';
 const cx = classNames.bind(styles);
 function PagesAll() {
     const navigate = useNavigate();
-    const data = useSelector((state) => state.counter.dataSearch);
+    const dispatch = useDispatch();
     const value = useSelector((state) => state.counter.value);
+    useEffect(() => {
+        const fetchApi = async () => {
+            const data = await searchApi.search(value);
+            dispatch(zingArtist.actions.setDataSearch(data));
+        };
+        fetchApi();
+    }, [value]);
+    const data = useSelector((state) => state.data.dataSearch);
     if (!data.songs) return <NoContent />;
     return (
         <div className={cx('page-search')}>
-            {data && (
+            {data.songs && (
                 <Container title="Nổi Bật">
-                    {data.artists && <ItemPagesAll type="artist" data={data.artists[0]} />}
-                    {data.playlists && <ItemPagesAll type="playlist" data={data.playlists[0]} />}
-                    {data.songs && <ItemPagesAll key={1} data={data.songs[0]} type="song" />}
+                    {data.artists && <TopPagesAll type="artist" data={data.artists[0]} />}
+                    {data.playlists && <TopPagesAll type="playlist" data={data.playlists[0]} />}
+                    {data.songs && <TopPagesAll key={1} data={data.songs[0]} type="song" />}
                 </Container>
             )}
             {/* ---------------------- */}
@@ -30,56 +43,63 @@ function PagesAll() {
                 <div className={cx('playList')}>
                     <div className={cx('header')}>
                         <div className={cx('image')}>
-                            <img src={data.top.thumbnail} alt="" />
+                            <LoadImg timeLoad={2000}>
+                                <img src={data.top.thumbnail} alt="" />
+                            </LoadImg>
                         </div>
                         <div className={cx('content')}>
                             <p className={cx('subtitle')}>PLAYLIST NỔI BẬT</p>
                             <h1 className={cx('title')}>
-                                <Link to={`/${data.top.name}`}>{data.top.name}</Link>
+                                <Link to={`/nghesi/${data.top.alias}`}>{data.top.name}</Link>
                             </h1>
                         </div>
                     </div>
-                    <div className={cx('body')}>
-                        <Container>
-                            {data.playlists.map(
-                                (item, index) => index >= 4 && index < 8 && <ItemPlayList key={index} data={item} />,
-                            )}
-                        </Container>
-                    </div>
+                    <Container className={cx('body')}>
+                        {data.playlists.map(
+                            (item, index) => index >= 4 && index < 8 && <ItemPlayList key={index} data={item} />,
+                        )}
+                    </Container>
                 </div>
             )}
             {/* ---------------------- */}
             {data.songs && (
-                <div className={cx('songs')}>
-                    <Container title="Bài Hát" all onClick={() => navigate(`/tim-kiem/bai-hat/${value}`)}>
-                        {data.songs.map((item, index) => index < 6 && <ItemSong key={item.encodeId} data={item} />)}
-                    </Container>
-                </div>
+                <Container
+                    className={cx('songs')}
+                    title="Bài Hát"
+                    all
+                    onClick={() => navigate(`/tim-kiem/bai-hat/${value}`)}
+                >
+                    {data.songs.map((item, index) => index < 6 && <ItemSong key={index} data={item} />)}
+                </Container>
             )}
             {/* ---------------------- */}
             {data.playlists && (
-                <div className={cx('playList')}>
-                    <Container title="Playlist/Album" all onClick={() => navigate(`/tim-kiem/playlist/${value}`)}>
-                        {data.playlists.map((item, index) => index < 4 && <ItemPlayList key={index} data={item} />)}
-                    </Container>
-                </div>
+                <Container
+                    className={cx('playList')}
+                    title="Playlist/Album"
+                    all
+                    onClick={() => navigate(`/tim-kiem/playlist/${value}`)}
+                >
+                    {data.playlists.map((item, index) => index < 4 && <ItemPlayList key={index} data={item} />)}
+                </Container>
             )}
             {/* ---------------------- */}
             {data.videos && (
-                <div className={cx('mv')}>
-                    <Container title="MV" all onClick={() => navigate(`/tim-kiem/video/${value}`)}>
-                        {data.videos.map((item, index) => index < 3 && <ItemVideo key={index} data={item} />)}
-                    </Container>
-                </div>
+                <Container className={cx('mv')} title="MV" all onClick={() => navigate(`/tim-kiem/video/${value}`)}>
+                    {data.videos.map((item, index) => index < 3 && <ItemVideo key={index} data={item} />)}
+                </Container>
             )}
             {/* ---------------------- */}
 
             {data.artists && (
-                <div className={cx('artists')}>
-                    <Container title="Nghệ Sĩ/OA" all onClick={() => navigate(`/tim-kiem/artist/ ${value}`)}>
-                        {data.artists.map((item, index) => index < 4 && <ItemArtists key={index} data={item} />)}
-                    </Container>
-                </div>
+                <Container
+                    className={cx('artists')}
+                    title="Nghệ Sĩ/OA"
+                    all
+                    onClick={() => navigate(`/tim-kiem/artist/ ${value}`)}
+                >
+                    {data.artists.map((item, index) => index < 4 && <ItemArtists key={index} data={item} />)}
+                </Container>
             )}
         </div>
     );

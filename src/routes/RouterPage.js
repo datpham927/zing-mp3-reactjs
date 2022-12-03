@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { Discover, Following, Radio, ZingChart } from '~/pages';
+import { Home, Following, Radio, ZingChart } from '~/pages';
 import Album from '~/pages/others/Album/Album';
 import AlbumArtist from '~/pages/others/pageArtist/AlbumArtist/AlbumArtist';
 import MvArtist from '~/pages/others/pageArtist/MvArtist/MvArtist';
@@ -24,36 +24,34 @@ const RouterPage = () => {
     const location = useLocation();
 
     return (
-        <div className="container">
-            <Routes location={location} key={location.pathname}>
-                <Route path={'mymusic'} element={<Private />}></Route>
-                <Route path={''} element={<Discover />}></Route>
-                <Route path={'zing-chart'} element={<ZingChart />}></Route>
-                <Route path={`radio`} element={<Radio />}></Route>
-                <Route path={`the-loai-nghe-si`} element={<Following />}></Route>
-                <Route path={'moi-phat-hanh'} element={<SongNew />}></Route>
-                <Route path={'hub'} element={<Category />}></Route>
-                <Route path={'top100'} element={<Top100 />}></Route>
-                <Route path={'the-loai-video'} element={<Mv />}></Route>
+        <Routes location={location} key={location.pathname}>
+            <Route path={'mymusic'} element={<Private />}></Route>
+            <Route path={''} element={<Home />}></Route>
+            <Route path={'zing-chart'} element={<ZingChart />}></Route>
+            <Route path={`radio`} element={<Radio />}></Route>
+            <Route path={`the-loai-nghe-si`} element={<Following />}></Route>
+            <Route path={'moi-phat-hanh'} element={<SongNew />}></Route>
+            <Route path={'hub'} element={<Category />}></Route>
+            <Route path={'top100'} element={<Top100 />}></Route>
+            <Route path={'the-loai-video'} element={<Mv />}></Route>
 
-                {/* ----------------- */}
-                <Route path="tim-kiem" element={<ResultSearch />}>
-                    <Route path="tat-ca/:id" element={<PagesAll />}></Route>
-                    <Route path="bai-hat/:id" element={<SongPages />}></Route>
-                    <Route path="playlist/:id" element={<AlbumPages />}></Route>
-                    <Route path="artist/:id" element={<Artist />}></Route>
-                    <Route path="video/:id" element={<MvSearch />}></Route>
-                </Route>
-                <Route path={'nghesi/:name'} element={<PageArtist />}>
-                    <Route path="" element={<Overview />}></Route>
-                    <Route path="bai-hat" element={<SongArtist />}></Route>
-                    <Route path="single" element={<SingerArtist />}></Route>
-                    <Route path="album" element={<AlbumArtist />}></Route>
-                    <Route path="video" element={<MvArtist />}></Route>
-                </Route>
-                <Route path={'album/:name/:id'} element={<Album />}></Route>
-            </Routes>
-        </div>
+            {/* ----------------- */}
+            <Route path="tim-kiem" element={<ResultSearch />}>
+                <Route path="tat-ca/:id" element={<PagesAll />}></Route>
+                <Route path="bai-hat/:id" element={<SongPages />}></Route>
+                <Route path="playlist/:id" element={<AlbumPages />}></Route>
+                <Route path="artist/:id" element={<Artist />}></Route>
+                <Route path="video/:id" element={<MvSearch />}></Route>
+            </Route>
+            <Route path={'nghesi/:name'} element={<PageArtist />}>
+                <Route path="" element={<Overview />}></Route>
+                <Route path="bai-hat" element={<SongArtist />}></Route>
+                <Route path="single" element={<SingerArtist />}></Route>
+                <Route path="album" element={<AlbumArtist />}></Route>
+                <Route path="video" element={<MvArtist />}></Route>
+            </Route>
+            <Route path={'album/:name/:id'} element={<Album />}></Route>
+        </Routes>
     );
 };
 

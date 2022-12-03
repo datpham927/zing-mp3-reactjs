@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 import Container from '~/components/container/container';
 import ItemArtists from '~/components/ItemArtists/ItemArtists';
-import ItemPlayList from '~/components/ItemAlbum/ItemAlbum';
+import ItemPlayList from '~/components/ItemPlayList/ItemPlayList';
 import ItemSong from '~/components/ItemSong/ItemSong';
 import ItemVideo from '~/components/ItemVideo/ItemVideo';
 import TopPagesAll from './TopPagesAll/TopPagesAll';
@@ -14,7 +14,7 @@ import styles from './PagesAll.module.scss';
 import LoadImg from '~/components/loadImg/LoadImg';
 import * as searchApi from '~/components/Api/Service';
 import NoContent from '~/components/noContent/NoConTent';
-import { zingArtist } from '~/redux/data';
+import { zingArtist } from '~/redux/dataArtist';
 const cx = classNames.bind(styles);
 function PagesAll() {
     const navigate = useNavigate();
@@ -27,15 +27,15 @@ function PagesAll() {
         };
         fetchApi();
     }, [value]);
-    const data = useSelector((state) => state.data.dataSearch);
+    const data = useSelector((state) => state.dataArtist.dataSearch);
     if (!data.songs) return <NoContent />;
     return (
         <div className={cx('page-search')}>
             {data.songs && (
                 <Container title="Nổi Bật">
-                    {data.artists && <TopPagesAll type="artist" data={data.artists[0]} />}
-                    {data.playlists && <TopPagesAll type="playlist" data={data.playlists[0]} />}
-                    {data.songs && <TopPagesAll key={1} data={data.songs[0]} type="song" />}
+                    {data.artists && <TopPagesAll type="artist" data={data?.artists[0]} />}
+                    {data.playlists && <TopPagesAll type="playlist" data={data?.playlists[0]} />}
+                    {data.songs && <TopPagesAll key={1} data={data?.songs[0]} type="song" />}
                 </Container>
             )}
             {/* ---------------------- */}

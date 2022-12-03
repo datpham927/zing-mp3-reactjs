@@ -99,7 +99,7 @@
     .right {
         margin-left: 300px;
         padding-left: 20px;
-        margin-top: -460px;
+        margin-top: -500px;
         .description {
             padding: 0 10px;
             font-size: 1.4rem;
@@ -219,4 +219,10 @@
 .container {
     margin-top: 48px;
     padding-left: 15px;
+}
+
+.wrapper-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }

@@ -4,7 +4,7 @@ import ItemVideo from '~/components/ItemVideo/ItemVideo';
 import NoContent from '~/components/noContent/NoConTent';
 
 function MvSearch() {
-    const data = useSelector((state) => state.data.dataSearch);
+    const data = useSelector((state) => state.dataArtist.dataSearch);
     return (
         <>
             {data.videos ? (

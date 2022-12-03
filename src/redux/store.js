@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import zingCounter from './action';
-import zingArtist from './data';
+import zingArtist from './dataArtist';
+import zingHome from './dataHome';
 export default configureStore({
     reducer: {
         counter: zingCounter,
-        data: zingArtist,
+        dataArtist: zingArtist,
+        dataHome: zingHome,
     },
 });

@@ -3,13 +3,14 @@ import classNames from 'classnames/bind';
 import Container from '~/components/container/container';
 import styles from './Overview.module.scss';
 import ItemSong from '~/components/ItemSong/ItemSong';
-import ItemAlbum from '~/components/ItemAlbum/ItemAlbum';
+import ItemPlayList from '~/components/ItemPlayList/ItemPlayList';
 import ItemVideo from '~/components/ItemVideo/ItemVideo';
 import { useSelector } from 'react-redux';
 import ItemArtists from '~/components/ItemArtists/ItemArtists';
+import NoContent from '~/components/noContent/NoConTent';
 const cx = classNames.bind(styles);
 function Overview() {
-    const data = useSelector((state) => state.data.dataArtist);
+    const data = useSelector((state) => state.dataArtist.dataArtist);
     const listImg = document.querySelectorAll('.Overview_image__x92oQ');
     const autoChangeImg = () => {
         let indexImgs = 1;
@@ -43,7 +44,7 @@ function Overview() {
 
     return (
         <div className={cx('wrapper')}>
-            {data.sections &&
+            {data?.sections ? (
                 data?.sections.map((i) =>
                     i.title === 'Bài hát nổi bật' ? (
                         <div lassName={cx('song')}>
@@ -78,7 +79,7 @@ function Overview() {
                     ) : i.title === 'Single & EP' ? (
                         <div className={cx('wrapper')}>
                             <Container title={i.title}>
-                                {i.items?.map((item, index) => index < 4 && <ItemAlbum data={item} />)}
+                                {i.items?.map((item, index) => index < 4 && <ItemPlayList data={item} />)}
                             </Container>
                         </div>
                     ) : i.title === 'MV' ? (
@@ -90,7 +91,7 @@ function Overview() {
                     ) : i.title === 'Xuất hiện trong' ? (
                         <div className={cx('wrapper')}>
                             <Container title={i.title}>
-                                {i.items?.map((item, index) => index < 4 && <ItemAlbum key={index} data={item} />)}
+                                {i.items?.map((item, index) => index < 4 && <ItemPlayList key={index} data={item} />)}
                             </Container>
                         </div>
                     ) : i.title === 'Bạn Có Thể Thích' ? (
@@ -102,7 +103,10 @@ function Overview() {
                     ) : (
                         ''
                     ),
-                )}
+                )
+            ) : (
+                <NoContent />
+            )}
         </div>
     );
 }

@@ -17,6 +17,7 @@ const initialState = {
     // value search
     value: '',
     idPlayList: 0,
+    booleanVip: false,
 };
 
 export const zingCounter = createSlice({
@@ -62,6 +63,9 @@ export const zingCounter = createSlice({
         setIdPlayList: (state, action) => {
             state.idPlayList = action.payload;
         },
+        setModalVip: (state, action) => {
+            state.booleanVip = action.payload;
+        },
     },
 });
 
@@ -75,6 +79,8 @@ export const {
     setCurrentUser,
     setOpenInput,
     setValueSearch,
+    setIdPlayList,
+    setModalVip,
 } = zingCounter.actions;
 
 export default zingCounter.reducer;

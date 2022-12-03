@@ -2,10 +2,10 @@ import classNames from 'classnames/bind';
 import style from './Button.module.scss';
 const cx = classNames.bind(style);
 
-function ButtonAction({ icon, children, action, className }) {
+function ButtonAction({ icon, children, action, className, onClick }) {
     return (
-        <button className={cx('btn', { action, [className]: className })}>
-            <span>{icon}</span>
+        <button className={cx('btn', { action, [className]: className })} onClick={onClick}>
+            {icon && <span>{icon}</span>}
             {children}
         </button>
     );

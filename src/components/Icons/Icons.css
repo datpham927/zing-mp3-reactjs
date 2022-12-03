@@ -142,6 +142,7 @@ body .tippy-content {
 }
 .ic-like-full:before {
     content: '\3c';
+    color: var(--purple-primary);
 }
 .ic-play-circle-outline:before {
     content: '\5f';

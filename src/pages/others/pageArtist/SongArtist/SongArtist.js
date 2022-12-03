@@ -4,7 +4,7 @@ import ItemSong from '~/components/ItemSong/ItemSong';
 import NoContent from '~/components/noContent/NoConTent';
 
 function SongArtist() {
-    const data = useSelector((state) => state.data.artist_Song);
+    const data = useSelector((state) => state.dataArtist.artist_Song);
     return data.items ? (
         <Container title="Danh Sách Bài Hát">
             {data?.items.map((item, index) => (

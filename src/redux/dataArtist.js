@@ -7,6 +7,7 @@ const initialState = {
     artist_MV: [],
     artist_Singer: [],
     artist_Album: [],
+    data_Home: [],
     modalArtist: false,
 };
 
@@ -37,6 +38,9 @@ export const zingArtist = createSlice({
         setModalArtist: (state, action) => {
             state.modalArtist = action.payload;
         },
+        setDataHome: (state, action) => {
+            state.data_Home = action.payload;
+        },
     },
 });
 
@@ -48,6 +52,8 @@ export const {
     setArtist_MV,
     setArtist_Album,
     setArtist_Modal,
+    setModalArtist,
+    setDataHome,
 } = zingArtist.actions;
 
 export default zingArtist.reducer;

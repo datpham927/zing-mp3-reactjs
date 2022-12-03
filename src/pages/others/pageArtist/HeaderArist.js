@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as searchApi from '~/components/Api/Service';
 import ButtonAction from '~/components/Button/ButtonAction';
-import { zingArtist } from '~/redux/data';
+import Follow from '~/components/follow/Follow';
+import { zingArtist } from '~/redux/dataArtist';
 import style from './PageArtist.module.scss';
 
 const cx = classNames.bind(style);
@@ -18,8 +19,8 @@ function HeaderArtist() {
             const data = await searchApi.artist(id.name);
             dispatch(zingArtist.actions.setDataArtist(data));
 
-            data.sections &&
-                data.sections.forEach((i) => {
+            data?.sections &&
+                data?.sections.forEach((i) => {
                     // eslint-disable-next-line no-unused-expressions
                     i.title === 'Bài hát nổi bật'
                         ? dispatch(zingArtist.actions.setArtist_Song(i))
@@ -34,30 +35,30 @@ function HeaderArtist() {
         };
         fetchApi();
     }, [id.name]);
-    const data = useSelector((state) => state.data.dataArtist);
+    const data = useSelector((state) => state.dataArtist.dataArtist);
     return (
         <div className={cx('header')}>
             <div className={cx('left') + ' l-7'}>
                 <h1 className={cx('name')}>{data?.name}</h1>
                 <div className={cx('describe')}>
-                    <span className={cx('biography')}>{data.sortBiography}</span>
-                    {data.biography && (
+                    <span className={cx('biography')}>{data?.sortBiography}</span>
+                    {data?.biography && (
                         <span className={cx('more')} onClick={() => dispatch(zingArtist.actions.setModalArtist(true))}>
                             ... XEM THÊM
                         </span>
                     )}
                 </div>
-                {data.totalFollow && (
+                {data?.totalFollow && (
                     <div className={cx('actions')}>
                         <ButtonAction icon={<i className="icon ic-play"></i>} action>
                             PHÁT NHẠC
                         </ButtonAction>
                         <ButtonAction>
-                            QUAN TÂM • {data?.totalFollow && data?.totalFollow.toString().substring(0, 2) / 10 + 'M'}
+                            QUAN TÂM • <Follow follow={data?.totalFollow} />
                         </ButtonAction>
                     </div>
                 )}
-                {data.topAlbum && (
+                {data?.topAlbum && (
                     <div className={cx('top')}>
                         <div className={cx('thumb')}>
                             <img src={data?.topAlbum.thumbnail} alt="" />

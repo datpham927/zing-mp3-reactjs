@@ -81,25 +81,21 @@ function Theme() {
         dispatch(zingCounter.actions.booleanPreview(false));
     };
     return (
-        <>
-            {modalTheme && (
-                <div className={cx('modal-topic')} onClick={(e) => handelModal(e)}>
-                    <div className={cx('topic')}>
-                        <div className={cx('topic-header')}>
-                            <h1>Giao Diện</h1>
-                            <div className={cx('icon-close')} onClick={handleCloseModal}>
-                                <ion-icon name="close-outline"></ion-icon>
-                            </div>
-                        </div>
-                        <div className={cx('topic-body')}>
-                            <ThemeContainer data={themesModal.Dynamic} />
-                            <ThemeContainer data={themesModal.topic} />
-                            <ThemeContainer data={themesModal.artist} />
-                        </div>
+        <div className={cx('modal-topic')} onClick={(e) => handelModal(e)}>
+            <div className={cx('topic')}>
+                <div className={cx('topic-header')}>
+                    <h1>Giao Diện</h1>
+                    <div className={cx('icon-close')} onClick={handleCloseModal}>
+                        <ion-icon name="close-outline"></ion-icon>
                     </div>
                 </div>
-            )}
-        </>
+                <div className={cx('topic-body')}>
+                    <ThemeContainer data={themesModal.Dynamic} />
+                    <ThemeContainer data={themesModal.topic} />
+                    <ThemeContainer data={themesModal.artist} />
+                </div>
+            </div>
+        </div>
     );
 }
 

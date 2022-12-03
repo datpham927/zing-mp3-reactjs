@@ -1,4 +1,4 @@
-import * as httpRequest from '~/components/utils/httpRequest';
+import * as httpRequest from '~/components/Api/utils/httpRequest';
 
 export const search = async (value) => {
     try {
@@ -13,7 +13,7 @@ export const artist = async (value) => {
         const res = await httpRequest.get('artist?name=', value);
         return res.data;
     } catch (error) {
-        alert('Api đã bị lỗi bạn vui lòng truy cập lại');
+        console.log(error);
     }
 };
 //
@@ -23,7 +23,7 @@ export const top100 = async () => {
         const res = await httpRequest.get('charthome');
         return res.data;
     } catch (error) {
-        alert('Api đã bị lỗi bạn vui lòng truy cập lại');
+        console.log(error);
     }
 };
 
@@ -31,5 +31,7 @@ export const playList = async (id) => {
     try {
         const res = await httpRequest.get('detailplaylist?id=', id);
         return res.data;
-    } catch (error) {}
+    } catch (error) {
+        console.log(error);
+    }
 };

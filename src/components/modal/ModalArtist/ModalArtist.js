@@ -1,13 +1,13 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon } from '~/components/Icons';
-import { zingArtist } from '~/redux/data';
+import { zingArtist } from '~/redux/dataArtist';
 import style from './ModalArtist.module.scss';
 
 const cx = classNames.bind(style);
 
 function ModalArtist() {
-    const { dataArtist } = useSelector((state) => state.data);
+    const { dataArtist } = useSelector((state) => state.dataArtist);
     const dispatch = useDispatch();
     const handleModal = (e) => {
         if (e.target === e.currentTarget) {

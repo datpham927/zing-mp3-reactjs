@@ -1,6 +1,6 @@
 const routes = {
     private: `"/mymusic"`,
-    discover: `/`,
+    Home: `/`,
     following: `/the-loai-nghe-si`,
     zingchart: `/zing-chart`,
     radio: `/radio`,

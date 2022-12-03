@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { playList } from '~/components/Api/Service';
 import style from './Album.module.scss';
-import TopAlum from './TopAlbum';
+import LeftAlbum from './LeftAlbum';
+import RightAlbum from './RightAlbum';
 const cx = classNames.bind(style);
 
 function Album() {
@@ -16,7 +17,18 @@ function Album() {
         };
         fetchApi();
     }, [id]);
-    return data && <div className={cx('wrapper')}>{data.song && <TopAlum data={data} />}</div>;
+    return (
+        data && (
+            <div className={cx('wrapper')}>
+                {data.song && (
+                    <div className={cx('top')}>
+                        <LeftAlbum data={data} />
+                        <RightAlbum data={data} />
+                    </div>
+                )}
+            </div>
+        )
+    );
 }
 
 export default Album;

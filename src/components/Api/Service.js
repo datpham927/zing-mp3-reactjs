@@ -1,5 +1,9 @@
 import * as httpRequest from '~/components/Api/utils/httpRequest';
 
+// export const search = async (value) => {
+//     const res = await axios.get(`${process.env.REACT_APP_BASE_URL}search?keyword=${value}`);
+//     return res.data;
+// };
 export const search = async (value) => {
     try {
         const res = await httpRequest.get('search?keyword=', value);
@@ -10,7 +14,7 @@ export const search = async (value) => {
 };
 export const artist = async (value) => {
     try {
-        const res = await httpRequest.get('artist?name=', value);
+        const res = await httpRequest.get('artist/', value);
         return res.data;
     } catch (error) {
         console.log(error);
@@ -18,9 +22,9 @@ export const artist = async (value) => {
 };
 //
 
-export const top100 = async () => {
+export const newRelease = async () => {
     try {
-        const res = await httpRequest.get('charthome');
+        const res = await httpRequest.get('chart/new-release');
         return res.data;
     } catch (error) {
         console.log(error);
@@ -29,7 +33,16 @@ export const top100 = async () => {
 
 export const playList = async (id) => {
     try {
-        const res = await httpRequest.get('detailplaylist?id=', id);
+        const res = await httpRequest.get('playlist/', id);
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const getHome = async () => {
+    try {
+        const res = await httpRequest.get(`home`);
         return res.data;
     } catch (error) {
         console.log(error);

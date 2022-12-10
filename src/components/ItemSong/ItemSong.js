@@ -8,7 +8,7 @@ import styles from './ItemSong.module.scss';
 const cx = classNames.bind(styles);
 function ItemSong({ data, type = '', timeLoad = 2000 }) {
     return type === 'song-12' ? (
-        <li className={cx('item') + ' l-12 col'}>
+        <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}>
             <div className={cx('media')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
@@ -27,7 +27,15 @@ function ItemSong({ data, type = '', timeLoad = 2000 }) {
                             </LoadImg>
                         </div>
                         <div className={cx('info')}>
-                            <h3 className={cx('title')}>{data.title}</h3>
+                            <h3 className={cx('title')}>
+                                {data.title}
+                                {data?.streamingStatus === 2 && (
+                                    <img
+                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
+                                        alt=""
+                                    />
+                                )}
+                            </h3>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
                                     <>
@@ -72,7 +80,7 @@ function ItemSong({ data, type = '', timeLoad = 2000 }) {
             </div>
         </li>
     ) : type === 'top100' ? (
-        <li className={cx('item') + ' l-12 col'}>
+        <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}>
             <div className={cx('media')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-ratings')}>
@@ -97,7 +105,15 @@ function ItemSong({ data, type = '', timeLoad = 2000 }) {
                             </LoadImg>
                         </div>
                         <div className={cx('info')}>
-                            <h3 className={cx('title')}>{data.title}</h3>
+                            <h3 className={cx('title')}>
+                                {data.title}
+                                {data.allowAudioAds && (
+                                    <img
+                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/-label.3dd6ac7e.svg"
+                                        alt=""
+                                    />
+                                )}
+                            </h3>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
                                     <>
@@ -142,7 +158,7 @@ function ItemSong({ data, type = '', timeLoad = 2000 }) {
             </div>
         </li>
     ) : (
-        <li className={cx('item') + ' l-6 col'}>
+        <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-6 col'}>
             <div className={cx('media')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
@@ -161,7 +177,15 @@ function ItemSong({ data, type = '', timeLoad = 2000 }) {
                             </LoadImg>
                         </div>
                         <div className={cx('info', 'weight')}>
-                            <h3 className={cx('title')}>{data.title}</h3>
+                            <h3 className={cx('title')}>
+                                {data.title}
+                                {data?.streamingStatus === 2 && (
+                                    <img
+                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
+                                        alt=""
+                                    />
+                                )}
+                            </h3>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
                                     <>

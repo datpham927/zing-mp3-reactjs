@@ -51,8 +51,8 @@ function Search() {
 
     useEffect(() => {
         const fetchApi = async () => {
-            const data = await searchApi.top100();
-            setSearchSuggest(data?.newRelease || []);
+            const data = await searchApi.newRelease();
+            setSearchSuggest(data.items || []);
         };
         fetchApi();
     }, []);
@@ -62,6 +62,7 @@ function Search() {
         if (!e.target.value.startsWith(' ')) {
             setValue(e.target.value);
         }
+        setOpenInput(true);
         setShowBtn(true);
         setShowResult(false);
     };
@@ -73,7 +74,7 @@ function Search() {
         setSearchResult([]);
         valueRef.current.focus();
     };
-    const appearInput = () => {
+    const focusInput = () => {
         setOpenInput(true);
         setBorderRadius(true);
     };
@@ -111,14 +112,7 @@ function Search() {
         }
     };
     return (
-        <div
-            className={cx(
-                'search',
-                ((searchSuggest.length > 0 && borderRadius && open) ||
-                    (searchResult.length > 0 && borderRadius && open)) &&
-                    'bgrHeader',
-            )}
-        >
+        <div className={cx('search', ((borderRadius && open) || (borderRadius && open)) && 'bgrHeader')}>
             <div className={cx('icon-search')} onClick={(e) => handleSubmit(e)}>
                 <i className="icon ic-search"></i>
             </div>
@@ -128,7 +122,7 @@ function Search() {
                 onChange={(e) => handleValueChange(e)}
                 type="text"
                 placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
-                onFocus={appearInput}
+                onFocus={focusInput}
                 onKeyDown={(e) => handleEnter(e)}
             />
             <div className={cx('icon-action')}>
@@ -142,9 +136,7 @@ function Search() {
                     </>
                 )}
             </div>
-            {}
-            {searchSuggest.length > 0 &&
-                open &&
+            {open &&
                 (showResult ? (
                     <>
                         <div className={cx('menu-search')}>
@@ -161,14 +153,14 @@ function Search() {
                             <div className={cx('Keywords')}>
                                 <div className={cx('Keywords-header')}>
                                     <h1>Từ Khóa Liên Quan</h1>
-                                    {searchResult.length > 0 && (
+                                    {searchResult?.length > 0 && (
                                         <KeywordsMenu data={searchResult} onSubmit={handleSubmit} />
                                     )}
                                     <KeywordsItem data={`Tim kiếm "${value}"`} onSubmit={handleSubmit} />
                                 </div>
                             </div>
                             {/* ------------ ----------------- */}
-                            {searchResult.length > 0 && <RecentlyMenu data={searchResult} />}
+                            {searchResult?.length > 0 && <RecentlyMenu data={searchResult} />}
                         </div>
                     </div>
                 ))}

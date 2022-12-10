@@ -11,11 +11,11 @@ function SuggestItem({ data, setValue, onSubmit }) {
         onSubmit();
     };
     return (
-        <Link to={`/tim-kiem/tat-ca/${data.alias}`} className={cx('item')} onClick={() => handleOnClick(data.title)}>
+        <Link to={`/tim-kiem/tat-ca/${data?.alias}`} className={cx('item')} onClick={() => handleOnClick(data?.title)}>
             <span>
                 <i className="icon ic-trend"></i>
             </span>
-            <span className={cx('title')}>{data.title}</span>
+            <span className={cx('title')}>{data?.title}</span>
         </Link>
     );
 }

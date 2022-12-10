@@ -1,13 +1,14 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import Follow from '../follow/Follow';
 import LoadImg from '../loadImg/LoadImg';
 import styles from './ItemArtists.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ItemArtists({ data, timeLoad = 2000 }) {
+function ItemArtists({ data, timeLoad = 2000, col = 'l-3' }) {
     return (
-        <li className={cx('item') + ' l-3 col'}>
+        <li className={cx('item') + ` ${col} col`}>
             <div className={cx('wrapper')}>
                 <LoadImg radius timeLoad={timeLoad}>
                     <Link to={`/nghesi/${data.alias}`}>
@@ -25,7 +26,7 @@ function ItemArtists({ data, timeLoad = 2000 }) {
                             <Link to={`/nghesi/${data.alias}`}>{data.name}</Link>
                         </div>
                         <span className={cx('follow')}>
-                            {data?.totalFollow.toString().substring(0, 2) / 10 + 'M quan tâm'}
+                            <Follow follow={data?.totalFollow} /> quan tâm
                         </span>
                     </div>
                     <button>

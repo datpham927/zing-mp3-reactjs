@@ -150,6 +150,7 @@
                         width: max-content;
                         padding: 5px;
                         z-index: 1000;
+                        cursor: pointer;
                         &::after {
                             position: absolute;
                             content: '';

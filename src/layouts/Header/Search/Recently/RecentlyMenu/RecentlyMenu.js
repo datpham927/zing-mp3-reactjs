@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './RecentlyMenu.module.scss';
+
 import RecentlyItem from '../RecentlyItem';
 
 const cx = classNames.bind(styles);
@@ -11,9 +12,7 @@ function RecentlyMenu({ data, onClick }) {
                 <h1>Gợi ý kết quả</h1>
             </div>
             <div className={cx('body')}>
-                {data.map(
-                    (item, index) => index < 6 && <RecentlyItem key={item.encodeId} data={item} onClick={onClick} />,
-                )}
+                {data.map((item, index) => index < 6 && <RecentlyItem key={index} data={item} onClick={onClick} />)}
             </div>
         </div>
     );

@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
+
 import ItemSongAdd from '~/components/ItemSong/ItemSongAdd';
 import style from './Album.module.scss';
-import Container from '~/components/container/container';
+import Container from '~/components/container/Container';
 import { useState } from 'react';
 const cx = classNames.bind(style);
 
@@ -44,7 +45,7 @@ function RightAlbum({ data }) {
                         <div className={cx('song')}>
                             <div className={cx('sort')}>
                                 <div className={cx('icon-sort')} onClick={() => setOpenMenu(!openMenu)}>
-                                    <i class="icon ic-24-Sort"></i>
+                                    <i className="icon ic-24-Sort"></i>
                                 </div>
                                 {openMenu && (
                                     <div className={cx('menu')}>
@@ -78,23 +79,28 @@ function RightAlbum({ data }) {
                 </>
             ) : (
                 <>
-                    <div className={cx('header')}>
-                        <span>BÀI HÁT</span>
-                        <span>THỜI GIAN</span>
-                    </div>
-                    <div className={cx('list') + ' row'}>
-                        {data.song?.items.map((item, index) => (
-                            <ItemSongAdd key={index} data={item} />
-                        ))}
-                    </div>
-
-                    <Container title={data?.sections[0]?.title} className={cx('container')}>
-                        <div className={cx('list') + ' row'}>
-                            {data?.sections[0].items?.map((item, index) => (
-                                <ItemSongAdd key={index} data={item} />
-                            ))}
-                        </div>
-                    </Container>
+                    {data.song && (
+                        <>
+                            <div className={cx('header')}>
+                                <span>BÀI HÁT</span>
+                                <span>THỜI GIAN</span>
+                            </div>
+                            <div className={cx('list') + ' row'}>
+                                {data.song?.items.map((item, index) => (
+                                    <ItemSongAdd data={item} />
+                                ))}
+                            </div>
+                        </>
+                    )}
+                    {data?.sections[0] && (
+                        <Container title={data?.sections[0]?.title} className={cx('container')}>
+                            <div className={cx('list') + ' row'}>
+                                {data?.sections[0].items?.map((item, index) => (
+                                    <ItemSongAdd key={index} data={item} />
+                                ))}
+                            </div>
+                        </Container>
+                    )}
                 </>
             )}
         </div>

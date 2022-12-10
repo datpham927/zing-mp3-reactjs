@@ -13,7 +13,7 @@ function ItemSongAdd({ data, timeLoad = 2000 }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
                         <div className={cx('action-checkbox')}>
-                            <i class="icon ic-song"></i>
+                            <i className="icon ic-song"></i>
                             <div className={cx('checkbox')}>
                                 <input type="checkBox"></input>
                             </div>
@@ -33,7 +33,16 @@ function ItemSongAdd({ data, timeLoad = 2000 }) {
                             </LoadImg>
                         </div>
                         <div className={cx('info')}>
-                            <h3 className={cx('title')}>{data?.title}</h3>
+                            <h3 className={cx('title')}>
+                                {data?.title}
+                                {data?.streamingStatus === 2 && (
+                                    <img
+                                        className={cx('vip')}
+                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
+                                        alt=""
+                                    />
+                                )}
+                            </h3>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
                                     <>

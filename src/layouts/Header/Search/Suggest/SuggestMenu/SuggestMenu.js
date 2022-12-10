@@ -13,7 +13,7 @@ function SuggestMenu({ data = [], setValue, onSubmit }) {
                 <h1>Đề Xuất Cho Bạn</h1>
             </div>
             <div className={cx('Keywords-body')}>
-                {data.map(
+                {data?.map(
                     (item, index) =>
                         index < 5 && <SuggestItem key={index} data={item} setValue={setValue} onSubmit={onSubmit} />,
                 )}

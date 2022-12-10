@@ -92,6 +92,15 @@ body .tippy-content {
 .ic-repeat:before {
     content: '\59';
 }
+.ic-go-right:before {
+    content: '\41';
+}
+.ic-go-left:before {
+    content: '\7a';
+}
+.ic-go-left:before {
+    content: '\7a';
+}
 .ic-mv:before {
     content: '\4b';
 }

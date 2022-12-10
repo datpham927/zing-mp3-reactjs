@@ -1,0 +1,30 @@
+.Keywords-header h1 {
+  font-size: 16px;
+  margin: 5px 0 10px 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.Keywords-body {
+  max-height: 200px;
+  overflow: hidden;
+}
+.Keywords-body .item {
+  border-radius: 4px;
+  padding: 8px 10px;
+  list-style: none;
+}
+.Keywords-body .item:hover {
+  background-color: var(--alpha-bg);
+}
+.Keywords-body .item span {
+  color: var(--text-primary);
+  padding: 0 5px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.Keywords-body .item span i {
+  font-size: 1.2rem;
+  color: var(--alpha-bg);
+  cursor: pointer;
+}/*# sourceMappingURL=SuggestMenu.module.css.map */

@@ -3,7 +3,6 @@ import styles from './AppLayout.module.scss';
 import Sidebar from '../Sidebar';
 import PropTypes from 'prop-types';
 import Header from '../Header';
-import Theme from '~/components/modal/Theme/Theme';
 import { useState } from 'react';
 import Modal from '~/components/modal/Modal';
 

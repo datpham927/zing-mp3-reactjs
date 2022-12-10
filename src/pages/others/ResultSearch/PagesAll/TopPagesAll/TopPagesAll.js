@@ -1,14 +1,11 @@
 import classNames from 'classnames/bind';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LoadImg from '~/components/loadImg/LoadImg';
-import { zingCounter } from '~/redux/action';
 import styles from './TopPagesAll.module.scss';
 
 const cx = classNames.bind(styles);
 
-function TopPagesAll({ data = [], type = '', timeLoad = 2000 }) {
-    const dispatch = useDispatch();
+function TopPagesAll({ data, type = '', timeLoad = 2000 }) {
     return type === 'song' ? (
         <div className=" l-4 col">
             <div className={cx('media')}>
@@ -52,7 +49,7 @@ function TopPagesAll({ data = [], type = '', timeLoad = 2000 }) {
                         <LoadImg timeLoad={timeLoad}>
                             <img src={data?.thumbnail} alt="" />
                             <div className={cx('play')}>
-                                <i class="icon action-play ic-24-Shuffle"></i>
+                                <i className="icon action-play ic-24-Shuffle"></i>
                             </div>
                             <div className={cx('song-play')}>
                                 <img
@@ -82,10 +79,7 @@ function TopPagesAll({ data = [], type = '', timeLoad = 2000 }) {
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb', 'artist')}>
                         <LoadImg timeLoad={timeLoad}>
-                            <Link
-                                to={data.link}
-                                onClick={() => dispatch(zingCounter.actions.setIdPlayList(data.encodeId))}
-                            >
+                            <Link to={data.link}>
                                 <img src={data?.thumbnail} alt="" />
                                 <div className={cx('play')}>
                                     <i className="icon action-play ic-play"></i>
@@ -102,12 +96,7 @@ function TopPagesAll({ data = [], type = '', timeLoad = 2000 }) {
                     <div className={cx('content', 'content-artist')}>
                         <span className={cx('type')}>Playlist</span>
                         <div className={cx('singer')}>
-                            <Link
-                                to={data.link}
-                                onClick={() => dispatch(zingCounter.actions.setIdPlayList(data.encodeId))}
-                            >
-                                {data?.title}
-                            </Link>
+                            <Link to={data.link}>{data?.title}</Link>
                         </div>
                         <div className={cx('title')}>
                             <span>{data?.sortDescription}</span>

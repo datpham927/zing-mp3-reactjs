@@ -8,9 +8,13 @@
     width: calc(100% - var(--Width-sidebar));
     -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
     scrollbar-width: none; /* sử dụng Firefox */
-    overflow-y: scroll;
+    overflow-y: overlay;
     &::-webkit-scrollbar {
-        display: none;
+        width: 4px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--alpha-bg);
     }
     .container {
         padding: 0 var(--padding-section);

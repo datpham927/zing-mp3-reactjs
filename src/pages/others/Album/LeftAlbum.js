@@ -17,7 +17,7 @@ function LeftAlbum({ data }) {
                     <img src={data?.thumbnailM} alt="" />
 
                     <div className={cx('play')}>
-                        <i class="icon ic-play-circle-outline"></i>
+                        <i className="icon ic-play-circle-outline"></i>
                     </div>
                     <div className={cx('song-play')}>
                         <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif" alt="" />
@@ -41,11 +41,11 @@ function LeftAlbum({ data }) {
                     người yêu thích
                 </div>
             </div>
-            <ButtonAction icon={<i class="icon ic-play"></i>} action>
+            <ButtonAction icon={<i className="icon ic-play"></i>} action>
                 TIẾP TỤC PHÁT
             </ButtonAction>
             <div className={cx('wrapper-icon')}>
-                <Button primary content="Thêm vào thư viện" iconLeft={<i class="icon ic-like"></i>} />
+                <Button primary content="Thêm vào thư viện" iconLeft={<i className="icon ic-like"></i>} />
                 {/* <Button primary content="Xóa khỏi thư viện" iconLeft={<i className="icon ic-like-full"></i>} /> */}
                 <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />
             </div>

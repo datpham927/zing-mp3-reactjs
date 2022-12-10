@@ -1,129 +1,102 @@
-import axios from 'axios';
+/* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import ButtonAction from '~/components/Button/ButtonAction';
-import Container from '~/components/container/container';
-import ItemAlbum from '~/components/ItemAlBum/ItemAlBum';
+
+import * as Api from '~/components/Api/Service';
+import Container from '~/components/container/Container';
+import ItemPlayList from '~/components/ItemPlayList/ItemPlayList';
 import { zingHome } from '~/redux/dataHome';
 import style from './Home.module.scss';
+import HomeGallery from './HomeGallery';
+import HomeRelease from './HomeRelease';
+import HomeAutoTheme from './HomeAutoTheme';
+import HomeWeekChart from './HomeWeekChart';
+import HomeTop100 from './HomeTop100';
+import HomeSpotlight from './HomeSpotlight';
+import HomeNewSong from './HomeNewSong';
+import HomeLiveRadio from './HomeLiveRadio';
+import HomeEvent from './HomeEvent';
+import { setDataNewRelease } from '~/redux/newRelease';
 
 const cx = className.bind(style);
 function Home() {
-    const [heightImg, setHeightImg] = useState(0);
     const [slider, setSlider] = useState([]);
     const [newRelease, setNewRelease] = useState([]);
-    const [all, setAll] = useState(true);
-    const [vPop, setVpop] = useState(false);
-    const [others, setOthers] = useState(false);
-    const dispatch = useDispatch();
+    const [event, setEvent] = useState([]);
+    const [hAlbum, sethAlbum] = useState([]);
+    const [hXone, sethXone] = useState([]);
+    const [hLiveRadio, sethLiveRadio] = useState([]);
+    const [newSong, setNewSong] = useState([]);
+    const [hAutoTheme1, sethAutoTheme1] = useState([]);
+    const [hAutoTheme2, sethAutoTheme2] = useState([]);
+    const [artist, setArtist] = useState([]);
+    const [weekChart, setWeekChart] = useState([]);
+    const [h100, seth100] = useState([]);
 
+    const dispatch = useDispatch();
     useEffect(() => {
         const getTodoItems = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_BASE_URL_HOME}getHome`);
-                const data = response.data;
-                dispatch(zingHome.actions.setDataHome(data.data));
-            } catch (errors) {
-                console.error(errors);
-            }
+            const response = await Api.getHome();
+            dispatch(zingHome.actions.setDataHome(response.items));
         };
         getTodoItems();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const { data_Home } = useSelector((state) => state.dataHome);
     useEffect(() => {
-        data_Home?.items?.forEach((item) => {
-            if (item.sectionType === 'banner' && item.sectionId === 'hSlider') setSlider(item);
-            //mới phát hành
-            else if (item.sectionType === 'new-release') setNewRelease(item);
+        data_Home?.forEach((item) => {
+            if (item.sectionType === 'banner' && item.sectionId === 'hSlider') {
+                setSlider(item);
+            } else if (item.sectionType === 'new-release') {
+                setNewRelease(item);
+                dispatch(setDataNewRelease(item.items));
+            } else if (item.sectionId === 'hAutoTheme1') {
+                sethAutoTheme1(item);
+            } else if (item.sectionId === 'hAutoTheme2') {
+                sethAutoTheme2(item);
+            } else if (item.sectionType === 'weekChart') {
+                setWeekChart(item);
+            } else if (item.sectionId === 'h100') {
+                seth100(item);
+            } else if (item.sectionType === 'artistSpotlight') {
+                setArtist(item);
+            } else if (item.sectionType === 'newReleaseChart') {
+                setNewSong(item);
+            } else if (item.sectionId === 'hAlbum') {
+                sethAlbum(item);
+            } else if (item.sectionId === 'hXone') {
+                sethXone(item);
+            } else if (item.sectionId === 'hLiveRadio') {
+                sethLiveRadio(item);
+            } else if (item.sectionType === 'event') {
+                setEvent(item);
+            }
         });
     }, [data_Home]);
-
-    const handleChangeTab = (type) => {
-        if (type === 'all') {
-            setAll(true);
-            setVpop(false);
-            setOthers(false);
-        } else if (type === 'vPop') {
-            setAll(false);
-            setVpop(true);
-            setOthers(false);
-        } else if (type === 'others') {
-            setAll(false);
-            setVpop(false);
-            setOthers(true);
-        }
-    };
-
-    const handleHeight = () => {
-        var divWidth = document.getElementsByClassName('Home_item__BetTT');
-        setHeightImg(divWidth[0].offsetHeight);
-    };
-    console.log(newRelease);
-    const navigate = useNavigate();
-    const handleNewSongs = () => {
-        if (setAll) navigate(newRelease?.link + '/all');
-        else if (setVpop) navigate(newRelease?.link + '/Vpop');
-        else if (setOthers) navigate(newRelease?.link + '/usuk');
-    };
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('gallery')} style={{ height: heightImg }}>
-                <div className={cx('gallery-wrapper')}>
-                    {slider?.items?.map((item, index) => (
-                        <div
-                            className={
-                                cx(
-                                    'item',
-                                    index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : 'four',
-                                ) + ' l-4'
-                            }
-                            onLoad={handleHeight}
-                        >
-                            <img src={item.banner} alt="" />
-                        </div>
-                    ))}
-                </div>
-            </div>
-            {/* ------------ */}
-            <Container title={newRelease?.title}>
-                <div className={cx('header')}>
-                    <div className={cx('left')}>
-                        <ButtonAction action={all} className={cx('btn')} onClick={() => handleChangeTab('all')}>
-                            TẤT CẢ
-                        </ButtonAction>
-                        <ButtonAction action={vPop} className={cx('btn')} onClick={() => handleChangeTab('vPop')}>
-                            VIỆT NAM
-                        </ButtonAction>
-                        <ButtonAction action={others} className={cx('btn')} onClick={() => handleChangeTab('others')}>
-                            QUỐC TẾ
-                        </ButtonAction>
-                    </div>
-                    <div className={cx('right')} onClick={handleNewSongs}>
-                        <Link>
-                            TẤT CẢ <i className="icon ic-go-right"></i>
-                        </Link>
-                    </div>
-                </div>
-                <div className={cx('body')}>
-                    {all &&
-                        newRelease?.items?.all.map(
-                            (item, index) => index < 12 && <ItemAlbum key={index} data={item} />,
-                        )}
-                    {vPop &&
-                        newRelease?.items?.vPop.map(
-                            (item, index) => index < 12 && <ItemAlbum key={index} data={item} />,
-                        )}
-                    {others &&
-                        newRelease?.items?.others.map(
-                            (item, index) => index < 12 && <ItemAlbum key={index} data={item} />,
-                        )}
-                </div>
+            <HomeGallery data={slider} />
+            <HomeRelease data={newRelease} />
+            <HomeAutoTheme data={hAutoTheme1} />
+            <HomeAutoTheme data={hAutoTheme2} />
+            <HomeWeekChart data={weekChart} />
+            <HomeTop100 data={h100} />
+            <HomeSpotlight data={artist} />
+            <HomeNewSong data={newSong} />
+            <Container title>
+                {hAlbum?.items?.map(
+                    (item, index) => index < 4 && <ItemPlayList key={index} data={item} index={index} />,
+                )}
             </Container>
+            <Container title={hXone.title}>
+                {hXone?.items?.map(
+                    (item, index) => index < 4 && <ItemPlayList description key={index} data={item} index={index} />,
+                )}
+            </Container>
+            <HomeLiveRadio data={hLiveRadio} />
+            <HomeEvent data={event} />
         </div>
     );
 }
-
 export default Home;

@@ -2,6 +2,17 @@ import { memo } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Home, Following, Radio, ZingChart } from '~/pages';
 import Album from '~/pages/others/Album/Album';
+import AlbumAll from '~/pages/others/NewRelease/AlbumNewRelease/AlbumAll';
+import AlbumKpop from '~/pages/others/NewRelease/AlbumNewRelease/AlbumKpop';
+import AlbumOther from '~/pages/others/NewRelease/AlbumNewRelease/AlbumOther';
+import AlbumUsuk from '~/pages/others/NewRelease/AlbumNewRelease/AlbumUsuk';
+import AlbumVpop from '~/pages/others/NewRelease/AlbumNewRelease/AlbumVpop';
+import NewRelease from '~/pages/others/NewRelease/NewRelease';
+import SongAll from '~/pages/others/NewRelease/SongNewRelease/SongAll';
+import SongKpop from '~/pages/others/NewRelease/SongNewRelease/SongKpop';
+import SongOther from '~/pages/others/NewRelease/SongNewRelease/SongOther';
+import SongUsuk from '~/pages/others/NewRelease/SongNewRelease/SongUsuk';
+import SongVpop from '~/pages/others/NewRelease/SongNewRelease/SongVpop';
 import AlbumArtist from '~/pages/others/pageArtist/AlbumArtist/AlbumArtist';
 import MvArtist from '~/pages/others/pageArtist/MvArtist/MvArtist';
 import Overview from '~/pages/others/pageArtist/Overview/Overview';
@@ -51,6 +62,21 @@ const RouterPage = () => {
                 <Route path="video" element={<MvArtist />}></Route>
             </Route>
             <Route path={'album/:name/:id'} element={<Album />}></Route>
+            <Route path={'playlist/:name/:id'} element={<Album />}></Route>
+            <Route path={'new-release/song'} element={<NewRelease />}>
+                <Route path={'all'} element={<SongAll />}></Route>
+                <Route path={'vpop'} element={<SongVpop />}></Route>
+                <Route path={'kpop'} element={<SongKpop />}></Route>
+                <Route path={'usuk'} element={<SongUsuk />}></Route>
+                <Route path={'other'} element={<SongOther />}></Route>
+            </Route>
+            <Route path={'new-release/album'} element={<NewRelease />}>
+                <Route path={'all'} element={<AlbumAll />}></Route>
+                <Route path={'vpop'} element={<AlbumVpop />}></Route>
+                <Route path={'kpop'} element={<AlbumKpop />}></Route>
+                <Route path={'usuk'} element={<AlbumUsuk />}></Route>
+                <Route path={'other'} element={<AlbumOther />}></Route>
+            </Route>
         </Routes>
     );
 };

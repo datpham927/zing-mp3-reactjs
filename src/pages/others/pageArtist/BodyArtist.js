@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import style from './PageArtist.module.scss';
 

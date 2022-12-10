@@ -1,6 +1,7 @@
 /* eslint-disable no-implied-eval */
 import classNames from 'classnames/bind';
-import Container from '~/components/container/container';
+
+import Container from '~/components/container/Container';
 import styles from './Overview.module.scss';
 import ItemSong from '~/components/ItemSong/ItemSong';
 import ItemPlayList from '~/components/ItemPlayList/ItemPlayList';
@@ -69,8 +70,8 @@ function Overview() {
                                 </div>
                                 <div className={cx('right') + ' l-8'}>
                                     <div className={cx('list')}>
-                                        {i.items?.map((item) => (
-                                            <ItemSong data={item} type="song-12" />
+                                        {i.items?.map((item, index) => (
+                                            <ItemSong key={index} data={item} type="song-12" />
                                         ))}
                                     </div>
                                 </div>
@@ -79,7 +80,7 @@ function Overview() {
                     ) : i.title === 'Single & EP' ? (
                         <div className={cx('wrapper')}>
                             <Container title={i.title}>
-                                {i.items?.map((item, index) => index < 4 && <ItemPlayList data={item} />)}
+                                {i.items?.map((item, index) => index < 4 && <ItemPlayList key={index} data={item} />)}
                             </Container>
                         </div>
                     ) : i.title === 'MV' ? (

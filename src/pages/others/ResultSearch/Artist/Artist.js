@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
+
 import { Navigate } from 'react-router-dom';
-import Container from '~/components/container/container';
+import Container from '~/components/container/Container';
 import ItemArtists from '~/components/ItemArtists/ItemArtists';
 import NoContent from '~/components/noContent/NoConTent';
 function Artist() {

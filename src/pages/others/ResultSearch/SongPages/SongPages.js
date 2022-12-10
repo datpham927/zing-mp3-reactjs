@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import Container from '~/components/container/container';
+import Container from '~/components/container/Container';
 import ItemSong from '~/components/ItemSong/ItemSong';
 import NoContent from '~/components/noContent/NoConTent';
 function SongPages() {

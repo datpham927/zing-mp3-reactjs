@@ -77,6 +77,7 @@
                         font-size: 1.4rem;
                         font-weight: 500;
                         color: var(--text-primary);
+                        margin-right: 10px;
                     }
                     .singer {
                         color: var(--text-secondary);
@@ -112,7 +113,7 @@
                 .title {
                     font-size: 1.2rem;
                     font-weight: 500;
-                    color: var(--song-item-action);
+                    color: var(--text-secondary);
                     width: 90%;
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
@@ -139,7 +140,7 @@
                     & span {
                         font-size: 1.2rem;
                         width: 46px;
-                        color: var(--song-item-action);
+                        color: var(--text-secondary);
                     }
                 }
             }
@@ -163,7 +164,7 @@
     width: 25px;
     align-items: center;
     & > i {
-        color: var(--song-item-action);
+        color: var(--text-secondary);
     }
 
     .checkbox {
@@ -201,4 +202,9 @@
 }
 .add.item:hover .action-checkbox > i {
     display: none;
+}
+
+.vip {
+    margin-left: 10px;
+    opacity: 0.8;
 }

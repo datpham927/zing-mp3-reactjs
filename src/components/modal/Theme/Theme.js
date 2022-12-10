@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { zingCounter } from '~/redux/action';
 import style from './Theme.module.scss';
 import ThemeContainer from './ThemeContainer/ThemeContainer';
@@ -70,7 +70,6 @@ const themesModal = {
 
 function Theme() {
     const dispatch = useDispatch();
-    const modalTheme = useSelector((state) => state.counter.booleanTheme);
     const handelModal = (e) => {
         if (e.target === e.currentTarget) {
             dispatch(zingCounter.actions.modalTheme(false));

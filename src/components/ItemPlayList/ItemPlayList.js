@@ -1,24 +1,18 @@
 import classNames from 'classnames/bind';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { zingCounter } from '~/redux/action';
+
 import Button from '../Button';
 import LoadImg from '../loadImg/LoadImg';
 import styles from './ItemPlayList.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ItemPlayList({ data, timeLoad = 2000, type = '' }) {
-    const dispatch = useDispatch();
-
-    const handleClick = (id) => {
-        dispatch(zingCounter.actions.setIdPlayList(id));
-    };
+function ItemPlayList({ data, timeLoad = 2000, type = '', description, className }) {
     return type === 'Single & EP' ? (
-        <li className={cx('item') + ' l-3 m-4 c-6 col '}>
+        <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
             <div className={cx('wrapper')}>
                 <LoadImg timeLoad={timeLoad}>
-                    <Link to={data.link} onClick={() => handleClick(data.encodeId)}>
+                    <Link to={data.link}>
                         <div className={cx('image-hover')}>
                             <div className={cx('container-image')}>
                                 <img src={data.thumbnailM} alt="" />
@@ -43,9 +37,7 @@ function ItemPlayList({ data, timeLoad = 2000, type = '' }) {
                 </LoadImg>
                 <div className={cx('content')}>
                     <span className={cx('title')}>
-                        <Link to={data.link} onClick={() => handleClick(data.encodeId)}>
-                            {data.title}
-                        </Link>
+                        <Link to={data.link}>{data.title}</Link>
                     </span>
                     {data.artists &&
                         (data.artists.length > 0 ? (
@@ -59,10 +51,10 @@ function ItemPlayList({ data, timeLoad = 2000, type = '' }) {
             </div>
         </li>
     ) : (
-        <li className={cx('item') + ' l-3 m-4 c-6 col '}>
+        <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
             <div className={cx('wrapper')}>
                 <LoadImg timeLoad={timeLoad}>
-                    <Link to={data.link} onClick={() => handleClick(data.encodeId)}>
+                    <Link to={data.link}>
                         <div className={cx('image-hover')}>
                             <div className={cx('container-image')}>
                                 <img src={data.thumbnailM} alt="" />
@@ -87,25 +79,23 @@ function ItemPlayList({ data, timeLoad = 2000, type = '' }) {
                 </LoadImg>
                 <div className={cx('content')}>
                     <span className={cx('title')}>
-                        <Link to={data.link} onClick={() => handleClick(data.encodeId)}>
-                            {data.title}
-                        </Link>
+                        <Link to={data.link}>{data.title}</Link>
                     </span>
-                    {data.artists &&
-                        (data.artists.length > 0 ? (
-                            <span className={cx('subtitle')}>
-                                {data.artists.map((item, index) => (
-                                    <>
-                                        <span>
-                                            <Link to={`/nghesi/${item.alias}`}>{item.name}</Link>
-                                        </span>
-                                        {index < data.artists.length - 1 && ', '}
-                                    </>
-                                ))}
-                            </span>
+
+                    <span className={cx('subtitle')}>
+                        {!description ? (
+                            data?.artists?.map((item, index) => (
+                                <>
+                                    <span key={index}>
+                                        <Link to={`/nghesi/${item.alias}`}>{item.name}</Link>
+                                    </span>
+                                    {index < data.artists.length - 1 && ', '}
+                                </>
+                            ))
                         ) : (
-                            <Link to={`/nghesi/${data.artists.alias}`}>{data.artists.alias}</Link>
-                        ))}
+                            <span>{data?.sortDescription}</span>
+                        )}
+                    </span>
                 </div>
             </div>
         </li>

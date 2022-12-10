@@ -1,13 +1,15 @@
 import classNames from 'classnames/bind';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import styles from './LoadImg.module.scss';
 const cx = classNames.bind(styles);
 
 function LoadImg({ className, radius, children, timeLoad }) {
     const [load, setLoad] = useState(false);
-    setTimeout(() => {
-        setLoad(true);
-    }, timeLoad);
+    useEffect(() => {
+        setTimeout(() => {
+            setLoad(true);
+        }, timeLoad);
+    }, [timeLoad]);
     return load ? (
         <> {children}</>
     ) : (

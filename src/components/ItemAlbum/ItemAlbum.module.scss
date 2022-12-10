@@ -1,5 +1,5 @@
 .item {
-    padding: 0 10px;
+    padding: 0 15px;
     .include {
         display: flex;
         width: 100%;
@@ -55,10 +55,11 @@
                 padding: 0 10px;
                 .name {
                     display: flex;
+
                     .song {
                         position: relative;
                         font-size: 1.4rem;
-                        color: var(--text-secondary);
+                        color: var(--text-primary);
                         font-weight: 400;
                         margin-right: 8px;
                         display: -webkit-box;
@@ -114,4 +115,7 @@
             background-color: var(--alpha-bg);
         }
     }
+}
+.vip {
+    opacity: 0.7;
 }

@@ -44,7 +44,7 @@ function ResultSearch() {
                             TẤT CẢ
                         </NavLink>
                     </li>
-                    {MENU_RESULT.map((item) => (
+                    {MENU_RESULT.map((item, index) => (
                         <li className={cx('item')}>
                             <NavLink to={item.path} className={(nav) => cx({ active: nav.isActive })}>
                                 {item.title}

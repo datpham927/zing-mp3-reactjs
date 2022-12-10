@@ -7,7 +7,6 @@ const initialState = {
     artist_MV: [],
     artist_Singer: [],
     artist_Album: [],
-    data_Home: [],
     modalArtist: false,
 };
 

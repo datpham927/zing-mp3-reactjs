@@ -79,10 +79,19 @@
     &:hover {
         opacity: 0.8;
     }
+    & a {
+        color: var(--text-primary);
+    }
 }
 body .btn.action {
     background-color: var(--purple-primary);
     border-color: var(--purple-primary);
     margin-right: 10px;
     color: #fff;
+}
+.btnItem {
+    font-size: 1.2rem;
+    padding: 4px 24px;
+    background-color: transparent;
+    margin: 0 10px;
 }

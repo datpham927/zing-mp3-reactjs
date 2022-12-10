@@ -1,0 +1,82 @@
+.event {
+    .wrapper-image {
+        position: relative;
+        width: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+        & img {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.3s linear;
+        }
+        & .describe {
+            position: absolute;
+            bottom: 0;
+            padding: 10px;
+            padding-right: 25px;
+            & .tag {
+                font-size: 0.9rem;
+                padding: 2px 4px;
+                border-radius: 2px;
+                color: #ff0101;
+                background-color: #fff;
+                text-transform: uppercase;
+            }
+            & .title {
+                font-size: 1.6rem;
+                color: #fff;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+        }
+        &:hover img {
+            transform: scale(1.05);
+        }
+    }
+
+    .info {
+        display: flex;
+        margin-top: 10px;
+        .left {
+            flex-shrink: 0;
+            & h3 {
+                font-size: 1.4rem;
+                color: var(--text-primary);
+                font-weight: 500;
+            }
+            .avatar {
+                display: flex;
+                flex-shrink: 0;
+                .avatar-item {
+                    width: 4%;
+                    border-radius: 999px;
+                    overflow: hidden;
+                    height: 20px;
+                    width: 20px;
+                    border: 2px solid var(--primary-bg);
+                    & img {
+                        display: block;
+                        object-fit: cover;
+                        width: 100%;
+                    }
+                }
+                & .text {
+                    font-weight: 500;
+                    color: var(--text-secondary);
+                }
+                .avatar-item + .avatar-item {
+                    margin-left: -5px;
+                }
+            }
+        }
+        .right {
+            flex-shrink: 0;
+            .btn {
+                padding: 8px 20px;
+            }
+        }
+    }
+}

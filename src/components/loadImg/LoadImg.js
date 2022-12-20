@@ -3,7 +3,7 @@ import { memo, useEffect, useState } from 'react';
 import styles from './LoadImg.module.scss';
 const cx = classNames.bind(styles);
 
-function LoadImg({ className, radius, children, timeLoad }) {
+function LoadImg({ className, radius, children, timeLoad = 500 }) {
     const [load, setLoad] = useState(false);
     useEffect(() => {
         setTimeout(() => {

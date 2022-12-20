@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import style from './ItemNewRelease.modul.scss';
 
 const cx = className.bind(style);
-function ItemNewRelease({ data, index }) {
+function ItemNewRelease({ data, index, col = ' l-4' }) {
     return (
-        <li className={cx('new-release') + ' l-4'}>
+        <li className={cx('new-release') + col}>
             <div className={cx('wrapper')}>
                 <div className={cx('left')}>
                     <img src={data.thumbnailM} alt="" />
@@ -17,17 +17,20 @@ function ItemNewRelease({ data, index }) {
                     </div>
                 </div>
                 <div className={cx('right')}>
-                    <h1>{data?.title}</h1>
-                    <span className={cx('singer')}>
-                        {data?.artists?.map((i, index) => (
-                            <div key={index}>
-                                <Link to={`/nghesi/${i.alias}`}>{i.name}</Link>
-                                {index < data?.artists.length - 1 && ', '}
-                            </div>
-                        ))}
-                    </span>
+                    <div className={cx('top')}>
+                        <h1>{data?.title}</h1>
+                        <span className={cx('singer')}>
+                            {data?.artists?.map((i, index) => (
+                                <div key={index}>
+                                    <Link to={i.link}>{i.name}</Link>
+                                    {index < data?.artists.length - 1 && ', '}
+                                </div>
+                            ))}
+                        </span>
+                    </div>
                     <div className={cx('order')}>
                         <span>#{index}</span>
+                        <small>{data.album?.releaseDate}</small>
                     </div>
                 </div>
             </div>

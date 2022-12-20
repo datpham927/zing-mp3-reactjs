@@ -6,7 +6,7 @@ const ChangerColor = ({ children }) => {
     const b = useSelector((state) => state.counter.booleanPreviewBgr);
     var kq;
     b ? (kq = p) : (kq = t);
-    if (kq === 0 || kq === 1 || kq === 2 || kq === 8) {
+    if ([0, 1, 2, 8].includes(kq)) {
         document.documentElement.style.setProperty('--navigation-text', '#dadada');
         document.documentElement.style.setProperty('--text-secondary', 'hsla(0, 0%, 100%, 0.5)');
         document.documentElement.style.setProperty('--text-primary', '#fff');

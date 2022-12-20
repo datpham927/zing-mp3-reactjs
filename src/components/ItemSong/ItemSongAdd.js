@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
-import Duration from '../duration/Duration';
 import LoadImg from '../loadImg/LoadImg';
+import Duration from '../time/Duration';
 import styles from './ItemSong.module.scss';
 
 const cx = classNames.bind(styles);
-function ItemSongAdd({ data, timeLoad = 2000 }) {
+function ItemSongAdd({ data, timeLoad = 1000 }) {
     return (
         <li className={cx('item', 'add') + ' l-12 col'}>
             <div className={cx('media')}>
@@ -47,7 +47,7 @@ function ItemSongAdd({ data, timeLoad = 2000 }) {
                                 {data?.artists?.map((i, index) => (
                                     <>
                                         <span>
-                                            <Link to={`/nghesi/${i.alias}`}>{i.name}</Link>
+                                            <Link to={i.link}>{i.name}</Link>
                                         </span>
                                         {index < data?.artists.length - 1 && ', '}
                                     </>
@@ -80,7 +80,7 @@ function ItemSongAdd({ data, timeLoad = 2000 }) {
                             />
                         </div>
                         <div className={cx('duration')}>
-                            <span>{<Duration duration={data.duration} />}</span>
+                            <span>{<Duration duration={data?.duration} />}</span>
                         </div>
                     </div>
                 </div>

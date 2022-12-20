@@ -39,7 +39,7 @@ const MENU_SIDEBAR = [
         id: 0,
         title: 'Theo Dõi',
         icon: <i className="icon  ic-24-FeedTab"></i>,
-        path: `/the-loai-nghe-si`,
+        path: `/the-loai-nghe-si/Viet-Nam/IWZ9Z08I.html`,
         type: false,
     },
 ];

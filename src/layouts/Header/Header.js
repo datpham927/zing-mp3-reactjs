@@ -10,14 +10,13 @@ import { useRef } from 'react';
 import { zingCounter } from '~/redux/action';
 
 import TippyMenu from '~/components/menu/tippyMenu/TippyMenu';
-import config from '~/routes/config';
 const cx = classNames.bind(style);
 const MENU_ITEM = [
     {
         id: 0,
         title: 'Danh sách chặn',
         iconLeft: <i className="icon ic-20-Block"></i>,
-        path: config.routes.block,
+        path: '/block',
     },
     {
         id: 1,

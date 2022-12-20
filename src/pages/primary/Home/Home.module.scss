@@ -49,7 +49,7 @@
             bottom: 50%;
             background-color: var(--alpha-bg);
             transform: translateY(50%);
-            z-index: 3;
+            z-index: 10;
         }
         .btn-right-gallery {
             right: 0;
@@ -94,6 +94,7 @@
         height: 100%;
         border-radius: 5px;
         overflow: hidden;
+
         & a {
             width: 100%;
             height: 100%;
@@ -103,24 +104,17 @@
                 display: block;
                 transition: 0.4s linear;
             }
+            & .load {
+                padding-bottom: 26%;
+            }
         }
     }
     &:hover img {
         transform: scale(1.1);
     }
-
-    .load {
-        padding-bottom: 25%;
-    }
 }
 
 // ----------------
-.spotlight {
-    display: flex;
-    margin-top: 30px;
-    margin-bottom: -30px;
-    overflow: hidden;
-}
 
 .new-release {
     display: flex;
@@ -377,24 +371,29 @@
     margin-top: 10px;
     overflow: hidden;
 }
-.btn-right {
-    position: absolute;
-    right: 0;
-    bottom: 50%;
-    background-color: var(--alpha-bg);
-}
-.btn-right + .btn-left {
-    position: absolute;
-    left: 0;
-    margin-left: 0;
-    bottom: 50%;
-    background-color: var(--alpha-bg);
-    z-index: 3;
-}
 
 // -----------------------
 .wrapper-event {
     display: flex;
     width: 100%;
     overflow: hidden;
+}
+
+//--------------
+.btn-right {
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+    background-color: var(--alpha-bg);
+    z-index: 10;
+}
+.btn-left {
+    position: absolute;
+    bottom: 50%;
+    background-color: var(--alpha-bg);
+    z-index: 10;
+}
+.btn-right + .btn-left {
+    left: 0;
+    margin-left: 0;
 }

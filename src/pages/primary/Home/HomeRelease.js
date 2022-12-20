@@ -55,10 +55,10 @@ function HomeRelease({ data }) {
                 </div>
             </div>
             <div className={cx('body')}>
-                {all && data?.items?.all.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
-                {vPop && data?.items?.vPop.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
+                {all && data?.items?.all?.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
+                {vPop && data?.items?.vPop?.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
                 {others &&
-                    data?.items?.others.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
+                    data?.items?.others?.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
             </div>
         </Container>
     );

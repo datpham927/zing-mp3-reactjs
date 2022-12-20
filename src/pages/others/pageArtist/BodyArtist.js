@@ -10,7 +10,7 @@ function BodyArtist() {
     const MENU = [
         {
             title: 'TỔNG QUAN',
-            to: `/nghesi/${id.name}`,
+            to: `/nghe-si/${id.name}`,
         },
         {
             title: 'BÀI HÁT',

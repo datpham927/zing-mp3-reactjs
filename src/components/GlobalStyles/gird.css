@@ -743,3 +743,6 @@
 .hide {
     display: none;
 }
+.swiper {
+    margin: 0 -15px;
+}

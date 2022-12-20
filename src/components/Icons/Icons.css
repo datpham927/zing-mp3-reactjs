@@ -17,8 +17,14 @@ body .tippy-content {
     padding: 3px 9px;
 }
 /* --------------- */
+.ic-info:before {
+    content: '\45';
+}
 .ic-20-info:before {
     content: '';
+}
+.ic-comment:before {
+    content: '\71';
 }
 .ic-20-Block:before {
     content: '\e9d1';
@@ -179,4 +185,13 @@ body .tippy-content {
 }
 .ic-24-Sort:before {
     content: '\e9b2';
+}
+.ic-up:before {
+    content: '\39';
+}
+.ic-down:before {
+    content: '\66';
+}
+.ic-20-Bookmark:before {
+    content: '\ea6f';
 }

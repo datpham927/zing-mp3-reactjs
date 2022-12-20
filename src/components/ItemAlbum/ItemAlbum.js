@@ -1,10 +1,9 @@
 import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 import { zingCounter } from '~/redux/action';
 import Button from '../Button';
-import Duration from '../duration/Duration';
+import Duration from '../time/Duration';
 import LoadImg from '../loadImg/LoadImg';
 import styles from './ItemAlBum.module.scss';
 
@@ -51,7 +50,7 @@ function ItemAlbum({ data }) {
                         <span className={cx('singer')}>
                             {data?.artists?.map((item, index) => (
                                 <li key={index}>
-                                    <Link to={`/nghesi/${item?.alias}`}>{item.name}</Link>
+                                    <Link to={item?.link}>{item.name}</Link>
                                     {index < data.artists.length - 1 && ', '}
                                 </li>
                             ))}

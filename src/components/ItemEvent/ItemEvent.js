@@ -1,21 +1,24 @@
 import className from 'classnames/bind';
+import { useState } from 'react';
 
 import ButtonAction from '../Button/ButtonAction';
 import style from './ItemEvent.module.scss';
 const cx = className.bind(style);
-function ItemEvent({ data }) {
+function ItemEvent({ data, col = 'l-4' }) {
+    const [care, setCare] = useState(false);
     return (
-        <li className={cx('event') + ' l-4 col'}>
+        <li className={cx('event') + ' col ' + col}>
             <div className={cx('wrapper-image')}>
                 <img src={data.coverHM} alt="" />
                 <div className={cx('describe')}>
                     <span className={cx('tag')}>{data.label}</span>
-                    <h3 className={cx('title')}>{data.title}</h3>
+                    <h3 className={cx('title')}>{data.shortTitle}</h3>
+                    <small className={cx('endText')}> {data.startText}</small>
                 </div>
             </div>
             <div className={cx('info')}>
-                <div className={cx('left') + ' l-7'}>
-                    <h3>Lượt quan tâm</h3>
+                <div className={cx('left') + ' l-6'}>
+                    <small>Lượt quan tâm</small>
                     <div className={cx('avatar')}>
                         {data?.followers?.map((item, index) => (
                             <div key={index} className={cx('avatar-item')}>
@@ -26,8 +29,10 @@ function ItemEvent({ data }) {
                         <span className={cx('text')}>+ {data.totalFollow}</span>
                     </div>
                 </div>
-                <div className={cx('right') + ' l-5'}>
-                    <ButtonAction className={cx('btn')}>QUAN TÂM</ButtonAction>
+                <div className={cx('right') + ' l-6'}>
+                    <ButtonAction className={cx('btn', !care && 'care')} onClick={() => setCare(!care)}>
+                        {care ? data.unsubscribeText : data.subscribeText}
+                    </ButtonAction>
                 </div>
             </div>
         </li>

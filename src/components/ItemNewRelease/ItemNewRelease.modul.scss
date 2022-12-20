@@ -54,28 +54,35 @@
             }
         }
         .right {
-            & h1 {
-                font-size: 1.6rem;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                color: var(--text-primary);
-                overflow: hidden;
-            }
-            .singer {
-                color: var(--text-secondary);
-                & a {
-                    color: var(--text-secondary);
-                    font-size: 1.2rem;
-                    &:hover {
-                        color: var(--link-text-hover);
-                    }
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .top {
+                padding-right: 10px;
+                & h1 {
+                    font-size: 1.6rem;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    color: var(--text-primary);
+                    overflow: hidden;
                 }
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 1;
-                overflow: hidden;
+                .singer {
+                    color: var(--text-secondary);
+                    & a {
+                        color: var(--text-secondary);
+                        font-size: 1.2rem;
+                        &:hover {
+                            color: var(--link-text-hover);
+                        }
+                    }
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                }
             }
+
             .order {
                 & span {
                     font-size: 4rem;
@@ -83,6 +90,11 @@
                     color: rgba(74, 144, 226, 0);
                     font-weight: 800;
                     line-height: 1;
+                }
+                & small {
+                    color: var(--text-secondary);
+                    font-size: 1.6rem;
+                    margin-left: 5px;
                 }
             }
         }

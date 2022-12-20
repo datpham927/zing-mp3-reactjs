@@ -13,7 +13,7 @@ function HomeWeekChart({ data }) {
                 <div key={index} className={cx('weekChart') + ' l-4'}>
                     <div className={cx('image')}>
                         <Link to={item.link}>
-                            <LoadImg timeLoad={2000} classNam={cx('load')}>
+                            <LoadImg timeLoad={2000} className={cx('load')}>
                                 <img src={item.cover} alt="" />
                             </LoadImg>
                         </Link>

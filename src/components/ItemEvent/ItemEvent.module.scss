@@ -15,6 +15,8 @@
             bottom: 0;
             padding: 10px;
             padding-right: 25px;
+            width: 100%;
+            background-image: linear-gradient(180deg, transparent 27%, rgba(0, 0, 0, 0.5));
             & .tag {
                 font-size: 0.9rem;
                 padding: 2px 4px;
@@ -31,6 +33,10 @@
                 -webkit-line-clamp: 1;
                 overflow: hidden;
             }
+            & .endText {
+                color: #fff;
+                font-size: 1.4rem;
+            }
         }
         &:hover img {
             transform: scale(1.05);
@@ -42,10 +48,9 @@
         margin-top: 10px;
         .left {
             flex-shrink: 0;
-            & h3 {
+            & small {
                 font-size: 1.4rem;
                 color: var(--text-primary);
-                font-weight: 500;
             }
             .avatar {
                 display: flex;
@@ -67,6 +72,7 @@
                     font-weight: 500;
                     color: var(--text-secondary);
                 }
+
                 .avatar-item + .avatar-item {
                     margin-left: -5px;
                 }
@@ -74,8 +80,13 @@
         }
         .right {
             flex-shrink: 0;
+            text-align: end;
             .btn {
-                padding: 8px 20px;
+                padding: 8px 15px;
+                text-transform: uppercase;
+            }
+            .care {
+                background-color: var(--purple-primary);
             }
         }
     }

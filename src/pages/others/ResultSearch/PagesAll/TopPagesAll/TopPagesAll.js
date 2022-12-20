@@ -5,7 +5,7 @@ import styles from './TopPagesAll.module.scss';
 
 const cx = classNames.bind(styles);
 
-function TopPagesAll({ data, type = '', timeLoad = 2000 }) {
+function TopPagesAll({ data, type = '', timeLoad = 1000 }) {
     return type === 'song' ? (
         <div className=" l-4 col">
             <div className={cx('media')}>
@@ -32,7 +32,7 @@ function TopPagesAll({ data, type = '', timeLoad = 2000 }) {
                         <div className={cx('singer')}>
                             {data?.artistsNames.split(',').map((i, index) => (
                                 <>
-                                    <Link to={`/nghesi/${data?.artists[index]?.alias}`}>{i}</Link>
+                                    <Link to={data?.artists[index]?.link}>{i}</Link>
                                     <span>{index < data?.artistsNames.split(',').length - 1 && ', '}</span>
                                 </>
                             ))}
@@ -62,7 +62,7 @@ function TopPagesAll({ data, type = '', timeLoad = 2000 }) {
                     <div className={cx('content', 'content-artist')}>
                         <span className={cx('type')}>Nghệ Sĩ</span>
                         <div className={cx('singer')}>
-                            <Link to={`/nghesi/${data?.alias}`}>{data.name}</Link>
+                            <Link to={data?.link}>{data.name}</Link>
                         </div>
                         <div className={cx('title')}>
                             <span>

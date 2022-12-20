@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as httpRequest from '~/components/Api/utils/httpRequest';
 
 // export const search = async (value) => {
@@ -39,11 +40,77 @@ export const playList = async (id) => {
         console.log(error);
     }
 };
+export const zingChart = async () => {
+    try {
+        const res = await axios.get('https://api-zingmp3.vercel.app/api/homechart');
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 export const getHome = async () => {
     try {
         const res = await httpRequest.get(`home`);
         return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const getRadio = async () => {
+    try {
+        const res = await httpRequest.get(`radio`);
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const VnFollowing = async (id) => {
+    try {
+        const res = await axios.get(`https://api-zingmp3.vercel.app/api/newfeeds?id=IWZ9Z08I&page=${id}`);
+        return res.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const usFollowing = async (id) => {
+    try {
+        const res = await axios.get(`https://api-zingmp3.vercel.app/api/newfeeds?id=IWZ9Z08O&page=${id}`);
+        return res.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const kPopFollowing = async (id) => {
+    try {
+        const res = await axios.get(`https://api-zingmp3.vercel.app/api/newfeeds?id=IWZ9Z08W&page=${id}`);
+        return res.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const hnFollowing = async (id) => {
+    try {
+        const res = await axios.get(`https://api-zingmp3.vercel.app/api/newfeeds?id=IWZ9Z08U&page=${id}`);
+        return res.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const getNewSongs = async () => {
+    try {
+        const res = await axios.get('https://api-zingmp3.vercel.app/api/newreleasechart');
+        return res.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const getCategory = async () => {
+    try {
+        const res = await axios.get('https://api-zingmp3.vercel.app/api/hubhome');
+        return res.data.data;
     } catch (error) {
         console.log(error);
     }

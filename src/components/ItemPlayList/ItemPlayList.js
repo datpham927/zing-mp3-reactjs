@@ -7,7 +7,7 @@ import styles from './ItemPlayList.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ItemPlayList({ data, timeLoad = 2000, type = '', description, className }) {
+function ItemPlayList({ data, timeLoad = 1000, type = '', description, className }) {
     return type === 'Single & EP' ? (
         <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
             <div className={cx('wrapper')}>
@@ -45,7 +45,7 @@ function ItemPlayList({ data, timeLoad = 2000, type = '', description, className
                                 {data.releaseDate}
                             </span>
                         ) : (
-                            <Link to={`/nghesi/${data.artists.alias}`}>{data.artists.alias}</Link>
+                            <Link to={data.artists.link}>{data.artists.alias}</Link>
                         ))}
                 </div>
             </div>
@@ -85,12 +85,12 @@ function ItemPlayList({ data, timeLoad = 2000, type = '', description, className
                     <span className={cx('subtitle')}>
                         {!description ? (
                             data?.artists?.map((item, index) => (
-                                <>
-                                    <span key={index}>
-                                        <Link to={`/nghesi/${item.alias}`}>{item.name}</Link>
+                                <span key={index}>
+                                    <span>
+                                        <Link to={item.link}>{item.name}</Link>
                                     </span>
                                     {index < data.artists.length - 1 && ', '}
-                                </>
+                                </span>
                             ))
                         ) : (
                             <span>{data?.sortDescription}</span>

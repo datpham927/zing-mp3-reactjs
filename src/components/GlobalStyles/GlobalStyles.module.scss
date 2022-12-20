@@ -51,6 +51,7 @@ body {
     --dark-alpha-50: rgba(0, 0, 0, 0.5);
     --dark-alpha-70: rgba(0, 0, 0, 0.7);
     --dark-alpha-80: rgba(0, 0, 0, 0.8);
+    --chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05);
     // -------- text ------------------
     --navigation-text: #dadada;
     --text-secondary: hsla(0, 0%, 100%, 0.5);
@@ -75,13 +76,14 @@ button {
     cursor: pointer;
     border: none;
 }
-a {
-    text-decoration: none;
-    cursor: pointer;
-}
+
 h1 {
     color: var(--text-primary);
 }
 li {
     list-style: none;
+}
+body a {
+    text-decoration: none;
+    cursor: pointer;
 }

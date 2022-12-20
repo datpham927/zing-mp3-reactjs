@@ -1,17 +1,20 @@
 import classNames from 'classnames/bind';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ButtonAction from '../Button/ButtonAction';
 import Follow from '../follow/Follow';
 import LoadImg from '../loadImg/LoadImg';
 import styles from './ItemArtists.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ItemArtists({ data, timeLoad = 2000, col = 'l-3' }) {
+function ItemArtists({ data, timeLoad = 1000, col = 'l-3' }) {
+    const [care, setCare] = useState(false);
     return (
         <li className={cx('item') + ` ${col} col`}>
             <div className={cx('wrapper')}>
                 <LoadImg radius timeLoad={timeLoad}>
-                    <Link to={`/nghesi/${data.alias}`}>
+                    <Link to={data.link}>
                         <div className={cx('image')}>
                             <img src={data.thumbnail} alt="" />
                             <div className={cx('play')}>
@@ -23,16 +26,25 @@ function ItemArtists({ data, timeLoad = 2000, col = 'l-3' }) {
                 <div className={cx('info')}>
                     <div className={cx('content')}>
                         <div className={cx('singer')}>
-                            <Link to={`/nghesi/${data.alias}`}>{data.name}</Link>
+                            <Link to={data.link}>{data.name}</Link>
                         </div>
                         <span className={cx('follow')}>
-                            <Follow follow={data?.totalFollow} /> quan tâm
+                            <Follow follow={data.totalFollow} /> quan tâm
                         </span>
                     </div>
-                    <button>
-                        <i className="icon ic-addfriend"></i>
-                        <span>Quan tâm</span>
-                    </button>
+                    <ButtonAction className={cx('btn', !care && 'care')} onClick={() => setCare(!care)}>
+                        {care ? (
+                            <>
+                                <i class="icon ic-check"></i>
+                                <span>Đã quan tâm</span>
+                            </>
+                        ) : (
+                            <>
+                                <i className="icon ic-addfriend"></i>
+                                <span>Quan tâm</span>
+                            </>
+                        )}
+                    </ButtonAction>
                 </div>
             </div>
         </li>

@@ -36,7 +36,7 @@ function HomeGallery({ data }) {
                 numberIndex = 0;
             }
         };
-        setInterval(() => change(), 4000);
+        setInterval(() => change(), 3000);
     };
 
     listImg.length > 0 && autoChange();

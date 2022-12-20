@@ -4,7 +4,7 @@ import Container from '~/components/container/Container';
 import ItemSongAdd from '~/components/ItemSong/ItemSongAdd';
 
 function SongOther() {
-    const data = useSelector((state) => state.dataRelease?.dataNewRelease);
+    const data = useSelector((state) => state?.dataRelease?.dataNewRelease);
     return (
         <Container>
             {data?.others?.map(

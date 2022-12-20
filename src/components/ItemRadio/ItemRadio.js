@@ -2,9 +2,9 @@ import className from 'classnames/bind';
 import Follow from '../follow/Follow';
 import style from './ItemRadio.module.scss';
 const cx = className.bind(style);
-function ItemRadio({ data }) {
+function ItemRadio({ data, col = 'l-2' }) {
     return (
-        <div className="l-2 m-3 c-4 col">
+        <div className={`col` + col}>
             <div className={cx('radio-item')}>
                 <div className={cx('wrapper-image')}>
                     <div className={cx('image')}>

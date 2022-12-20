@@ -18,7 +18,6 @@ function HeaderArtist() {
         const fetchApi = async () => {
             const data = await searchApi.artist(id.name);
             dispatch(zingArtist.actions.setDataArtist(data));
-
             data?.sections &&
                 data?.sections.forEach((i) => {
                     // eslint-disable-next-line no-unused-expressions
@@ -42,11 +41,9 @@ function HeaderArtist() {
                 <h1 className={cx('name')}>{data?.name}</h1>
                 <div className={cx('describe')}>
                     <span className={cx('biography')}>{data?.sortBiography}</span>
-                    {data?.biography && (
-                        <span className={cx('more')} onClick={() => dispatch(zingArtist.actions.setModalArtist(true))}>
-                            ... XEM THÊM
-                        </span>
-                    )}
+                    <span className={cx('more')} onClick={() => dispatch(zingArtist.actions.setModalArtist(true))}>
+                        ... XEM THÊM
+                    </span>
                 </div>
                 {data?.totalFollow && (
                     <div className={cx('actions')}>

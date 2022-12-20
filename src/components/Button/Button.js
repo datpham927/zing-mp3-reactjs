@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/alt-text */
-import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
@@ -64,14 +63,13 @@ function Button(
     if (noContent) {
         Comp = 'button';
     }
-
     return src ? (
         <Comp ref={ref} className={classNames} {...props}>
             {src && <img className={cx('image')} src={src} />}
-            <span className={cx('content')}>{children}</span>
+            {children && <span className={cx('content')}>{children}</span>}
         </Comp>
     ) : noContent ? (
-        <Comp className={classNames} {...props}>
+        <Comp ref={ref} className={classNames} {...props}>
             {iconLeft && <span>{iconLeft}</span>}
             {type && (
                 <span>
@@ -79,11 +77,11 @@ function Button(
                     <input type="file" hidden id="upload" />
                 </span>
             )}
-            <span className={cx('content')}>{children}</span>
+            {children && <span className={cx('content')}>{children}</span>}
         </Comp>
     ) : (
         <Tippy delay={[0, 50]} content={content}>
-            <Comp className={classNames} {...props}>
+            <Comp ref={ref} className={classNames} {...props}>
                 {iconLeft && <span>{iconLeft}</span>}
                 {type && (
                     <span>
@@ -95,12 +93,5 @@ function Button(
         </Tippy>
     );
 }
-Button.propTypes = {
-    to: PropTypes.string,
-    href: PropTypes.string,
-    iconLeft: PropTypes.node,
-    children: PropTypes.node,
-    onClick: PropTypes.func,
-    className: PropTypes.string,
-};
+
 export default forwardRef(Button);

@@ -4,17 +4,19 @@ import Theme from './Theme/Theme';
 import style from './Modal.module.scss';
 import ModalArtist from './ModalArtist/ModalArtist';
 import ModalVip from './ModalVip/ModalVip';
+import ModalFollow from './ModalFollow/ModalFollow';
 // import ModalVip from './ModalVip/modalVip';
 const cx = classNames.bind(style);
 
 function Modal() {
-    const modalTheme = useSelector((state) => state.counter.booleanTheme);
+    const { booleanTheme, booleanModalFollow } = useSelector((state) => state.counter);
     const { modalArtist } = useSelector((state) => state.dataArtist);
     return (
         <>
-            {(modalTheme || modalArtist) && <div className={cx('modal')}></div>}
-            {modalTheme && <Theme />}
+            {(booleanTheme || modalArtist) && <div className={cx('modal')}></div>}
+            {booleanTheme && <Theme />}
             {modalArtist && <ModalArtist />}
+            {booleanModalFollow && <ModalFollow />}
             <ModalVip />
         </>
     );

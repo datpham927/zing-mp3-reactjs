@@ -30,7 +30,7 @@ function LeftAlbum({ data }) {
                     {data?.artists?.map((i, index) => (
                         <>
                             <span>
-                                <Link to={`/nghesi/${i.alias}`}>{i.name}</Link>
+                                <Link to={i.link}>{i.name}</Link>
                             </span>
                             {index < data.artists.length - 1 && ', '}
                         </>

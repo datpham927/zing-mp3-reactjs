@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-
 import Container from '~/components/container/Container';
 import ItemSongAdd from '~/components/ItemSong/ItemSongAdd';
 
 function SongAll() {
-    const data = useSelector((state) => state.dataRelease?.dataNewRelease);
+    const api = useSelector((state) => state.dataHome.data_Home);
+    const data = api.find((e) => e.sectionType === 'new-release')?.items;
     return (
         <Container>
             {data?.all?.map((item, index) => (

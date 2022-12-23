@@ -28,17 +28,17 @@ function ArtistHeroTop() {
         <div
             className={cx('header')}
             style={{
-                backgroundImage: `url(${data.cover})`,
+                backgroundImage: `url(${data?.cover})`,
             }}
         >
             <div className={cx('content')}>
                 <div className={cx('title')}>
-                    <h1>{data.name}</h1>
+                    <h1>{data?.name}</h1>
                     <Button noContent iconLeft={<i className="icon ic-play"></i>} className={cx('btn')} />
                 </div>
                 <div className={cx('action')}>
                     <div className={cx('follow')}>
-                        <Follow follow={data.follow} /> người quan tâm
+                        <Follow follow={data?.follow} /> người quan tâm
                     </div>
                     <ButtonAction onClick={() => setCare(!care)} className={cx('btn', !care && 'care')}>
                         {care ? (
@@ -48,7 +48,7 @@ function ArtistHeroTop() {
                             </>
                         ) : (
                             <>
-                                <i class="icon ic-check"></i>
+                                <i className="icon ic-check"></i>
                                 <span>ĐÃ QUAN TÂM</span>
                             </>
                         )}

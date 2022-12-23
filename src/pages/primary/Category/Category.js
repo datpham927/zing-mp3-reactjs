@@ -1,4 +1,5 @@
 import className from 'classnames/bind';
+import { object } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCategory } from '~/components/Api/Service';
@@ -6,44 +7,43 @@ import ButtonAction from '~/components/Button/ButtonAction';
 import Container from '~/components/container/Container';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
 import ItemTopic from '~/components/ItemTopic/ItemTopic';
+import NoContent from '~/components/noContent/NoConTent';
 import style from './Category.module.scss';
 
 const cx = className.bind(style);
 
 function Category() {
     const [datas, setDatas] = useState([]);
+    const [banner, setBanner] = useState([]);
     const [indexTopic, setIndexTopic] = useState(6);
     const [indexNations, setIndexNations] = useState(3);
     useEffect(() => {
         const api = async () => {
             const data = await getCategory();
             setDatas(data);
+            setBanner(data.banners[0]);
         };
         api();
     }, []);
     const topic = datas?.topic;
     const nations = datas?.nations;
     const genre = datas?.genre;
-
-    console.log(genre);
-    return (
+    return datas.banners ? (
         <div>
-            {/* <div className={cx('header')}>
-                <Link to={datas?.banners[0]?.cover}>
-                    <img src={datas?.banners[0]?.link} alt="" />
+            <div className={cx('header')}>
+                <Link to={banner?.link}>
+                    <img src={banner?.cover} alt="" />
                 </Link>
-            </div> */}
-
+            </div>
             <div className={cx('body')}>
                 <Container title={'Tâm Trạng Và Hoạt Động'}>
                     {topic?.map((e, i) => i < indexTopic && <ItemTopic data={e} key={i} />)}
                     {indexTopic === 6 && (
-                        <ButtonAction className={cx('btn')} onClick={() => setIndexTopic(topic.length)}>
+                        <ButtonAction className={cx('btn')} onClick={() => setIndexTopic(topic?.length)}>
                             Tất cả
                         </ButtonAction>
                     )}
                 </Container>
-
                 <Container title={'Quốc Gia'}>
                     {nations?.map(
                         (e, i) =>
@@ -59,17 +59,18 @@ function Category() {
                             ),
                     )}
                     {indexNations === 3 && (
-                        <ButtonAction className={cx('btn')} onClick={() => setIndexNations(nations.length)}>
+                        <ButtonAction className={cx('btn')} onClick={() => setIndexNations(nations?.length)}>
                             Tất cả
                         </ButtonAction>
                     )}
                 </Container>
-
-                {genre?.map((i, e) => (
-                    <ContainerPlaylist data={i} />
+                {genre?.map((e, i) => (
+                    <ContainerPlaylist key={i} data={e.playlists} title={e.title} all link={e.link} />
                 ))}
             </div>
         </div>
+    ) : (
+        <NoContent />
     );
 }
 

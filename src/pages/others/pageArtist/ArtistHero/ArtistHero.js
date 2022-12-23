@@ -1,75 +1,46 @@
 /* eslint-disable no-implied-eval */
 import classNames from 'classnames/bind';
-import Container from '~/components/container/Container';
 import styles from './ArtistHero.module.scss';
-import ItemSong from '~/components/ItemSong/ItemSong';
-import ItemPlayList from '~/components/ItemPlayList/ItemPlayList';
-import ItemVideo from '~/components/ItemVideo/ItemVideo';
-import { useSelector } from 'react-redux';
-import ItemArtists from '~/components/ItemArtists/ItemArtists';
-import NoContent from '~/components/noContent/NoConTent';
-import { useEffect, useState } from 'react';
 import ArtistHeroTop from './ArtistHeroTop';
+import ContainerSongs from '~/components/container/ContainerSongs';
+import ContainerPlaylist from '~/components/container/ContainerPlayList';
+import ContainerVideos from '~/components/container/ContainerVideos';
+import ContainerArtists from '~/components/container/ContainerArtists';
+import NoContent from '~/components/noContent/NoConTent';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { artist } from '~/components/Api/Service';
 
 const cx = classNames.bind(styles);
 
 function ArtistHero() {
-    const data = useSelector((state) => state.dataArtist.dataArtist);
-
-    const [songs, setSongs] = useState([]);
-    const [singleEP, setSingleEP] = useState([]);
-    const [mvs, setMv] = useState([]);
-    const [appear, setAppear] = useState([]);
-    const [canLike, setCanLike] = useState([]);
-
+    const [data, setData] = useState([]);
+    const id = useParams();
     useEffect(() => {
-        data?.sections?.forEach((i) => {
-            if (i.title === 'Bài hát nổi bật') {
-                setSongs(i);
-            } else if (i.title === 'Single & EP') {
-                setSingleEP(i);
-            } else if (i.title === 'MV') {
-                setMv(i.item);
-            } else if (i.title === 'Xuất hiện trong') {
-                setAppear(i);
-            } else if (i.title === 'Bạn Có Thể Thích') {
-                setCanLike(i);
-            }
-        });
-    });
-
+        const fetchApi = async () => {
+            const data = await artist(id.name);
+            setData(data);
+        };
+        fetchApi();
+    }, [id.name]);
     return (
         <div className={cx('wrapper')}>
-            <ArtistHeroTop />
             {data?.sections ? (
                 <>
-                    <div lassName={cx('song')}>
-                        <Container title={songs?.title}>
-                            {songs?.items?.map((item, index) => index < 6 && <ItemSong key={index} data={item} />)}
-                        </Container>
-                    </div>
-                    <div className={cx('wrapper')}>
-                        <Container title={singleEP?.title}>
-                            {singleEP?.items?.map(
-                                (item, index) => index < 4 && <ItemPlayList key={index} data={item} />,
-                            )}
-                        </Container>
-                    </div>
-                    <div className={cx('mv')}>
-                        <Container title={mvs?.title}>
-                            {mvs?.items?.map((item, index) => index < 3 && <ItemVideo key={index} data={item} />)}
-                        </Container>
-                    </div>
-                    <div className={cx('wrapper')}>
-                        <Container title={appear?.title}>
-                            {appear?.items?.map((item, index) => index < 4 && <ItemPlayList key={index} data={item} />)}
-                        </Container>
-                    </div>
-                    <div className={cx('wrapper')}>
-                        <Container title={canLike?.title}>
-                            {canLike?.items?.map((item, index) => index < 4 && <ItemArtists key={index} data={item} />)}
-                        </Container>
-                    </div>
+                    <ArtistHeroTop />
+                    {data?.sections.map((e, i) =>
+                        e.sectionType === 'song' ? (
+                            <ContainerSongs data={e.items} title={e.title} index={6} all link={e.link} />
+                        ) : e.sectionType === 'playlist' ? (
+                            <ContainerPlaylist data={e.items} title={e.title} />
+                        ) : e.sectionType === 'video' ? (
+                            <ContainerVideos data={e.items} title={e.title} />
+                        ) : e.sectionType === 'artist' ? (
+                            <ContainerArtists data={e.items} title={e.title} />
+                        ) : (
+                            ''
+                        ),
+                    )}
                 </>
             ) : (
                 <NoContent />

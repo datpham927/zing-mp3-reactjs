@@ -1,14 +1,14 @@
 import classNames from 'classnames/bind';
+import ArtistBody from './ArtistBody';
+import ArtistHeader from './ArtistHeader';
 import style from './PageArtist.module.scss';
-import HeaderArtist from './HeaderArist';
-import BodyArtist from './BodyArtist';
 const cx = classNames.bind(style);
 
 function PageArtist() {
     return (
         <div className={cx('wrapper')}>
-            <HeaderArtist />
-            <BodyArtist />
+            <ArtistHeader />
+            <ArtistBody />
         </div>
     );
 }

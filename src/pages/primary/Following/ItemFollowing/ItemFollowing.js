@@ -73,12 +73,12 @@ function ItemFollowing({ data }) {
                             onClick={() => setLike(!like)}
                             className={cx('footer-btn')}
                             noContent
-                            iconLeft={like ? <i class="icon ic-like-full"></i> : <i class="icon ic-like"></i>}
+                            iconLeft={like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>}
                         >
                             <Follow follow={like ? data?.like + 1 : data?.like} />
                         </Button>
 
-                        <Button noContent className={cx('footer-btn')} iconLeft={<i class="icon ic-comment"></i>}>
+                        <Button noContent className={cx('footer-btn')} iconLeft={<i className="icon ic-comment"></i>}>
                             {data?.commend}
                         </Button>
                     </div>

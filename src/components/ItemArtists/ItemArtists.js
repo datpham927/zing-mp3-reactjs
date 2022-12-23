@@ -35,7 +35,7 @@ function ItemArtists({ data, timeLoad = 1000, col = 'l-3' }) {
                     <ButtonAction className={cx('btn', !care && 'care')} onClick={() => setCare(!care)}>
                         {care ? (
                             <>
-                                <i class="icon ic-check"></i>
+                                <i className="icon ic-check"></i>
                                 <span>Đã quan tâm</span>
                             </>
                         ) : (

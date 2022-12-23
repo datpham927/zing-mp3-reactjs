@@ -86,6 +86,7 @@ function Search() {
         }
         dispatch(zingCounter.actions.setValueSearch(value));
     };
+
     // ẩn khung kết quả
     window.onclick = (e) => {
         if (

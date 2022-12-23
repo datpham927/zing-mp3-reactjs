@@ -1,5 +1,6 @@
 /* eslint-disable array-callback-return */
 import classNames from 'classnames/bind';
+import { memo } from 'react';
 
 import SuggestItem from '../KeywordsItem/KeywordsItem';
 import styles from './KeywordsMenu.module.scss';
@@ -14,4 +15,4 @@ function KeywordsMenu({ data, onSubmit }) {
     );
 }
 
-export default KeywordsMenu;
+export default memo(KeywordsMenu);

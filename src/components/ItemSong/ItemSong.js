@@ -96,11 +96,11 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '' }) {
                             <div className={cx('rank')}>
                                 {data?.rakingStatus < 0 ? (
                                     <span className={cx('red')}>
-                                        <i class="icon green is-18x18 is-center ic-down"></i>
+                                        <i className="icon green is-18x18 is-center ic-down"></i>
                                     </span>
                                 ) : (
                                     <span className={cx('green')}>
-                                        <i class="icon green is-18x18 is-center ic-up"></i>
+                                        <i className="icon green is-18x18 is-center ic-up"></i>
                                     </span>
                                 )}
 
@@ -198,11 +198,11 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '' }) {
                             <div className={cx('rank')}>
                                 {data?.rakingStatus < 0 ? (
                                     <span className={cx('red')}>
-                                        <i class="icon green is-18x18 is-center ic-down"></i>
+                                        <i className="icon green is-18x18 is-center ic-down"></i>
                                     </span>
                                 ) : (
                                     <span className={cx('green')}>
-                                        <i class="icon green is-18x18 is-center ic-up"></i>
+                                        <i className="icon green is-18x18 is-center ic-up"></i>
                                     </span>
                                 )}
 

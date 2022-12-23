@@ -45,7 +45,7 @@ function ItemPodcast({ data, col = 'l-12', index, className }) {
                 <Button
                     content="Thêm vào thư viện"
                     className={cx('add')}
-                    iconLeft={<i class="icon ic-20-Bookmark"></i>}
+                    iconLeft={<i className="icon ic-20-Bookmark"></i>}
                 />
             </div>
         </div>

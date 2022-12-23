@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import LoadImg from '../loadImg/LoadImg';
 import styles from './Container.module.scss';
@@ -67,4 +68,4 @@ function Container({
     );
 }
 
-export default Container;
+export default memo(Container);

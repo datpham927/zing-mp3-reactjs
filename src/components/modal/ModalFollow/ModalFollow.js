@@ -69,7 +69,9 @@ function ModalFollow() {
                                 onClick={() => setLike(!like)}
                                 className={cx('footer-btn')}
                                 noContent
-                                iconLeft={like ? <i class="icon ic-like-full"></i> : <i class="icon ic-like"></i>}
+                                iconLeft={
+                                    like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>
+                                }
                             >
                                 Thích
                             </Button>
@@ -86,7 +88,7 @@ function ModalFollow() {
                     </div>
 
                     <div className={cx('footer')}>
-                        <i class="icon ic-info"></i> Vào ứng dụng Zing MP3 để bình luận
+                        <i className="icon ic-info"></i> Vào ứng dụng Zing MP3 để bình luận
                     </div>
                 </div>
             </div>

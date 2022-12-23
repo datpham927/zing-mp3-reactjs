@@ -70,7 +70,7 @@ const MENU_SCROLL = [
         id: 0,
         title: 'MV',
         icon: <i className="icon  ic-24-MVTab"></i>,
-        path: '/the-loai-video',
+        path: '/the-loai-video/Viet-Nam/IWZ9Z08I.html',
         type: false,
     },
 ];

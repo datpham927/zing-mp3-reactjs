@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import classNames from 'classnames/bind';
 import styles from './KeywordsItem.module.scss';
 import { Link } from 'react-router-dom';
@@ -15,8 +13,5 @@ function SuggestItem({ data, onSubmit }) {
         </Link>
     );
 }
-SuggestItem.propTypes = {
-    data: PropTypes.string,
-};
 
 export default SuggestItem;

@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import classNames from 'classnames/bind';
 
 import SuggestItem from '../SuggestItem/SuggestItem';

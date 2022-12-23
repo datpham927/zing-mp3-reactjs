@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 
 function RecentlyItem({ data }) {
     return (
-        <Link to={`/play-list/${data.alias}/${data.encodeId}.html`} className={cx('song-item')}>
+        <Link to={data.link} className={cx('song-item')}>
             <div className={cx('wrapper-image')}>
                 <img src={data.thumbnail} alt="" className={cx('image')} />
                 <div className={cx('icon')}>

@@ -1,12 +1,13 @@
 import Container from './Container';
-import ItemPlayList from '../ItemPlayList/ItemPlayList';
+import ItemVideo from '../ItemVideo/ItemVideo';
+import { memo } from 'react';
 
-function ContainerVideos({ data, link, all = false }) {
+function ContainerVideos({ data, title, link, all = false, index = 3 }) {
     return (
-        <Container title={data?.title} link={link} all={all}>
-            {data.playlists?.map((i, e) => e < 4 && <ItemPlayList data={i} key={e} />)}
+        <Container title={title} data={data} link={link} all={all}>
+            {data?.map((item, i) => i < index && <ItemVideo key={i} data={item} />)}
         </Container>
     );
 }
 
-export default ContainerVideos;
+export default memo(ContainerVideos);

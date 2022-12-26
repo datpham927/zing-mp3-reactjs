@@ -8,7 +8,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper';
 import Button from '~/components/Button';
 import { useRef } from 'react';
 import Container from '~/components/container/Container';
-import ItemPodcastH from '~/components/ItemPodcastH/ItemPodcastH';
+import ItemPodcastH from '~/components/item/ItemPodcastH/ItemPodcastH';
 const cx = className.bind(style);
 function RadioPodcastH({ data }) {
     const navigationPrevRef = useRef();

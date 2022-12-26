@@ -1,15 +1,13 @@
 import { useSelector } from 'react-redux';
-
 import Container from '~/components/container/Container';
-import ItemSongAdd from '~/components/ItemSong/ItemSongAdd';
+
+import ContainerSongs from '~/components/container/ContainerSongs';
 
 function SongUsuk() {
-    const data = useSelector((state) => state?.dataRelease?.dataNewRelease);
+    const { data_newSongs } = useSelector((state) => state.dataHome);
     return (
         <Container>
-            {data?.others?.map((item, index) => (
-                <ItemSongAdd key={index} data={item} />
-            ))}
+            <ContainerSongs data={data_newSongs?.others} type={'add'} index={data_newSongs?.others.length} />
         </Container>
     );
 }

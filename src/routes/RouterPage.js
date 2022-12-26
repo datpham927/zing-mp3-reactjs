@@ -29,10 +29,8 @@ import ResultSongs from '~/pages/others/PageResultSearch/ResultSongs';
 import TopPodcast from '~/pages/others/TopPodcast/TopPodcast';
 import Category from '~/pages/primary/Category/Category';
 import Following from '~/pages/primary/Following/Following';
-import MainFeedFollow from '~/pages/primary/Following/MainFeedFollow';
 import Home from '~/pages/primary/Home';
 import Mv from '~/pages/primary/Mv/Mv';
-import MvVietNam from '~/pages/primary/Mv/MvVietNam';
 import Private from '~/pages/primary/Private';
 import Radio from '~/pages/primary/Radio/Radio';
 import SongNew from '~/pages/primary/SongNew/SongNew';
@@ -50,15 +48,12 @@ const RouterPage = () => {
             <Route path={`radio`} element={<Radio />}></Route>
             {/* theo dõi */}
             <Route path={`the-loai-nghe-si/:name/:id`} element={<Following />}></Route>
-            <Route path={'/mainfeed'} element={<MainFeedFollow />}></Route>
             {/* nhạc mới */}
             <Route path={'moi-phat-hanh'} element={<SongNew />}></Route>
             <Route path={'hub'} element={<Category />}></Route>
             <Route path={'top100'} element={<Top100 />}></Route>
             {/* mv */}
-            <Route path={'the-loai-video/:name:/id'} element={<Mv />}>
-                <Route path={''} element={<MvVietNam />}></Route>
-            </Route>
+            <Route path={'the-loai-video/:name/:id'} element={<Mv />}></Route>
 
             {/* ===============page other =============*/}
             <Route path={'/top-podcast'} element={<TopPodcast />}></Route>

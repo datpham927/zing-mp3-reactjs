@@ -1,13 +1,12 @@
 import className from 'classnames/bind';
-import { object } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCategory } from '~/components/Api/Service';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Container from '~/components/container/Container';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
-import ItemTopic from '~/components/ItemTopic/ItemTopic';
-import NoContent from '~/components/noContent/NoConTent';
+import ItemTopic from '~/components/item/ItemTopic/ItemTopic';
+import Loading from '~/components/Loading/Loading';
 import style from './Category.module.scss';
 
 const cx = className.bind(style);
@@ -28,7 +27,7 @@ function Category() {
     const topic = datas?.topic;
     const nations = datas?.nations;
     const genre = datas?.genre;
-    return datas.banners ? (
+    return datas.length !== 0 ? (
         <div>
             <div className={cx('header')}>
                 <Link to={banner?.link}>
@@ -70,7 +69,7 @@ function Category() {
             </div>
         </div>
     ) : (
-        <NoContent />
+        <Loading />
     );
 }
 

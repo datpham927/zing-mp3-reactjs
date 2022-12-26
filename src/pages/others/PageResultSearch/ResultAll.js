@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Container from '~/components/container/Container';
-import ItemPlayList from '~/components/ItemPlayList/ItemPlayList';
+import ItemPlayList from '~/components/item/ItemPlayList/ItemPlayList';
 import * as searchApi from '~/components/Api/Service';
 import NoContent from '~/components/noContent/NoConTent';
 import { zingArtist } from '~/redux/dataArtist';

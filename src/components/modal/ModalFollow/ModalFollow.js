@@ -12,7 +12,11 @@ import style from './ModalFollow.module.scss';
 const cx = className.bind(style);
 function ModalFollow() {
     const [selection, setSelection] = useState(false);
+
     const [like, setLike] = useState(false);
+    const handleLike = () => {
+        setLike(!like);
+    };
     const dispatch = useDispatch();
     const handelClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -66,7 +70,7 @@ function ModalFollow() {
                         <div className={cx('title')}>{data.description}</div>
                         <div className={cx('actions')}>
                             <Button
-                                onClick={() => setLike(!like)}
+                                onClick={() => handleLike()}
                                 className={cx('footer-btn')}
                                 noContent
                                 iconLeft={

@@ -4,7 +4,8 @@ import style from './SongNew.module.scss';
 import Container from '~/components/container/Container';
 import { useEffect, useState } from 'react';
 import { getNewSongs } from '~/components/Api/Service';
-import ItemSong from '~/components/ItemSong/ItemSong';
+import Loading from '~/components/Loading/Loading';
+import ContainerSongs from '~/components/container/ContainerSongs';
 
 const cx = className.bind(style);
 
@@ -17,20 +18,18 @@ function SongNew() {
         };
         api();
     }, []);
-    return (
-        data?.items?.length > 0 && (
-            <div>
-                <div className={cx('top')}>
-                    <h1>{data.title}</h1>
-                    <Button noContent iconLeft={<i className="icon ic-play"></i>} className={cx('btn')} />
-                </div>
-                <Container>
-                    {data?.items?.map((i, index) => (
-                        <ItemSong type="top100" key={index} data={i} index={index + 1} />
-                    ))}
-                </Container>
+    return data.length !== 0 ? (
+        <div>
+            <div className={cx('top')}>
+                <h1>{data.title}</h1>
+                <Button noContent iconLeft={<i className="icon ic-play"></i>} className={cx('btn')} />
             </div>
-        )
+            <Container>
+                <ContainerSongs type="top100" data={data?.items} index={data?.items.length} />
+            </Container>
+        </div>
+    ) : (
+        <Loading />
     );
 }
 

@@ -7,12 +7,13 @@ import ContainerPlaylist from '~/components/container/ContainerPlayList';
 import ContainerVideos from '~/components/container/ContainerVideos';
 import ContainerArtists from '~/components/container/ContainerArtists';
 import SongSpotlight from './SongSpotlight';
+import Loading from '~/components/Loading/Loading';
 
 const cx = classNames.bind(styles);
 
 function ArtistOverview() {
     const data = useSelector((state) => state.dataArtist.dataArtist);
-    return (
+    return data.length !== 0 ? (
         <div className={cx('wrapper')}>
             {data?.sections ? (
                 <>
@@ -34,6 +35,8 @@ function ArtistOverview() {
                 <NoContent />
             )}
         </div>
+    ) : (
+        <Loading />
     );
 }
 

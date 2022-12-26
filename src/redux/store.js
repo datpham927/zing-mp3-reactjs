@@ -5,6 +5,7 @@ import zingHome from './dataHome';
 import zingRadio from './dataRadio';
 import zingChart from './dataZingChart';
 import dataVideoFollow from './dataVideoFollow';
+import zingAudio from './dataAudio';
 export default configureStore({
     reducer: {
         counter: zingCounter,
@@ -13,5 +14,6 @@ export default configureStore({
         dataZingChart: zingChart,
         dataRadio: zingRadio,
         dataVideo: dataVideoFollow,
+        dataControl: zingAudio,
     },
 });

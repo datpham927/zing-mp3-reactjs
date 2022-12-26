@@ -8,7 +8,7 @@ function Duration({ duration }) {
         let time = minute + ':' + second;
         setTime(time);
     }, [duration]);
-    return time;
+    return <>{time}</>;
 }
 
 export default Duration;

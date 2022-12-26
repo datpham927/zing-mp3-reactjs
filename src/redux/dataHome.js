@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     data_Home: [],
+    data_newSongs: [],
+    data_RTChart: [],
 };
 
 export const zingHome = createSlice({
@@ -10,6 +12,7 @@ export const zingHome = createSlice({
     reducers: {
         setDataHome: (state, action) => {
             state.data_Home = action.payload;
+            state.data_newSongs = action.payload.find((e) => e.sectionType === 'new-release').items;
         },
     },
 });

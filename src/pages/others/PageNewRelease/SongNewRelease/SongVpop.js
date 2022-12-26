@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux';
-
 import Container from '~/components/container/Container';
-import ItemSongAdd from '~/components/ItemSong/ItemSongAdd';
+
+import ContainerSongs from '~/components/container/ContainerSongs';
 
 function SongVpop() {
-    const data = useSelector((state) => state?.dataRelease?.dataNewRelease);
-
+    const { data_newSongs } = useSelector((state) => state.dataHome);
     return (
-        <Container>{data?.all?.map((item, index) => index > 1 && <ItemSongAdd key={index} data={item} />)}</Container>
+        <Container>
+            <ContainerSongs data={data_newSongs?.all} type={'add'} index={data_newSongs?.all.length} />
+        </Container>
     );
 }
 

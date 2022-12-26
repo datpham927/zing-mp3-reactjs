@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import Container from '~/components/container/Container';
-import ItemPlayList from '~/components/ItemPlayList/ItemPlayList';
+import ItemPlayList from '~/components/item/ItemPlayList/ItemPlayList';
 import NoContent from '~/components/noContent/NoConTent';
 
 function ArtistAlbum() {

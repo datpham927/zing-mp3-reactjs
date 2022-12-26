@@ -34,18 +34,19 @@
                 line-height: 100%;
                 background-color: var(--dark-alpha-50);
                 justify-content: center;
-                display: none;
             }
             .song-play {
                 & img {
                     width: 3rem;
                     height: 3rem;
                 }
+                display: flex;
             }
             .play {
                 & i {
                     font-size: 5rem;
                 }
+                display: flex;
             }
             &:hover {
                 background-color: var(--box-hot-item-bg-hover);

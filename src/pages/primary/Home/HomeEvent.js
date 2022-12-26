@@ -9,7 +9,7 @@ import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import { useRef } from 'react';
-import ItemEvent from '~/components/ItemEvent/ItemEvent';
+import ItemEvent from '~/components/item/ItemEvent/ItemEvent';
 
 const cx = className.bind(style);
 function HomeEvent({ data }) {

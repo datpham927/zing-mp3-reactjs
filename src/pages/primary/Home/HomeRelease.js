@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
 
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Container from '~/components/container/Container';
-import ItemAlbum from '~/components/ItemAlBum/ItemAlBum';
+import ContainerAlbum from '~/components/container/ContainerAlbum';
 import style from './Home.module.scss';
 const cx = className.bind(style);
 
@@ -13,7 +13,7 @@ function HomeRelease({ data }) {
     const [all, setAll] = useState(true);
     const [vPop, setVpop] = useState(false);
     const [others, setOthers] = useState(false);
-    const handleChangeTab = useCallback((type) => {
+    const handleChangeTab = (type) => {
         if (type === 'all') {
             setAll(true);
             setVpop(false);
@@ -27,7 +27,7 @@ function HomeRelease({ data }) {
             setVpop(false);
             setOthers(true);
         }
-    }, []);
+    };
     const navigate = useNavigate();
     const handleNewSongs = () => {
         if (all) navigate('/new-release/song/all');
@@ -55,10 +55,9 @@ function HomeRelease({ data }) {
                 </div>
             </div>
             <div className={cx('body')}>
-                {all && data?.items?.all?.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
-                {vPop && data?.items?.vPop?.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
-                {others &&
-                    data?.items?.others?.map((item, index) => index < 12 && <ItemAlbum key={index} data={item} />)}
+                {all && <ContainerAlbum data={data?.items?.all} />}
+                {vPop && <ContainerAlbum data={data?.items?.vPop} />}
+                {others && <ContainerAlbum data={data?.items?.others} />}
             </div>
         </Container>
     );

@@ -1,13 +1,35 @@
 import { memo } from 'react';
-import ItemSong from '../ItemSong/ItemSong';
+import { useDispatch } from 'react-redux';
+import { setOpenControl } from '~/redux/action';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import ItemSong from '../item/ItemSong/ItemSong';
+import ItemSongAdd from '../item/ItemSong/ItemSongAdd';
 import Container from './Container';
 
-function ContainerSongs({ data, title, link, all = false, index = 6 }) {
-    return (
-        <Container title={title} data={data} link={link} all={all}>
-            {data?.map((item, i) => i < index && <ItemSong key={i} data={item} />)}
-        </Container>
-    );
+function ContainerSongs({ data, title, link, all = false, index = 6, type = '' }) {
+    const dispatch = useDispatch();
+    const handleOnClick = (i) => {
+        dispatch(setPlayListAudio(data));
+        dispatch(setCurrentIndex(i));
+        dispatch(setOpenControl(true));
+    };
+    return type === 'top100' || type === 'top100-small' || type === 'song-12'
+        ? data?.map(
+              (item, i) =>
+                  i < index && (
+                      <ItemSong key={i} data={item} type={type} index={i + 1} onClick={() => handleOnClick(i)} />
+                  ),
+          )
+        : type === 'add'
+        ? data?.map((item, i) => i < index && <ItemSongAdd key={i} data={item} onClick={() => handleOnClick(i)} />)
+        : data && (
+              <Container title={title} data={data} link={link} all={all}>
+                  {data?.map(
+                      (item, i) =>
+                          i < index && <ItemSong key={i} data={item} type={type} onClick={() => handleOnClick(i)} />,
+                  )}
+              </Container>
+          );
 }
 
 export default memo(ContainerSongs);

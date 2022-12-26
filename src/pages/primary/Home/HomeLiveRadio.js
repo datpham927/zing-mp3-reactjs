@@ -8,7 +8,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper';
 import Container from '~/components/container/Container';
 import Button from '~/components/Button';
 import { useRef } from 'react';
-import ItemRadio from '~/components/ItemRadio/ItemRadio';
+import ItemRadio from '~/components/item/ItemRadio/ItemRadio';
 
 const cx = className.bind(style);
 function HomeLiveRadio({ data }) {

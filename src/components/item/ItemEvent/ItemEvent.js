@@ -1,7 +1,6 @@
 import className from 'classnames/bind';
 import { useState } from 'react';
-
-import ButtonAction from '../Button/ButtonAction';
+import ButtonAction from '~/components/Button/ButtonAction';
 import style from './ItemEvent.module.scss';
 const cx = className.bind(style);
 function ItemEvent({ data, col = 'l-4' }) {

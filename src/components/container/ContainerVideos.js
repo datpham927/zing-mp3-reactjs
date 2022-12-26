@@ -1,6 +1,6 @@
 import Container from './Container';
-import ItemVideo from '../ItemVideo/ItemVideo';
 import { memo } from 'react';
+import ItemVideo from '../item/ItemVideo/ItemVideo';
 
 function ContainerVideos({ data, title, link, all = false, index = 3 }) {
     return (

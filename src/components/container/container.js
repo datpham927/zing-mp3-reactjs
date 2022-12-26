@@ -28,7 +28,7 @@ function Container({
                     <p className={cx('subtitle')}>{data?.title ? data?.title : subtitle}</p>
                     <h1 className={cx('title')}>
                         <Link to={data?.top?.link || data?.subTitle?.link}>
-                            {data?.top?.artists[0]?.name || data?.subTitle?.name}
+                            {data?.top?.artists?.name || data?.subTitle?.name}
                         </Link>
                     </h1>
                 </div>

@@ -12,7 +12,7 @@ function ThemeContainer({ data }) {
                 <h1>{data.names}</h1>
             </div>
             <div className={cx('topic-body-list')}>
-                {data.data.map((item, index) => (
+                {data.data?.map((item, index) => (
                     <ThemeItem key={index} data={item} />
                 ))}
             </div>

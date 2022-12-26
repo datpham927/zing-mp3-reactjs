@@ -38,13 +38,6 @@ function HeaderFollowing() {
                 >
                     HOA NGỮ
                 </ButtonAction>
-                <ButtonAction
-                    className={cx('btn', location.pathname.includes('mainfeed') ? 'active' : '')}
-                    btnItem
-                    link={'mainfeed'}
-                >
-                    NỔI BẬT
-                </ButtonAction>
             </div>
         </div>
     );

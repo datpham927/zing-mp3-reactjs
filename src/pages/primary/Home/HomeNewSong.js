@@ -3,10 +3,9 @@ import className from 'classnames/bind';
 import style from './Home.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import { Autoplay, Navigation, Pagination } from 'swiper';
-import ItemNewRelease from '~/components/ItemNewRelease/ItemNewRelease';
 import Container from '~/components/container/Container';
+import ItemNewRelease from '~/components/item/ItemNewRelease/ItemNewRelease';
 
 const cx = className.bind(style);
 

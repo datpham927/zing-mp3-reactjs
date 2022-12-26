@@ -7,8 +7,8 @@ import 'swiper/scss/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import Button from '~/components/Button';
 import { useRef } from 'react';
-import ItemRadio from '~/components/ItemRadio/ItemRadio';
 import Container from '~/components/container/Container';
+import ItemRadio from '~/components/item/ItemRadio/ItemRadio';
 
 const cx = className.bind(style);
 function RadioLivestream({ data }) {

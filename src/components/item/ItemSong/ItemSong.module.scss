@@ -1,6 +1,7 @@
 .item {
     .media {
         border-radius: 5px;
+        cursor: pointer;
         overflow: hidden;
         .media-wrapper {
             display: flex;
@@ -87,6 +88,8 @@
                         line-height: 100%;
                         background-color: var(--dark-alpha-50);
                         justify-content: center;
+                    }
+                    .play {
                         display: none;
                     }
                     .song-play {
@@ -94,11 +97,15 @@
                             width: 2rem;
                             height: 2rem;
                         }
+                        display: flex;
                     }
                     .play {
                         & i {
                             font-size: 2rem;
                         }
+                    }
+                    .pause {
+                        display: flex;
                     }
                 }
 
@@ -205,6 +212,9 @@
         }
     }
 }
+.active {
+    background-color: var(--alpha-bg);
+}
 .song-6 {
     width: 90%;
 }
@@ -255,4 +265,5 @@
 
 .vip {
     opacity: 0.8;
+    padding-left: 5px;
 }

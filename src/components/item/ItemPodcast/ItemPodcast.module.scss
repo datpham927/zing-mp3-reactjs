@@ -1,6 +1,6 @@
 .item {
-    padding: 0 15px;
     .include {
+        position: relative;
         display: flex;
         width: 100%;
         height: 100%;
@@ -8,9 +8,15 @@
         border-radius: 4px;
         align-items: center;
         justify-content: space-between;
+
         .left {
             display: flex;
             align-items: center;
+            .number {
+                font-size: 1.6rem;
+                margin-right: 12px;
+                color: var(--text-primary);
+            }
             .wrapper-img {
                 flex-shrink: 0;
                 position: relative;
@@ -18,6 +24,7 @@
                     width: 60px;
                     height: 60px;
                     border-radius: 4px;
+                    display: block;
                 }
                 .icon-play {
                     position: absolute;
@@ -43,12 +50,15 @@
                     top: 0;
                     background-color: var(--dark-alpha-50);
                     text-align: center;
-                    line-height: 46px;
+                    line-height: 60px;
                     font-size: 2rem;
-                    display: none;
+                    display: block;
                     & img {
                         width: 20px;
                     }
+                }
+                .pause {
+                    display: flex;
                 }
             }
             .info {
@@ -100,14 +110,17 @@
         &:hover {
             background-color: var(--alpha-bg);
         }
-        &:hover .more {
+        &:hover .add {
             display: flex;
         }
         &:hover .left .wrapper-img .icon-play {
             display: block;
         }
     }
-    .more {
+    .add {
+        position: absolute;
+        right: 10px;
+        bottom: 0;
         background-color: transparent;
         flex-shrink: 0;
         display: none;
@@ -115,7 +128,4 @@
             background-color: var(--alpha-bg);
         }
     }
-}
-.vip {
-    opacity: 0.7;
 }

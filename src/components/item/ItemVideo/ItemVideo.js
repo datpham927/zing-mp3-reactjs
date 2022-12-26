@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-concat */
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import Duration from '../time/Duration';
-import LoadImg from '../loadImg/LoadImg';
+import LoadImg from '~/components/loadImg/LoadImg';
+import Duration from '~/components/time/Duration';
 import styles from './ItemVideo.module.scss';
 
 const cx = classNames.bind(styles);

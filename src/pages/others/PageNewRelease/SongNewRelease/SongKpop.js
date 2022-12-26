@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
 
 import Container from '~/components/container/Container';
-import ItemSongAdd from '~/components/ItemSong/ItemSongAdd';
+import ItemSongAdd from '~/components/item/ItemSong/ItemSongAdd';
 
 function SongKpop() {
-    const data = useSelector((state) => state?.dataRelease?.dataNewRelease);
+    const { data_newSongs } = useSelector((state) => state.dataHome);
     return (
-        <Container>{data?.all?.map((item, index) => index > 8 && <ItemSongAdd key={index} data={item} />)}</Container>
+        <Container>
+            {data_newSongs?.all?.map((item, index) => index > 8 && <ItemSongAdd key={index} data={item} />)}
+        </Container>
     );
 }
 

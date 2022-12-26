@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ButtonAction from '../Button/ButtonAction';
-import Follow from '../follow/Follow';
-import LoadImg from '../loadImg/LoadImg';
+import ButtonAction from '~/components/Button/ButtonAction';
+import Follow from '~/components/follow/Follow';
+import LoadImg from '~/components/loadImg/LoadImg';
+
 import styles from './ItemArtists.module.scss';
 
 const cx = classNames.bind(styles);

@@ -1,6 +1,6 @@
 import Container from './Container';
-import ItemPlayList from '../ItemPlayList/ItemPlayList';
 import { memo } from 'react';
+import ItemPlayList from '../item/ItemPlayList/ItemPlayList';
 
 function ContainerPlaylist({
     data,
@@ -12,18 +12,22 @@ function ContainerPlaylist({
     description = false,
     className,
 }) {
-    return spotlight ? (
-        <Container title={title} data={data} link={link} all={all} spotlight={spotlight}>
-            {data?.items.map((i, e) => e < index && <ItemPlayList description={description} data={i} key={e} />)}
-        </Container>
-    ) : (
-        <Container title={title} link={link} all={all}>
-            {data?.map(
-                (i, e) =>
-                    e < index && <ItemPlayList description={description} data={i} key={e} className={className} />,
-            )}
-        </Container>
-    );
+    return spotlight
+        ? data && (
+              <Container title={title} data={data} link={link} all={all} spotlight={spotlight}>
+                  {data?.items.map((i, e) => e < index && <ItemPlayList description={description} data={i} key={e} />)}
+              </Container>
+          )
+        : data && (
+              <Container title={title} link={link} all={all}>
+                  {data?.map(
+                      (i, e) =>
+                          e < index && (
+                              <ItemPlayList description={description} data={i} key={e} className={className} />
+                          ),
+                  )}
+              </Container>
+          );
 }
 
 export default memo(ContainerPlaylist);

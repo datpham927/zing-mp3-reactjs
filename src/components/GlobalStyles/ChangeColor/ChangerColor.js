@@ -32,12 +32,14 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--primary-bg', '#4B1178');
             document.documentElement.style.setProperty('--layout-bg', '#37075d');
             document.documentElement.style.setProperty('--text-item-hover', '#fff');
+            document.documentElement.style.setProperty('--player-bg', 'rgb(47,7,78)');
         }
         if (kq === 1) {
             document.documentElement.style.setProperty('--primary-bg', '#363636');
             document.documentElement.style.setProperty('--layout-bg', '#282828');
             document.documentElement.style.setProperty('--purple-primary', '#9b4de0');
             document.documentElement.style.setProperty('--link-text-hover', '#c273ed');
+            document.documentElement.style.setProperty('--player-bg', 'rgb(24,24,24)');
         }
         if (kq === 2) {
             document.documentElement.style.setProperty('--primary-bg', '#1A3570');
@@ -46,6 +48,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--purple-primary', '#3560F5');
             document.documentElement.style.setProperty('--layout-bg', '#061641');
             document.documentElement.style.setProperty('--text-item-hover', '#fff');
+            document.documentElement.style.setProperty('--player-bg', 'rgb(6,22,65)');
         }
         if (kq === 8) {
             document.documentElement.style.setProperty('--layout-bg', '#767269');

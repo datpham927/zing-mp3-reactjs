@@ -20,7 +20,7 @@ function TippyMenu({ MENU_ITEM = [], children }) {
 
     const handleRender = (attrs) => (
         <div className={cx('box')} tabIndex="-1" {...attrs}>
-            {current.data.map((item, index) => {
+            {current.data?.map((item, index) => {
                 const isParent = !!item.children;
                 return (
                     <ItemMenu

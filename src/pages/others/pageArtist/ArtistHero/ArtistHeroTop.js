@@ -7,7 +7,7 @@ import * as searchApi from '~/components/Api/Service';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Follow from '~/components/follow/Follow';
-import { zingArtist } from '~/redux/dataArtist';
+import { setActivePlay, setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
 import style from './ArtistHero.module.scss';
 
 const cx = classNames.bind(style);
@@ -16,14 +16,26 @@ function ArtistHeroTop() {
     const id = useParams();
     const dispatch = useDispatch();
     const [care, setCare] = useState(false);
+    const [plays, setPlay] = useState(false);
+    const [data, setData] = useState([]);
     useEffect(() => {
         const fetchApi = async () => {
             const data = await searchApi.artist(id.name);
-            dispatch(zingArtist.actions.setDataArtist(data));
+            setData(data);
         };
         fetchApi();
     }, [id.name]);
-    const data = useSelector((state) => state.dataArtist.dataArtist);
+    const play = useSelector((state) => state.dataControl.activePlay);
+    const handleOnClick = () => {
+        setPlay(!plays);
+        if (plays) {
+            dispatch(setActivePlay(false));
+        } else {
+            dispatch(setCurrentIndex(0));
+            dispatch(setPlayListAudio(data.sections.find((e) => e.sectionType === 'song').items));
+            dispatch(setActivePlay(true));
+        }
+    };
     return (
         <div
             className={cx('header')}
@@ -34,7 +46,12 @@ function ArtistHeroTop() {
             <div className={cx('content')}>
                 <div className={cx('title')}>
                     <h1>{data?.name}</h1>
-                    <Button noContent iconLeft={<i className="icon ic-play"></i>} className={cx('btn')} />
+                    <Button
+                        noContent
+                        iconLeft={play && plays ? <i class="fa-solid fa-pause"></i> : <i className="icon ic-play"></i>}
+                        className={cx('btn')}
+                        onClick={handleOnClick}
+                    />
                 </div>
                 <div className={cx('action')}>
                     <div className={cx('follow')}>
@@ -43,13 +60,13 @@ function ArtistHeroTop() {
                     <ButtonAction onClick={() => setCare(!care)} className={cx('btn', !care && 'care')}>
                         {care ? (
                             <>
-                                <i className="icon ic-addfriend"></i>
-                                <span>QUAN TÂM</span>
+                                <i className="icon ic-check"></i>
+                                <span>ĐÃ QUAN TÂM</span>
                             </>
                         ) : (
                             <>
-                                <i className="icon ic-check"></i>
-                                <span>ĐÃ QUAN TÂM</span>
+                                <i className="icon ic-addfriend"></i>
+                                <span>QUAN TÂM</span>
                             </>
                         )}
                     </ButtonAction>

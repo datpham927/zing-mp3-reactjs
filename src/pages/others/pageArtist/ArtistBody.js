@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { memo } from 'react';
 
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import style from './PageArtist.module.scss';
@@ -48,4 +49,4 @@ function ArtistBody() {
     );
 }
 
-export default ArtistBody;
+export default memo(ArtistBody);

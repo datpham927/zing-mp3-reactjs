@@ -13,6 +13,7 @@ import HomeNewSong from './HomeNewSong';
 import HomeLiveRadio from './HomeLiveRadio';
 import HomeEvent from './HomeEvent';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
+import Loading from '~/components/Loading/Loading';
 
 const cx = className.bind(style);
 function Home() {
@@ -25,8 +26,8 @@ function Home() {
         getTodoItems();
     }, []);
     const { data_Home } = useSelector((state) => state.dataHome);
-
-    return (
+    console.log(data_Home);
+    return data_Home.length !== 0 ? (
         <div className={cx('wrapper')}>
             {data_Home?.map((i) =>
                 i.sectionType === 'banner' ? (
@@ -50,6 +51,11 @@ function Home() {
                 ),
             )}
         </div>
+    ) : (
+        <Loading />
     );
 }
 export default Home;
+// : i.sectionType === 'RTChart' ? (
+//     <HomeChart />
+// )

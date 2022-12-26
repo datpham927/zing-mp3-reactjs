@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import Container from '~/components/container/Container';
-import ItemVideo from '~/components/ItemVideo/ItemVideo';
+import ItemVideo from '~/components/item/ItemVideo/ItemVideo';
 import NoContent from '~/components/noContent/NoConTent';
 
 function ArtistMv() {

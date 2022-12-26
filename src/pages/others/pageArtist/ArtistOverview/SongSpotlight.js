@@ -1,7 +1,7 @@
 /* eslint-disable no-implied-eval */
 import classNames from 'classnames/bind';
 import Container from '~/components/container/Container';
-import ItemSong from '~/components/ItemSong/ItemSong';
+import ContainerSongs from '~/components/container/ContainerSongs';
 import styles from './ArtistOverview.module.scss';
 
 const cx = classNames.bind(styles);
@@ -60,9 +60,7 @@ function SongSpotlight({ data }) {
                 </div>
                 <div className={cx('right') + ' l-8'}>
                     <div className={cx('list')}>
-                        {data?.items?.map((item, index) => (
-                            <ItemSong key={index} data={item} type="song-12" />
-                        ))}
+                        <ContainerSongs type="song-12" data={data?.items} index={data?.items.length} />
                     </div>
                 </div>
             </Container>

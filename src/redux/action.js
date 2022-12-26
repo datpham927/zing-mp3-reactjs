@@ -18,6 +18,7 @@ const initialState = {
     value: '',
     booleanVip: false,
     booleanModalFollow: false,
+    booleanControl: false,
 };
 
 export const zingCounter = createSlice({
@@ -66,6 +67,9 @@ export const zingCounter = createSlice({
         setModalFollow: (state, action) => {
             state.booleanModalFollow = action.payload;
         },
+        setOpenControl: (state, action) => {
+            state.booleanControl = action.payload;
+        },
     },
 });
 
@@ -81,6 +85,7 @@ export const {
     setValueSearch,
     setModalVip,
     setModalFollow,
+    setOpenControl,
 } = zingCounter.actions;
 
 export default zingCounter.reducer;

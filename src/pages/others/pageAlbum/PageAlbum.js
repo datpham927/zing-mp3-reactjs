@@ -8,6 +8,7 @@ import ContainerVideos from '~/components/container/ContainerVideos';
 import style from './PageAlbum.module.scss';
 import LeftAlbum from './LeftAlbum';
 import RightAlbum from './RightAlbum';
+import Loading from '~/components/Loading/Loading';
 const cx = classNames.bind(style);
 
 function PageAlbum() {
@@ -22,23 +23,21 @@ function PageAlbum() {
         };
         fetchApi();
     }, [id]);
-    return (
+    return data.length !== 0 ? (
         <div className={cx('wrapper')}>
-            {data?.song && (
-                <>
-                    <div className={cx('top')}>
-                        <LeftAlbum data={data} />
-                        <RightAlbum data={data} />
-                    </div>
-                    {data?.playlists && <ContainerPlaylist data={data?.playlists} title="Playlist/Album" />}
-                    {/* ---------------------- */}
-                    {data?.videos && <ContainerVideos data={data?.videos} title="MV" />}
-                    {/* ---------------------- */}
+            <div className={cx('top')}>
+                <LeftAlbum data={data} />
+                <RightAlbum data={data} />
+            </div>
+            {data?.playlists && <ContainerPlaylist data={data?.playlists} title="Playlist/Album" />}
+            {/* ---------------------- */}
+            {data?.videos && <ContainerVideos data={data?.videos} title="MV" />}
+            {/* ---------------------- */}
 
-                    {data?.artists && <ContainerArtists data={data?.artists} title="Nghệ Sĩ/OA" />}
-                </>
-            )}
+            {data?.artists && <ContainerArtists data={data?.artists} title="Nghệ Sĩ/OA" />}
         </div>
+    ) : (
+        <Loading />
     );
 }
 

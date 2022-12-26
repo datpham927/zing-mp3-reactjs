@@ -1,14 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classNames from 'classnames/bind';
-
-import ItemSongAdd from '~/components/ItemSong/ItemSongAdd';
 import style from './PageAlbum.module.scss';
 import Container from '~/components/container/Container';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import ContainerSongs from '~/components/container/ContainerSongs';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import { useDispatch } from 'react-redux';
 const cx = classNames.bind(style);
 
 function RightAlbum({ data }) {
     const [newDataSong, setDateSong] = useState(data.song.items);
     const [openMenu, setOpenMenu] = useState(false);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPlayListAudio(newDataSong));
+        dispatch(setCurrentIndex(0));
+    }, []);
     const handleSort = (value) => {
         const newArr = [...newDataSong];
         if (value === 'song') {
@@ -61,9 +68,7 @@ function RightAlbum({ data }) {
                         <span>THỜI GIAN</span>
                     </div>
                     <div className={cx('list') + ' row'}>
-                        {newDataSong?.map((item, index) => (
-                            <ItemSongAdd key={index} data={item} />
-                        ))}
+                        <ContainerSongs type="add" data={newDataSong} index={newDataSong.length} />
                     </div>
                     <h1 className={cx('bottom')}>
                         <span>{data.song?.total + ' bài hát •'} </span>
@@ -86,18 +91,18 @@ function RightAlbum({ data }) {
                                 <span>THỜI GIAN</span>
                             </div>
                             <div className={cx('list') + ' row'}>
-                                {data.song?.items.map((item, index) => (
-                                    <ItemSongAdd data={item} />
-                                ))}
+                                <ContainerSongs type="add" data={data.song?.items} index={data.song?.items.length} />
                             </div>
                         </>
                     )}
                     {data?.sections[0] && (
                         <Container title={data?.sections[0]?.title} className={cx('container')}>
                             <div className={cx('list') + ' row'}>
-                                {data?.sections[0].items?.map((item, index) => (
-                                    <ItemSongAdd key={index} data={item} />
-                                ))}
+                                <ContainerSongs
+                                    type="add"
+                                    data={data?.sections[0].items}
+                                    index={data?.sections[0].items.length}
+                                />
                             </div>
                         </Container>
                     )}

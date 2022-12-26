@@ -1,11 +1,9 @@
-import ItemArtists from '~/components/ItemArtists/ItemArtists';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import { Autoplay, Pagination } from 'swiper';
 import Container from '~/components/container/Container';
+import ItemArtists from '~/components/item/ItemArtists/ItemArtists';
 
 function HomeSpotlight({ data }) {
     return (

@@ -29,7 +29,17 @@
     }
 }
 
-.btn-more {
-    font-size: 1.6rem;
-    margin: 40px auto;
+.btn {
+    display: flex;
+    width: 100%;
+    justify-items: center;
+    .btn-more {
+        font-size: 1.6rem;
+        margin: 40px auto;
+    }
+}
+.load-img {
+    & img {
+        width: 50px;
+    }
 }

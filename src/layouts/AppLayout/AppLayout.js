@@ -5,11 +5,15 @@ import PropTypes from 'prop-types';
 import Header from '../Header';
 import { useState } from 'react';
 import Modal from '~/components/modal/Modal';
+import Control from '../Control/Control';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function AppLayout({ children }) {
     const [bgrHeader, setBgrHeader] = useState(false);
+    const control = useSelector((state) => state.counter.booleanControl);
+
     const handleScroll = (e) => {
         if (e.currentTarget.scrollTop === 0) {
             setBgrHeader(false);
@@ -26,6 +30,7 @@ function AppLayout({ children }) {
                     <Header bgrHeader={bgrHeader} />
                     <div className={cx('container')}>{children}</div>
                 </div>
+                {control && <Control />}
             </div>
         </>
     );

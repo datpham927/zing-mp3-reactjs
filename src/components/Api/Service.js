@@ -66,14 +66,6 @@ export const getRadio = async () => {
         console.log(error);
     }
 };
-export const getFollowing = async (id, index) => {
-    try {
-        const res = await axios.get(`https://api-zingmp3.vercel.app/api/newfeeds?id=${id}&page=${index}`);
-        return res.data.data;
-    } catch (error) {
-        console.log(error);
-    }
-};
 
 export const getNewSongs = async () => {
     try {
@@ -112,6 +104,14 @@ export const getTop100 = async () => {
 export const getMv = async (id, index) => {
     try {
         const res = await axios.get(`https://api-zingmp3.vercel.app/api/listmv?id=${id}&page=${index}&count=19`);
+        return res.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const getFollowing = async (id, index) => {
+    try {
+        const res = await axios.get(`https://api-zingmp3.vercel.app/api/newfeeds?id=${id}&page=${index}`);
         return res.data.data;
     } catch (error) {
         console.log(error);

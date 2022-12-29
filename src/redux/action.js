@@ -19,9 +19,10 @@ const initialState = {
     booleanVip: false,
     booleanModalFollow: false,
     booleanControl: false,
+    booleanQueueList: false,
 };
 
-export const zingCounter = createSlice({
+export const zingAction = createSlice({
     name: 'zing',
     initialState,
     reducers: {
@@ -70,6 +71,9 @@ export const zingCounter = createSlice({
         setOpenControl: (state, action) => {
             state.booleanControl = action.payload;
         },
+        setOpenQueueList: (state, action) => {
+            state.booleanQueueList = action.payload;
+        },
     },
 });
 
@@ -86,6 +90,7 @@ export const {
     setModalVip,
     setModalFollow,
     setOpenControl,
-} = zingCounter.actions;
+    setOpenQueueList,
+} = zingAction.actions;
 
-export default zingCounter.reducer;
+export default zingAction.reducer;

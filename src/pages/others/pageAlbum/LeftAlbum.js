@@ -1,24 +1,26 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import ButtonAction from '~/components/Button/ButtonAction';
-import LoadImg from '~/components/loadImg/LoadImg';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import style from './PageAlbum.module.scss';
 import Follow from '~/components/follow/Follow';
 import Button from '~/components/Button';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActivePlay, setCurrentIndex } from '~/redux/dataAudio';
+import { setActivePlay } from '~/redux/dataAudio';
+import { setOpenControl } from '~/redux/action';
 const cx = classNames.bind(style);
 function LeftAlbum({ data }) {
     const dispatch = useDispatch();
-    const play = useSelector((state) => state.dataControl.activePlay);
+    const { activePlay } = useSelector((state) => state.dataControl);
     const [like, setLike] = useState(false);
     const handleLike = () => {
         setLike(!like);
     };
     const handlePlay = () => {
         dispatch(setActivePlay(true));
-        dispatch(setCurrentIndex(0));
+        dispatch(setActivePlay(!activePlay));
+        dispatch(setOpenControl(true));
     };
     const handlePause = () => {
         dispatch(setActivePlay(false));
@@ -27,10 +29,10 @@ function LeftAlbum({ data }) {
     return (
         <div className={cx('left') + ' l-4'}>
             <LoadImg>
-                <div className={cx('image', play ? 'rotate' : 'rotate-pause')}>
+                <div className={cx('image', activePlay ? 'rotate' : 'rotate-pause')}>
                     <img src={data?.thumbnailM} alt="" />
 
-                    {play ? (
+                    {activePlay ? (
                         <div className={cx('song-play')} onClick={handlePause}>
                             <img
                                 src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -62,14 +64,15 @@ function LeftAlbum({ data }) {
                 </div>
             </div>
             <ButtonAction
+                className={cx('btn-album')}
                 icon={<i className="icon ic-play"></i>}
                 action
                 onClick={() => {
-                    dispatch(setActivePlay(!play));
-                    dispatch(setCurrentIndex(0));
+                    dispatch(setActivePlay(!activePlay));
+                    dispatch(setOpenControl(true));
                 }}
             >
-                {play ? 'TẠM DỪNG' : 'TIẾP TỤC PHÁT'}
+                {activePlay ? 'TẠM DỪNG' : 'TIẾP TỤC PHÁT'}
             </ButtonAction>
             <div className={cx('wrapper-icon')}>
                 <Button
@@ -78,7 +81,6 @@ function LeftAlbum({ data }) {
                     content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
                     iconLeft={like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>}
                 />
-                {/* <Button primary content="Xóa khỏi thư viện" iconLeft={<i className="icon ic-like-full"></i>} /> */}
                 <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />
             </div>
         </div>

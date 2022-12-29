@@ -16,6 +16,7 @@ function RightAlbum({ data }) {
         dispatch(setPlayListAudio(newDataSong));
         dispatch(setCurrentIndex(0));
     }, []);
+
     const handleSort = (value) => {
         const newArr = [...newDataSong];
         if (value === 'song') {

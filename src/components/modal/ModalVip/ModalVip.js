@@ -1,7 +1,7 @@
 import className from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonAction from '~/components/Button/ButtonAction';
-import { zingCounter } from '~/redux/action';
+import { zingAction } from '~/redux/action';
 import style from './ModalVip.module.scss';
 
 const cx = className.bind(style);
@@ -9,10 +9,10 @@ function ModalVip() {
     const dispatch = useDispatch();
     const handleModal = (e) => {
         if (e.target === e.currentTarget) {
-            dispatch(zingCounter.actions.setModalVip(false));
+            dispatch(zingAction.actions.setModalVip(false));
         }
     };
-    const vip = useSelector((state) => state.counter.booleanVip);
+    const vip = useSelector((state) => state.action.booleanVip);
     return (
         vip && (
             <div className={cx('modal-vip')} onClick={(e) => handleModal(e)}>
@@ -22,7 +22,7 @@ function ModalVip() {
                         Theo yêu cầu của đơn vị sở hữu bản quyền, bạn cần tài khoản VIP để nghe bài hát này.
                     </div>
                     <ButtonAction className={cx('btn')}>NÂNG CẤP VIP</ButtonAction>
-                    <div className={cx('close')} onClick={() => dispatch(zingCounter.actions.setModalVip(false))}>
+                    <div className={cx('close')} onClick={() => dispatch(zingAction.actions.setModalVip(false))}>
                         <ion-icon name="close-outline"></ion-icon>
                     </div>
                 </div>

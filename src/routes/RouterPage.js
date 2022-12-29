@@ -26,6 +26,7 @@ import ResultAll from '~/pages/others/PageResultSearch/ResultAll';
 import ResultArtist from '~/pages/others/PageResultSearch/ResultArtist';
 import ResultMv from '~/pages/others/PageResultSearch/ResultMv';
 import ResultSongs from '~/pages/others/PageResultSearch/ResultSongs';
+import PlayMv from '~/pages/others/PlayMv/PlayMv';
 import TopPodcast from '~/pages/others/TopPodcast/TopPodcast';
 import Category from '~/pages/primary/Category/Category';
 import Following from '~/pages/primary/Following/Following';

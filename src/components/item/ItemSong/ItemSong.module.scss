@@ -170,16 +170,20 @@
                 display: flex;
                 align-items: center;
                 .action {
-                    display: none;
+                    display: flex;
                     margin-right: 15px;
                     .icon {
+                        display: none;
                         &i {
                             font-size: 1.8rem;
                         }
                     }
+                    .active-tym {
+                        display: flex;
+                    }
                 }
                 .duration {
-                    margin: 0 15px;
+                    margin-right: 12px;
 
                     & span {
                         font-size: 1.2rem;
@@ -204,17 +208,24 @@
         &:hover {
             background-color: var(--alpha-bg);
         }
-        &:hover .media-wrapper .action {
+        &:hover .media-wrapper .action .icon {
             display: flex;
         }
         &:hover .media-wrapper .duration {
             display: none;
         }
     }
+    .active {
+        background-color: var(--alpha-bg);
+    }
+    .queue-active {
+        background-color: var(--purple-primary);
+        &:hover {
+            background-color: var(--purple-primary);
+        }
+    }
 }
-.active {
-    background-color: var(--alpha-bg);
-}
+
 .song-6 {
     width: 90%;
 }
@@ -265,5 +276,4 @@
 
 .vip {
     opacity: 0.8;
-    padding-left: 5px;
 }

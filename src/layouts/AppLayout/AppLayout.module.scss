@@ -1,7 +1,11 @@
 .Wrapper {
     display: flex;
     height: 100vh;
+
     overflow: hidden;
+}
+.active {
+    height: calc(100vh - 9rem);
 }
 .main {
     position: relative;

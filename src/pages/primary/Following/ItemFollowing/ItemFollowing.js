@@ -8,7 +8,7 @@ import FormatDate from '~/components/time/FormatDate';
 import { useDispatch } from 'react-redux';
 import { setDataFollow } from '~/redux/dataVideoFollow';
 import { setModalFollow } from '~/redux/action';
-import LoadImg from '~/components/loadImg/LoadImg';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);
 

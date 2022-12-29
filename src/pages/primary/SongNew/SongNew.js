@@ -4,7 +4,7 @@ import style from './SongNew.module.scss';
 import Container from '~/components/container/Container';
 import { useEffect, useState } from 'react';
 import { getNewSongs } from '~/components/Api/Service';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 import ContainerSongs from '~/components/container/ContainerSongs';
 
 const cx = className.bind(style);

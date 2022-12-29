@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
-import { zingCounter } from '~/redux/action';
+import { zingAction } from '~/redux/action';
 import style from './Theme.module.scss';
 import ThemeContainer from './ThemeContainer/ThemeContainer';
 const cx = classNames.bind(style);
@@ -72,12 +72,12 @@ function Theme() {
     const dispatch = useDispatch();
     const handelModal = (e) => {
         if (e.target === e.currentTarget) {
-            dispatch(zingCounter.actions.modalTheme(false));
+            dispatch(zingAction.actions.modalTheme(false));
         }
     };
     const handleCloseModal = () => {
-        dispatch(zingCounter.actions.modalTheme(false));
-        dispatch(zingCounter.actions.booleanPreview(false));
+        dispatch(zingAction.actions.modalTheme(false));
+        dispatch(zingAction.actions.booleanPreview(false));
     };
     return (
         <div className={cx('modal-topic')} onClick={(e) => handelModal(e)}>

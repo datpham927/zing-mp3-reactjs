@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { artist } from '~/components/Api/Service';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 import { zingArtist } from '~/redux/dataArtist';
 import ArtistBody from './ArtistBody';
 import ArtistHeader from './ArtistHeader';

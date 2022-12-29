@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import LoadImg from '~/components/loadImg/LoadImg';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import styles from './TopPagesAll.module.scss';
 
 const cx = classNames.bind(styles);

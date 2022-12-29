@@ -5,18 +5,17 @@ import style from './Modal.module.scss';
 import ModalArtist from './ModalArtist/ModalArtist';
 import ModalVip from './ModalVip/ModalVip';
 import ModalFollow from './ModalFollow/ModalFollow';
-// import ModalVip from './ModalVip/modalVip';
 const cx = classNames.bind(style);
 
 function Modal() {
-    const { booleanTheme, booleanModalFollow } = useSelector((state) => state.counter);
+    const { booleanTheme } = useSelector((state) => state.action);
     const { modalArtist } = useSelector((state) => state.dataArtist);
     return (
         <>
             {(booleanTheme || modalArtist) && <div className={cx('modal')}></div>}
             {booleanTheme && <Theme />}
             {modalArtist && <ModalArtist />}
-            {booleanModalFollow && <ModalFollow />}
+            <ModalFollow />
             <ModalVip />
         </>
     );

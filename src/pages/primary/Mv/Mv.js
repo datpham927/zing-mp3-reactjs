@@ -1,5 +1,5 @@
-import MvBody from './MvBody';
-import MvHeader from './MvHeader';
+import MvBody from './MvBody/MvBody';
+import MvHeader from './MvHeader/MvHeader';
 
 function Mv() {
     return (

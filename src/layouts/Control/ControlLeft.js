@@ -1,27 +1,38 @@
 import className from 'classnames/bind';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
+import { setSongFavorite } from '~/redux/FavoriteList';
 import style from './Control.module.scss';
 const cx = className.bind(style);
 
-function ControlLeft({ data }) {
-    const [like, setLike] = useState(false);
+function ControlLeft() {
+    const idAudio = useSelector((state) => state.dataControl.idAudio);
+    const { songFavorite } = useSelector((state) => state.Favorite);
+    const [favorite, setFavorite] = useState([]);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        setFavorite(songFavorite?.map((e) => e.encodeId));
+    }, [songFavorite]);
     const handleLike = () => {
-        setLike(!like);
+        dispatch(setSongFavorite(idAudio));
     };
+    console.log(favorite.includes(idAudio?.encodeId));
+
     return (
         <div className={cx('left') + ' l-3'}>
             <div className={cx('image', 'action')}>
-                <img src={data[0]?.thumbnail} alt="" />
+                <img src={idAudio?.thumbnail} alt="" />
             </div>
             <div className={cx('info')}>
-                <h3>{data[0]?.title}</h3>
+                <h3>{idAudio?.title}</h3>
                 <p>
-                    {data[0]?.artists?.map((i, index) => (
+                    {idAudio?.artists?.map((i, index) => (
                         <div key={index}>
                             <Link to={i.link}>{i.name}</Link>
-                            {index < data[0]?.artists.length - 1 && ', '}
+                            {index < idAudio?.artists.length - 1 && ', '}
                         </div>
                     ))}
                 </p>
@@ -29,8 +40,14 @@ function ControlLeft({ data }) {
             <Button
                 onClick={() => handleLike()}
                 small
-                content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
-                iconLeft={like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>}
+                content={favorite.includes(idAudio?.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                iconLeft={
+                    favorite.includes(idAudio?.encodeId) ? (
+                        <i className="icon ic-like-full"></i>
+                    ) : (
+                        <i className="icon ic-like"></i>
+                    )
+                }
             />
         </div>
     );

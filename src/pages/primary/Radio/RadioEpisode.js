@@ -8,7 +8,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper';
 import Button from '~/components/Button';
 import { useRef } from 'react';
 import Container from '~/components/container/Container';
-import LoadImg from '~/components/loadImg/LoadImg';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);
 function RadioEpisode({ data }) {

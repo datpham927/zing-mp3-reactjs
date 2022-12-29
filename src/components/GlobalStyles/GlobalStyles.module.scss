@@ -28,6 +28,14 @@ body {
     text-rendering: optimizeSpeed;
 
     height: 100vh;
+    & {
+        -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
+        scrollbar-width: none; /* sử dụng Firefox */
+        overflow-y: scroll;
+    }
+    &::-webkit-scrollbar {
+        display: none; /* cho Chrome, Safari, and Opera */
+    }
 }
 
 :root {

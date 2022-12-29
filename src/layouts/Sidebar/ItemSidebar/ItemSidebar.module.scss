@@ -1,6 +1,6 @@
 .navbar {
     position: relative;
-    span {
+    & span {
         position: absolute;
         bottom: 12px;
         padding: 1px 6px 0 6px;
@@ -9,7 +9,6 @@
         background-color: red;
         color: #fff;
         border-radius: 4px;
-        margin-left: 6px;
         left: 100px;
     }
     &:hover .play {
@@ -20,7 +19,7 @@
     }
 }
 .wrapper {
-    padding: 10px 25px;
+    padding: 8px 25px;
     display: flex;
     align-items: center;
     font-weight: 600;
@@ -29,10 +28,10 @@
     font-weight: 400;
     height: 100%;
     line-height: 20px;
-    h1 {
+    & h1 {
         font-size: 1.3rem;
     }
-    i {
+    & i {
         margin-right: 10px;
         font-size: 1.8rem;
     }
@@ -45,7 +44,7 @@
         right: 10px;
         color: var(--text-item-hover);
         display: none;
-        i {
+        & i {
             font-size: 2rem;
             font-weight: 500;
         }

@@ -12,7 +12,7 @@ import KeywordsItem from './Keywords/KeywordsItem';
 import { Icon } from '~/components/Icons';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { zingCounter } from '~/redux/action';
+import { zingAction } from '~/redux/action';
 const cx = classNames.bind(style);
 
 function Search() {
@@ -84,7 +84,7 @@ function Search() {
             setOpenInput(false);
             navigate(`/tim-kiem/tat-ca/${valueRef.current.value}`);
         }
-        dispatch(zingCounter.actions.setValueSearch(value));
+        dispatch(zingAction.actions.setValueSearch(value));
     };
 
     // ẩn khung kết quả
@@ -108,7 +108,7 @@ function Search() {
             if (valueRef.current.value !== '') {
                 navigate(`/tim-kiem/tat-ca/${valueRef.current.value}`);
                 setOpenInput(false);
-                dispatch(zingCounter.actions.setValueSearch(value));
+                dispatch(zingAction.actions.setValueSearch(value));
             }
         }
     };

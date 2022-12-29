@@ -4,7 +4,7 @@ import Button from '~/components/Button';
 import { Icon } from '../../components/Icons';
 import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
-import { zingCounter } from '~/redux/action';
+import { zingAction } from '~/redux/action';
 
 import TippyMenu from '~/components/menu/tippyMenu/TippyMenu';
 import { useDispatch, useSelector } from 'react-redux';
@@ -73,7 +73,7 @@ const MENU_LOGOUT = [
 ];
 
 function HeaderRight() {
-    const currentUser = useSelector((state) => state.counter.currentUser);
+    const currentUser = useSelector((state) => state.action.currentUser);
 
     const dispatch = useDispatch();
     const refAvatar = useRef();
@@ -84,7 +84,7 @@ function HeaderRight() {
                 primary
                 iconLeft={<Icon.IconTopic />}
                 content="Chủ đề"
-                onClick={() => dispatch(zingCounter.actions.modalTheme(true))}
+                onClick={() => dispatch(zingAction.actions.modalTheme(true))}
             />
             {/* ------ vip ------ */}
             <Button disable iconLeft={<Icon.IconVip />} content="Nâng cấp VIP" />

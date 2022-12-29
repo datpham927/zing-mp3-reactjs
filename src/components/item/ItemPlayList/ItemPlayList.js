@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
-import LoadImg from '~/components/loadImg/LoadImg';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import styles from './ItemPlayList.module.scss';
 
 const cx = classNames.bind(styles);
@@ -14,7 +14,7 @@ function ItemPlayList({ data, timeLoad = 1000, type = '', description, className
         setLike(!like);
     };
     const handleOnClick = (e) => {
-        if (e.target === e.currentTarget) {
+        if (e.target === e.currentTarget || e.target.closest('.ItemPlayList_icon-play__e5DCq')) {
             navigate(data.link);
         }
     };
@@ -40,10 +40,15 @@ function ItemPlayList({ data, timeLoad = 1000, type = '', description, className
                                         }
                                     />
                                 </div>
-                                <div className={cx('icon-play')} onClick={() => navigate(data.link)}>
+                                <div className={cx('icon-play')}>
                                     <Button noContent iconLeft={<i className="icon ic-play-circle-outline"></i>} />
                                 </div>
-                                <Button small content="khác" iconLeft={<i className="icon ic-more"></i>} />
+                                <Button
+                                    small
+                                    content="khác"
+                                    // onClick={() => handleLike()}
+                                    iconLeft={<i className="icon ic-more"></i>}
+                                />
                             </div>
                         </div>
                     </div>

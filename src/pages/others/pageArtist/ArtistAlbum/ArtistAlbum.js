@@ -9,7 +9,7 @@ function ArtistAlbum() {
     return data.items ? (
         <Container title={data.title}>
             {data?.items.map((item, index) => (
-                <ItemPlayList key={index} data={item} timeLoad={0} />
+                <ItemPlayList key={index} data={item} />
             ))}
         </Container>
     ) : (

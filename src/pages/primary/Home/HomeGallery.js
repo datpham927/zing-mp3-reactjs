@@ -1,14 +1,15 @@
 /* eslint-disable no-const-assign */
 import className from 'classnames/bind';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 
 import style from './Home.module.scss';
 const cx = className.bind(style);
 
 function HomeGallery({ data }) {
     const [heightImg, setHeightImg] = useState(0);
-
+    const itemRef = useRef();
     const listImg = document.querySelectorAll('.Home_item__BetTT');
     const autoChange = () => {
         let numberIndex = 0;
@@ -40,22 +41,20 @@ function HomeGallery({ data }) {
     };
 
     listImg.length > 0 && autoChange();
-    const handleHeightImg = () => {
-        var divWidth = document.getElementsByClassName('Home_item__BetTT');
-        setHeightImg(divWidth[0].offsetHeight);
-    };
+
     return (
         <div className={cx('gallery')} style={{ height: heightImg }}>
             <div className={cx('gallery-wrapper')}>
                 {data?.items?.map((item, index) => (
                     <div
+                        ref={itemRef}
                         key={index}
                         className={cx(
                             'item',
                             index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : 'four',
                             ' l-4',
                         )}
-                        onLoad={handleHeightImg}
+                        onLoad={() => setHeightImg(itemRef.current.offsetHeight)}
                     >
                         <Link to={item.link}>
                             <img src={item.banner} alt="" />

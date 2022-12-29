@@ -7,7 +7,7 @@ import ContainerPlaylist from '~/components/container/ContainerPlayList';
 import ContainerVideos from '~/components/container/ContainerVideos';
 import ContainerArtists from '~/components/container/ContainerArtists';
 import SongSpotlight from './SongSpotlight';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 
 const cx = classNames.bind(styles);
 

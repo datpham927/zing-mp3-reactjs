@@ -9,7 +9,7 @@ function ArtistMv() {
     return data.items ? (
         <Container title="">
             {data?.items.map((item, index) => (
-                <ItemVideo key={index} data={item} timeLoad={0} />
+                <ItemVideo key={index} data={item} />
             ))}
         </Container>
     ) : (

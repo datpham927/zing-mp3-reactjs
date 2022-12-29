@@ -65,6 +65,7 @@
 }
 
 .btn {
+    display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 400;
@@ -74,8 +75,8 @@
     font-size: 1.4rem;
     padding: 9px 24px;
     border-radius: 999px;
-    & span {
-        margin-right: 8px;
+    & p {
+        margin: 0 8px;
     }
     &:hover {
         opacity: 0.8;

@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 
 const ChangerColor = ({ children }) => {
-    const p = useSelector((state) => state.counter.previewBgrIndex);
-    const t = useSelector((state) => state.counter.bgrIndex);
-    const b = useSelector((state) => state.counter.booleanPreviewBgr);
+    const p = useSelector((state) => state.action.previewBgrIndex);
+    const t = useSelector((state) => state.action.bgrIndex);
+    const b = useSelector((state) => state.action.booleanPreviewBgr);
     var kq;
     b ? (kq = p) : (kq = t);
     if ([0, 1, 2, 8].includes(kq)) {
@@ -16,6 +16,7 @@ const ChangerColor = ({ children }) => {
         document.documentElement.style.setProperty('--alpha-bg', 'hsla(0,0%,100%,0.1)');
         document.documentElement.style.setProperty('--text-item-hover', '#fff');
         document.documentElement.style.setProperty('--sidebar-bg', 'hsla(0, 0%, 100%, 0.05)');
+        document.documentElement.style.setProperty('--border-player', 'hsla(0,0%,100%,0.1)');
 
         if (kq === 0) {
             document.documentElement.style.setProperty(
@@ -30,7 +31,6 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--queue-player-popup-bg', '#5d218c');
             document.documentElement.style.setProperty('--layout-bg', '#37075d');
             document.documentElement.style.setProperty('--primary-bg', '#4B1178');
-            document.documentElement.style.setProperty('--layout-bg', '#37075d');
             document.documentElement.style.setProperty('--text-item-hover', '#fff');
             document.documentElement.style.setProperty('--player-bg', 'rgb(47,7,78)');
         }
@@ -40,6 +40,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--purple-primary', '#9b4de0');
             document.documentElement.style.setProperty('--link-text-hover', '#c273ed');
             document.documentElement.style.setProperty('--player-bg', 'rgb(24,24,24)');
+            document.documentElement.style.setProperty('--queue-player-popup-bg', '#2d2f32');
         }
         if (kq === 2) {
             document.documentElement.style.setProperty('--primary-bg', '#1A3570');
@@ -49,6 +50,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--layout-bg', '#061641');
             document.documentElement.style.setProperty('--text-item-hover', '#fff');
             document.documentElement.style.setProperty('--player-bg', 'rgb(6,22,65)');
+            document.documentElement.style.setProperty('--queue-player-popup-bg', '#223c75');
         }
         if (kq === 8) {
             document.documentElement.style.setProperty('--layout-bg', '#767269');
@@ -73,6 +75,12 @@ const ChangerColor = ({ children }) => {
         document.documentElement.style.setProperty('--alpha-bg', 'rgba(0,0,0,0.05)');
         document.documentElement.style.setProperty('--sidebar-bg', 'hsla(0,0%,100%,0.3)');
         document.documentElement.style.setProperty('--border-primary', 'rgba(0,0,0,0.03)');
+        document.documentElement.style.setProperty('--loading-bg', 'rgba(0,0,0,0.05)');
+        document.documentElement.style.setProperty(
+            '--box-shadow-queue',
+            '0 1px 0 rgba(0,0,0,0.3),0 1px 6px rgba(0,0,0,0.3),inset 0 1px 1px hsla(0,0%,100%,0.3)',
+        );
+        document.documentElement.style.setProperty('--border-player', 'rgba(0,0,0,0.05)');
 
         if (kq === 3) {
             document.documentElement.style.setProperty('--layout-bg', '#E6E1DE');
@@ -83,6 +91,8 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--box-hot-item-bg-hove', 'rgba(254,255,255,0.4)');
             document.documentElement.style.setProperty('--box-hot-item-bg', 'rgba(254,255,255,0.3)');
             document.documentElement.style.setProperty('--text-item-hover', '#AC3E82');
+            document.documentElement.style.setProperty('--player-bg', 'rgb(245,230,224)');
+            document.documentElement.style.setProperty('--queue-player-popup-bg', '#e5e3df');
         }
         if (kq === 4) {
             document.documentElement.style.setProperty('--purple-primary', '#1966B2');
@@ -91,6 +101,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--text-item-hover', '#1F5A93');
             document.documentElement.style.setProperty('--layout-bg', '#B3D8DB');
             document.documentElement.style.setProperty('--player-bg', '#A3D5DC');
+            document.documentElement.style.setProperty('--queue-player-popup-bg', '#ced9d9');
         }
         if (kq === 5) {
             document.documentElement.style.setProperty('--layout-bg', '#F1DDD8');
@@ -101,14 +112,15 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--link-text-hover', '#CC3373');
             document.documentElement.style.setProperty('--box-hot-item-bg-hove', 'rgba(254,255,255,0.4)');
             document.documentElement.style.setProperty('--box-hot-item-bg', 'rgba(254,255,255,0.3)');
+            document.documentElement.style.setProperty('--queue-player-popup-bg', '#f9dbdb');
         }
         if (kq === 6) {
             document.documentElement.style.setProperty('--layout-bg', '#BBB9C4');
-            document.documentElement.style.setProperty('--player-bg', '#C6C4D1');
             document.documentElement.style.setProperty('--primary-bg', '#CAC6DD');
             document.documentElement.style.setProperty('--purple-primary', '#8919AE');
             document.documentElement.style.setProperty('--text-item-hover', '#2a5e6b');
             document.documentElement.style.setProperty('--link-text-hover', '#6F1F89');
+            document.documentElement.style.setProperty('--queue-player-popup-bg', '#e5e3df');
         }
         if (kq === 7) {
             document.documentElement.style.setProperty('--primary-bg', '#FFFFFF');
@@ -116,6 +128,8 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--link-text-hover', '#8D22C3');
             document.documentElement.style.setProperty('--text-item-hover', '#8D22C3');
             document.documentElement.style.setProperty('--layout-bg', '#fff');
+            document.documentElement.style.setProperty('--player-bg', '#fff');
+            document.documentElement.style.setProperty('--queue-player-popup-bg', '#fff');
         }
     }
 

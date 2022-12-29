@@ -8,7 +8,7 @@ import ContainerVideos from '~/components/container/ContainerVideos';
 import style from './PageAlbum.module.scss';
 import LeftAlbum from './LeftAlbum';
 import RightAlbum from './RightAlbum';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 const cx = classNames.bind(style);
 
 function PageAlbum() {

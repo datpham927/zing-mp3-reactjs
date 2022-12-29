@@ -1,5 +1,5 @@
 import Container from '~/components/container/Container';
-import LoadImg from '~/components/loadImg/LoadImg';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import className from 'classnames/bind';
 import style from './Radio.module.scss';
 

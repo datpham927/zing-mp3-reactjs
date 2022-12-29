@@ -10,7 +10,7 @@ import RadioTopPodcast from './RadioTopPodcast';
 import RadioRadPromoteEpisode from './RadioRadPromoteEpisode';
 import RadioPodcastH from './RadioPodcastH';
 import RadioLivestream from './RadioLivestream';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 
 function Radio() {
     const dispatch = useDispatch();

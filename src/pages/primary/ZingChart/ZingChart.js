@@ -9,7 +9,7 @@ import { setDataZingChart } from '~/redux/dataZingChart';
 import Container from '~/components/container/Container';
 import ButtonAction from '~/components/Button/ButtonAction';
 import ItemChartBox from './ItemChartBox';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 import ContainerSongs from '~/components/container/ContainerSongs';
 
 const cx = className.bind(style);

@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from '~/components/Icons';
 
@@ -75,6 +76,7 @@ const MENU_SCROLL = [
     },
 ];
 function Sidebar() {
+    const control = useSelector((state) => state.action.booleanControl);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('logo', 'c-0')}>
@@ -90,7 +92,7 @@ function Sidebar() {
                 <div className={cx('divide')}></div>
             </div>
 
-            <div className={cx('navbar')}>
+            <div className={cx('navbar', control && 'active')}>
                 <div className={cx('navbar-menu')}>
                     {MENU_SCROLL.map((item, index) => (
                         <ItemSidebar key={index} data={item} />
@@ -101,7 +103,7 @@ function Sidebar() {
                     <button className={cx('btn')}>ĐĂNG NHẬP</button>
                 </div>
             </div>
-            <div className={cx('create-list', 'm-0 ')}>
+            <div className={cx('create-list', 'm-0 ', control && 'active-add-list')}>
                 <ion-icon className="m-0" name="add-outline"></ion-icon>
                 <span className="m-0">Tạo playlist mới</span>
             </div>

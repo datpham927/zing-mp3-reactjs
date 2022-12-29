@@ -34,6 +34,9 @@
                     }
                 }
             }
+            .active {
+                display: flex;
+            }
             .time {
                 position: absolute;
                 display: inline-block;
@@ -78,12 +81,16 @@
             }
             .content {
                 .title {
+                    cursor: pointer;
                     color: var(--text-primary);
                     font-size: 1.4rem;
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
                     -webkit-line-clamp: 1;
                     overflow: hidden;
+                    &:hover {
+                        color: var(--link-text-hover);
+                    }
                 }
                 .singer {
                     flex-shrink: 0;

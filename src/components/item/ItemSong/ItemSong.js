@@ -1,48 +1,55 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
-import { zingCounter } from '~/redux/action';
+import { zingAction } from '~/redux/action';
 import { setActivePlay, setIdAudio } from '~/redux/dataAudio';
-import LoadImg from '~/components/loadImg/LoadImg';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import Duration from '~/components/time/Duration';
 import styles from './ItemSong.module.scss';
+import { setSongFavorite } from '~/redux/FavoriteList';
 
 const cx = classNames.bind(styles);
 function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
     const [like, setLike] = useState(false);
+    const [favorite, setFavorite] = useState([]);
     const dispatch = useDispatch();
-    const idAudio = useSelector((state) => state.dataControl.idAudio);
-    const play = useSelector((state) => state.dataControl.activePlay);
+    const { idAudio, activePlay } = useSelector((state) => state.dataControl);
+    const { songFavorite } = useSelector((state) => state.Favorite);
+    useEffect(() => {
+        setFavorite(songFavorite?.map((e) => e.encodeId));
+    }, [songFavorite]);
+
     const handleLike = () => {
         setLike(!like);
+        dispatch(setSongFavorite(data));
     };
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
-            dispatch(setIdAudio(data.encodeId));
+            dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
             onClick();
         } else {
-            dispatch(zingCounter.actions.setModalVip(true));
+            dispatch(zingAction.actions.setModalVip(true));
         }
     };
     const handlePause = () => {
         dispatch(setActivePlay(false));
     };
-
     return type === 'song-12' ? (
         <li
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
             onDoubleClick={() => handlePlay()}
         >
-            <div className={cx('media', data.encodeId === idAudio && 'active')}>
+            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
                             <LoadImg timeLoad={timeLoad}>
                                 <img src={data.thumbnail} alt="" />
-                                {play === true && data?.encodeId === idAudio ? (
+                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                                     <div className={cx('song-play')} onClick={() => handlePause()}>
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -51,7 +58,7 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                                     </div>
                                 ) : (
                                     <div
-                                        className={cx('play', data?.encodeId === idAudio && 'pause')}
+                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
                                         onClick={() => handlePlay()}
                                     >
                                         <i className="icon action-play ic-play"></i>
@@ -93,11 +100,16 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                                 iconLeft={<i className="icon ic-karaoke"></i>}
                             />
                             <Button
+                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
                                 iconLeft={
-                                    like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>
+                                    favorite?.includes(data.encodeId) ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
                                 }
                             />
                             <Button
@@ -119,7 +131,7 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
             onDoubleClick={() => handlePlay()}
         >
-            <div className={cx('media', data.encodeId === idAudio && 'active')}>
+            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-ratings')}>
                         <h1
@@ -154,7 +166,7 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                         <div className={cx('thumb')}>
                             <LoadImg timeLoad={timeLoad}>
                                 <img src={data.thumbnail} alt="" />
-                                {play === true && data?.encodeId === idAudio ? (
+                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                                     <div className={cx('song-play')} onClick={() => handlePause()}>
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -163,7 +175,7 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                                     </div>
                                 ) : (
                                     <div
-                                        className={cx('play', data?.encodeId === idAudio && 'pause')}
+                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
                                         onClick={() => handlePlay()}
                                     >
                                         <i className="icon action-play ic-play"></i>
@@ -205,11 +217,16 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                                 iconLeft={<i className="icon ic-karaoke"></i>}
                             />
                             <Button
+                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
                                 iconLeft={
-                                    like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>
+                                    favorite?.includes(data.encodeId) ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
                                 }
                             />
                             <Button
@@ -231,7 +248,7 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
             onDoubleClick={() => handlePlay()}
         >
-            <div className={cx('media', data.encodeId === idAudio && 'active')}>
+            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
                 <div className={cx('media-wrapper', 'media-top100-small')}>
                     <div className={cx('media-ratings')}>
                         <h1
@@ -267,7 +284,7 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                         <div className={cx('thumb')}>
                             <LoadImg timeLoad={timeLoad}>
                                 <img src={data.thumbnail} alt="" />
-                                {play === true && data?.encodeId === idAudio ? (
+                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                                     <div className={cx('song-play')} onClick={() => handlePause()}>
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -276,7 +293,7 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                                     </div>
                                 ) : (
                                     <div
-                                        className={cx('play', data?.encodeId === idAudio && 'pause')}
+                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
                                         onClick={() => handlePlay()}
                                     >
                                         <i className="icon action-play ic-play"></i>
@@ -309,11 +326,16 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
                             <Button
+                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
                                 iconLeft={
-                                    like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>
+                                    favorite?.includes(data.encodeId) ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
                                 }
                             />
                         </div>
@@ -324,18 +346,15 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                 </div>
             </div>
         </li>
-    ) : (
-        <li
-            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-6 col'}
-            onDoubleClick={() => handlePlay()}
-        >
-            <div className={cx('media', data.encodeId === idAudio && 'active')}>
+    ) : type === 'player-queue' ? (
+        <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12'} onDoubleClick={() => handlePlay()}>
+            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'queue-active')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left', 'l-6')}>
                         <div className={cx('thumb')}>
                             <LoadImg timeLoad={timeLoad}>
                                 <img src={data.thumbnail} alt="" />
-                                {play === true && data?.encodeId === idAudio ? (
+                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                                     <div className={cx('song-play')} onClick={() => handlePause()}>
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -344,7 +363,132 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                                     </div>
                                 ) : (
                                     <div
-                                        className={cx('play', data?.encodeId === idAudio && 'pause')}
+                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                        onClick={() => handlePlay()}
+                                    >
+                                        <i className="icon action-play ic-play"></i>
+                                    </div>
+                                )}
+                            </LoadImg>
+                        </div>
+                        <div className={cx('info', 'weight')}>
+                            <div style={{ display: 'flex' }}>
+                                <h3 className={cx('title')}>{data.title}</h3>
+                                {data?.streamingStatus === 2 && (
+                                    <img
+                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
+                                        alt=""
+                                    />
+                                )}
+                            </div>
+                            <span className={cx('singer')}>
+                                {data?.artists?.map((i, index) => (
+                                    <>
+                                        <span>
+                                            <Link to={i.link}>{i.name}</Link>
+                                        </span>
+                                        {index < data?.artists.length - 1 && ', '}
+                                    </>
+                                ))}
+                            </span>
+                        </div>
+                    </div>
+                    <div className={cx('media-right')}>
+                        <div className={cx('action')}>
+                            <Button
+                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                onClick={() => handleLike()}
+                                small
+                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                iconLeft={
+                                    favorite?.includes(data.encodeId) ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
+                                }
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    ) : type === 'player-queue-recent' ? (
+        <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12'} onDoubleClick={() => handlePlay()}>
+            <div className={cx('media')}>
+                <div className={cx('media-wrapper')}>
+                    <div className={cx('media-left', 'l-6')}>
+                        <div className={cx('thumb')}>
+                            <LoadImg timeLoad={timeLoad}>
+                                <img src={data.thumbnail} alt="" />
+                                <div className={cx('play')} onClick={() => handlePlay()}>
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                            </LoadImg>
+                        </div>
+                        <div className={cx('info', 'weight')}>
+                            <div style={{ display: 'flex' }}>
+                                <h3 className={cx('title')}>{data.title}</h3>
+                                {data?.streamingStatus === 2 && (
+                                    <img
+                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
+                                        alt=""
+                                    />
+                                )}
+                            </div>
+                            <span className={cx('singer')}>
+                                {data?.artists?.map((i, index) => (
+                                    <>
+                                        <span>
+                                            <Link to={i.link}>{i.name}</Link>
+                                        </span>
+                                        {index < data?.artists.length - 1 && ', '}
+                                    </>
+                                ))}
+                            </span>
+                        </div>
+                    </div>
+                    <div className={cx('media-right')}>
+                        <div className={cx('action')}>
+                            <Button
+                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                onClick={() => handleLike()}
+                                small
+                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                iconLeft={
+                                    favorite?.includes(data.encodeId) ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
+                                }
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    ) : (
+        <li
+            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-6 col'}
+            onDoubleClick={() => handlePlay()}
+        >
+            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
+                <div className={cx('media-wrapper')}>
+                    <div className={cx('media-left', 'l-6')}>
+                        <div className={cx('thumb')}>
+                            <LoadImg timeLoad={timeLoad}>
+                                <img src={data.thumbnail} alt="" />
+                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                                    <div className={cx('song-play')} onClick={() => handlePause()}>
+                                        <img
+                                            src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                            alt=""
+                                        />
+                                    </div>
+                                ) : (
+                                    <div
+                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
                                         onClick={() => handlePlay()}
                                     >
                                         <i className="icon action-play ic-play"></i>
@@ -377,7 +521,19 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
                             <Button small content="Phát cùng lời hát" iconLeft={<i className="icon ic-karaoke"></i>} />
-                            <Button small content="Thêm vào thư viện" iconLeft={<i className="icon ic-like"></i>} />
+                            <Button
+                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                onClick={() => handleLike()}
+                                small
+                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                iconLeft={
+                                    favorite?.includes(data.encodeId) ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
+                                }
+                            />
                         </div>
                         <div className={cx('duration')}>
                             <span>{<Duration duration={data.duration} />}</span>
@@ -389,4 +545,4 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
     );
 }
 
-export default ItemSong;
+export default memo(ItemSong);

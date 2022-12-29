@@ -1,39 +1,48 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
-import LoadImg from '~/components/loadImg/LoadImg';
-import { zingCounter } from '~/redux/action';
+import LoadImg from '~/components/load/loadImg/LoadImg';
+import { zingAction } from '~/redux/action';
 import { setActivePlay, setIdAudio } from '~/redux/dataAudio';
 import Duration from '~/components/time/Duration';
 import styles from './ItemSong.module.scss';
+import { setSongFavorite } from '~/redux/FavoriteList';
 
 const cx = classNames.bind(styles);
 function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
     const dispatch = useDispatch();
-    const [like, setLike] = useState(false);
+    const [favorite, setFavorite] = useState([]);
     const idAudio = useSelector((state) => state.dataControl.idAudio);
     const play = useSelector((state) => state.dataControl.activePlay);
+    const { songFavorite } = useSelector((state) => state.Favorite);
+
+    useEffect(() => {
+        setFavorite(songFavorite?.map((e) => e.encodeId));
+    }, [songFavorite]);
+
     const handleLike = () => {
-        setLike(!like);
+        dispatch(setSongFavorite(data));
     };
+
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
-            dispatch(setIdAudio(data.encodeId));
+            dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
             onClick();
         } else {
-            dispatch(zingCounter.actions.setModalVip(true));
+            dispatch(zingAction.actions.setModalVip(true));
         }
     };
+
     const handlePause = () => {
         dispatch(setActivePlay(false));
     };
 
     return (
         <li className={cx('item', 'add') + ' l-12 col'}>
-            <div className={cx('media', data.encodeId === idAudio && 'active')}>
+            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
                 <div className={cx('media-wrapper')} onDoubleClick={() => handlePlay()}>
                     <div className={cx('media-left')}>
                         <div className={cx('action-checkbox')}>
@@ -45,7 +54,7 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
                         <div className={cx('thumb')}>
                             <LoadImg timeLoad={timeLoad}>
                                 <img src={data?.thumbnail} alt="" />
-                                {play === true && data?.encodeId === idAudio ? (
+                                {play === true && data?.encodeId === idAudio?.encodeId ? (
                                     <div className={cx('song-play')} onClick={() => handlePause()}>
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -54,7 +63,7 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
                                     </div>
                                 ) : (
                                     <div
-                                        className={cx('play', data?.encodeId === idAudio && 'pause')}
+                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
                                         onClick={() => handlePlay()}
                                     >
                                         <i className="icon action-play ic-play"></i>
@@ -96,11 +105,16 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
                                 iconLeft={<i className="icon ic-karaoke"></i>}
                             />
                             <Button
+                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
                                 iconLeft={
-                                    like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>
+                                    favorite?.includes(data.encodeId) ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
                                 }
                             />
                             <Button

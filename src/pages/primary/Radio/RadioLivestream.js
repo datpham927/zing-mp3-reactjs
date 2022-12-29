@@ -39,7 +39,7 @@ function RadioLivestream({ data }) {
                 {data?.items?.map((item, index) => (
                     <li key={index} className="1-2">
                         <SwiperSlide>
-                            <ItemRadio col="" timeLoad={0} key={index} data={item} />
+                            <ItemRadio col="" key={index} data={item} />
                         </SwiperSlide>
                     </li>
                 ))}

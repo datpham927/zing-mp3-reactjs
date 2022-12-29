@@ -22,7 +22,6 @@ function Button(
         noContent = false,
         className,
         onClick,
-        children,
         content,
         ...passProps
     },
@@ -66,7 +65,6 @@ function Button(
     return src ? (
         <Comp ref={ref} className={classNames} {...props}>
             {src && <img className={cx('image')} src={src} />}
-            {children && <span className={cx('content')}>{children}</span>}
         </Comp>
     ) : noContent ? (
         <Comp ref={ref} className={classNames} {...props}>
@@ -77,7 +75,6 @@ function Button(
                     <input type="file" hidden id="upload" />
                 </span>
             )}
-            {children && <span className={cx('content')}>{children}</span>}
         </Comp>
     ) : (
         <Tippy delay={[0, 50]} content={content}>

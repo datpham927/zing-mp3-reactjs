@@ -4,7 +4,7 @@ import style from './Top100.module.scss';
 import { useEffect, useState } from 'react';
 import { getTop100 } from '~/components/Api/Service';
 import ContainerPlayList from '~/components/container/ContainerPlayList';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 
 const cx = className.bind(style);
 function Top100() {

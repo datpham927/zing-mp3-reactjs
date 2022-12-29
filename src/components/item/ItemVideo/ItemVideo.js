@@ -1,21 +1,42 @@
 /* eslint-disable no-useless-concat */
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
-import LoadImg from '~/components/loadImg/LoadImg';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import Duration from '~/components/time/Duration';
+import { setActivePlay } from '~/redux/dataAudio';
+import { setChangerDataMv, setIndexOpenMv, setPlayMv } from '~/redux/dataMV';
 import styles from './ItemVideo.module.scss';
 
 const cx = classNames.bind(styles);
 function ItemVideo({ data, timeLoad = 1000 }) {
+    const dispatch = useDispatch();
+    const { playMv, indexOpenMv } = useSelector((state) => state.dataMv);
+    const navigate = useNavigate();
+    const handleOnclick = () => {
+        navigate(data?.link);
+        dispatch(setActivePlay(false));
+        dispatch(setChangerDataMv(false));
+        dispatch(setPlayMv(true));
+        dispatch(setIndexOpenMv(indexOpenMv + 1));
+    };
+    const handleClickArtist = () => {
+        dispatch(setPlayMv(false));
+    };
+    const id = useSelector((state) => state.dataMv.idMv);
     return (
         data && (
             <li className={cx('item') + ' l-4 col'}>
                 <div className={cx('wrapper')}>
                     <LoadImg timeLoad={timeLoad} className={cx('load-video')}>
-                        <div className={cx('video-img')}>
+                        <div className={cx('video-img')} onClick={handleOnclick}>
                             <img src={data?.thumbnailM} alt="" />
-                            <div className={cx('play')}>
-                                <i className="icon ic-play-circle-outline"></i>
+                            <div className={cx('play', id === data.encodeId && 'active')}>
+                                {playMv && id === data.encodeId ? (
+                                    <p style={{ fontSize: '1.4rem' }}>Đang phát </p>
+                                ) : (
+                                    <i className="icon ic-play-circle-outline"></i>
+                                )}
                             </div>
                             <div className={cx('time')}>
                                 <span>{<Duration duration={data?.duration} />}</span>
@@ -29,11 +50,15 @@ function ItemVideo({ data, timeLoad = 1000 }) {
                             </LoadImg>
                         </div>
                         <div className={cx('content')}>
-                            <h3 className={cx('title')}>{data.title}</h3>
+                            <h3 className={cx('title')} onClick={handleOnclick}>
+                                {data.title}
+                            </h3>
                             <div className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
                                     <>
-                                        <Link to={i.link}>{i.name}</Link>
+                                        <Link onClick={handleClickArtist} to={i.link}>
+                                            {i.name}
+                                        </Link>
                                         {index < data?.artists.length - 1 && ', '}
                                     </>
                                 ))}

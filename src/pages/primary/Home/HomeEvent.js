@@ -42,7 +42,7 @@ function HomeEvent({ data }) {
                     {data?.items?.map((item, index) => (
                         <li key={index} className="1-4">
                             <SwiperSlide>
-                                <ItemEvent col="" timeLoad={0} key={index} data={item} />
+                                <ItemEvent col="" key={index} data={item} />
                             </SwiperSlide>
                         </li>
                     ))}

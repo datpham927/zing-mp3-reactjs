@@ -11,7 +11,7 @@ function ArtistSinger() {
     return data.items ? (
         <Container title={data.title}>
             {data?.items.map((item, index) => (
-                <ItemPlayList key={index} data={item} timeLoad={0} className={cx('item')} />
+                <ItemPlayList key={index} data={item} className={cx('item')} />
             ))}
         </Container>
     ) : (

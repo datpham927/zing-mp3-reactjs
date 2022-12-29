@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import LoadImg from '../loadImg/LoadImg';
+import LoadImg from '../load/loadImg/LoadImg';
 import styles from './Container.module.scss';
 const cx = classNames.bind(styles);
 function Container({

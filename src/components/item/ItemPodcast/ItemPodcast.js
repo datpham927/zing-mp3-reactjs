@@ -2,7 +2,7 @@
 import className from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import Button from '~/components/Button';
-import LoadImg from '~/components/loadImg/LoadImg';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import FormatDate from '~/components/time/FormatDate';
 import Minute from '~/components/time/Minute';
 
@@ -16,7 +16,7 @@ function ItemPodcast({ data, col = 'l-12', index, className, onClick }) {
     const play = useSelector((state) => state.dataControl.activePlay);
 
     const handlePlay = () => {
-        // dispatch(setIdAudio(data.encodeId));
+        // dispatch(setIdAudio(data));
         // dispatch(setActivePlay(true));
         // onClick();
     };
@@ -31,7 +31,7 @@ function ItemPodcast({ data, col = 'l-12', index, className, onClick }) {
                     <LoadImg>
                         <div className={cx('wrapper-img')}>
                             <img src={data?.thumbnail} className={cx('image')} alt="" />
-                            {play === true && data?.encodeId === idAudio ? (
+                            {play === true && data?.encodeId === idAudio?.encodeId ? (
                                 <div className={cx('play-song')} onClick={() => handlePause()}>
                                     <img
                                         src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -40,7 +40,7 @@ function ItemPodcast({ data, col = 'l-12', index, className, onClick }) {
                                 </div>
                             ) : (
                                 <div
-                                    className={cx('icon-play', data?.encodeId === idAudio && 'pause')}
+                                    className={cx('icon-play', data?.encodeId === idAudio?.encodeId && 'pause')}
                                     onClick={() => handlePlay()}
                                 >
                                     <ion-icon

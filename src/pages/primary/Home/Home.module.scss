@@ -59,13 +59,15 @@
         }
     }
 }
-
+//------------- release ---------------
 .header {
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding: 0 5px;
-
+    .left {
+        display: flex;
+    }
     .right {
         display: flex;
         align-items: center;

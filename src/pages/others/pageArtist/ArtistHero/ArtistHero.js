@@ -9,7 +9,7 @@ import ContainerArtists from '~/components/container/ContainerArtists';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { artist } from '~/components/Api/Service';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +29,7 @@ function ArtistHero() {
     return kt && data.length !== 0 ? (
         <div className={cx('wrapper')}>
             <ArtistHeroTop />
-            {data?.sections.map((e, i) =>
+            {data.sections.map((e, i) =>
                 e.sectionType === 'song' ? (
                     <ContainerSongs data={e.items} title={e.title} index={6} all link={e.link} />
                 ) : e.sectionType === 'playlist' ? (

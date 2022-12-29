@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './ItemMenu.module.scss';
-import { zingCounter } from '~/redux/action';
+import { zingAction } from '~/redux/action';
 import { Icon } from '../../Icons';
 const cx = classNames.bind(style);
 
@@ -12,15 +12,15 @@ function ItemMenu({ type, iconLeft, iconRight, children, to, id, onClick, onChan
     if (!!to) {
         Comp = Link;
     }
-    const quality = useSelector((state) => state.counter.qualitySong);
+    const quality = useSelector((state) => state.action.qualitySong);
     const dispatch = useDispatch();
     const handleSQ = () => {
         onChange();
-        dispatch(zingCounter.actions.BooleanQualitySong(false));
+        dispatch(zingAction.actions.BooleanQualitySong(false));
     };
     const handleHQ = () => {
         onChange();
-        dispatch(zingCounter.actions.BooleanQualitySong(true));
+        dispatch(zingAction.actions.BooleanQualitySong(true));
     };
     return type === 'quality' ? (
         <Comp to={to} className={cx('item')} onClick={onClick}>

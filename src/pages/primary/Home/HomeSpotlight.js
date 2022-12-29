@@ -24,7 +24,7 @@ function HomeSpotlight({ data }) {
                 {data?.items?.map((item, index) => (
                     <li key={index} className="1-2">
                         <SwiperSlide>
-                            <ItemArtists col="" timeLoad={0} key={index} data={item} />
+                            <ItemArtists col="" key={index} data={item} />
                         </SwiperSlide>
                     </li>
                 ))}

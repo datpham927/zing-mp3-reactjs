@@ -117,3 +117,19 @@ export const getFollowing = async (id, index) => {
         console.log(error);
     }
 };
+export const getPlayMv = async (id) => {
+    try {
+        const res = await axios.get(`https://api-zingmp3.vercel.app/api/mv/${id}`);
+        return res.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const getCategoryMv = async (id) => {
+    try {
+        const res = await axios.get(`https://api-zingmp3.vercel.app/api/categorymv/${id}`);
+        return res.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+};

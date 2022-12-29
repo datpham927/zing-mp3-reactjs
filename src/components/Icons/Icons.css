@@ -20,6 +20,18 @@ body .tippy-content {
 .ic-restore:before {
     content: '\30';
 }
+.ic-go-down:before {
+    content: '\79';
+}
+.ic-20-Clock:before {
+    content: '\ea5b';
+}
+.ic-song:before {
+    content: '\e004';
+}
+.ic-go-up:before {
+    content: '\42';
+}
 .ic-volume:before {
     content: '\e009';
 }

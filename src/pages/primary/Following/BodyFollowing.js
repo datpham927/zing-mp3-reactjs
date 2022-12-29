@@ -7,13 +7,14 @@ import className from 'classnames/bind';
 import style from './Following.module.scss';
 import Container from '~/components/container/Container';
 import { useLocation } from 'react-router-dom';
-import Loading from '~/components/Loading/Loading';
+import Loading from '~/components/load/Loading/Loading';
 import { iconLoad } from '~/assets/icon/IconLoad';
 const cx = className.bind(style);
 function BodyFollowing() {
     const [data, setData] = useState([]);
     const [index, setIndex] = useState(1);
     const [btn, setBtn] = useState(false);
+    const [hideBtn, setHideBtn] = useState(false);
 
     const id = useLocation().pathname.split('/').pop().split('.')[0];
 
@@ -24,7 +25,11 @@ function BodyFollowing() {
             if (data.length === 0) {
                 setData(datas.items);
             } else {
-                setData((e) => [...e, ...datas.items]);
+                if (datas?.items) {
+                    setData((e) => [...e, ...datas?.items]);
+                } else {
+                    setHideBtn(true);
+                }
             }
         };
         api();
@@ -40,15 +45,17 @@ function BodyFollowing() {
                     <ItemFollowing data={e} key={i}></ItemFollowing>
                 ))}
             </Container>
-            <div className={cx('btn')}>
-                {btn ? (
-                    <Loading image={iconLoad[1].path} className={cx('load-img')} />
-                ) : (
-                    <ButtonAction className={cx('btn-more')} onClick={() => handelClick()}>
-                        Xem thêm
-                    </ButtonAction>
-                )}
-            </div>
+            {!hideBtn && (
+                <div className={cx('btn')}>
+                    {btn ? (
+                        <Loading image={iconLoad[1].path} className={cx('load-img')} />
+                    ) : (
+                        <ButtonAction className={cx('btn-more')} onClick={() => handelClick()}>
+                            Xem thêm
+                        </ButtonAction>
+                    )}
+                </div>
+            )}
         </div>
     ) : (
         <Loading />

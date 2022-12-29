@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 const cx = classNames.bind(styles);
 
 function Background() {
-    const index = useSelector((state) => state.counter.bgrIndex);
-    const preview = useSelector((state) => state.counter.booleanPreviewBgr);
-    const previewIndex = useSelector((state) => state.counter.previewBgrIndex);
+    const index = useSelector((state) => state.action.bgrIndex);
+    const preview = useSelector((state) => state.action.booleanPreviewBgr);
+    const previewIndex = useSelector((state) => state.action.previewBgrIndex);
 
     return (
         <div

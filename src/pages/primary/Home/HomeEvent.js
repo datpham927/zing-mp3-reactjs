@@ -39,10 +39,10 @@ function HomeEvent({ data }) {
                 slidesPerGroup={1}
             >
                 <div className={cx('wrapper-event')}>
-                    {data?.items?.map((item, index) => (
-                        <li key={index} className="1-4">
+                    {data?.items?.map((item) => (
+                        <li className="1-4" key={item.encodeId}>
                             <SwiperSlide>
-                                <ItemEvent col="" key={index} data={item} />
+                                <ItemEvent col="" data={item} />
                             </SwiperSlide>
                         </li>
                     ))}

@@ -3,8 +3,8 @@ import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import Duration from '~/components/time/Duration';
-import { setActivePlay } from '~/redux/dataAudio';
+import Duration from '~/components/number/time/Duration';
+import { setActivePlay } from '~/redux/action';
 import { setChangerDataMv, setIndexOpenMv, setPlayMv } from '~/redux/dataMV';
 import styles from './ItemVideo.module.scss';
 

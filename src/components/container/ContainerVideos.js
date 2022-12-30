@@ -6,7 +6,7 @@ function ContainerVideos({ data, title, link, all = false, index = 3 }) {
     return (
         data && (
             <Container title={title} data={data} link={link} all={all}>
-                {data?.map((item, i) => i < index && <ItemVideo key={i} data={item} />)}
+                {data?.map((e, i) => i < index && <ItemVideo key={e.encodeId} data={e} />)}
             </Container>
         )
     );

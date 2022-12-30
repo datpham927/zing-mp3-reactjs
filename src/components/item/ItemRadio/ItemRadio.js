@@ -1,5 +1,5 @@
 import className from 'classnames/bind';
-import Follow from '~/components/follow/Follow';
+import Follow from '~/components/number/follow/Follow';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import style from './ItemRadio.module.scss';
 const cx = className.bind(style);

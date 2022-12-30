@@ -39,30 +39,34 @@ function Container({
         </div>
     ) : swiper ? (
         <div className={cx('container', className)}>
-            <div className={cx('header')}>
-                {title && <h1 className={cx('title')}>{title}</h1>}
-                {all && (
-                    <div className={cx('all')} onClick={onClick}>
-                        <Link to={link}>
-                            TẤT CẢ <i className="icon ic-go-right"></i>
-                        </Link>
-                    </div>
-                )}
-            </div>
+            {title && (
+                <div className={cx('header')}>
+                    <h1 className={cx('title')}>{title}</h1>
+                    {all && (
+                        <div className={cx('all')} onClick={onClick}>
+                            <Link to={link}>
+                                TẤT CẢ <i className="icon ic-go-right"></i>
+                            </Link>
+                        </div>
+                    )}
+                </div>
+            )}
             {children}
         </div>
     ) : (
         <div className={cx('container', className)}>
-            <div className={cx('header')}>
-                {title && <h1 className={cx('title')}>{title}</h1>}
-                {all && (
-                    <div className={cx('all')} onClick={onClick}>
-                        <Link to={link}>
-                            TẤT CẢ <i className="icon ic-go-right"></i>
-                        </Link>
-                    </div>
-                )}
-            </div>
+            {title && (
+                <div className={cx('header')}>
+                    <h1 className={cx('title')}>{title}</h1>
+                    {all && (
+                        <div className={cx('all')} onClick={onClick}>
+                            <Link to={link}>
+                                TẤT CẢ <i className="icon ic-go-right"></i>
+                            </Link>
+                        </div>
+                    )}
+                </div>
+            )}
             <div className={cx('body') + ' row'}>{children}</div>
         </div>
     );

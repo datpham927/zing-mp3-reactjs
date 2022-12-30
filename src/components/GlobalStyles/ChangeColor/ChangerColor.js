@@ -17,7 +17,11 @@ const ChangerColor = ({ children }) => {
         document.documentElement.style.setProperty('--text-item-hover', '#fff');
         document.documentElement.style.setProperty('--sidebar-bg', 'hsla(0, 0%, 100%, 0.05)');
         document.documentElement.style.setProperty('--border-player', 'hsla(0,0%,100%,0.1)');
-
+        document.documentElement.style.setProperty('--portal-menu-box-shadow', 'rgba(0,0,0,0.2)');
+        document.documentElement.style.setProperty(
+            '--empty-song-icon',
+            'url(https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/empty-mv-dark.png)',
+        );
         if (kq === 0) {
             document.documentElement.style.setProperty(
                 '--linear-gradient-bg',
@@ -76,11 +80,16 @@ const ChangerColor = ({ children }) => {
         document.documentElement.style.setProperty('--sidebar-bg', 'hsla(0,0%,100%,0.3)');
         document.documentElement.style.setProperty('--border-primary', 'rgba(0,0,0,0.03)');
         document.documentElement.style.setProperty('--loading-bg', 'rgba(0,0,0,0.05)');
+        document.documentElement.style.setProperty('--portal-menu-box-shadow', 'rgba(0,0,0,0.3)');
         document.documentElement.style.setProperty(
             '--box-shadow-queue',
             '0 1px 0 rgba(0,0,0,0.3),0 1px 6px rgba(0,0,0,0.3),inset 0 1px 1px hsla(0,0%,100%,0.3)',
         );
         document.documentElement.style.setProperty('--border-player', 'rgba(0,0,0,0.05)');
+        document.documentElement.style.setProperty(
+            '--empty-song-icon',
+            'url(https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/empty-fav-song.png)',
+        );
 
         if (kq === 3) {
             document.documentElement.style.setProperty('--layout-bg', '#E6E1DE');
@@ -121,6 +130,7 @@ const ChangerColor = ({ children }) => {
             document.documentElement.style.setProperty('--text-item-hover', '#2a5e6b');
             document.documentElement.style.setProperty('--link-text-hover', '#6F1F89');
             document.documentElement.style.setProperty('--queue-player-popup-bg', '#e5e3df');
+            document.documentElement.style.setProperty('--player-bg', '#C6C4D1');
         }
         if (kq === 7) {
             document.documentElement.style.setProperty('--primary-bg', '#FFFFFF');

@@ -88,21 +88,23 @@ function Search() {
     };
 
     // ẩn khung kết quả
-    window.onclick = (e) => {
-        if (
-            !e.target.closest('.Search_icon-search__TdugZ') &&
-            !e.target.closest('.Search_menu-search__mVQK0') &&
-            !e.target.closest('input')
-        ) {
-            if (e.target.closest('.Search_close__S-Oy5')) {
-                hideBtnClose();
-            } else {
-                setOpenInput(false);
-                setBorderRadius(false);
-                setShowResult(false);
+    useEffect(() => {
+        window.onclick = (e) => {
+            if (
+                !e.target.closest('.Search_icon-search__TdugZ') &&
+                !e.target.closest('.Search_menu-search__mVQK0') &&
+                !e.target.closest('input')
+            ) {
+                if (e.target.closest('.Search_close__S-Oy5')) {
+                    hideBtnClose();
+                } else {
+                    setOpenInput(false);
+                    setBorderRadius(false);
+                    setShowResult(false);
+                }
             }
-        }
-    };
+        };
+    }, []);
     const handleEnter = (e) => {
         if (e.key === 'Enter') {
             if (valueRef.current.value !== '') {

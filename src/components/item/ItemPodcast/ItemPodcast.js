@@ -3,9 +3,8 @@ import className from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import FormatDate from '~/components/time/FormatDate';
-import Minute from '~/components/time/Minute';
-
+import FormatDate from '~/components/number/time/FormatDate';
+import Minute from '~/components/number/time/Minute';
 import style from './ItemPodcast.module.scss';
 
 const cx = className.bind(style);

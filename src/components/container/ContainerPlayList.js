@@ -15,15 +15,17 @@ function ContainerPlaylist({
     return spotlight
         ? data && (
               <Container title={title} data={data} link={link} all={all} spotlight={spotlight}>
-                  {data?.items.map((i, e) => e < index && <ItemPlayList description={description} data={i} key={e} />)}
+                  {data?.items.map(
+                      (e, i) => i < index && <ItemPlayList description={description} data={e} key={e.encodeId} />,
+                  )}
               </Container>
           )
         : data && (
               <Container title={title} link={link} all={all}>
                   {data?.map(
-                      (i, e) =>
-                          e < index && (
-                              <ItemPlayList description={description} data={i} key={e} className={className} />
+                      (e, i) =>
+                          i < index && (
+                              <ItemPlayList description={description} data={e} key={e.encodeId} className={className} />
                           ),
                   )}
               </Container>

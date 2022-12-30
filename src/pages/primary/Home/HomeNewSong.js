@@ -19,15 +19,14 @@ function HomeNewSong({ data }) {
                     disableOnInteraction: false,
                 }}
                 allowTouchMove={false}
-                navigation={true}
                 loop={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 slidesPerView={3}
             >
                 {data?.items?.map((item, index) => (
-                    <li key={index} className="1-2">
+                    <li className="1-2" key={item.encodeId}>
                         <SwiperSlide>
-                            <ItemNewRelease col="" key={index} data={item} index={index + 1} />
+                            <ItemNewRelease col="" data={item} index={index + 1} />
                         </SwiperSlide>
                     </li>
                 ))}

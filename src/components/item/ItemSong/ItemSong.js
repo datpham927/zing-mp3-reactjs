@@ -4,26 +4,25 @@ import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
-import { zingAction } from '~/redux/action';
-import { setActivePlay, setIdAudio } from '~/redux/dataAudio';
+import { setActivePlay, zingAction } from '~/redux/action';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import Duration from '~/components/time/Duration';
 import styles from './ItemSong.module.scss';
 import { setSongFavorite } from '~/redux/FavoriteList';
+import { setIdAudio } from '~/redux/dataAudio';
+import Duration from '~/components/number/time/Duration';
 
 const cx = classNames.bind(styles);
 function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
-    const [like, setLike] = useState(false);
     const [favorite, setFavorite] = useState([]);
     const dispatch = useDispatch();
-    const { idAudio, activePlay } = useSelector((state) => state.dataControl);
+    const { idAudio } = useSelector((state) => state.dataControl);
+    const { activePlay } = useSelector((state) => state.action);
     const { songFavorite } = useSelector((state) => state.Favorite);
     useEffect(() => {
         setFavorite(songFavorite?.map((e) => e.encodeId));
     }, [songFavorite]);
 
     const handleLike = () => {
-        setLike(!like);
         dispatch(setSongFavorite(data));
     };
     const handlePlay = () => {

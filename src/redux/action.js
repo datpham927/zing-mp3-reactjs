@@ -6,7 +6,7 @@ const initialState = {
     //mở modal lựa chọn background
     booleanTheme: false,
     // index background
-    bgrIndex: 0,
+    bgrIndex: JSON.parse(localStorage.getItem('bgrIndex')) || 0,
     // xem trước background
     booleanPreviewBgr: false,
     previewBgrIndex: 0,
@@ -18,8 +18,11 @@ const initialState = {
     value: '',
     booleanVip: false,
     booleanModalFollow: false,
-    booleanControl: false,
+    booleanTimer: false,
+    booleanControl: JSON.parse(localStorage.getItem('control')) || false,
     booleanQueueList: false,
+    activePlay: false,
+    timer: JSON.parse(localStorage.getItem('timer')) || 0,
 };
 
 export const zingAction = createSlice({
@@ -37,6 +40,7 @@ export const zingAction = createSlice({
         // index background
         backgroundIndex: (state, action) => {
             state.bgrIndex = action.payload;
+            localStorage.setItem('bgrIndex', JSON.stringify(state.bgrIndex));
         },
         // xem trước background
         booleanPreview: (state, action) => {
@@ -57,7 +61,6 @@ export const zingAction = createSlice({
         setOpenInput: (state, action) => {
             state.booleanOpenInput = action.payload;
         },
-
         // value search
         setValueSearch: (state, action) => {
             state.value = action.payload;
@@ -70,9 +73,20 @@ export const zingAction = createSlice({
         },
         setOpenControl: (state, action) => {
             state.booleanControl = action.payload;
+            localStorage.setItem('control', JSON.stringify(state.booleanControl));
         },
         setOpenQueueList: (state, action) => {
             state.booleanQueueList = action.payload;
+        },
+        setActivePlay: (state, action) => {
+            state.activePlay = action.payload;
+        },
+        setModalTimer: (state, action) => {
+            state.booleanTimer = action.payload;
+        },
+        setTimer: (state, action) => {
+            state.timer = action.payload;
+            localStorage.setItem('timer', JSON.stringify(state.timer));
         },
     },
 });
@@ -91,6 +105,9 @@ export const {
     setModalFollow,
     setOpenControl,
     setOpenQueueList,
+    setActivePlay,
+    setModalTimer,
+    setTimer,
 } = zingAction.actions;
 
 export default zingAction.reducer;

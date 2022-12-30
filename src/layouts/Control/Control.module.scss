@@ -185,7 +185,10 @@
         }
     }
 }
-
+.background-img {
+    background-image: url(https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-player/zma.png);
+    background-size: cover;
+}
 .shuffle {
     & i {
         color: var(--link-text-hover);

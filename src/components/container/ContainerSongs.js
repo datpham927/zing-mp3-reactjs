@@ -15,18 +15,20 @@ function ContainerSongs({ data, title, link, all = false, index = 6, type = '' }
     };
     return type === 'top100' || type === 'top100-small' || type === 'song-12'
         ? data?.map(
-              (item, i) =>
+              (e, i) =>
                   i < index && (
-                      <ItemSong key={i} data={item} type={type} index={i + 1} onClick={() => handleOnClick(i)} />
+                      <ItemSong key={e.encodeId} data={e} type={type} index={i + 1} onClick={() => handleOnClick(i)} />
                   ),
           )
         : type === 'add'
-        ? data?.map((item, i) => i < index && <ItemSongAdd key={i} data={item} onClick={() => handleOnClick(i)} />)
+        ? data?.map((e, i) => i < index && <ItemSongAdd key={e.encodeId} data={e} onClick={() => handleOnClick(i)} />)
         : data && (
               <Container title={title} data={data} link={link} all={all}>
                   {data?.map(
-                      (item, i) =>
-                          i < index && <ItemSong key={i} data={item} type={type} onClick={() => handleOnClick(i)} />,
+                      (e, i) =>
+                          i < index && (
+                              <ItemSong key={e.encodeId} data={e} type={type} onClick={() => handleOnClick(i)} />
+                          ),
                   )}
               </Container>
           );

@@ -1,0 +1,35 @@
+body .header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+body .header h1 {
+  font-size: 2.4rem;
+  padding-right: 20px;
+  line-height: 1.1;
+  border-right: 1px solid var(--border-primary);
+}
+body .header .select-menu {
+  display: flex;
+}
+body .header .select-menu .btn {
+  font-size: 1.4rem;
+  border: none;
+  margin: 0;
+  padding: 15px 0;
+  margin: 0 20px;
+  border-radius: 0;
+}
+body .header .select-menu .active {
+  border-bottom: 2px solid var(--purple-primary);
+}
+body .header::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 118px);
+  height: 1px;
+  border-bottom: 1px solid var(--border-primary);
+  bottom: 0;
+  left: -59px;
+}/*# sourceMappingURL=MvHeader.module.css.map */

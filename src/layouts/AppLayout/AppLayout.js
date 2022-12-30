@@ -3,7 +3,7 @@ import styles from './AppLayout.module.scss';
 import Sidebar from '../Sidebar';
 import PropTypes from 'prop-types';
 import Header from '../Header';
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import Modal from '~/components/modal/Modal';
 import Control from '../Control/Control';
 import { useSelector } from 'react-redux';
@@ -29,7 +29,7 @@ function AppLayout({ children }) {
         <>
             <Modal />
             <div className={cx('Wrapper', booleanControl && 'active')}>
-                <Sidebar key={1} />
+                <Sidebar />
                 <div className={cx('main')} onScroll={(e) => handleScroll(e)}>
                     <Header bgrHeader={bgrHeader} />
                     <div className={cx('container')}>{children}</div>

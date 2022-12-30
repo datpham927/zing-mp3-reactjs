@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getPlayMv } from '~/components/Api/Service';
 import Button from '~/components/Button';
-import { setOpenControl } from '~/redux/action';
-import { setActivePlay, setIdAudio } from '~/redux/dataAudio';
+import { setIdAudio } from '~/redux/dataAudio';
 import { setIdMv, setIndexOpenMv, setPlayMv } from '~/redux/dataMV';
 import ItemPlayMv from './ItemPlayMv';
 import style from './PlayMv.module.scss';
 import MvArtist from './MvArtist';
 import { setMvFavorite } from '~/redux/FavoriteList';
+import { setActivePlay, setOpenControl } from '~/redux/action';
 
 const cx = className.bind(style);
 function PlayMv() {
@@ -52,7 +52,6 @@ function PlayMv() {
         api();
     }, [idMv, changerDataMv]);
 
-    console.log(data);
     const handleLike = () => {
         dispatch(setMvFavorite(data));
     };
@@ -91,7 +90,7 @@ function PlayMv() {
                         <Button
                             onClick={() => handleLike()}
                             primary
-                            content={favorite.includes(header[0]?.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                            content={favorite.includes(header[0]?.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                             iconLeft={
                                 favorite.includes(header[0]?.encodeId) ? (
                                     <i className="icon ic-like-full"></i>
@@ -104,7 +103,7 @@ function PlayMv() {
                             onClick={handleListenAudio}
                             primary
                             content={'Nghe Audio'}
-                            iconLeft={<i class="icon ic-song"></i>}
+                            iconLeft={<i className="icon ic-song"></i>}
                         />
                     </div>
                     <div className={cx('right')}>
@@ -112,7 +111,7 @@ function PlayMv() {
                             onClick={handleClose}
                             primary
                             content={'Đóng'}
-                            iconLeft={<i class="icon ic-close"></i>}
+                            iconLeft={<i className="icon ic-close"></i>}
                         />
                     </div>
                 </div>
@@ -131,7 +130,7 @@ function PlayMv() {
                 </div>
             </div>
             <div className={cx('body')}>
-                {data?.artists && data?.artists?.map((e, i) => <MvArtist value={e.alias} key={i} />)}
+                {data?.artists && data?.artists?.map((e, i) => <MvArtist value={e.alias} key={e.encodeId} />)}
             </div>
         </div>
     );

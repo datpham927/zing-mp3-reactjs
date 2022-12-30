@@ -1,0 +1,255 @@
+.top {
+  padding-top: 30px;
+}
+.top .left {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 100px;
+  padding: 10px 10px 0 0;
+  text-align: center;
+}
+.top .left .image {
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  transition: 0.8s linear;
+  overflow: hidden;
+}
+.top .left .image img {
+  display: block;
+  width: 100%;
+  transition: 0.3s linear;
+}
+.top .left .image:hover img {
+  transform: scale(1.1);
+}
+.top .left .image .song-play,
+.top .left .image .play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  line-height: 100%;
+  background-color: var(--dark-alpha-50);
+  justify-content: center;
+}
+.top .left .image .song-play {
+  display: flex;
+}
+.top .left .image .song-play img {
+  width: 3rem;
+  height: 3rem;
+}
+.top .left .image .play {
+  display: flex;
+}
+.top .left .image .play i {
+  font-size: 5rem;
+}
+.top .left .image:hover {
+  background-color: var(--box-hot-item-bg-hover);
+}
+.top .left .image:hover .play {
+  display: flex;
+}
+.top .left .rotate.image {
+  border-radius: 999px;
+  border: 1px solid black;
+  animation: rotatePlay 10s linear 0s infinite;
+  -webkit-animation: rotatePlay 10s linear 0s infinite;
+  -moz-animation: rotatePlay 10s linear 0s infinite;
+  -o-animation: rotatePlay 10s linear 0s infinite;
+}
+.top .left .rotate-pause.image {
+  animation: rotatePause 0.3s linear 0s 1;
+  -webkit-animation: rotatePause 0.3s linear 0s 1;
+  -moz-animation: rotatePause 0.3s linear 0s 1;
+  -o-animation: rotatePause 0.3s linear 0s 1;
+}
+.top .left .content {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.top .left .content h3 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-top: 10px;
+}
+.top .left .content .artist {
+  color: var(--text-secondary);
+}
+.top .left .content .artist span {
+  transition: 0.1s linear;
+}
+.top .left .content .artist span a {
+  align-items: center;
+  color: var(--text-secondary);
+}
+.top .left .content .artist span:hover a {
+  color: var(--link-text-hover);
+  text-decoration: underline;
+}
+.top .left .content .like {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+.top .left .btn-album {
+  margin: auto;
+}
+.top .right {
+  margin-left: 300px;
+  padding-left: 20px;
+  margin-top: -500px;
+}
+.top .right .description {
+  padding: 0 10px;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  white-space: normal;
+}
+.top .right .description > span:first-child {
+  color: var(--text-secondary);
+  margin-right: 5px;
+}
+.top .right .list {
+  padding-left: 10px;
+}
+.top .right .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.top .right .header .song {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.top .right .header .song .sort .icon-sort > i {
+  font-size: 1.6rem;
+  margin-right: 10px;
+}
+.top .right .header .song .sort .icon-sort > i:hover {
+  opacity: 0.9;
+}
+.top .right .header .song .sort .menu {
+  position: absolute;
+  top: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--primary-bg);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 5px;
+  z-index: 1000;
+  cursor: pointer;
+}
+.top .right .header .song .sort .menu::after {
+  position: absolute;
+  content: "";
+  top: -8px;
+  left: 5px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--primary-bg);
+}
+.top .right .header .song .sort .menu div {
+  padding: 9px 10px;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  border-radius: 4px;
+  color: var(--text-primary);
+}
+.top .right .header .song .sort .menu div:hover {
+  color: var(--text-item-hover);
+  background-color: var(--alpha-bg);
+}
+.top .right .header span {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.top .right .bottom {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.top .right .bottom span {
+  font-size: 12px;
+  margin: 0 10px;
+}
+
+@-webkit-keyframes rotatePlay {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotatePlay {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotatePause {
+  from {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+}
+@keyframes rotatePause {
+  from {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+}
+.container {
+  margin-top: 48px;
+  padding-left: 15px;
+}
+
+.wrapper-icon {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}/*# sourceMappingURL=PageAlbum.module.css.map */

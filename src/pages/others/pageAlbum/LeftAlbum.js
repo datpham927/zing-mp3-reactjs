@@ -3,22 +3,20 @@ import classNames from 'classnames/bind';
 import ButtonAction from '~/components/Button/ButtonAction';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import style from './PageAlbum.module.scss';
-import Follow from '~/components/follow/Follow';
+import Follow from '~/components/number/follow/Follow';
 import Button from '~/components/Button';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActivePlay } from '~/redux/dataAudio';
-import { setOpenControl } from '~/redux/action';
+import { setActivePlay, setOpenControl } from '~/redux/action';
 const cx = classNames.bind(style);
 function LeftAlbum({ data }) {
     const dispatch = useDispatch();
-    const { activePlay } = useSelector((state) => state.dataControl);
+    const { activePlay } = useSelector((state) => state.action);
     const [like, setLike] = useState(false);
     const handleLike = () => {
         setLike(!like);
     };
     const handlePlay = () => {
-        dispatch(setActivePlay(true));
         dispatch(setActivePlay(!activePlay));
         dispatch(setOpenControl(true));
     };
@@ -78,7 +76,7 @@ function LeftAlbum({ data }) {
                 <Button
                     onClick={() => handleLike()}
                     small
-                    content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                    content={like ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                     iconLeft={like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>}
                 />
                 <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />

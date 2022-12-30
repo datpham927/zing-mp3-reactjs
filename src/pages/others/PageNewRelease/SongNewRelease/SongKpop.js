@@ -7,7 +7,7 @@ function SongKpop() {
     const { data_newSongs } = useSelector((state) => state.dataHome);
     return (
         <Container>
-            {data_newSongs?.all?.map((item, index) => index > 8 && <ItemSongAdd key={index} data={item} />)}
+            {data_newSongs?.all?.map((item, index) => index > 8 && <ItemSongAdd key={item.encodeId} data={item} />)}
         </Container>
     );
 }

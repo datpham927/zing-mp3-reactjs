@@ -21,10 +21,10 @@ function HomeSpotlight({ data }) {
                 slidesPerView={6}
                 slidesPerGroup={3}
             >
-                {data?.items?.map((item, index) => (
-                    <li key={index} className="1-2">
+                {data?.items?.map((item) => (
+                    <li className="1-2" key={item.encodeId}>
                         <SwiperSlide>
-                            <ItemArtists col="" key={index} data={item} />
+                            <ItemArtists col="" data={item} />
                         </SwiperSlide>
                     </li>
                 ))}

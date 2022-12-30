@@ -2,7 +2,6 @@
 import className from 'classnames/bind';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import LoadImg from '~/components/load/loadImg/LoadImg';
 
 import style from './Home.module.scss';
 const cx = className.bind(style);
@@ -47,8 +46,8 @@ function HomeGallery({ data }) {
             <div className={cx('gallery-wrapper')}>
                 {data?.items?.map((item, index) => (
                     <div
+                        key={item.encodeId}
                         ref={itemRef}
-                        key={index}
                         className={cx(
                             'item',
                             index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : 'four',

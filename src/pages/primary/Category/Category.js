@@ -36,7 +36,7 @@ function Category() {
             </div>
             <div className={cx('body')}>
                 <Container title={'Tâm Trạng Và Hoạt Động'}>
-                    {topic?.map((e, i) => i < indexTopic && <ItemTopic data={e} key={i} />)}
+                    {topic?.map((e, i) => i < indexTopic && <ItemTopic data={e} key={e.encodeId} />)}
                     {indexTopic === 6 && (
                         <ButtonAction className={cx('btn')} onClick={() => setIndexTopic(topic?.length)}>
                             Tất cả

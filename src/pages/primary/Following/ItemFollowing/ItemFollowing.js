@@ -2,13 +2,13 @@ import className from 'classnames/bind';
 import style from './ItemFollowing.module.scss';
 import Button from '~/components/Button';
 import { useState } from 'react';
-import Follow from '~/components/follow/Follow';
 import { Link } from 'react-router-dom';
-import FormatDate from '~/components/time/FormatDate';
 import { useDispatch } from 'react-redux';
 import { setDataFollow } from '~/redux/dataVideoFollow';
 import { setModalFollow } from '~/redux/action';
 import LoadImg from '~/components/load/loadImg/LoadImg';
+import FormatDate from '~/components/number/time/FormatDate';
+import Follow from '~/components/number/follow/Follow';
 
 const cx = className.bind(style);
 

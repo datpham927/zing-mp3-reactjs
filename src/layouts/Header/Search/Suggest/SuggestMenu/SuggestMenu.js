@@ -14,7 +14,9 @@ function SuggestMenu({ data = [], setValue, onSubmit }) {
             <div className={cx('Keywords-body')}>
                 {data?.map(
                     (item, index) =>
-                        index < 5 && <SuggestItem key={index} data={item} setValue={setValue} onSubmit={onSubmit} />,
+                        index < 5 && (
+                            <SuggestItem key={item.encodeId} data={item} setValue={setValue} onSubmit={onSubmit} />
+                        ),
                 )}
             </div>
         </div>

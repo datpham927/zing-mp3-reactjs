@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { zingAction } from '~/redux/action';
+import { setActivePlay, zingAction } from '~/redux/action';
 import Button from '../../Button';
-import Duration from '../../time/Duration';
 import styles from './ItemAlBum.module.scss';
-import { setActivePlay, setIdAudio } from '~/redux/dataAudio';
 import LoadImg from '~/components/load/loadImg/LoadImg';
+import { setIdAudio } from '~/redux/dataAudio';
+import Duration from '~/components/number/time/Duration';
 
 const cx = classNames.bind(styles);
 

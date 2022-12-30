@@ -37,9 +37,9 @@ function RadioLivestream({ data }) {
                 slidesPerGroup={3}
             >
                 {data?.items?.map((item, index) => (
-                    <li key={index} className="1-2">
+                    <li className="1-2">
                         <SwiperSlide>
-                            <ItemRadio col="" key={index} data={item} />
+                            <ItemRadio col="" key={item.encodeId} data={item} />
                         </SwiperSlide>
                     </li>
                 ))}

@@ -3,19 +3,18 @@ import className from 'classnames/bind';
 import style from './Control.module.scss';
 import ControlLeft from './ControlLeft';
 import ControlRight from './ControlRigth';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button';
-import { setActivePlay, setCurrentIndex, setIdAudio } from '~/redux/dataAudio';
-import Duration from '~/components/time/Duration';
+import { setChangerTime, setCurrentIndex, setIdAudio, setRepeat, setShuffle } from '~/redux/dataAudio';
+import { setActivePlay, setTimer } from '~/redux/action';
+import Duration from '~/components/number/time/Duration';
 const cx = className.bind(style);
 function Control() {
-    const [repeat, setRepeat] = useState(false);
-    const [shuffle, setShuffle] = useState(false);
-    const [changerTime, setChangerTime] = useState('');
     const dispatch = useDispatch();
     const listMusic = useSelector((state) => state.dataControl.playListAudio);
-    const { activePlay, currentIndex, idAudio } = useSelector((state) => state.dataControl);
+    const { currentIndex, idAudio, repeat, shuffle, changerTime } = useSelector((state) => state.dataControl);
+    const { activePlay } = useSelector((state) => state.action);
     const audioRef = useRef();
 
     useEffect(() => {
@@ -35,6 +34,7 @@ function Control() {
     }, [currentIndex]);
 
     useEffect(() => {
+        audioRef.current.currentTime = (idAudio?.duration * changerTime) / 100;
         if (activePlay) {
             audioRef.current.play();
         } else {
@@ -73,10 +73,10 @@ function Control() {
         }
     };
     const handleRepeat = () => {
-        setRepeat(!repeat);
+        dispatch(setRepeat(!repeat));
     };
     const handleShuffle = () => {
-        setShuffle(!shuffle);
+        dispatch(setShuffle(!shuffle));
     };
     const handleOnEnd = () => {
         repeat ? audioRef.current.play() : handleNext();
@@ -86,8 +86,21 @@ function Control() {
         const newTime = (e.nativeEvent.offsetX / e.currentTarget.clientWidth) * 100;
         audioRef.current.currentTime = (newTime * audioRef.current.duration) / 100;
     };
+    const { bgrIndex, previewBgrIndex, timer } = useSelector((state) => state.action);
+
+    useEffect(() => {
+        const time = setTimeout(() => {
+            audioRef.current.pause();
+            dispatch(setActivePlay(false));
+            dispatch(setTimer(0));
+        }, timer * 1000);
+        return () => clearTimeout(time);
+    }, [timer]);
+
     return (
-        <div className={cx('wrapper')}>
+        <div
+            className={cx('wrapper', ((previewBgrIndex === 0 && bgrIndex === 0) || bgrIndex === 0) && 'background-img')}
+        >
             <ControlLeft />
             <div className={cx('main') + ' l-6'}>
                 <div className={cx('action')}>
@@ -96,14 +109,14 @@ function Control() {
                         className={cx('btn', shuffle && 'shuffle')}
                         small
                         content={shuffle ? 'Tắt phát ngẫu nhiên' : 'Bật phát ngẫu nhiên'}
-                        iconLeft={<i class="icon ic-shuffle"></i>}
+                        iconLeft={<i className="icon ic-shuffle"></i>}
                     />
                     <Button
                         onClick={() => handlePev()}
                         className={cx('btn')}
                         small
                         noContent
-                        iconLeft={<i class="icon ic-pre"></i>}
+                        iconLeft={<i className="icon ic-pre"></i>}
                     />
                     <Button
                         onClick={() => dispatch(setActivePlay(!activePlay))}
@@ -112,9 +125,9 @@ function Control() {
                         noContent
                         iconLeft={
                             activePlay ? (
-                                <i class="icon ic-pause-circle-outline"></i>
+                                <i className="icon ic-pause-circle-outline"></i>
                             ) : (
-                                <i class="icon ic-play-circle-outline"></i>
+                                <i className="icon ic-play-circle-outline"></i>
                             )
                         }
                     />
@@ -123,14 +136,14 @@ function Control() {
                         className={cx('btn')}
                         small
                         noContent
-                        iconLeft={<i class="icon ic-next"></i>}
+                        iconLeft={<i className="icon ic-next"></i>}
                     />
                     <Button
                         onClick={() => handleRepeat()}
                         className={cx('btn')}
                         small
                         content={repeat ? 'Tắt phát lại một bài' : 'bật phát lại một bài'}
-                        iconLeft={repeat ? <i class="icon ic-repeat-one"></i> : <i class="icon ic-repeat"></i>}
+                        iconLeft={repeat ? <i className="icon ic-repeat-one"></i> : <i className="icon ic-repeat"></i>}
                     />
                 </div>
                 <div className={cx('time')}>
@@ -140,7 +153,7 @@ function Control() {
                             ('0' + Math.floor(audioRef?.current?.currentTime % 60)).slice(-2)}
                     </p>
                     <div className={cx('duration')} onClick={(e) => handleDuration(e)}>
-                        <div className={cx('duration-play')} style={{ width: changerTime }}></div>
+                        <div className={cx('duration-play')} style={{ width: changerTime + '%' }}></div>
                     </div>
                     <p className={cx('end')}>
                         {idAudio?.duration ? <Duration duration={idAudio?.duration} /> : '00:00'}
@@ -151,7 +164,9 @@ function Control() {
                     src={`http://api.mp3.zing.vn/api/streaming/audio/${idAudio?.encodeId}/320`}
                     autoPlay={activePlay}
                     onEnded={handleOnEnd}
-                    onTimeUpdate={() => setChangerTime((100 * audioRef.current.currentTime) / idAudio?.duration + '%')}
+                    onTimeUpdate={() =>
+                        dispatch(setChangerTime((100 * audioRef.current.currentTime) / idAudio?.duration))
+                    }
                 ></audio>
             </div>
             <ControlRight audioRef={audioRef} />

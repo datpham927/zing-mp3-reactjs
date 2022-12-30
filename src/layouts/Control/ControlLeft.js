@@ -14,12 +14,11 @@ function ControlLeft() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setFavorite(songFavorite?.map((e) => e.encodeId));
+        setFavorite(songFavorite.map((e) => e.encodeId));
     }, [songFavorite]);
     const handleLike = () => {
         dispatch(setSongFavorite(idAudio));
     };
-    console.log(favorite.includes(idAudio?.encodeId));
 
     return (
         <div className={cx('left') + ' l-3'}>
@@ -40,7 +39,7 @@ function ControlLeft() {
             <Button
                 onClick={() => handleLike()}
                 small
-                content={favorite.includes(idAudio?.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                content={favorite.includes(idAudio?.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                 iconLeft={
                     favorite.includes(idAudio?.encodeId) ? (
                         <i className="icon ic-like-full"></i>

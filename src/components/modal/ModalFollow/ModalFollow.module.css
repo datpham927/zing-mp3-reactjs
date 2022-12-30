@@ -1,0 +1,155 @@
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-alpha-80);
+  overflow: hidden;
+}
+.wrapper .body {
+  display: flex;
+  max-width: 70vw;
+  min-width: 600px;
+  height: 70vh;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.wrapper .body .left {
+  display: flex;
+  height: 100%;
+  width: 610px;
+  justify-content: center;
+  background-color: #000;
+}
+.wrapper .body .left img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.wrapper .body .left video {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .body .right {
+  position: relative;
+  padding: 15px;
+  background-color: var(--primary-bg);
+}
+.wrapper .body .right .top {
+  display: flex;
+  align-items: center;
+}
+.wrapper .body .right .top .image {
+  width: 13%;
+  height: 100%;
+  border-radius: 999px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+.wrapper .body .right .top .image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wrapper .body .right .top .info {
+  cursor: pointer;
+  display: block;
+}
+.wrapper .body .right .top .info div {
+  line-height: 1.1;
+}
+.wrapper .body .right .top .info div a {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: 0.1s linear;
+}
+.wrapper .body .right .top .info div a:hover {
+  color: var(--link-text-hover);
+}
+.wrapper .body .right .top .info div span {
+  font-size: 1.8rem;
+  padding: 0 5px;
+  color: var(--text-primary);
+}
+.wrapper .body .right .top .info div .btn {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 0;
+  color: var(--text-placeholder);
+}
+.wrapper .body .right .top .info div .active {
+  color: var(--link-text-hover);
+}
+.wrapper .body .right .top .info div .active:hover {
+  opacity: 0.8;
+}
+.wrapper .body .right .top .info .subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  transition: 0.1s linear;
+}
+.wrapper .body .right .top .info .subtitle:hover {
+  color: var(--link-text-hover);
+}
+.wrapper .body .right .content {
+  margin-top: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-secondary);
+}
+.wrapper .body .right .content .title {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+}
+.wrapper .body .right .content .actions {
+  margin-top: 10px;
+  border-bottom: 1px solid var(--border-secondary);
+  border-top: 1px solid var(--border-secondary);
+}
+.wrapper .body .right .content .actions .footer-btn {
+  color: var(--text-primary);
+  width: auto;
+  margin-right: 20px;
+}
+.wrapper .body .right .content .like {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.wrapper .body .right .content .like span {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  padding: 0 5px;
+  font-weight: 600;
+}
+.wrapper .body .right .footer {
+  position: absolute;
+  bottom: 0;
+  margin: 15px;
+  right: 0;
+  left: 0;
+  text-align: center;
+  background-color: #000;
+  background-color: var(--alpha-bg);
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 10px 0;
+  border-radius: 4px;
+}
+.wrapper .close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 3rem;
+  background-color: hsla(0deg, 0%, 100%, 0.3);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  margin: 0;
+}/*# sourceMappingURL=ModalFollow.module.css.map */

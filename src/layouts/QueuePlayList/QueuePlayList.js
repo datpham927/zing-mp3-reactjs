@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import ItemSong from '~/components/item/ItemSong/ItemSong';
-import { setOpenControl } from '~/redux/action';
+import { setModalTimer, setOpenControl } from '~/redux/action';
 import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
 import style from './QueuePlayList.module.scss';
 
@@ -51,13 +51,14 @@ function QueuePlayList() {
                 <div className={cx('action')}>
                     <Button
                         className={cx('btn-action')}
-                        iconLeft={<i class="icon ic-20-Clock"></i>}
+                        iconLeft={<i className="icon ic-20-Clock"></i>}
                         content={'Hẹn giờ đừng phát nhạc'}
                         primary
+                        onClick={() => dispatch(setModalTimer(true))}
                     />
                     <Button
                         className={cx('btn-action')}
-                        iconLeft={<i class="icon ic-more"></i>}
+                        iconLeft={<i className="icon ic-more"></i>}
                         content={'Khác'}
                         primary
                     />
@@ -73,7 +74,7 @@ function QueuePlayList() {
                                         <ItemSong
                                             onClick={() => handleOnClick(i)}
                                             data={e}
-                                            key={i}
+                                            key={e.encodeId}
                                             type="player-queue"
                                             timeLoad={500}
                                         />
@@ -86,7 +87,7 @@ function QueuePlayList() {
                                         <ItemSong
                                             onClick={() => handleOnClick(i)}
                                             data={e}
-                                            key={i}
+                                            key={e.encodeId}
                                             type="player-queue"
                                             timeLoad={500}
                                         />
@@ -98,7 +99,7 @@ function QueuePlayList() {
                             <ItemSong
                                 onClick={() => handleOnClick(i)}
                                 data={e}
-                                key={i}
+                                key={e.encodeId}
                                 type="player-queue-recent"
                                 timeLoad={500}
                             />

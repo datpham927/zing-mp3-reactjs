@@ -12,9 +12,9 @@ function ModalVip() {
             dispatch(zingAction.actions.setModalVip(false));
         }
     };
-    const vip = useSelector((state) => state.action.booleanVip);
+    const { booleanVip } = useSelector((state) => state.action);
     return (
-        vip && (
+        booleanVip && (
             <div className={cx('modal-vip')} onClick={(e) => handleModal(e)}>
                 <div className={cx('vip-ctn')}>
                     <h1 className={cx('title')}>Dành Cho Tài Khoản Vip</h1>

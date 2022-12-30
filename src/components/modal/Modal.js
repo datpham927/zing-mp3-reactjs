@@ -5,6 +5,7 @@ import style from './Modal.module.scss';
 import ModalArtist from './ModalArtist/ModalArtist';
 import ModalVip from './ModalVip/ModalVip';
 import ModalFollow from './ModalFollow/ModalFollow';
+import ModalTimer from './ModalTimer/ModalTimer';
 const cx = classNames.bind(style);
 
 function Modal() {
@@ -17,6 +18,7 @@ function Modal() {
             {modalArtist && <ModalArtist />}
             <ModalFollow />
             <ModalVip />
+            <ModalTimer />
         </>
     );
 }

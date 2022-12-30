@@ -35,7 +35,7 @@ function RightAlbum({ data }) {
         setOpenMenu(false);
     };
     window.onclick = (e) => {
-        if (!e.target.closest('.Album_menu__4gae5') && !e.target.closest('.Album_icon-sort__Wfq4Z')) {
+        if (!e.target.closest('.Album_menu__4gae5') && !e.target.closest('.PageAlbum_icon-sort__JN9TM')) {
             setOpenMenu(false);
         }
     };

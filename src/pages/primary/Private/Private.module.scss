@@ -10,6 +10,7 @@
         margin-left: 10px;
     }
 }
+
 .select-menu {
     display: flex;
     align-items: center;
@@ -38,6 +39,12 @@
 // --------------------
 .empty {
     text-align: center;
+    .image {
+        background-image: var(--empty-song-icon);
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 120px;
+    }
     & h3 {
         font-size: 16px;
         margin-top: 16px;
@@ -51,5 +58,29 @@
         background-color: var(--purple-primary);
         border-color: var(--purple-primary);
         color: #fff;
+    }
+}
+.header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-secondary);
+    justify-content: space-between;
+    padding: 20px 10px 20px 35px;
+    .song {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+    }
+    span {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+    }
+}
+
+.bottom {
+    .body {
+        margin-top: 0;
     }
 }

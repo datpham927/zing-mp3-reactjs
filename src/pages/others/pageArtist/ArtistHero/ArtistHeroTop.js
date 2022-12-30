@@ -6,8 +6,9 @@ import { useParams } from 'react-router-dom';
 import * as searchApi from '~/components/Api/Service';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
-import Follow from '~/components/follow/Follow';
-import { setActivePlay, setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import Follow from '~/components/number/follow/Follow';
+import { setActivePlay } from '~/redux/action';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
 import style from './ArtistHero.module.scss';
 
 const cx = classNames.bind(style);
@@ -25,7 +26,7 @@ function ArtistHeroTop() {
         };
         fetchApi();
     }, [id.name]);
-    const play = useSelector((state) => state.dataControl.activePlay);
+    const play = useSelector((state) => state.action.activePlay);
     const handleOnClick = () => {
         setPlay(!plays);
         if (plays) {
@@ -48,7 +49,9 @@ function ArtistHeroTop() {
                     <h1>{data?.name}</h1>
                     <Button
                         noContent
-                        iconLeft={play && plays ? <i class="fa-solid fa-pause"></i> : <i className="icon ic-play"></i>}
+                        iconLeft={
+                            play && plays ? <i className="fa-solid fa-pause"></i> : <i className="icon ic-play"></i>
+                        }
                         className={cx('btn')}
                         onClick={handleOnClick}
                     />

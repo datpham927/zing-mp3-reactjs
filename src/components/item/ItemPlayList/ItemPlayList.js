@@ -1,17 +1,25 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
+import { setPlayListFavorite } from '~/redux/FavoriteList';
 import styles from './ItemPlayList.module.scss';
 
 const cx = classNames.bind(styles);
 
 function ItemPlayList({ data, timeLoad = 1000, type = '', description, className }) {
-    const [like, setLike] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [favorite, setFavorite] = useState([]);
+    const { playListFavorite } = useSelector((state) => state.Favorite);
+    useEffect(() => {
+        setFavorite(playListFavorite?.map((e) => e.encodeId));
+    }, [playListFavorite]);
+
     const handleLike = () => {
-        setLike(!like);
+        dispatch(setPlayListFavorite(data));
     };
     const handleOnClick = (e) => {
         if (e.target === e.currentTarget || e.target.closest('.ItemPlayList_icon-play__e5DCq')) {
@@ -30,9 +38,9 @@ function ItemPlayList({ data, timeLoad = 1000, type = '', description, className
                                     <Button
                                         onClick={() => handleLike()}
                                         small
-                                        content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                        content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
                                         iconLeft={
-                                            like ? (
+                                            favorite?.includes(data.encodeId) ? (
                                                 <i className="icon ic-like-full"></i>
                                             ) : (
                                                 <i className="icon ic-like"></i>
@@ -81,9 +89,9 @@ function ItemPlayList({ data, timeLoad = 1000, type = '', description, className
                                     <Button
                                         onClick={() => handleLike()}
                                         small
-                                        content={like ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                        content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
                                         iconLeft={
-                                            like ? (
+                                            favorite?.includes(data.encodeId) ? (
                                                 <i className="icon ic-like-full"></i>
                                             ) : (
                                                 <i className="icon ic-like"></i>

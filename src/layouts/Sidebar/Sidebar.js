@@ -9,35 +9,35 @@ const cx = classNames.bind(style);
 
 const MENU_SIDEBAR = [
     {
-        id: 0,
+        encodeId: 'sb1',
         title: 'Cá Nhân',
         icon: <i className="icon  ic-24-LibraryTab"></i>,
         path: '/mymusic',
         type: false,
     },
     {
-        id: 0,
+        encodeId: 'sb2',
         title: 'Khám Phá',
         icon: <i className="icon  ic-24-HomeTab"></i>,
         path: '/',
         type: false,
     },
     {
-        id: 0,
+        encodeId: 'sb3',
         title: '#zingchart',
         icon: <i className="icon  ic-24-ChartTab"></i>,
         path: '/zing-chart',
         type: true,
     },
     {
-        id: 0,
+        encodeId: 'sb4',
         title: 'Radio',
         icon: <i className="icon  ic-24-RadioTab"></i>,
         path: `/radio`,
         type: true,
     },
     {
-        id: 0,
+        encodeId: 'sb5',
         title: 'Theo Dõi',
         icon: <i className="icon  ic-24-FeedTab"></i>,
         path: `/the-loai-nghe-si/Viet-Nam/IWZ9Z08I.html`,
@@ -47,28 +47,28 @@ const MENU_SIDEBAR = [
 
 const MENU_SCROLL = [
     {
-        id: 0,
+        encodeId: 'sb6',
         title: 'Nhạc Mới',
         icon: <Icon.IconMusic />,
         path: '/moi-phat-hanh',
         type: true,
     },
     {
-        id: 0,
+        encodeId: 'sb7',
         title: 'Thể Loại',
         icon: <i className="icon  ic-24-GenreTab"></i>,
         path: '/hub',
         type: false,
     },
     {
-        id: 0,
+        encodeId: 'sb8',
         title: 'Top 100',
         icon: <i className="icon  ic-24-Top100Tab"></i>,
         path: '/top100',
         type: false,
     },
     {
-        id: 0,
+        encodeId: 'sb9',
         title: 'MV',
         icon: <i className="icon  ic-24-MVTab"></i>,
         path: '/the-loai-video/Viet-Nam/IWZ9Z08I.html',
@@ -87,7 +87,7 @@ function Sidebar() {
 
             <div className={cx('menu', 'c-0')}>
                 {MENU_SIDEBAR.map((item, index) => (
-                    <ItemSidebar key={index} data={item} />
+                    <ItemSidebar key={item.encodeId} data={item} />
                 ))}
                 <div className={cx('divide')}></div>
             </div>
@@ -95,7 +95,7 @@ function Sidebar() {
             <div className={cx('navbar', control && 'active')}>
                 <div className={cx('navbar-menu')}>
                     {MENU_SCROLL.map((item, index) => (
-                        <ItemSidebar key={index} data={item} />
+                        <ItemSidebar key={item.encodeId} data={item} />
                     ))}
                 </div>
                 <div className={cx('login', 'c-0')}>

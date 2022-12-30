@@ -1,0 +1,1 @@
+{"version":3,"sources":["SuggestItem.module.scss","SuggestItem.module.css"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,iBAAA;EACA,kBAAA;EACA,eAAA;EACA,oBAAA;EACA,4BAAA;EACA,qBAAA;EACA,gBAAA;EACA,0BAAA;ACCJ;ADAI;EACI,eAAA;EACA,kBAAA;EACA,0BAAA;EACA,eAAA;ACER;ADDQ;EACI,4BAAA;EACA,iBAAA;EACA,eAAA;ACGZ;ADAI;EACI,0CAAA;EACA,6BAAA;ACER","file":"SuggestItem.module.css"}

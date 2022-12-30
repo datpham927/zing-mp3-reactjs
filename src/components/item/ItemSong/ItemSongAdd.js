@@ -4,18 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import { zingAction } from '~/redux/action';
-import { setActivePlay, setIdAudio } from '~/redux/dataAudio';
-import Duration from '~/components/time/Duration';
 import styles from './ItemSong.module.scss';
 import { setSongFavorite } from '~/redux/FavoriteList';
+import { setIdAudio } from '~/redux/dataAudio';
+import Duration from '~/components/number/time/Duration';
+import { setActivePlay, setModalVip } from '~/redux/action';
+import { memo } from 'react';
 
 const cx = classNames.bind(styles);
 function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
     const dispatch = useDispatch();
     const [favorite, setFavorite] = useState([]);
-    const idAudio = useSelector((state) => state.dataControl.idAudio);
-    const play = useSelector((state) => state.dataControl.activePlay);
+    const { idAudio } = useSelector((state) => state.dataControl);
+    const { activePlay } = useSelector((state) => state.action);
     const { songFavorite } = useSelector((state) => state.Favorite);
 
     useEffect(() => {
@@ -32,14 +33,13 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
             dispatch(setActivePlay(true));
             onClick();
         } else {
-            dispatch(zingAction.actions.setModalVip(true));
+            dispatch(setModalVip(true));
         }
     };
 
     const handlePause = () => {
         dispatch(setActivePlay(false));
     };
-
     return (
         <li className={cx('item', 'add') + ' l-12 col'}>
             <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
@@ -54,7 +54,7 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
                         <div className={cx('thumb')}>
                             <LoadImg timeLoad={timeLoad}>
                                 <img src={data?.thumbnail} alt="" />
-                                {play === true && data?.encodeId === idAudio?.encodeId ? (
+                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                                     <div className={cx('song-play')} onClick={() => handlePause()}>
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -134,4 +134,4 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
     );
 }
 
-export default ItemSongAdd;
+export default memo(ItemSongAdd);

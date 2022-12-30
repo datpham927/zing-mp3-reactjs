@@ -31,12 +31,12 @@ function ResultAll() {
             <Container title="Nổi Bật">
                 {data?.artists && <TopPagesAll type="artist" data={data?.artists[0]} />}
                 {data?.playlists && <TopPagesAll type="playlist" data={data?.playlists[0]} />}
-                {data?.songs && <TopPagesAll key={1} data={data?.songs[0]} type="song" />}
+                {data?.songs && <TopPagesAll data={data?.songs[0]} type="song" />}
             </Container>
             {data?.playlists && (
                 <Container spotlight data={data}>
                     {data?.playlists?.map(
-                        (item, index) => index >= 2 && index < 6 && <ItemPlayList key={index} data={item} />,
+                        (item, index) => index >= 2 && index < 6 && <ItemPlayList key={item.encodeId} data={item} />,
                     )}
                 </Container>
             )}

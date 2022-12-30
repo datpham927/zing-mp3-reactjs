@@ -1,4 +1,3 @@
-import Tippy from '@tippyjs/react';
 import className from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,8 +31,8 @@ function KindMusic() {
         <div className={cx('wrapper')}>
             <div className={cx('kind-music')} onClick={() => setOpen(!open)}>
                 <ButtonAction
-                    icon={<i class="icon ic-song mar-r-5"></i>}
-                    iconRight={open ? <i class="icon ic-go-up"></i> : <i class="icon ic-go-down"></i>}
+                    icon={<i className="icon ic-song mar-r-5"></i>}
+                    iconRight={open ? <i className="icon ic-go-up"></i> : <i className="icon ic-go-down"></i>}
                 >
                     {kindTitle}
                 </ButtonAction>

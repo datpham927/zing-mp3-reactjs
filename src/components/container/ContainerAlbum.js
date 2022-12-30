@@ -10,7 +10,10 @@ function ContainerAlbum({ data, index = 12 }) {
         dispatch(setCurrentIndex(i));
         dispatch(setOpenControl(true));
     };
-    return data && data.map((e, i) => i < index && <ItemAlbum key={i} data={e} onClick={() => handleOnClick(i)} />);
+    return (
+        data &&
+        data.map((e, i) => i < index && <ItemAlbum key={e.encodeId} data={e} onClick={() => handleOnClick(i)} />)
+    );
 }
 
 export default ContainerAlbum;

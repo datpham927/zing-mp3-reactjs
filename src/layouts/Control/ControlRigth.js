@@ -1,22 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
 import { memo, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import { setOpenQueueList } from '~/redux/action';
+import { setChangerVolume, setCurrentVolume, setVolume } from '~/redux/dataAudio';
 import style from './Control.module.scss';
 const cx = className.bind(style);
 function ControlRight({ audioRef }) {
-    const [volume, setVolume] = useState(false);
-    const [changerVolume, setChangerVolume] = useState(100);
+    const { changerVolume, volume, currentVolume } = useSelector((state) => state.dataControl);
+
     const [queueList, setQueueList] = useState(false);
     const dispatch = useDispatch();
 
     const handleDuration = (e) => {
         const newVolume = (e.nativeEvent.offsetX / e.currentTarget.clientWidth) * 100;
         audioRef.current.volume = newVolume / 100;
-        setChangerVolume(newVolume);
+        dispatch(setCurrentVolume(newVolume));
+        dispatch(setChangerVolume(newVolume));
     };
+    useEffect(() => {
+        audioRef.current.volume = changerVolume / 100;
+    }, [changerVolume]);
     useEffect(() => {
         queueList ? dispatch(setOpenQueueList(true)) : dispatch(setOpenQueueList(false));
     }, [queueList]);
@@ -27,30 +32,30 @@ function ControlRight({ audioRef }) {
                 className={cx('btn')}
                 small
                 content={'Xem lời bài hát'}
-                iconLeft={<i class="icon ic-karaoke"></i>}
+                iconLeft={<i className="icon ic-karaoke"></i>}
             />
             <Button
                 // onClick={() => handleLike()}
                 className={cx('btn')}
                 small
                 content={'Chế độ cửa sổ'}
-                iconLeft={<i class="icon ic-restore"></i>}
+                iconLeft={<i className="icon ic-restore"></i>}
             />
             <Button
                 onClick={() => {
-                    setVolume(!volume);
+                    dispatch(setVolume(!volume));
                     if (volume) {
                         audioRef.current.volume = 1;
-                        setChangerVolume(100);
+                        dispatch(setChangerVolume(currentVolume));
                     } else {
                         audioRef.current.volume = 0;
-                        setChangerVolume(0);
+                        dispatch(setChangerVolume(0));
                     }
                 }}
                 small
                 className={cx('btn')}
                 noContent
-                iconLeft={volume ? <i class="icon ic-volume-mute"></i> : <i class="icon ic-volume"></i>}
+                iconLeft={volume ? <i className="icon ic-volume-mute"></i> : <i className="icon ic-volume"></i>}
             />
             <div className={cx('volume')} onClick={(e) => handleDuration(e)}>
                 <div className={cx('volume-play')} style={{ width: `${changerVolume}%` }}></div>
@@ -60,7 +65,7 @@ function ControlRight({ audioRef }) {
                 small
                 className={cx('playlist', 'btn', queueList && 'active')}
                 noContent={'Danh sách phát'}
-                iconLeft={<i class="icon ic-list-music"></i>}
+                iconLeft={<i className="icon ic-list-music"></i>}
             />
         </div>
     );

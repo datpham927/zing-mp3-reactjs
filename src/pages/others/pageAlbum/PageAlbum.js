@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { playList } from '~/components/Api/Service';
 import ContainerArtists from '~/components/container/ContainerArtists';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
@@ -15,11 +16,15 @@ function PageAlbum() {
     const [data, setData] = useState([]);
     const value = useParams();
     const arr = value.id.split('.');
+    const navigate = useNavigate();
     const id = arr[0];
     useEffect(() => {
         const fetchApi = async () => {
             const data = await playList(id);
             setData(data || []);
+            if (!data) {
+                navigate('/');
+            }
         };
         fetchApi();
     }, [id]);

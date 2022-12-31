@@ -29,7 +29,6 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
-            dispatch(setPlayListTitle([]));
             onClick();
         } else {
             dispatch(zingAction.actions.setModalVip(true));

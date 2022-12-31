@@ -82,6 +82,7 @@ function Control() {
             } while (listMusic[index]?.streamingStatus === 2);
             currentIndex > listMusic.length - 1 ? dispatch(setCurrentIndex(0)) : dispatch(setCurrentIndex(index));
         }
+        dispatch(setActivePlay(true));
     };
 
     const handleRepeat = () => {

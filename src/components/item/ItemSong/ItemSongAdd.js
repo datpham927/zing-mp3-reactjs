@@ -31,7 +31,6 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
-            dispatch(setPlayListTitle([]));
             onClick();
         } else {
             dispatch(setModalVip(true));

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
@@ -11,27 +12,25 @@ import * as searchApi from '~/components/Api/Service';
 import KeywordsItem from './Keywords/KeywordsItem';
 import { Icon } from '~/components/Icons';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { zingAction } from '~/redux/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { setValueSearch } from '~/redux/action';
 const cx = classNames.bind(style);
 
 function Search() {
     const valueRef = useRef();
     const dispatch = useDispatch();
-
     //điều hướng đường dẫn
     const navigate = useNavigate();
-
     const [searchResult, setSearchResult] = useState([]);
     const [searchSuggest, setSearchSuggest] = useState([]);
     const [showResult, setShowResult] = useState(false);
     const [showBtn, setShowBtn] = useState(false);
     const [changeBtn, setChangeBtn] = useState(false);
     const [borderRadius, setBorderRadius] = useState(false);
-    const [value, setValue] = useState('');
     const [open, setOpenInput] = useState(false);
-
+    const { value } = useSelector((state) => state.action);
     const debouncedValue = useDebounce(value, 500);
+
     useEffect(() => {
         if (!debouncedValue.trim()) {
             setSearchResult([]);
@@ -56,24 +55,27 @@ function Search() {
         };
         fetchApi();
     }, []);
+
     const handleValueChange = (e) => {
         setBorderRadius(true);
         setChangeBtn(true);
         if (!e.target.value.startsWith(' ')) {
-            setValue(e.target.value);
+            dispatch(setValueSearch(e.target.value));
         }
         setOpenInput(true);
         setShowBtn(true);
         setShowResult(false);
     };
+
     const hideBtnClose = () => {
         setBorderRadius(false);
         setShowBtn(false);
-        setValue('');
+        dispatch(setValueSearch(''));
         setOpenInput(false);
         setSearchResult([]);
         valueRef.current.focus();
     };
+
     const focusInput = () => {
         setOpenInput(true);
         setBorderRadius(true);
@@ -84,9 +86,8 @@ function Search() {
             setOpenInput(false);
             navigate(`/tim-kiem/tat-ca/${valueRef.current.value}`);
         }
-        dispatch(zingAction.actions.setValueSearch(value));
     };
-    const closeSearch = () => {
+    const closeSearch = (e) => {
         setOpenInput(false);
         setBorderRadius(false);
         setShowResult(false);
@@ -117,13 +118,14 @@ function Search() {
             if (valueRef.current.value !== '') {
                 navigate(`/tim-kiem/tat-ca/${valueRef.current.value}`);
                 setOpenInput(false);
-                dispatch(zingAction.actions.setValueSearch(value));
+                dispatch(setValueSearch(valueRef.current.value));
             }
         }
     };
+
     return (
         <div className={cx('search', ((borderRadius && open) || (borderRadius && open)) && 'bgrHeader')}>
-            <div className={cx('icon-search')} onClick={(e) => handleSubmit(e)}>
+            <div className={cx('icon-search')} onClick={handleSubmit}>
                 <i className="icon ic-search"></i>
             </div>
             <input
@@ -152,7 +154,7 @@ function Search() {
                         <div className={cx('menu-search')}>
                             <div className={cx('show')}>
                                 {/* -----------Đề Xuất Cho Bạn ----------- */}
-                                <SuggestMenu data={searchSuggest} setValue={setValue} onSubmit={handleSubmit} />
+                                <SuggestMenu data={searchSuggest} onSubmit={handleSubmit} />
                             </div>
                         </div>
                     </>

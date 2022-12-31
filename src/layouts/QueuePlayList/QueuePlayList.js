@@ -5,8 +5,15 @@ import { useNavigate, useNavigationType } from 'react-router-dom';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import ItemSong from '~/components/item/ItemSong/ItemSong';
-import { setModalPortal, setModalTimer, setModalVip, setOpenControl, setOpenQueueList } from '~/redux/action';
-import { setChangerTime, setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import {
+    setActivePlay,
+    setModalPortal,
+    setModalTimer,
+    setModalVip,
+    setOpenControl,
+    setOpenQueueList,
+} from '~/redux/action';
+import { setChangerTime, setCurrentIndex, setIdAudio, setPlayListAudio } from '~/redux/dataAudio';
 import style from './QueuePlayList.module.scss';
 
 const cx = className.bind(style);
@@ -100,6 +107,8 @@ function QueuePlayList() {
                                     dispatch(setOpenControl(false));
                                     dispatch(setOpenQueueList(false));
                                     dispatch(setChangerTime(0));
+                                    dispatch(setActivePlay(false));
+                                    dispatch(setIdAudio([]));
                                 }}
                             >
                                 <i class="icon ic-delete"></i>

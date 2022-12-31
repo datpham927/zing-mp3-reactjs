@@ -20,8 +20,8 @@ function ItemAlbum({ data, onClick }) {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
-            onClick();
             dispatch(setPlayListTitle([]));
+            onClick();
         } else {
             dispatch(zingAction.actions.setModalVip(true));
         }

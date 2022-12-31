@@ -7,7 +7,7 @@ import * as searchApi from '~/components/Api/Service';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Follow from '~/components/number/follow/Follow';
-import { setActivePlay } from '~/redux/action';
+import { setActivePlay, setOpenControl } from '~/redux/action';
 import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
 import style from './ArtistHero.module.scss';
 
@@ -17,7 +17,6 @@ function ArtistHeroTop() {
     const id = useParams();
     const dispatch = useDispatch();
     const [care, setCare] = useState(false);
-    const [plays, setPlay] = useState(false);
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchApi = async () => {
@@ -28,20 +27,23 @@ function ArtistHeroTop() {
     }, [id.name]);
     const play = useSelector((state) => state.action.activePlay);
     const handleOnClick = () => {
-        setPlay(!plays);
-        if (plays) {
+        if (play) {
             dispatch(setActivePlay(false));
         } else {
             dispatch(setCurrentIndex(0));
             dispatch(setPlayListAudio(data.sections.find((e) => e.sectionType === 'song').items));
             dispatch(setActivePlay(true));
+            dispatch(setOpenControl(true));
         }
     };
     return (
         <div
             className={cx('header')}
             style={{
-                backgroundImage: `url(${data?.cover})`,
+                backgroundImage: `url(${
+                    data?.cover ||
+                    'https://bienthuy.com/bienthuy-img/2020/02/hinh-nen-girl-xinh-4k-cho-laptop22-scaled.jpg'
+                }) `,
             }}
         >
             <div className={cx('content')}>
@@ -49,9 +51,7 @@ function ArtistHeroTop() {
                     <h1>{data?.name}</h1>
                     <Button
                         noContent
-                        iconLeft={
-                            play && plays ? <i className="fa-solid fa-pause"></i> : <i className="icon ic-play"></i>
-                        }
+                        iconLeft={play ? <i className="fa-solid fa-pause"></i> : <i className="icon ic-play"></i>}
                         className={cx('btn')}
                         onClick={handleOnClick}
                     />

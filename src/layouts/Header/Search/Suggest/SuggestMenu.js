@@ -5,7 +5,7 @@ import styles from './SuggestMenu.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SuggestMenu({ data = [], setValue, onSubmit }) {
+function SuggestMenu({ data = [], onSubmit }) {
     return (
         <div className={cx('Keywords')}>
             <div className={cx('Keywords-header')}>
@@ -13,10 +13,7 @@ function SuggestMenu({ data = [], setValue, onSubmit }) {
             </div>
             <div className={cx('Keywords-body')}>
                 {data?.map(
-                    (item, index) =>
-                        index < 5 && (
-                            <SuggestItem key={item.encodeId} data={item} setValue={setValue} onSubmit={onSubmit} />
-                        ),
+                    (item, index) => index < 5 && <SuggestItem key={item.encodeId} data={item} onSubmit={onSubmit} />,
                 )}
             </div>
         </div>

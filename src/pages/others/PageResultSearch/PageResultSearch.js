@@ -9,7 +9,6 @@ function PageResultSearch() {
     const { id } = useParams();
     // lấy đường dẫn hiện tại sau dấu  /:
     // const title = id.replace(/\s/g, '%20');
-
     // lấy ra đường dẫn
     let location = useLocation();
     const MENU_RESULT = [

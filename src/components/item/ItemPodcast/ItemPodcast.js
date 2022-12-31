@@ -20,7 +20,7 @@ function ItemPodcast({ data, col = 'l-12', index, className, onClick }) {
         // onClick();
     };
     const handlePause = () => {
-        // dispatch(setActivePlay(false));
+        //  dispatch(setActivePlay(false));
     };
     return (
         <div className={cx('item', className) + ` ${col} col `}>

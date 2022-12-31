@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { artist } from '~/components/Api/Service';
 import Loading from '~/components/load/Loading/Loading';
-import { zingArtist } from '~/redux/dataArtist';
+import { setArtist_Album, setArtist_MV, setArtist_Singer, setArtist_Song, setDataArtist } from '~/redux/dataArtist';
 import ArtistBody from './ArtistBody';
 import ArtistHeader from './ArtistHeader';
 import style from './PageArtist.module.scss';
@@ -15,20 +15,21 @@ function PageArtist() {
     const id = useParams();
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(setDataArtist([]));
         const fetchApi = async () => {
             const data = await artist(id.name);
-            dispatch(zingArtist.actions.setDataArtist(data));
+            dispatch(setDataArtist(data));
             data?.sections &&
                 data?.sections.forEach((i) => {
                     // eslint-disable-next-line no-unused-expressions
                     i.title === 'Bài hát nổi bật'
-                        ? dispatch(zingArtist.actions.setArtist_Song(i))
+                        ? dispatch(setArtist_Song(i))
                         : i.title === 'Single & EP'
-                        ? dispatch(zingArtist.actions.setArtist_Singer(i))
+                        ? dispatch(setArtist_Singer(i))
                         : i.title === 'MV'
-                        ? dispatch(zingArtist.actions.setArtist_MV(i))
+                        ? dispatch(setArtist_MV(i))
                         : i.title === 'Album'
-                        ? dispatch(zingArtist.actions.setArtist_Album(i))
+                        ? dispatch(setArtist_Album(i))
                         : '';
                 });
         };

@@ -23,6 +23,12 @@ body .tippy-content {
 .ic-go-down:before {
     content: '\79';
 }
+.ic-delete:before {
+    content: '\73';
+}
+.ic-download:before {
+    content: '\67';
+}
 .ic-20-Clock:before {
     content: '\ea5b';
 }

@@ -33,7 +33,12 @@ function ZingChart() {
             <div>
                 <Container>
                     {selection ? (
-                        <ContainerSongs type="top100" data={data?.RTChart?.items} index={data?.RTChart?.items.length} />
+                        <ContainerSongs
+                            type="top100"
+                            title="top100"
+                            data={data?.RTChart?.items}
+                            index={data?.RTChart?.items.length}
+                        />
                     ) : (
                         <ContainerSongs type="top100" data={data?.RTChart?.items} index={10} />
                     )}

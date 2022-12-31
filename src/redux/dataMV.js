@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     idMv: 0,
-    playMv: false, //mv đag pause hay play
+    playMv: false, //mv pause or play
     changerDataMv: false,
     indexOpenMv: 0,
-    kindTitle: 'Tất Cả',
+    kindTitle: 'Tất Cả', //kind music mv
 };
 
 export const zingPlayMv = createSlice({

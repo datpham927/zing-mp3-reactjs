@@ -34,18 +34,22 @@
                 line-height: 100%;
                 background-color: var(--dark-alpha-50);
                 justify-content: center;
-                display: none;
             }
             .song-play {
                 & img {
                     width: 2rem;
                     height: 2rem;
                 }
+                display: flex;
             }
             .play {
                 & i {
                     font-size: 3rem;
                 }
+                display: none;
+            }
+            .active {
+                display: flex;
             }
             &:hover {
                 & img {

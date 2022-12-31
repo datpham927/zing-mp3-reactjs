@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--dark-alpha-80);
-    .vip-ctn {
+    & .vip-ctn {
         position: relative;
         width: 340px;
         height: 176px;
@@ -17,24 +17,25 @@
         padding: 20px;
         text-align: center;
 
-        .title {
+        & .title {
             font-size: 19px;
             color: var(--text-primary);
         }
-        .describe {
+        & .describe {
             color: var(--text-secondary);
             padding: 15px 0;
             font-size: 15px;
             line-height: 20px;
         }
 
-        .btn {
+        & .btn {
             background-color: #f8e71c;
             color: #32323d;
             width: 90%;
             padding: 7px 0;
+            margin: auto;
         }
-        .close {
+        & .close {
             position: absolute;
             right: 5px;
             top: 5px;

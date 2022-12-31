@@ -34,11 +34,18 @@ function RightAlbum({ data }) {
         }
         setOpenMenu(false);
     };
-    window.onclick = (e) => {
-        if (!e.target.closest('.Album_menu__4gae5') && !e.target.closest('.PageAlbum_icon-sort__JN9TM')) {
-            setOpenMenu(false);
-        }
-    };
+    useEffect(() => {
+        const close = (e) => {
+            if (!e.target.closest('.Album_menu__4gae5') && !e.target.closest('.PageAlbum_icon-sort__JN9TM')) {
+                setOpenMenu(false);
+            }
+        };
+        document.body.addEventListener('click', close);
+        return () => {
+            document.body.removeEventListener('click', close);
+        };
+    });
+
     return (
         <div className={cx('right') + ' l-8'}>
             {data?.description && (
@@ -69,7 +76,7 @@ function RightAlbum({ data }) {
                         <span>THỜI GIAN</span>
                     </div>
                     <div className={cx('list') + ' row'}>
-                        <ContainerSongs type="add" data={newDataSong} index={newDataSong.length} />
+                        <ContainerSongs type="add" data={newDataSong} index={newDataSong.length} link={data.link} />
                     </div>
                     <h1 className={cx('bottom')}>
                         <span>{data.song?.total + ' bài hát •'} </span>
@@ -92,7 +99,12 @@ function RightAlbum({ data }) {
                                 <span>THỜI GIAN</span>
                             </div>
                             <div className={cx('list') + ' row'}>
-                                <ContainerSongs type="add" data={data.song?.items} index={data.song?.items.length} />
+                                <ContainerSongs
+                                    type="add"
+                                    data={data.song?.items}
+                                    index={data.song?.items.length}
+                                    link={data.link}
+                                />
                             </div>
                         </>
                     )}
@@ -103,6 +115,7 @@ function RightAlbum({ data }) {
                                     type="add"
                                     data={data?.sections[0].items}
                                     index={data?.sections[0].items.length}
+                                    link={data.link}
                                 />
                             </div>
                         </Container>

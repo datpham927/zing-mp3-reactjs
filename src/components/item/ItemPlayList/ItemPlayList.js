@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import { setPlayListFavorite } from '~/redux/FavoriteList';
+import { setPlayListFavorite, setPlayListTitle } from '~/redux/FavoriteList';
 import styles from './ItemPlayList.module.scss';
 
 const cx = classNames.bind(styles);
@@ -17,13 +17,14 @@ function ItemPlayList({ data, timeLoad = 1000, type = '', description, className
     useEffect(() => {
         setFavorite(playListFavorite?.map((e) => e.encodeId));
     }, [playListFavorite]);
-
     const handleLike = () => {
         dispatch(setPlayListFavorite(data));
     };
+
     const handleOnClick = (e) => {
         if (e.target === e.currentTarget || e.target.closest('.ItemPlayList_icon-play__e5DCq')) {
             navigate(data.link);
+            dispatch(setPlayListTitle([data.title, data.link]));
         }
     };
     return type === 'Single & EP' ? (

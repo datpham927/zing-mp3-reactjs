@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    songFavorite: JSON.parse(localStorage.getItem('songFavorite')) || [],
-    mvFavorite: JSON.parse(localStorage.getItem('mvFavorite')) || [],
-    playListFavorite: JSON.parse(localStorage.getItem('playListFavorite')) || [],
+const initialState = JSON.parse(localStorage.getItem('private')) || {
+    songFavorite: [],
+    mvFavorite: [],
+    playListFavorite: [],
+    playListTitle: [],
+    addPlayList: [],
 };
 export const zingFavorite = createSlice({
-    name: 'Favorite',
+    name: 'private',
     initialState,
     reducers: {
         setSongFavorite: (state, action) => {
@@ -21,7 +23,7 @@ export const zingFavorite = createSlice({
                     state.songFavorite.push(action.payload);
                 }
             }
-            localStorage.setItem('songFavorite', JSON.stringify(state.songFavorite));
+            localStorage.setItem('private', JSON.stringify(state));
         },
         setMvFavorite: (state, action) => {
             if (state.mvFavorite.length === 0) {
@@ -35,7 +37,7 @@ export const zingFavorite = createSlice({
                     state.mvFavorite.push(action.payload);
                 }
             }
-            localStorage.setItem('mvFavorite', JSON.stringify(state.mvFavorite));
+            localStorage.setItem('private', JSON.stringify(state));
         },
         setPlayListFavorite: (state, action) => {
             if (state.playListFavorite.length === 0) {
@@ -51,9 +53,27 @@ export const zingFavorite = createSlice({
                     state.playListFavorite.push(action.payload);
                 }
             }
-            localStorage.setItem('playListFavorite', JSON.stringify(state.playListFavorite));
+            localStorage.setItem('private', JSON.stringify(state));
+        },
+        setPlayListTitle: (state, action) => {
+            state.playListTitle = action.payload;
+            localStorage.setItem('private', JSON.stringify(state));
+        },
+        setAddPlayList: (state, action) => {
+            if (state.addPlayList.length === 0) {
+                state.addPlayList.push(action.payload);
+            } else {
+                const id = state.addPlayList.map((e) => e.encodeId);
+                const check = id.includes(action.payload.encodeId);
+                if (check) {
+                    state.addPlayList = state.addPlayList.filter((e) => e.encodeId !== action.payload.encodeId);
+                } else {
+                    state.addPlayList.push(action.payload);
+                }
+            }
+            localStorage.setItem('private', JSON.stringify(state));
         },
     },
 });
-export const { setSongFavorite, setMvFavorite, setPlayListFavorite } = zingFavorite.actions;
+export const { setSongFavorite, setMvFavorite, setPlayListFavorite, setPlayListTitle } = zingFavorite.actions;
 export default zingFavorite.reducer;

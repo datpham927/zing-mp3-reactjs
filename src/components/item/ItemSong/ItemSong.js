@@ -7,7 +7,7 @@ import Button from '~/components/Button';
 import { setActivePlay, zingAction } from '~/redux/action';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import styles from './ItemSong.module.scss';
-import { setSongFavorite } from '~/redux/FavoriteList';
+import { setPlayListTitle, setSongFavorite } from '~/redux/FavoriteList';
 import { setIdAudio } from '~/redux/dataAudio';
 import Duration from '~/components/number/time/Duration';
 
@@ -29,6 +29,7 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
+            dispatch(setPlayListTitle([]));
             onClick();
         } else {
             dispatch(zingAction.actions.setModalVip(true));

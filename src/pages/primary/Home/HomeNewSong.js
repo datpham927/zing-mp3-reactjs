@@ -6,10 +6,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import Container from '~/components/container/Container';
 import ItemNewRelease from '~/components/item/ItemNewRelease/ItemNewRelease';
+import { useDispatch } from 'react-redux';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import { setOpenControl } from '~/redux/action';
 
 const cx = className.bind(style);
 
 function HomeNewSong({ data }) {
+    const dispatch = useDispatch();
+    const handleClick = (i) => {
+        dispatch(setPlayListAudio(data?.items));
+        dispatch(setCurrentIndex(i));
+        dispatch(setOpenControl(true));
+    };
     return (
         <Container title={data.title} all link={data.link} swiper>
             <Swiper
@@ -26,7 +35,7 @@ function HomeNewSong({ data }) {
                 {data?.items?.map((item, index) => (
                     <li className="1-2" key={item.encodeId}>
                         <SwiperSlide>
-                            <ItemNewRelease col="" data={item} index={index + 1} />
+                            <ItemNewRelease col="" data={item} index={index + 1} onClick={() => handleClick(index)} />
                         </SwiperSlide>
                     </li>
                 ))}

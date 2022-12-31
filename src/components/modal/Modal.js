@@ -6,6 +6,9 @@ import ModalArtist from './ModalArtist/ModalArtist';
 import ModalVip from './ModalVip/ModalVip';
 import ModalFollow from './ModalFollow/ModalFollow';
 import ModalTimer from './ModalTimer/ModalTimer';
+import ModalPortal from './ModalPortal/ModalPortal';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const cx = classNames.bind(style);
 
 function Modal() {
@@ -19,6 +22,18 @@ function Modal() {
             <ModalFollow />
             <ModalVip />
             <ModalTimer />
+            <ModalPortal />
+            <ToastContainer
+                position="bottom-left"
+                autoClose={2000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </>
     );
 }

@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Slide, toast } from 'react-toastify';
 import ButtonAction from '~/components/Button/ButtonAction';
-import { setModalTimer, setTimer } from '~/redux/action';
+import { setDateTime, setModalTimer, setTimer } from '~/redux/action';
 import style from './ModalTimer.module.scss';
 
 const cx = className.bind(style);
@@ -10,24 +12,59 @@ const cx = className.bind(style);
 function ModalTimer() {
     const [hour, setHour] = useState(0);
     const [minute, setMinute] = useState(0);
+    const [intendTime, setIntendTime] = useState([]);
     const [focus, setFocus] = useState('');
     const dispatch = useDispatch();
 
+    useLayoutEffect(() => {
+        if (hour > 99) {
+            setHour(99);
+        } else if (hour < 0) {
+            setHour(0);
+        }
+        if (minute > 59) {
+            setMinute(59);
+        } else if (minute < 0) {
+        }
+    }, [hour, minute]);
+
+    useEffect(() => {
+        const currentTime = Math.round(Date.now() / 1000);
+        const intendTime = new Date((currentTime + (hour * 3600 + minute * 60)) * 1000);
+        setIntendTime([
+            {
+                hour: `${('0' + intendTime.getHours()).slice(-2)}:${('0' + intendTime.getMinutes()).slice(-2)}`,
+                day: `${('0' + intendTime.getDate()).slice(-2)}/${('0' + (intendTime.getMonth() + 1)).slice(
+                    -2,
+                )}/${intendTime.getFullYear()}`,
+            },
+        ]);
+    }, [hour, minute]);
+    const close = () => {
+        dispatch(setModalTimer(false));
+        setMinute(0);
+        setHour(0);
+    };
     const handleModal = (e) => {
         if (e.target === e.currentTarget) {
-            dispatch(setModalTimer(false));
+            close();
         }
     };
+
     const handleSummit = () => {
-        if (minute > 0 && hour > 0) {
-            dispatch(setTimer(minute * 60 + hour * 360));
-        } else {
-            if (minute > 0) {
-                dispatch(setTimer(minute * 60));
-            }
-            if (hour > 0) {
-                dispatch(setTimer(hour * 360));
-            }
+        if (hour > 0 || minute > 0) {
+            dispatch(setTimer(minute * 60 + hour * 3600));
+            dispatch(setModalTimer(false));
+            dispatch(setDateTime(intendTime));
+            toast('Hẹn giờ dừng phát nhạc thành công', {
+                position: 'bottom-left',
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                transition: Slide,
+            });
         }
     };
     const { booleanTimer } = useSelector((state) => state.action);
@@ -53,7 +90,7 @@ function ModalTimer() {
                                 maxLength={2}
                                 onFocus={() => setFocus('hour')}
                                 defaultValue={'00'}
-                                onInput={(e) => setHour(e.target.value)}
+                                onChange={(e) => setHour(e.target.value)}
                             />
                             <label htmlFor="hour">Giờ</label>
                             {focus === 'hour' && (
@@ -86,7 +123,7 @@ function ModalTimer() {
                                     setFocus('minute');
                                 }}
                                 maxLength={'2'}
-                                onInput={(e) => setMinute(e.target.value)}
+                                onChange={(e) => setMinute(e.target.value)}
                             />
                             <label htmlFor="minute">Phút</label>
                             {focus === 'minute' && (
@@ -112,12 +149,22 @@ function ModalTimer() {
                             )}
                         </div>
                     </div>
-                    <p>chọn thời gian để dừng phát nhạc</p>
+
+                    {hour || minute > 0 ? (
+                        <p>
+                            Dự tính dừng phát nhạc lúc :<span> {intendTime[0].hour + ' ' + intendTime[0].day}</span>
+                        </p>
+                    ) : (
+                        <p>chọn thời gian để dừng phát nhạc</p>
+                    )}
+
                     <ButtonAction className={cx('save', hour <= 0 && minute <= 0 && 'visible')} onClick={handleSummit}>
                         LƯU LẠI
                     </ButtonAction>
-                    <ButtonAction className={cx('cancel')}>HỦY</ButtonAction>
-                    <div className={cx('close')} onClick={() => dispatch(setModalTimer(false))}>
+                    <ButtonAction className={cx('cancel')} onClick={() => dispatch(setModalTimer(false))}>
+                        HỦY
+                    </ButtonAction>
+                    <div className={cx('close')} onClick={close}>
                         <ion-icon name="close-outline"></ion-icon>
                     </div>
                 </div>

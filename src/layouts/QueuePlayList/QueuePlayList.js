@@ -1,11 +1,12 @@
 import className from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useNavigationType } from 'react-router-dom';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import ItemSong from '~/components/item/ItemSong/ItemSong';
-import { setModalTimer, setOpenControl } from '~/redux/action';
-import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import { setModalPortal, setModalTimer, setModalVip, setOpenControl, setOpenQueueList } from '~/redux/action';
+import { setChangerTime, setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
 import style from './QueuePlayList.module.scss';
 
 const cx = className.bind(style);
@@ -13,9 +14,13 @@ const cx = className.bind(style);
 function QueuePlayList() {
     const dispatch = useDispatch();
     const [convertTab, setConvertTab] = useState(true);
+    const [other, setOther] = useState(false);
     const listMusic = useSelector((state) => state.dataControl.playListAudio);
     const { currentIndex, recentList } = useSelector((state) => state.dataControl);
-    const { booleanQueueList } = useSelector((state) => state.action);
+    const { booleanQueueList, timer } = useSelector((state) => state.action);
+    const { playListTitle } = useSelector((state) => state.Favorite);
+
+    const navigate = useNavigate();
 
     const handleOnClick = (i) => {
         if (convertTab) {
@@ -27,6 +32,22 @@ function QueuePlayList() {
             dispatch(setPlayListAudio(recentList));
         }
     };
+
+    useEffect(() => {
+        const close = (e) => {
+            if (
+                !e.target.closest('.QueuePlayList_other__f6T33') &&
+                !e.target.closest('.btn-other') &&
+                !e.target.closest('.ModalVip_modal-vip__GyAkv')
+            ) {
+                setOther(false);
+            }
+        };
+        document.body.addEventListener('click', close);
+        return () => {
+            document.body.removeEventListener('click', close);
+        };
+    });
     return (
         <div className={cx('container', booleanQueueList ? 'open' : 'close')}>
             <div className={cx('header')}>
@@ -50,18 +71,46 @@ function QueuePlayList() {
                 </div>
                 <div className={cx('action')}>
                     <Button
-                        className={cx('btn-action')}
+                        className={cx('btn-action', timer > 0 && 'active')}
                         iconLeft={<i className="icon ic-20-Clock"></i>}
                         content={'Hẹn giờ đừng phát nhạc'}
                         primary
-                        onClick={() => dispatch(setModalTimer(true))}
+                        onClick={() => {
+                            if (timer > 0) {
+                                dispatch(setModalPortal(true));
+                            } else {
+                                dispatch(setModalTimer(true));
+                            }
+                        }}
                     />
                     <Button
-                        className={cx('btn-action')}
+                        className={cx('btn-action', 'btn-other')}
                         iconLeft={<i className="icon ic-more"></i>}
                         content={'Khác'}
                         primary
+                        onClick={() => setOther(true)}
                     />
+                    {other && (
+                        <div className={cx('other')}>
+                            <div
+                                className={cx('delete')}
+                                onClick={() => {
+                                    dispatch(setPlayListAudio([]));
+                                    setOther(false);
+                                    dispatch(setOpenControl(false));
+                                    dispatch(setOpenQueueList(false));
+                                    dispatch(setChangerTime(0));
+                                }}
+                            >
+                                <i class="icon ic-delete"></i>
+                                <span>Xóa danh sách phát</span>
+                            </div>
+                            <div className={cx('download')} onClick={() => dispatch(setModalVip(true))}>
+                                <i class="icon ic-download"></i>
+                                <span>Tải danh sách phát</span>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className={cx('body')}>
@@ -80,7 +129,19 @@ function QueuePlayList() {
                                         />
                                     ),
                             )}
-                            {currentIndex < listMusic.length - 1 && <div className={cx('next')}>Tiếp theo</div>}
+                            {currentIndex < listMusic.length - 1 && (
+                                <div className={cx('next')}>
+                                    <h3>Tiếp theo</h3>
+                                    {playListTitle.length > 0 && (
+                                        <div>
+                                            <span>Từ PlayList </span>
+                                            <span onClick={() => navigate(playListTitle[1])}>
+                                                <span>{playListTitle[0]}</span>
+                                            </span>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                             {listMusic.map(
                                 (e, i) =>
                                     i > currentIndex && (

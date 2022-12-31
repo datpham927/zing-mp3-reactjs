@@ -86,10 +86,14 @@ function Search() {
         }
         dispatch(zingAction.actions.setValueSearch(value));
     };
-
+    const closeSearch = () => {
+        setOpenInput(false);
+        setBorderRadius(false);
+        setShowResult(false);
+    };
     // ẩn khung kết quả
     useEffect(() => {
-        window.onclick = (e) => {
+        const close = (e) => {
             if (
                 !e.target.closest('.Search_icon-search__TdugZ') &&
                 !e.target.closest('.Search_menu-search__mVQK0') &&
@@ -98,13 +102,16 @@ function Search() {
                 if (e.target.closest('.Search_close__S-Oy5')) {
                     hideBtnClose();
                 } else {
-                    setOpenInput(false);
-                    setBorderRadius(false);
-                    setShowResult(false);
+                    closeSearch();
                 }
             }
         };
+        document.body.addEventListener('click', close);
+        return () => {
+            document.body.removeEventListener('click', close);
+        };
     }, []);
+
     const handleEnter = (e) => {
         if (e.key === 'Enter') {
             if (valueRef.current.value !== '') {
@@ -163,7 +170,7 @@ function Search() {
                                 </div>
                             </div>
                             {/* ------------ ----------------- */}
-                            {searchResult?.length > 0 && <RecentlyMenu data={searchResult} />}
+                            {searchResult?.length > 0 && <RecentlyMenu data={searchResult} onClick={closeSearch} />}
                         </div>
                     </div>
                 ))}

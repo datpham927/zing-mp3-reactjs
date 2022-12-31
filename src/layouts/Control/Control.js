@@ -1,20 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
 import style from './Control.module.scss';
-import ControlLeft from './ControlLeft';
-import ControlRight from './ControlRigth';
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import { setChangerTime, setCurrentIndex, setIdAudio, setRepeat, setShuffle } from '~/redux/dataAudio';
 import { setActivePlay, setTimer } from '~/redux/action';
 import Duration from '~/components/number/time/Duration';
+import TimeAlarm from './TimeAlarm/TimeAlarm';
+import ControlLeft from './controlLeft/ControlLeft';
+import ControlRight from './controlRight/ControlRight';
 const cx = className.bind(style);
 function Control() {
     const dispatch = useDispatch();
     const listMusic = useSelector((state) => state.dataControl.playListAudio);
     const { currentIndex, idAudio, repeat, shuffle, changerTime } = useSelector((state) => state.dataControl);
-    const { activePlay } = useSelector((state) => state.action);
+    const { activePlay, bgrIndex, previewBgrIndex, timer } = useSelector((state) => state.action);
+
     const audioRef = useRef();
 
     useEffect(() => {
@@ -41,6 +43,15 @@ function Control() {
             audioRef.current.pause();
         }
     }, [activePlay]);
+
+    useEffect(() => {
+        const time = setTimeout(() => {
+            audioRef.current.pause();
+            dispatch(setActivePlay(false));
+            dispatch(setTimer(0));
+        }, timer * 1000);
+        return () => clearTimeout(time);
+    }, [timer]);
 
     const handlePev = () => {
         if (shuffle) {
@@ -72,12 +83,15 @@ function Control() {
             currentIndex > listMusic.length - 1 ? dispatch(setCurrentIndex(0)) : dispatch(setCurrentIndex(index));
         }
     };
+
     const handleRepeat = () => {
         dispatch(setRepeat(!repeat));
     };
+
     const handleShuffle = () => {
         dispatch(setShuffle(!shuffle));
     };
+
     const handleOnEnd = () => {
         repeat ? audioRef.current.play() : handleNext();
     };
@@ -86,22 +100,12 @@ function Control() {
         const newTime = (e.nativeEvent.offsetX / e.currentTarget.clientWidth) * 100;
         audioRef.current.currentTime = (newTime * audioRef.current.duration) / 100;
     };
-    const { bgrIndex, previewBgrIndex, timer } = useSelector((state) => state.action);
-
-    useEffect(() => {
-        const time = setTimeout(() => {
-            audioRef.current.pause();
-            dispatch(setActivePlay(false));
-            dispatch(setTimer(0));
-        }, timer * 1000);
-        return () => clearTimeout(time);
-    }, [timer]);
-
     return (
         <div
             className={cx('wrapper', ((previewBgrIndex === 0 && bgrIndex === 0) || bgrIndex === 0) && 'background-img')}
         >
             <ControlLeft />
+
             <div className={cx('main') + ' l-6'}>
                 <div className={cx('action')}>
                     <Button
@@ -170,7 +174,8 @@ function Control() {
                 ></audio>
             </div>
             <ControlRight audioRef={audioRef} />
+            <TimeAlarm />
         </div>
     );
 }
-export default Control;
+export default memo(Control);

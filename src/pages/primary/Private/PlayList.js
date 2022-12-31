@@ -7,7 +7,7 @@ function PlayList() {
     return playListFavorite.length > 0 ? (
         <ContainerPlayList title={'PLAYLIST'} data={playListFavorite} index={playListFavorite.length} />
     ) : (
-        <Empty />
+        <Empty title="Chưa có PlayList nào trong thư viện cá nhân" link="/top100" />
     );
 }
 

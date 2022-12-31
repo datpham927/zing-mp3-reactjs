@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import styles from './ItemSong.module.scss';
-import { setSongFavorite } from '~/redux/FavoriteList';
+import { setPlayListTitle, setSongFavorite } from '~/redux/FavoriteList';
 import { setIdAudio } from '~/redux/dataAudio';
 import Duration from '~/components/number/time/Duration';
 import { setActivePlay, setModalVip } from '~/redux/action';
@@ -31,6 +31,7 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
+            dispatch(setPlayListTitle([]));
             onClick();
         } else {
             dispatch(setModalVip(true));

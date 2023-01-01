@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setDataFollow } from '~/redux/dataVideoFollow';
 import { setModalFollow } from '~/redux/action';
-import LoadImg from '~/components/load/loadImg/LoadImg';
+
 import FormatDate from '~/components/number/time/FormatDate';
 import Follow from '~/components/number/follow/Follow';
 
@@ -33,9 +33,7 @@ function ItemFollowing({ data }) {
             <div className={cx('feed-card')}>
                 <div className={cx('top')}>
                     <div className={cx('image')}>
-                        <LoadImg>
-                            <img src={data?.publisher?.thumbnail} alt="" />
-                        </LoadImg>
+                        <img src={data?.publisher?.thumbnail} alt="" />
                     </div>
                     <div className={cx('info')}>
                         <div>
@@ -56,10 +54,7 @@ function ItemFollowing({ data }) {
                 <div className={cx('body')}>
                     <div className={cx('title')}>{data?.shortDescription}</div>
                     <div className={cx('main')} onClick={() => handelClick(data)}>
-                        <LoadImg>
-                            <img src={img} alt="" />
-                        </LoadImg>
-
+                        <img src={img} alt="" />
                         {data.content.type === 'feedVideo' && (
                             <div className={cx('modal-image')}>
                                 <div className={cx('icon-play')}>

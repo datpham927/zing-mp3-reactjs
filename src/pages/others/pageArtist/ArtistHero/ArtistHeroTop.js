@@ -8,7 +8,7 @@ import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Follow from '~/components/number/follow/Follow';
 import { setActivePlay, setOpenControl } from '~/redux/action';
-import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import style from './ArtistHero.module.scss';
 
 const cx = classNames.bind(style);

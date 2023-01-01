@@ -1,7 +1,7 @@
 import className from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useNavigationType } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import ItemSong from '~/components/item/ItemSong/ItemSong';
@@ -13,7 +13,7 @@ import {
     setOpenControl,
     setOpenQueueList,
 } from '~/redux/action';
-import { setChangerTime, setCurrentIndex, setIdAudio, setPlayListAudio } from '~/redux/dataAudio';
+import { deleteDataPlayList, setChangerTime, setCurrentIndex, setIdAudio, setPlayListAudio } from '~/redux/dataControl';
 import style from './QueuePlayList.module.scss';
 
 const cx = className.bind(style);
@@ -55,6 +55,7 @@ function QueuePlayList() {
             document.body.removeEventListener('click', close);
         };
     });
+
     return (
         <div className={cx('container', booleanQueueList ? 'open' : 'close')}>
             <div className={cx('header')}>
@@ -102,13 +103,14 @@ function QueuePlayList() {
                             <div
                                 className={cx('delete')}
                                 onClick={() => {
-                                    dispatch(setPlayListAudio([]));
+                                    dispatch(deleteDataPlayList());
                                     setOther(false);
                                     dispatch(setOpenControl(false));
                                     dispatch(setOpenQueueList(false));
                                     dispatch(setChangerTime(0));
                                     dispatch(setActivePlay(false));
                                     dispatch(setIdAudio([]));
+                                    dispatch();
                                 }}
                             >
                                 <i class="icon ic-delete"></i>
@@ -134,7 +136,6 @@ function QueuePlayList() {
                                             data={e}
                                             key={e.encodeId}
                                             type="player-queue"
-                                            timeLoad={500}
                                         />
                                     ),
                             )}
@@ -159,7 +160,6 @@ function QueuePlayList() {
                                             data={e}
                                             key={e.encodeId}
                                             type="player-queue"
-                                            timeLoad={500}
                                         />
                                     ),
                             )}
@@ -171,7 +171,6 @@ function QueuePlayList() {
                                 data={e}
                                 key={e.encodeId}
                                 type="player-queue-recent"
-                                timeLoad={500}
                             />
                         ))
                     ) : (
@@ -183,4 +182,4 @@ function QueuePlayList() {
     );
 }
 
-export default QueuePlayList;
+export default memo(QueuePlayList);

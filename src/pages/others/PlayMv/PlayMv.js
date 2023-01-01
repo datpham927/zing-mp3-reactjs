@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getPlayMv } from '~/components/Api/Service';
 import Button from '~/components/Button';
-import { setIdAudio } from '~/redux/dataAudio';
+import { setIdAudio } from '~/redux/dataControl';
 import { setIdMv, setIndexOpenMv, setPlayMv } from '~/redux/dataMV';
 import ItemPlayMv from './ItemPlayMv';
 import style from './PlayMv.module.scss';
 import MvArtist from './MvArtist';
 import { setMvFavorite } from '~/redux/FavoriteList';
-import { setActivePlay, setOpenControl } from '~/redux/action';
+import { setActivePlay, setLoadMusic, setOpenControl } from '~/redux/action';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);
 function PlayMv() {
@@ -33,6 +34,7 @@ function PlayMv() {
 
     useEffect(() => {
         setMp4('');
+        setHeader([]);
         const api = async () => {
             dispatch(setIdMv(idMv));
             const data = await getPlayMv(idMv);
@@ -67,6 +69,7 @@ function PlayMv() {
         dispatch(setPlayMv(false));
         dispatch(setActivePlay(true));
         dispatch(setOpenControl(true));
+        dispatch(setLoadMusic(false));
         navigate(-indexOpenMv);
         dispatch(setIndexOpenMv(0));
     };
@@ -75,7 +78,10 @@ function PlayMv() {
             <div className={cx('top')}>
                 <div className={cx('header')}>
                     <div className={cx('left')}>
-                        <img src={header[0]?.thumbnail} alt="" />
+                        <div className={cx('image')}>
+                            {header[0]?.thumbnail ? <img src={header[0]?.thumbnail} alt="" /> : <LoadImg />}
+                        </div>
+
                         <div className={cx('info')}>
                             <h3>{header[0]?.title}</h3>
                             {header[0]?.artists?.map((i, index) => (

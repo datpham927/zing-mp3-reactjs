@@ -4,19 +4,21 @@ import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
-import { setActivePlay, zingAction } from '~/redux/action';
-import LoadImg from '~/components/load/loadImg/LoadImg';
+import { setActivePlay, setLoadMusic, zingAction } from '~/redux/action';
+
 import styles from './ItemSong.module.scss';
-import { setPlayListTitle, setSongFavorite } from '~/redux/FavoriteList';
-import { setIdAudio } from '~/redux/dataAudio';
+import { setSongFavorite } from '~/redux/FavoriteList';
+import { setIdAudio } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
+import LoadImg from '~/components/load/loadImg/LoadImg';
+import { IconLoadMusic } from '~/components/Icons/Icons';
 
 const cx = classNames.bind(styles);
-function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
+function ItemSong({ data, type = '', index = '', onClick }) {
     const [favorite, setFavorite] = useState([]);
     const dispatch = useDispatch();
     const { idAudio } = useSelector((state) => state.dataControl);
-    const { activePlay } = useSelector((state) => state.action);
+    const { activePlay, loadMusic } = useSelector((state) => state.action);
     const { songFavorite } = useSelector((state) => state.Favorite);
     useEffect(() => {
         setFavorite(songFavorite?.map((e) => e.encodeId));
@@ -28,8 +30,10 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
-            dispatch(setActivePlay(true));
             onClick();
+            if (!data.encodeId === idAudio.encodeId) {
+                dispatch(setLoadMusic(false));
+            }
         } else {
             dispatch(zingAction.actions.setModalVip(true));
         }
@@ -46,24 +50,26 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={timeLoad}>
-                                <img src={data.thumbnail} alt="" />
-                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
-                                    <div className={cx('song-play')} onClick={() => handlePause()}>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                                <div className={cx('song-play')} onClick={() => handlePause()}>
+                                    {loadMusic ? (
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                             alt=""
                                         />
-                                    </div>
-                                ) : (
-                                    <div
-                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
-                                        onClick={() => handlePlay()}
-                                    >
-                                        <i className="icon action-play ic-play"></i>
-                                    </div>
-                                )}
-                            </LoadImg>
+                                    ) : (
+                                        <IconLoadMusic />
+                                    )}
+                                </div>
+                            ) : (
+                                <div
+                                    className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                    onClick={() => handlePlay()}
+                                >
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                            )}
                         </div>
                         <div className={cx('info')}>
                             <div style={{ display: 'flex' }}>
@@ -163,24 +169,26 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                     </div>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={timeLoad}>
-                                <img src={data.thumbnail} alt="" />
-                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
-                                    <div className={cx('song-play')} onClick={() => handlePause()}>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                                <div className={cx('song-play')} onClick={() => handlePause()}>
+                                    {loadMusic ? (
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                             alt=""
                                         />
-                                    </div>
-                                ) : (
-                                    <div
-                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
-                                        onClick={() => handlePlay()}
-                                    >
-                                        <i className="icon action-play ic-play"></i>
-                                    </div>
-                                )}
-                            </LoadImg>
+                                    ) : (
+                                        <IconLoadMusic />
+                                    )}
+                                </div>
+                            ) : (
+                                <div
+                                    className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                    onClick={() => handlePlay()}
+                                >
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                            )}
                         </div>
                         <div className={cx('info')}>
                             <div style={{ display: 'flex' }}>
@@ -281,24 +289,26 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                     </div>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={timeLoad}>
-                                <img src={data.thumbnail} alt="" />
-                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
-                                    <div className={cx('song-play')} onClick={() => handlePause()}>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                                <div className={cx('song-play')} onClick={() => handlePause()}>
+                                    {loadMusic ? (
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                             alt=""
                                         />
-                                    </div>
-                                ) : (
-                                    <div
-                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
-                                        onClick={() => handlePlay()}
-                                    >
-                                        <i className="icon action-play ic-play"></i>
-                                    </div>
-                                )}
-                            </LoadImg>
+                                    ) : (
+                                        <IconLoadMusic />
+                                    )}
+                                </div>
+                            ) : (
+                                <div
+                                    className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                    onClick={() => handlePlay()}
+                                >
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                            )}
                         </div>
                         <div className={cx('info', 'info-top100-small')}>
                             <div style={{ display: 'flex' }}>
@@ -351,24 +361,26 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left', 'l-6')}>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={timeLoad}>
-                                <img src={data.thumbnail} alt="" />
-                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
-                                    <div className={cx('song-play')} onClick={() => handlePause()}>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                                <div className={cx('song-play')} onClick={() => handlePause()}>
+                                    {loadMusic ? (
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                             alt=""
                                         />
-                                    </div>
-                                ) : (
-                                    <div
-                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
-                                        onClick={() => handlePlay()}
-                                    >
-                                        <i className="icon action-play ic-play"></i>
-                                    </div>
-                                )}
-                            </LoadImg>
+                                    ) : (
+                                        <IconLoadMusic />
+                                    )}
+                                </div>
+                            ) : (
+                                <div
+                                    className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                    onClick={() => handlePlay()}
+                                >
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                            )}
                         </div>
                         <div className={cx('info', 'weight')}>
                             <div style={{ display: 'flex' }}>
@@ -418,12 +430,10 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left', 'l-6')}>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={timeLoad}>
-                                <img src={data.thumbnail} alt="" />
-                                <div className={cx('play')} onClick={() => handlePlay()}>
-                                    <i className="icon action-play ic-play"></i>
-                                </div>
-                            </LoadImg>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            <div className={cx('play')} onClick={() => handlePlay()}>
+                                <i className="icon action-play ic-play"></i>
+                            </div>
                         </div>
                         <div className={cx('info', 'weight')}>
                             <div style={{ display: 'flex' }}>
@@ -476,24 +486,26 @@ function ItemSong({ data, type = '', timeLoad = 1000, index = '', onClick }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left', 'l-6')}>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={timeLoad}>
-                                <img src={data.thumbnail} alt="" />
-                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
-                                    <div className={cx('song-play')} onClick={() => handlePause()}>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                                <div className={cx('song-play')} onClick={() => handlePause()}>
+                                    {loadMusic ? (
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                             alt=""
                                         />
-                                    </div>
-                                ) : (
-                                    <div
-                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
-                                        onClick={() => handlePlay()}
-                                    >
-                                        <i className="icon action-play ic-play"></i>
-                                    </div>
-                                )}
-                            </LoadImg>
+                                    ) : (
+                                        <IconLoadMusic />
+                                    )}
+                                </div>
+                            ) : (
+                                <div
+                                    className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                    onClick={() => handlePlay()}
+                                >
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                            )}
                         </div>
                         <div className={cx('info', 'weight')}>
                             <div style={{ display: 'flex' }}>

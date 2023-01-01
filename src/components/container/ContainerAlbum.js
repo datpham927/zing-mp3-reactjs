@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setOpenControl } from '~/redux/action';
-import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import ItemAlbum from '../item/ItemAlBum/ItemAlBum';
 
 function ContainerAlbum({ data, index = 12 }) {

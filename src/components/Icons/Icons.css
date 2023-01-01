@@ -16,6 +16,7 @@ body .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
 body .tippy-content {
     padding: 3px 9px;
 }
+
 /* --------------- */
 .ic-restore:before {
     content: '\30';

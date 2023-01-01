@@ -64,6 +64,11 @@ export const zingAudio = createSlice({
             state.currentVolume = action.payload;
             localStorage.setItem('audio', JSON.stringify(state));
         },
+        deleteDataPlayList: (state) => {
+            state.playListAudio = [];
+            state.recentList = [];
+            localStorage.setItem('audio', JSON.stringify(state));
+        },
     },
 });
 export const {
@@ -76,5 +81,6 @@ export const {
     setChangerVolume,
     setVolume,
     setCurrentVolume,
+    deleteDataPlayList,
 } = zingAudio.actions;
 export default zingAudio.reducer;

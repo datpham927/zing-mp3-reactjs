@@ -5,7 +5,7 @@ import zingHome from './dataHome';
 import zingRadio from './dataRadio';
 import zingChart from './dataZingChart';
 import dataVideoFollow from './dataVideoFollow';
-import zingAudio from './dataAudio';
+import zingAudio from './dataControl';
 import zingPlayMv from './dataMV';
 import zingFavorite from './FavoriteList';
 export default configureStore({

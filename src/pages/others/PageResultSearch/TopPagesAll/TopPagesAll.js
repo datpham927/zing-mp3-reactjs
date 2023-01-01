@@ -1,28 +1,26 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import LoadImg from '~/components/load/loadImg/LoadImg';
+
 import styles from './TopPagesAll.module.scss';
 
 const cx = classNames.bind(styles);
 
-function TopPagesAll({ data, type = '', timeLoad = 1000 }) {
+function TopPagesAll({ data, type = '' }) {
     return type === 'song' ? (
         <div className=" l-4 col">
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb')}>
-                        <LoadImg timeLoad={timeLoad}>
-                            <img src={data?.thumbnail} alt="" />
-                            <div className={cx('play')}>
-                                <i className="icon action-play ic-play"></i>
-                            </div>
-                            <div className={cx('song-play')}>
-                                <img
-                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                    alt=""
-                                />
-                            </div>
-                        </LoadImg>
+                        <img src={data?.thumbnail} alt="" />
+                        <div className={cx('play')}>
+                            <i className="icon action-play ic-play"></i>
+                        </div>
+                        <div className={cx('song-play')}>
+                            <img
+                                src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                alt=""
+                            />
+                        </div>
                     </div>
                     <div className={cx('content')}>
                         <span className={cx('type')}>Bài hát</span>
@@ -46,18 +44,16 @@ function TopPagesAll({ data, type = '', timeLoad = 1000 }) {
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb', 'artist')}>
-                        <LoadImg timeLoad={timeLoad}>
-                            <img src={data?.thumbnail} alt="" />
-                            <div className={cx('play')}>
-                                <i className="icon action-play ic-24-Shuffle"></i>
-                            </div>
-                            <div className={cx('song-play')}>
-                                <img
-                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                    alt=""
-                                />
-                            </div>
-                        </LoadImg>
+                        <img src={data?.thumbnail} alt="" />
+                        <div className={cx('play')}>
+                            <i className="icon action-play ic-24-Shuffle"></i>
+                        </div>
+                        <div className={cx('song-play')}>
+                            <img
+                                src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                alt=""
+                            />
+                        </div>
                     </div>
                     <div className={cx('content', 'content-artist')}>
                         <span className={cx('type')}>Nghệ Sĩ</span>
@@ -78,20 +74,18 @@ function TopPagesAll({ data, type = '', timeLoad = 1000 }) {
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb', 'artist')}>
-                        <LoadImg timeLoad={timeLoad}>
-                            <Link to={data.link}>
-                                <img src={data?.thumbnail} alt="" />
-                                <div className={cx('play')}>
-                                    <i className="icon action-play ic-play"></i>
-                                </div>
-                                <div className={cx('song-play')}>
-                                    <img
-                                        src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                        alt=""
-                                    />
-                                </div>
-                            </Link>
-                        </LoadImg>
+                        <Link to={data.link}>
+                            <img src={data?.thumbnail} alt="" />
+                            <div className={cx('play')}>
+                                <i className="icon action-play ic-play"></i>
+                            </div>
+                            <div className={cx('song-play')}>
+                                <img
+                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                    alt=""
+                                />
+                            </div>
+                        </Link>
                     </div>
                     <div className={cx('content', 'content-artist')}>
                         <span className={cx('type')}>Playlist</span>

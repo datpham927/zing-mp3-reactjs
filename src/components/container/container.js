@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import LoadImg from '../load/loadImg/LoadImg';
 import styles from './Container.module.scss';
 const cx = classNames.bind(styles);
 function Container({
@@ -20,9 +19,7 @@ function Container({
         <div className={cx('wrapper')}>
             <div className={cx('header-spotlight')}>
                 <div className={cx('image')}>
-                    <LoadImg timeLoad={1000}>
-                        <img src={data?.top?.thumbnail || data?.subTitle?.thumbnail} alt="" />
-                    </LoadImg>
+                    <img src={data?.top?.thumbnail || data?.subTitle?.thumbnail} alt="" />
                 </div>
                 <div className={cx('content')}>
                     <p className={cx('subtitle')}>{data?.title ? data?.title : subtitle}</p>

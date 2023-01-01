@@ -3,20 +3,21 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
-import LoadImg from '~/components/load/loadImg/LoadImg';
 import styles from './ItemSong.module.scss';
-import { setPlayListTitle, setSongFavorite } from '~/redux/FavoriteList';
-import { setIdAudio } from '~/redux/dataAudio';
+import { setSongFavorite } from '~/redux/FavoriteList';
+import { setIdAudio } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
-import { setActivePlay, setModalVip } from '~/redux/action';
+import { setActivePlay, setLoadMusic, setModalVip } from '~/redux/action';
 import { memo } from 'react';
+import LoadImg from '~/components/load/loadImg/LoadImg';
+import { IconLoadMusic } from '~/components/Icons/Icons';
 
 const cx = classNames.bind(styles);
-function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
+function ItemSongAdd({ data, onClick }) {
     const dispatch = useDispatch();
     const [favorite, setFavorite] = useState([]);
     const { idAudio } = useSelector((state) => state.dataControl);
-    const { activePlay } = useSelector((state) => state.action);
+    const { activePlay, loadMusic } = useSelector((state) => state.action);
     const { songFavorite } = useSelector((state) => state.Favorite);
 
     useEffect(() => {
@@ -32,6 +33,9 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
             dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
             onClick();
+            if (data.encodeId !== idAudio.encodeId) {
+                dispatch(setLoadMusic(false));
+            }
         } else {
             dispatch(setModalVip(true));
         }
@@ -52,24 +56,26 @@ function ItemSongAdd({ data, timeLoad = 1000, onClick }) {
                             </div>
                         </div>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={timeLoad}>
-                                <img src={data?.thumbnail} alt="" />
-                                {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
-                                    <div className={cx('song-play')} onClick={() => handlePause()}>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                                <div className={cx('song-play')} onClick={() => handlePause()}>
+                                    {loadMusic ? (
                                         <img
                                             src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                             alt=""
                                         />
-                                    </div>
-                                ) : (
-                                    <div
-                                        className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
-                                        onClick={() => handlePlay()}
-                                    >
-                                        <i className="icon action-play ic-play"></i>
-                                    </div>
-                                )}
-                            </LoadImg>
+                                    ) : (
+                                        <IconLoadMusic />
+                                    )}
+                                </div>
+                            ) : (
+                                <div
+                                    className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                    onClick={() => handlePlay()}
+                                >
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                            )}
                         </div>
                         <div className={cx('info')}>
                             <div style={{ display: 'flex' }}>

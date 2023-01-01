@@ -7,7 +7,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper';
 import Container from '~/components/container/Container';
 import ItemNewRelease from '~/components/item/ItemNewRelease/ItemNewRelease';
 import { useDispatch } from 'react-redux';
-import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import { setOpenControl } from '~/redux/action';
 
 const cx = className.bind(style);

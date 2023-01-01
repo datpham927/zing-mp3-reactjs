@@ -9,12 +9,12 @@ import styles from './ItemArtists.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ItemArtists({ data, timeLoad = 1000, col = 'l-3' }) {
+function ItemArtists({ data, col = 'l-3' }) {
     const [care, setCare] = useState(false);
     return (
         <li className={cx('item') + ` ${col} col`}>
             <div className={cx('wrapper')}>
-                <LoadImg radius timeLoad={timeLoad}>
+                {data.thumbnail ? (
                     <Link to={data.link}>
                         <div className={cx('image')}>
                             <img src={data.thumbnail} alt="" />
@@ -23,7 +23,9 @@ function ItemArtists({ data, timeLoad = 1000, col = 'l-3' }) {
                             </div>
                         </div>
                     </Link>
-                </LoadImg>
+                ) : (
+                    <LoadImg radius />
+                )}
                 <div className={cx('info')}>
                     <div className={cx('content')}>
                         <div className={cx('singer')}>

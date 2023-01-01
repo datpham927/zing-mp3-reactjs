@@ -1,7 +1,8 @@
 import Container from '~/components/container/Container';
-import LoadImg from '~/components/load/loadImg/LoadImg';
+
 import className from 'classnames/bind';
 import style from './Radio.module.scss';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);
 
@@ -13,9 +14,11 @@ function RadioCategory({ data }) {
                     index < 4 && (
                         <div className="l-3 col">
                             <div className={cx('episode-item')}>
-                                <LoadImg timeLoad={'2000'} className={cx('padding-img')}>
+                                {i.thumbnail ? (
                                     <img src={i.thumbnail} alt={i.title} />
-                                </LoadImg>
+                                ) : (
+                                    <LoadImg className={cx('padding-img')} />
+                                )}
                             </div>
                         </div>
                     ),

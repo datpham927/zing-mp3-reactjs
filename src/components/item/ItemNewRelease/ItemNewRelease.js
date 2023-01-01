@@ -2,7 +2,7 @@ import className from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setActivePlay } from '~/redux/action';
-import { setIdAudio } from '~/redux/dataAudio';
+import { setIdAudio } from '~/redux/dataControl';
 import style from './ItemNewRelease.modul.scss';
 
 const cx = className.bind(style);

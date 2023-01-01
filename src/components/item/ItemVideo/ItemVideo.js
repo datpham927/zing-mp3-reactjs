@@ -3,13 +3,14 @@ import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadImg from '~/components/load/loadImg/LoadImg';
+
 import Duration from '~/components/number/time/Duration';
 import { setActivePlay } from '~/redux/action';
 import { setChangerDataMv, setIndexOpenMv, setPlayMv } from '~/redux/dataMV';
 import styles from './ItemVideo.module.scss';
 
 const cx = classNames.bind(styles);
-function ItemVideo({ data, timeLoad = 1000 }) {
+function ItemVideo({ data }) {
     const dispatch = useDispatch();
     const { playMv, indexOpenMv } = useSelector((state) => state.dataMv);
     const navigate = useNavigate();
@@ -28,26 +29,26 @@ function ItemVideo({ data, timeLoad = 1000 }) {
         data && (
             <li className={cx('item') + ' l-4 col'}>
                 <div className={cx('wrapper')}>
-                    <LoadImg timeLoad={timeLoad} className={cx('load-video')}>
-                        <div className={cx('video-img')} onClick={handleOnclick}>
+                    <div className={cx('video-img')} onClick={handleOnclick}>
+                        {data?.thumbnailM ? (
                             <img src={data?.thumbnailM} alt="" />
-                            <div className={cx('play', id === data.encodeId && 'active')}>
-                                {playMv && id === data.encodeId ? (
-                                    <p style={{ fontSize: '1.4rem' }}>Đang phát </p>
-                                ) : (
-                                    <i className="icon ic-play-circle-outline"></i>
-                                )}
-                            </div>
-                            <div className={cx('time')}>
-                                <span>{<Duration duration={data?.duration} />}</span>
-                            </div>
+                        ) : (
+                            <LoadImg className={cx('load-video')} />
+                        )}
+                        <div className={cx('play', id === data.encodeId && 'active')}>
+                            {playMv && id === data.encodeId ? (
+                                <p style={{ fontSize: '1.4rem' }}>Đang phát </p>
+                            ) : (
+                                <i className="icon ic-play-circle-outline"></i>
+                            )}
                         </div>
-                    </LoadImg>
+                        <div className={cx('time')}>
+                            <span>{<Duration duration={data?.duration} />}</span>
+                        </div>
+                    </div>
                     <div className={cx('video-info')}>
                         <div className={cx('info-img')}>
-                            <LoadImg radius timeLoad={timeLoad}>
-                                <img src={data?.thumbnail} alt="" />
-                            </LoadImg>
+                            {data?.thumbnail ? <img src={data?.thumbnail} alt="" /> : <LoadImg radius />}
                         </div>
                         <div className={cx('content')}>
                             <h3 className={cx('title')} onClick={handleOnclick}>

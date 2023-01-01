@@ -21,9 +21,7 @@ function ThemeItem({ data }) {
     return (
         <div className={cx('topic-theme') + ' l-2-4 c-6 m-2-4 '}>
             <div className={cx('topic-theme-img', data.id === index && 'border')}>
-                <LoadImg className={cx('image')}>
-                    <img src={data.link} alt="" />
-                </LoadImg>
+                {data.link ? <img src={data.link} alt="" /> : <LoadImg className={cx('image')} />}
                 <div className={cx('action-theme') + ' m-0 c-0 '}>
                     <button className={cx('theme-btn', 'primary')} onClick={() => handleSelection(data.id)}>
                         Áp dụng

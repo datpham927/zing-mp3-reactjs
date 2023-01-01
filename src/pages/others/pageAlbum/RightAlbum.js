@@ -4,7 +4,7 @@ import style from './PageAlbum.module.scss';
 import Container from '~/components/container/Container';
 import { useEffect, useState } from 'react';
 import ContainerSongs from '~/components/container/ContainerSongs';
-import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import { useDispatch } from 'react-redux';
 const cx = classNames.bind(style);
 

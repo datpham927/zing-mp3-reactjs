@@ -1,26 +1,28 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setActivePlay, zingAction } from '~/redux/action';
+import { setActivePlay, setLoadMusic, zingAction } from '~/redux/action';
 import Button from '../../Button';
 import styles from './ItemAlBum.module.scss';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import { setIdAudio } from '~/redux/dataAudio';
+import { setIdAudio } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
 import { setPlayListTitle } from '~/redux/FavoriteList';
+import { IconLoadMusic } from '~/components/Icons/Icons';
 
 const cx = classNames.bind(styles);
 
 function ItemAlbum({ data, onClick }) {
     const dispatch = useDispatch();
     const { idAudio } = useSelector((state) => state.dataControl);
-    const { activePlay } = useSelector((state) => state.action);
+    const { activePlay, loadMusic } = useSelector((state) => state.action);
 
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
             dispatch(setPlayListTitle([]));
+            dispatch(setLoadMusic(false));
             onClick();
         } else {
             dispatch(zingAction.actions.setModalVip(true));
@@ -34,15 +36,21 @@ function ItemAlbum({ data, onClick }) {
             <div className={cx('include', data.encodeId === idAudio.encodeId && 'active')} onDoubleClick={handlePlay}>
                 <div className={cx('left')}>
                     <div className={cx('wrapper-img')}>
-                        <LoadImg className={cx('image')}>
+                        {data?.thumbnail ? (
                             <img src={data?.thumbnail} className={cx('image')} alt="" />
-                        </LoadImg>
+                        ) : (
+                            <LoadImg className={cx('image')} />
+                        )}
                         {activePlay === true && data?.encodeId === idAudio.encodeId ? (
                             <div className={cx('play-song')} onClick={() => handlePause()}>
-                                <img
-                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                    alt=""
-                                />
+                                {loadMusic ? (
+                                    <img
+                                        src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                        alt=""
+                                    />
+                                ) : (
+                                    <IconLoadMusic />
+                                )}
                             </div>
                         ) : (
                             <div

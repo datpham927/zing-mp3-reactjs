@@ -41,9 +41,11 @@ function RadioEpisode({ data }) {
                     <SwiperSlide>
                         <div className="l-12 col">
                             <div className={cx('episode-item')}>
-                                <LoadImg timeLoad={'1000'} className={cx('padding-img')}>
+                                {i.thumbnail ? (
                                     <img src={i.thumbnail} alt={i.title} />
-                                </LoadImg>
+                                ) : (
+                                    <LoadImg className={cx('padding-img')} />
+                                )}
                             </div>
                         </div>
                     </SwiperSlide>

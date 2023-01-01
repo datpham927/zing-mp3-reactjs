@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { setOpenControl } from '~/redux/action';
-import { setCurrentIndex, setPlayListAudio } from '~/redux/dataAudio';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import ItemSong from '../item/ItemSong/ItemSong';
 import ItemSongAdd from '../item/ItemSong/ItemSongAdd';
 import Container from './Container';

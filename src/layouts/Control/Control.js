@@ -1,21 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
 import style from './Control.module.scss';
-import { memo, useEffect, useRef } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button';
-import { setChangerTime, setCurrentIndex, setIdAudio, setRepeat, setShuffle } from '~/redux/dataAudio';
-import { setActivePlay, setTimer } from '~/redux/action';
+import { setChangerTime, setCurrentIndex, setIdAudio, setRepeat, setShuffle } from '~/redux/dataControl';
+import { setActivePlay, setLoadMusic, setTimer } from '~/redux/action';
 import Duration from '~/components/number/time/Duration';
 import TimeAlarm from './TimeAlarm/TimeAlarm';
 import ControlLeft from './controlLeft/ControlLeft';
 import ControlRight from './controlRight/ControlRight';
+import { IconLoadControl } from '~/components/Icons/Icons';
 const cx = className.bind(style);
 function Control() {
+    const [src, setSrc] = useState('');
+    const [play, setPlay] = useState(false);
+
     const dispatch = useDispatch();
     const listMusic = useSelector((state) => state.dataControl.playListAudio);
     const { currentIndex, idAudio, repeat, shuffle, changerTime } = useSelector((state) => state.dataControl);
-    const { activePlay, bgrIndex, previewBgrIndex, timer } = useSelector((state) => state.action);
+    const { activePlay, bgrIndex, previewBgrIndex, timer, loadMusic } = useSelector((state) => state.action);
 
     const audioRef = useRef();
 
@@ -26,28 +30,35 @@ function Control() {
                 index++;
             } while (listMusic[index]?.streamingStatus === 2);
         }
-
-        for (let i = 0; i < listMusic.length; i++) {
-            if (i === index) {
-                dispatch(setIdAudio(listMusic[i]));
-                break;
-            }
-        }
+        dispatch(setIdAudio(listMusic[index]));
     }, [currentIndex]);
 
     useEffect(() => {
+        setSrc(`http://api.mp3.zing.vn/api/streaming/audio/${idAudio?.encodeId}/320`);
         audioRef.current.currentTime = (idAudio?.duration * changerTime) / 100;
         if (activePlay) {
-            audioRef.current.play();
+            if (loadMusic) {
+                audioRef.current.play();
+                setPlay(activePlay);
+            } else {
+                setTimeout(() => {
+                    dispatch(setLoadMusic(true));
+                    audioRef.current.play();
+                    setPlay(activePlay);
+                }, 2000);
+            }
         } else {
             audioRef.current.pause();
+            setPlay(false);
         }
-    }, [activePlay]);
+    }, [idAudio, loadMusic, activePlay]);
 
     useEffect(() => {
         const time = setTimeout(() => {
             audioRef.current.pause();
-            dispatch(setActivePlay(false));
+            if (timer !== 0) {
+                dispatch(setActivePlay(false));
+            }
             dispatch(setTimer(0));
         }, timer * 1000);
         return () => clearTimeout(time);
@@ -67,6 +78,7 @@ function Control() {
             } while (listMusic[index]?.streamingStatus === 2);
             currentIndex < 0 ? dispatch(setCurrentIndex(listMusic.length - 1)) : dispatch(setCurrentIndex(index));
         }
+        dispatch(setLoadMusic(false));
     };
     const handleNext = () => {
         if (shuffle) {
@@ -82,7 +94,7 @@ function Control() {
             } while (listMusic[index]?.streamingStatus === 2);
             currentIndex > listMusic.length - 1 ? dispatch(setCurrentIndex(0)) : dispatch(setCurrentIndex(index));
         }
-        dispatch(setActivePlay(true));
+        dispatch(setLoadMusic(false));
     };
 
     const handleRepeat = () => {
@@ -129,10 +141,14 @@ function Control() {
                         small
                         noContent
                         iconLeft={
-                            activePlay ? (
-                                <i className="icon ic-pause-circle-outline"></i>
+                            loadMusic ? (
+                                activePlay ? (
+                                    <i className="icon ic-pause-circle-outline"></i>
+                                ) : (
+                                    <i className="icon ic-play-circle-outline"></i>
+                                )
                             ) : (
-                                <i className="icon ic-play-circle-outline"></i>
+                                <IconLoadControl />
                             )
                         }
                     />
@@ -166,9 +182,9 @@ function Control() {
                 </div>
                 <audio
                     ref={audioRef}
-                    src={`http://api.mp3.zing.vn/api/streaming/audio/${idAudio?.encodeId}/320`}
-                    autoPlay={activePlay}
+                    src={src}
                     onEnded={handleOnEnd}
+                    autoPlay={play}
                     onTimeUpdate={() =>
                         dispatch(setChangerTime((100 * audioRef.current.currentTime) / idAudio?.duration))
                     }

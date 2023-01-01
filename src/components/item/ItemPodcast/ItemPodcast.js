@@ -2,7 +2,7 @@
 import className from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import Button from '~/components/Button';
-import LoadImg from '~/components/load/loadImg/LoadImg';
+import Loading from '~/components/load/Loading/Loading';
 import FormatDate from '~/components/number/time/FormatDate';
 import Minute from '~/components/number/time/Minute';
 import style from './ItemPodcast.module.scss';
@@ -27,31 +27,24 @@ function ItemPodcast({ data, col = 'l-12', index, className, onClick }) {
             <div className={cx('include')} onClick={() => handlePlay()}>
                 <div className={cx('left')}>
                     {index && <div className={cx('number')}>{index}</div>}
-                    <LoadImg>
-                        <div className={cx('wrapper-img')}>
-                            <img src={data?.thumbnail} className={cx('image')} alt="" />
-                            {play === true && data?.encodeId === idAudio?.encodeId ? (
-                                <div className={cx('play-song')} onClick={() => handlePause()}>
-                                    <img
-                                        src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                        alt=""
-                                    />
-                                </div>
-                            ) : (
-                                <div
-                                    className={cx('icon-play', data?.encodeId === idAudio?.encodeId && 'pause')}
-                                    onClick={() => handlePlay()}
-                                >
-                                    <ion-icon
-                                        name="play"
-                                        role="img"
-                                        className="md hydrated"
-                                        aria-label="play"
-                                    ></ion-icon>
-                                </div>
-                            )}
-                        </div>
-                    </LoadImg>
+                    <div className={cx('wrapper-img')}>
+                        {data?.thumbnail ? <img src={data?.thumbnail} className={cx('image')} alt="" /> : <Loading />}
+                        {play === true && data?.encodeId === idAudio?.encodeId ? (
+                            <div className={cx('play-song')} onClick={() => handlePause()}>
+                                <img
+                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                    alt=""
+                                />
+                            </div>
+                        ) : (
+                            <div
+                                className={cx('icon-play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                onClick={() => handlePlay()}
+                            >
+                                <ion-icon name="play" role="img" className="md hydrated" aria-label="play"></ion-icon>
+                            </div>
+                        )}
+                    </div>
                     <div className={cx('info')}>
                         <div className={cx('name')}>
                             <h1 className={cx('song')}>{data?.title}</h1>

@@ -4,8 +4,8 @@ const initialState = {
     idMv: 0,
     playMv: false, //mv pause or play
     changerDataMv: false,
-    indexOpenMv: 0,
-    kindTitle: 'Tất Cả', //kind music mv
+    kindTitle: 'Tất Cả', //option kind music mv
+    indexOpenMv: JSON.parse(localStorage.getItem('indexOpenMv')),
 };
 
 export const zingPlayMv = createSlice({
@@ -23,6 +23,7 @@ export const zingPlayMv = createSlice({
         },
         setIndexOpenMv: (state, action) => {
             state.indexOpenMv = action.payload;
+            localStorage.setItem('indexOpenMv', JSON.stringify(state.indexOpenMv));
         },
         setKindTitle: (state, action) => {
             state.kindTitle = action.payload;

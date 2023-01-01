@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import Container from '~/components/container/Container';
 import ItemPlayList from '~/components/item/ItemPlayList/ItemPlayList';
 import * as searchApi from '~/components/Api/Service';

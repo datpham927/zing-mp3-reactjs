@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import ButtonAction from '~/components/Button/ButtonAction';
-import LoadImg from '~/components/load/loadImg/LoadImg';
+
 import style from './PageAlbum.module.scss';
 import Follow from '~/components/number/follow/Follow';
 import Button from '~/components/Button';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActivePlay, setOpenControl } from '~/redux/action';
+import { IconLoadMusic } from '~/components/Icons/Icons';
 const cx = classNames.bind(style);
 function LeftAlbum({ data }) {
     const dispatch = useDispatch();
-    const { activePlay } = useSelector((state) => state.action);
+    const { activePlay, loadMusic } = useSelector((state) => state.action);
     const [like, setLike] = useState(false);
     const handleLike = () => {
         setLike(!like);
@@ -26,24 +27,26 @@ function LeftAlbum({ data }) {
 
     return (
         <div className={cx('left') + ' l-4'}>
-            <LoadImg>
-                <div className={cx('image', activePlay ? 'rotate' : 'rotate-pause')}>
-                    <img src={data?.thumbnailM} alt="" />
+            <div className={cx('image', activePlay ? 'rotate' : 'rotate-pause')}>
+                <img src={data?.thumbnailM} alt="" />
 
-                    {activePlay ? (
-                        <div className={cx('song-play')} onClick={handlePause}>
+                {activePlay ? (
+                    <div className={cx('song-play')} onClick={handlePause}>
+                        {loadMusic ? (
                             <img
                                 src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
                                 alt=""
                             />
-                        </div>
-                    ) : (
-                        <div className={cx('play')} onClick={handlePlay}>
-                            <i className="icon ic-play-circle-outline"></i>
-                        </div>
-                    )}
-                </div>
-            </LoadImg>
+                        ) : (
+                            <IconLoadMusic font={50} />
+                        )}
+                    </div>
+                ) : (
+                    <div className={cx('play')} onClick={handlePlay}>
+                        <i className="icon ic-play-circle-outline"></i>
+                    </div>
+                )}
+            </div>
             <div className={cx('content')}>
                 <h3>{data?.title}</h3>
                 <div className={cx('artist')}>

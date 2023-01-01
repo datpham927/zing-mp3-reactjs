@@ -18,13 +18,14 @@ const initialState = {
     value: '',
     booleanVip: false,
     booleanModalFollow: false,
-    booleanTimer: false,
+    booleanTimer: false, //ẩn hiện modal hẹn giờ
     booleanControl: JSON.parse(localStorage.getItem('control')) || false,
     booleanQueueList: false,
     booleanModalPortal: false,
-    activePlay: false,
-    timer: JSON.parse(localStorage.getItem('timer')) || 0,
-    dateTime: JSON.parse(localStorage.getItem('dateTime')) || 0,
+    activePlay: false, //nhạc đang pause hay play
+    loadMusic: true, //load nhạc
+    timer: JSON.parse(localStorage.getItem('timer')) || 0, //thời gian hẹn giờ (second)
+    dateTime: JSON.parse(localStorage.getItem('dateTime')) || 0, //thời gian dự kiến dừng nhạc (hour,day)
 };
 
 export const zingAction = createSlice({
@@ -92,11 +93,14 @@ export const zingAction = createSlice({
         },
         setDateTime: (state, action) => {
             state.dateTime = action.payload;
-            localStorage.setItem('time', JSON.stringify(state.dateTime));
+            localStorage.setItem('dateTime', JSON.stringify(state.dateTime));
         },
         setModalPortal: (state, action) => {
             state.booleanModalPortal = action.payload;
             localStorage.setItem('modalPortal', JSON.stringify(state.booleanModalPortal));
+        },
+        setLoadMusic: (state, action) => {
+            state.loadMusic = action.payload;
         },
     },
 });
@@ -120,6 +124,7 @@ export const {
     setTimer,
     setDateTime,
     setModalPortal,
+    setLoadMusic,
 } = zingAction.actions;
 
 export default zingAction.reducer;

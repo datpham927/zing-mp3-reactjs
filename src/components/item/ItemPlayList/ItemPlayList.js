@@ -9,7 +9,7 @@ import styles from './ItemPlayList.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ItemPlayList({ data, timeLoad = 1000, type = '', description, className }) {
+function ItemPlayList({ data, type = '', description, className }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [favorite, setFavorite] = useState([]);
@@ -30,38 +30,36 @@ function ItemPlayList({ data, timeLoad = 1000, type = '', description, className
     return type === 'Single & EP' ? (
         <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
             <div className={cx('wrapper')}>
-                <LoadImg timeLoad={timeLoad}>
-                    <div className={cx('image-hover')}>
-                        <div className={cx('container-image')}>
-                            <img src={data.thumbnailM} alt="" />
-                            <div className={cx('modal-image')} onClick={(e) => handleOnClick(e)}>
-                                <div className={cx('favorite')}>
-                                    <Button
-                                        onClick={() => handleLike()}
-                                        small
-                                        content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
-                                        iconLeft={
-                                            favorite?.includes(data.encodeId) ? (
-                                                <i className="icon ic-like-full"></i>
-                                            ) : (
-                                                <i className="icon ic-like"></i>
-                                            )
-                                        }
-                                    />
-                                </div>
-                                <div className={cx('icon-play')}>
-                                    <Button noContent iconLeft={<i className="icon ic-play-circle-outline"></i>} />
-                                </div>
+                <div className={cx('image-hover')}>
+                    <div className={cx('container-image')}>
+                        {data.thumbnailM ? <img src={data.thumbnailM} alt="" /> : <LoadImg />}
+                        <div className={cx('modal-image')} onClick={(e) => handleOnClick(e)}>
+                            <div className={cx('favorite')}>
                                 <Button
+                                    onClick={() => handleLike()}
                                     small
-                                    content="khác"
-                                    // onClick={() => handleLike()}
-                                    iconLeft={<i className="icon ic-more"></i>}
+                                    content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                    iconLeft={
+                                        favorite?.includes(data.encodeId) ? (
+                                            <i className="icon ic-like-full"></i>
+                                        ) : (
+                                            <i className="icon ic-like"></i>
+                                        )
+                                    }
                                 />
                             </div>
+                            <div className={cx('icon-play')}>
+                                <Button noContent iconLeft={<i className="icon ic-play-circle-outline"></i>} />
+                            </div>
+                            <Button
+                                small
+                                content="khác"
+                                // onClick={() => handleLike()}
+                                iconLeft={<i className="icon ic-more"></i>}
+                            />
                         </div>
                     </div>
-                </LoadImg>
+                </div>
                 <div className={cx('content')}>
                     <span className={cx('title')}>
                         <Link to={data.link}>{data.title}</Link>
@@ -80,34 +78,36 @@ function ItemPlayList({ data, timeLoad = 1000, type = '', description, className
     ) : (
         <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
             <div className={cx('wrapper')}>
-                <LoadImg timeLoad={timeLoad}>
-                    <div className={cx('image-hover')}>
-                        <div className={cx('container-image')}>
-                            <img src={data.thumbnailM} alt="" />
-
-                            <div className={cx('modal-image')} onClick={(e) => handleOnClick(e)}>
-                                <div className={cx('favorite')}>
-                                    <Button
-                                        onClick={() => handleLike()}
-                                        small
-                                        content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
-                                        iconLeft={
-                                            favorite?.includes(data.encodeId) ? (
-                                                <i className="icon ic-like-full"></i>
-                                            ) : (
-                                                <i className="icon ic-like"></i>
-                                            )
-                                        }
-                                    />
-                                </div>
-                                <div className={cx('icon-play')} onClick={(e) => handleOnClick(e)}>
-                                    <Button noContent iconLeft={<i className="icon ic-play-circle-outline"></i>} />
-                                </div>
-                                <Button small content="khác" iconLeft={<i className="icon ic-more"></i>} />
+                <div className={cx('image-hover')}>
+                    <div className={cx('container-image')}>
+                        {data.thumbnailM ? <img src={data.thumbnailM} alt="" /> : <LoadImg />}
+                        <div className={cx('modal-image')} onClick={(e) => handleOnClick(e)}>
+                            <div className={cx('favorite')}>
+                                <Button
+                                    onClick={() => handleLike()}
+                                    small
+                                    content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                    iconLeft={
+                                        favorite?.includes(data.encodeId) ? (
+                                            <i className="icon ic-like-full"></i>
+                                        ) : (
+                                            <i className="icon ic-like"></i>
+                                        )
+                                    }
+                                />
                             </div>
+                            <div className={cx('icon-play')}>
+                                <Button noContent iconLeft={<i className="icon ic-play-circle-outline"></i>} />
+                            </div>
+                            <Button
+                                small
+                                content="khác"
+                                // onClick={() => handleLike()}
+                                iconLeft={<i className="icon ic-more"></i>}
+                            />
                         </div>
                     </div>
-                </LoadImg>
+                </div>
                 <div className={cx('content')}>
                     <span className={cx('title')}>
                         <Link to={data.link}>{data.title}</Link>

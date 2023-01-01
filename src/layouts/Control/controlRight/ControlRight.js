@@ -4,7 +4,7 @@ import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import { setOpenQueueList } from '~/redux/action';
-import { setChangerVolume, setCurrentVolume, setVolume } from '~/redux/dataAudio';
+import { setChangerVolume, setCurrentVolume, setVolume } from '~/redux/dataControl';
 import style from './ControlRight.module.scss';
 const cx = className.bind(style);
 

@@ -7,7 +7,7 @@ import styles from './ItemSong.module.scss';
 import { setSongFavorite } from '~/redux/FavoriteList';
 import { setIdAudio } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
-import { setActivePlay, setLoadMusic, setModalVip } from '~/redux/action';
+import { setActivePlay, setLoadMusic, setModalVip, zingAction } from '~/redux/action';
 import { memo } from 'react';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { IconLoadMusic } from '~/components/Icons/Icons';
@@ -31,14 +31,16 @@ function ItemSongAdd({ data, onClick }) {
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
-            dispatch(setActivePlay(true));
             onClick();
-            if (data.encodeId !== idAudio.encodeId) {
+            if (data.encodeId === idAudio.encodeId) {
+                dispatch(setLoadMusic(true));
+            } else {
                 dispatch(setLoadMusic(false));
             }
         } else {
-            dispatch(setModalVip(true));
+            dispatch(zingAction.actions.setModalVip(true));
         }
+        dispatch(setActivePlay(true));
     };
 
     const handlePause = () => {

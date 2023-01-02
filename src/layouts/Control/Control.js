@@ -14,7 +14,6 @@ import { IconLoadControl } from '~/components/Icons/Icons';
 const cx = className.bind(style);
 function Control() {
     const [src, setSrc] = useState('');
-    const [play, setPlay] = useState(false);
 
     const dispatch = useDispatch();
     const listMusic = useSelector((state) => state.dataControl.playListAudio);
@@ -39,17 +38,14 @@ function Control() {
         if (activePlay) {
             if (loadMusic) {
                 audioRef.current.play();
-                setPlay(activePlay);
             } else {
                 setTimeout(() => {
                     dispatch(setLoadMusic(true));
                     audioRef.current.play();
-                    setPlay(activePlay);
                 }, 2000);
             }
         } else {
             audioRef.current.pause();
-            setPlay(false);
         }
     }, [idAudio, loadMusic, activePlay]);
 
@@ -184,7 +180,6 @@ function Control() {
                     ref={audioRef}
                     src={src}
                     onEnded={handleOnEnd}
-                    autoPlay={play}
                     onTimeUpdate={() =>
                         dispatch(setChangerTime((100 * audioRef.current.currentTime) / idAudio?.duration))
                     }

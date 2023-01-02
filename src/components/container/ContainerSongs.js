@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { setOpenControl } from '~/redux/action';
+import { setLoadMusic, setOpenControl } from '~/redux/action';
 import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import ItemSong from '../item/ItemSong/ItemSong';
 import ItemSongAdd from '../item/ItemSong/ItemSongAdd';
@@ -12,6 +12,7 @@ function ContainerSongs({ data, title, link, all = false, index = 6, type = '' }
         dispatch(setPlayListAudio(data));
         dispatch(setCurrentIndex(i));
         dispatch(setOpenControl(true));
+        dispatch(setLoadMusic(false));
     };
     return type === 'top100' || type === 'top100-small' || type === 'song-12'
         ? data?.map(

@@ -22,7 +22,11 @@ function ItemAlbum({ data, onClick }) {
             dispatch(setIdAudio(data));
             dispatch(setActivePlay(true));
             dispatch(setPlayListTitle([]));
-            dispatch(setLoadMusic(false));
+            if (data.encodeId === idAudio.encodeId) {
+                dispatch(setLoadMusic(true));
+            } else {
+                dispatch(setLoadMusic(false));
+            }
             onClick();
         } else {
             dispatch(zingAction.actions.setModalVip(true));

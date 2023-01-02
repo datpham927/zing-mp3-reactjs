@@ -31,12 +31,15 @@ function ItemSong({ data, type = '', index = '', onClick }) {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
             onClick();
-            if (!data.encodeId === idAudio.encodeId) {
+            if (data.encodeId === idAudio.encodeId) {
+                dispatch(setLoadMusic(true));
+            } else {
                 dispatch(setLoadMusic(false));
             }
         } else {
             dispatch(zingAction.actions.setModalVip(true));
         }
+        dispatch(setActivePlay(true));
     };
     const handlePause = () => {
         dispatch(setActivePlay(false));

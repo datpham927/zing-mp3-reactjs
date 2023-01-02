@@ -40,7 +40,13 @@ function ZingChart() {
                             index={data?.RTChart?.items.length}
                         />
                     ) : (
-                        <ContainerSongs type="top100" data={data?.RTChart?.items} index={10} />
+                        <ContainerSongs
+                            type="top100"
+                            data={data?.RTChart?.items}
+                            title={'#zingChart'}
+                            link={'/zing-chart'}
+                            index={10}
+                        />
                     )}
                     {!selection && (
                         <ButtonAction className={cx('btn-more')} onClick={() => setSelection(!selection)}>

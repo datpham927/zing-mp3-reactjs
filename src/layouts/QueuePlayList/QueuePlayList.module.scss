@@ -1,5 +1,5 @@
 .container {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     box-shadow: var(--box-shadow-queue);
@@ -62,6 +62,12 @@
             background-color: var(--alpha-bg);
         }
         .list {
+            .is-pre {
+                opacity: 0.6;
+                &:hover {
+                    opacity: 1;
+                }
+            }
             .next {
                 padding: 10px;
                 & h3 {
@@ -70,17 +76,25 @@
                     color: var(--link-text-hover);
                 }
                 & div {
+                    display: flex;
                     line-height: 1;
                     margin-top: 2px;
                     span {
                         line-height: 1;
                         color: var(--text-secondary);
+                        flex-shrink: 0;
                     }
                     & span {
                         & span {
+                            margin-left: 4px;
                             cursor: pointer;
                             color: var(--link-text-hover);
                             line-height: 1;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 1;
+                            max-width: 222px;
+                            overflow: hidden;
                         }
                     }
                 }

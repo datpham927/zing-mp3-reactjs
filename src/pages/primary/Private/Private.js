@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import Button from '~/components/Button';
-import Bottom from './Buttom';
-import PlayList from './PlayList';
+import Bottom from './Bottom/Buttom';
+import PlayList from './PlayList/PlayList';
 import style from './Private.module.scss';
 
 const cx = classNames.bind(style);

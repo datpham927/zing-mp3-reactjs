@@ -9,9 +9,9 @@ const cx = classNames.bind(styles);
 function KeywordsMenu({ data, onSubmit }) {
     return (
         <div className={cx('Keywords-body')}>
-            {data?.map(
-                (item, index) => index < 4 && <SuggestItem key={item.encodeId} data={item.title} onSubmit={onSubmit} />,
-            )}
+            {data?.map((item, index) => (
+                <SuggestItem key={index} data={item.keyword} onSubmit={onSubmit} />
+            ))}
         </div>
     );
 }

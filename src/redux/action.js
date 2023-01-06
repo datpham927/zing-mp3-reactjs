@@ -6,7 +6,6 @@ const initialState = {
     //mở modal lựa chọn background
     booleanTheme: false,
     // index background
-    bgrIndex: JSON.parse(localStorage.getItem('bgrIndex')) || 0,
     // xem trước background
     booleanPreviewBgr: false,
     previewBgrIndex: 0,
@@ -19,11 +18,11 @@ const initialState = {
     booleanVip: false,
     booleanModalFollow: false,
     booleanTimer: false, //ẩn hiện modal hẹn giờ
-    booleanControl: JSON.parse(localStorage.getItem('control')) || false,
-    booleanQueueList: false,
     booleanModalPortal: false,
+    booleanModalPortalDelete: false,
     activePlay: false, //nhạc đang pause hay play
-    loadMusic: true, //load nhạc
+    booleanModalAddPlayList: false,
+    bgrIndex: JSON.parse(localStorage.getItem('bgrIndex')) || 2,
     timer: JSON.parse(localStorage.getItem('timer')) || 0, //thời gian hẹn giờ (second)
     dateTime: JSON.parse(localStorage.getItem('dateTime')) || 0, //thời gian dự kiến dừng nhạc (hour,day)
 };
@@ -74,13 +73,7 @@ export const zingAction = createSlice({
         setModalFollow: (state, action) => {
             state.booleanModalFollow = action.payload;
         },
-        setOpenControl: (state, action) => {
-            state.booleanControl = action.payload;
-            localStorage.setItem('control', JSON.stringify(state.booleanControl));
-        },
-        setOpenQueueList: (state, action) => {
-            state.booleanQueueList = action.payload;
-        },
+
         setActivePlay: (state, action) => {
             state.activePlay = action.payload;
         },
@@ -99,8 +92,11 @@ export const zingAction = createSlice({
             state.booleanModalPortal = action.payload;
             localStorage.setItem('modalPortal', JSON.stringify(state.booleanModalPortal));
         },
-        setLoadMusic: (state, action) => {
-            state.loadMusic = action.payload;
+        setModalAddPlayList: (state, action) => {
+            state.booleanModalAddPlayList = action.payload;
+        },
+        setModalPortalDelete: (state, action) => {
+            state.booleanModalPortalDelete = action.payload;
         },
     },
 });
@@ -117,14 +113,13 @@ export const {
     setValueSearch,
     setModalVip,
     setModalFollow,
-    setOpenControl,
-    setOpenQueueList,
     setActivePlay,
     setModalTimer,
     setTimer,
     setDateTime,
     setModalPortal,
-    setLoadMusic,
+    setModalAddPlayList,
+    setModalPortalDelete,
 } = zingAction.actions;
 
 export default zingAction.reducer;

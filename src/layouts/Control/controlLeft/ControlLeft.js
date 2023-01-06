@@ -29,10 +29,10 @@ function ControlLeft() {
                 <h3>{idAudio?.title}</h3>
                 <p>
                     {idAudio?.artists?.map((i, index) => (
-                        <div key={index}>
+                        <span key={index}>
                             <Link to={i.link}>{i.name}</Link>
                             {index < idAudio?.artists.length - 1 && ', '}
-                        </div>
+                        </span>
                     ))}
                 </p>
             </div>

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import ButtonAction from '~/components/Button/ButtonAction';
-import style from './Private.module.scss';
+import style from './Empty.module.scss';
 
 const cx = classNames.bind(style);
 

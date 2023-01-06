@@ -109,7 +109,16 @@
                 border-color: var(--purple-primary);
             }
         }
-
+        .estimate {
+            padding: 10px 0;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            height: 40px;
+            & span {
+                font-size: 1.4rem;
+                font-weight: 700;
+            }
+        }
         .save {
             background-color: var(--purple-primary);
             border-color: var(--purple-primary);

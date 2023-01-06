@@ -37,7 +37,6 @@ function KindMusic() {
                     {kindTitle}
                 </ButtonAction>
             </div>
-
             {open && data.childs && (
                 <div className={cx('box')}>
                     {data.childs.map((e) => (

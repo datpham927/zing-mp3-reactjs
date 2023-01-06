@@ -25,7 +25,13 @@ function SongNew() {
                 <Button noContent iconLeft={<i className="icon ic-play"></i>} className={cx('btn')} />
             </div>
             <Container>
-                <ContainerSongs type="top100" data={data?.items} index={data?.items.length} />
+                <ContainerSongs
+                    type="top100"
+                    data={data?.items}
+                    index={data?.items.length}
+                    title={'Nhạc mới'}
+                    link={'/moi-phat-hanh'}
+                />
             </Container>
         </div>
     ) : (

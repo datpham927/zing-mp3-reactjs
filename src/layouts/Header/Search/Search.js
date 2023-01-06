@@ -11,7 +11,7 @@ import SuggestMenu from './Suggest/SuggestMenu';
 import * as searchApi from '~/components/Api/Service';
 import KeywordsItem from './Keywords/KeywordsItem';
 import { Icon } from '~/components/Icons';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setValueSearch } from '~/redux/action';
 const cx = classNames.bind(style);
@@ -21,7 +21,7 @@ function Search() {
     const dispatch = useDispatch();
     //điều hướng đường dẫn
     const navigate = useNavigate();
-    const [searchResult, setSearchResult] = useState([]);
+    const [keywords, setKeywords] = useState([]);
     const [searchSuggest, setSearchSuggest] = useState([]);
     const [showResult, setShowResult] = useState(false);
     const [showBtn, setShowBtn] = useState(false);
@@ -33,16 +33,15 @@ function Search() {
 
     useEffect(() => {
         if (!debouncedValue.trim()) {
-            setSearchResult([]);
+            setKeywords([]);
             setShowResult(true);
             setShowBtn(false);
             setBorderRadius(true);
             return;
         }
         const fetchApi = async () => {
-            const data = await searchApi.search(debouncedValue);
-            setSearchResult(data.songs || []);
-            setChangeBtn(false);
+            const data = await searchApi.getSearch(debouncedValue);
+            setKeywords(data.items);
         };
         fetchApi();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -72,7 +71,7 @@ function Search() {
         setShowBtn(false);
         dispatch(setValueSearch(''));
         setOpenInput(false);
-        setSearchResult([]);
+        setKeywords([]);
         valueRef.current.focus();
     };
 
@@ -165,14 +164,21 @@ function Search() {
                             <div className={cx('Keywords')}>
                                 <div className={cx('Keywords-header')}>
                                     <h1>Từ Khóa Liên Quan</h1>
-                                    {searchResult?.length > 0 && (
-                                        <KeywordsMenu data={searchResult} onSubmit={handleSubmit} />
+                                    {keywords[0]?.keywords?.length > 0 && (
+                                        <KeywordsMenu data={keywords[0]?.keywords} onSubmit={handleSubmit} />
                                     )}
-                                    <KeywordsItem data={`Tim kiếm "${value}"`} onSubmit={handleSubmit} />
+                                    <span className={cx('item')} onClick={handleSubmit}>
+                                        <span>
+                                            <i className="icon ic-search"></i>
+                                        </span>
+                                        <span className={cx('title')}>{`Tìm Kiếm ${value}`}</span>
+                                    </span>
                                 </div>
                             </div>
                             {/* ------------ ----------------- */}
-                            {searchResult?.length > 0 && <RecentlyMenu data={searchResult} onClick={closeSearch} />}
+                            {keywords[1]?.suggestions?.length > 0 && (
+                                <RecentlyMenu data={keywords[1]?.suggestions} onClick={closeSearch} />
+                            )}
                         </div>
                     </div>
                 ))}

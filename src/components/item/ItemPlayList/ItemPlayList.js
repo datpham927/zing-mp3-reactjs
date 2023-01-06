@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import { setPlayListFavorite, setPlayListTitle } from '~/redux/FavoriteList';
+import { setModalPortalDelete } from '~/redux/action';
+import { setIdDeletePlayList, setPlayListFavorite, setPlayListTitle } from '~/redux/FavoriteList';
 import styles from './ItemPlayList.module.scss';
 
 const cx = classNames.bind(styles);
@@ -38,7 +39,9 @@ function ItemPlayList({ data, type = '', description, className }) {
                                 <Button
                                     onClick={() => handleLike()}
                                     small
-                                    content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                    content={
+                                        favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'
+                                    }
                                     iconLeft={
                                         favorite?.includes(data.encodeId) ? (
                                             <i className="icon ic-like-full"></i>
@@ -75,6 +78,49 @@ function ItemPlayList({ data, type = '', description, className }) {
                 </div>
             </div>
         </li>
+    ) : type === 'create-playlist' ? (
+        <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
+            <div className={cx('wrapper')}>
+                <div className={cx('image-hover')}>
+                    <div className={cx('container-image')}>
+                        {data.thumbnailM ? <img src={data.thumbnailM} alt="" /> : <LoadImg />}
+                        <div className={cx('modal-image')} onClick={(e) => handleOnClick(e)}>
+                            <div className={cx('favorite')}>
+                                <Button
+                                    onClick={() => {
+                                        dispatch(setIdDeletePlayList(data.encodeId));
+                                        dispatch(setModalPortalDelete(true));
+                                    }}
+                                    small
+                                    content={'Xóa khỏi thư viện'}
+                                    iconLeft={<i class="icon ic-close"></i>}
+                                />
+                            </div>
+                            <div className={cx('icon-play')}>
+                                <Button noContent iconLeft={<i className="icon ic-play-circle-outline"></i>} />
+                            </div>
+                            <Button
+                                small
+                                content="khác"
+                                // onClick={() => handleLike()}
+                                iconLeft={<i className="icon ic-more"></i>}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className={cx('content')}>
+                    <span className={cx('title')}>
+                        <Link to={data.link}>{data.title}</Link>
+                    </span>
+
+                    {data.name && (
+                        <span className={cx('subtitle')}>
+                            <span> {data.name}</span>
+                        </span>
+                    )}
+                </div>
+            </div>
+        </li>
     ) : (
         <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
             <div className={cx('wrapper')}>
@@ -86,7 +132,9 @@ function ItemPlayList({ data, type = '', description, className }) {
                                 <Button
                                     onClick={() => handleLike()}
                                     small
-                                    content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                    content={
+                                        favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'
+                                    }
                                     iconLeft={
                                         favorite?.includes(data.encodeId) ? (
                                             <i className="icon ic-like-full"></i>

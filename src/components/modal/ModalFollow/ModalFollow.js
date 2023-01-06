@@ -9,6 +9,7 @@ import { Icon } from '~/components/Icons';
 import { setModalFollow } from '~/redux/action';
 import style from './ModalFollow.module.scss';
 import FormatDate from '~/components/number/time/FormatDate';
+import ModalWrapper from '../ModalWrapper/ModalWrapper';
 const cx = className.bind(style);
 function ModalFollow() {
     const [selection, setSelection] = useState(false);
@@ -18,11 +19,7 @@ function ModalFollow() {
         setLike(!like);
     };
     const dispatch = useDispatch();
-    const handelClick = (e) => {
-        if (e.target === e.currentTarget) {
-            dispatch(setModalFollow(false));
-        }
-    };
+
     const { booleanModalFollow } = useSelector((state) => state.action);
     const data = useSelector((state) => state.dataVideo.dataVideoFl);
     var Video;
@@ -31,12 +28,8 @@ function ModalFollow() {
     }
     return (
         booleanModalFollow && (
-            <div
-                className={cx('wrapper')}
-                onClick={(e) => {
-                    handelClick(e);
-                }}
-            >
+            <ModalWrapper>
+                {' '}
                 <div className={cx('body')}>
                     <div className={cx('left') + ' l-7'}>
                         {data?.content?.type === 'album' ? (
@@ -104,7 +97,7 @@ function ModalFollow() {
                     iconLeft={<Icon.IconClose />}
                     onClick={() => dispatch(setModalFollow(false))}
                 />
-            </div>
+            </ModalWrapper>
         )
     );
 }

@@ -25,10 +25,10 @@ function Home() {
         };
         getTodoItems();
     }, []);
-    const { data_Home } = useSelector((state) => state.dataHome);
-    return data_Home.length !== 0 ? (
+    const { dataHome } = useSelector((state) => state.dataHome);
+    return dataHome.length !== 0 ? (
         <div className={cx('wrapper')}>
-            {data_Home?.map((i) =>
+            {dataHome?.map((i) =>
                 i.sectionType === 'banner' ? (
                     <HomeGallery data={i} />
                 ) : i.sectionType === 'playlist' && i.sectionId === 'h100' ? (

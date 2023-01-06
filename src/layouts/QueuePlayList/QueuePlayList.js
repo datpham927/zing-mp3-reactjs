@@ -2,18 +2,13 @@ import className from 'classnames/bind';
 import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Slide, toast } from 'react-toastify';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import ItemSong from '~/components/item/ItemSong/ItemSong';
-import {
-    setActivePlay,
-    setModalPortal,
-    setModalTimer,
-    setModalVip,
-    setOpenControl,
-    setOpenQueueList,
-} from '~/redux/action';
-import { deleteDataPlayList, setChangerTime, setCurrentIndex, setIdAudio, setPlayListAudio } from '~/redux/dataControl';
+import { setActivePlay, setModalPortal, setModalTimer, setModalVip } from '~/redux/action';
+import { setCurrentTimeAudio } from '~/redux/currentTimeAudio';
+import { deleteDataPlayList, setIdAudio, setOpenQueueList, setPlayListAudio } from '~/redux/dataControl';
 import style from './QueuePlayList.module.scss';
 
 const cx = className.bind(style);
@@ -21,25 +16,28 @@ const cx = className.bind(style);
 function QueuePlayList() {
     const dispatch = useDispatch();
     const [convertTab, setConvertTab] = useState(true);
+    const { currentIndex, recentList, playListAudio, booleanQueueList } = useSelector((state) => state.dataControl);
     const [other, setOther] = useState(false);
-    const listMusic = useSelector((state) => state.dataControl.playListAudio);
-    const { currentIndex, recentList } = useSelector((state) => state.dataControl);
-    const { booleanQueueList, timer } = useSelector((state) => state.action);
+    const { timer } = useSelector((state) => state.action);
     const { playListTitle } = useSelector((state) => state.Favorite);
 
     const navigate = useNavigate();
 
-    const handleOnClick = (i) => {
+    const handleOnClick = (e) => {
         if (convertTab) {
-            dispatch(setCurrentIndex(i));
-            dispatch(setOpenControl(true));
+            dispatch(setIdAudio(e));
         } else {
-            dispatch(setCurrentIndex(i));
+            const listNew = [...playListAudio];
+            const arrId = listNew.map((e) => e.encodeId);
+            const check = arrId.includes(e.encodeId);
+            if (!check) {
+                listNew.unshift(e);
+            }
+            dispatch(setIdAudio(e));
+            dispatch(setPlayListAudio(listNew));
             setConvertTab(true);
-            dispatch(setPlayListAudio(recentList));
         }
     };
-
     useEffect(() => {
         const close = (e) => {
             if (
@@ -55,6 +53,12 @@ function QueuePlayList() {
             document.body.removeEventListener('click', close);
         };
     });
+    useEffect(() => {
+        const songPlayView = document.querySelector('.ItemSong_queue-active__pGHaU');
+        if (songPlayView) {
+            songPlayView?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }
+    }, [currentIndex]);
 
     return (
         <div className={cx('container', booleanQueueList ? 'open' : 'close')}>
@@ -105,19 +109,24 @@ function QueuePlayList() {
                                 onClick={() => {
                                     dispatch(deleteDataPlayList());
                                     setOther(false);
-                                    dispatch(setOpenControl(false));
-                                    dispatch(setOpenQueueList(false));
-                                    dispatch(setChangerTime(0));
+                                    dispatch(setCurrentTimeAudio(0));
                                     dispatch(setActivePlay(false));
-                                    dispatch(setIdAudio([]));
-                                    dispatch();
+                                    toast('Xóa danh sách thành công', {
+                                        position: 'bottom-left',
+                                        autoClose: 1000,
+                                        hideProgressBar: true,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        transition: Slide,
+                                    });
                                 }}
                             >
-                                <i class="icon ic-delete"></i>
+                                <i className="icon ic-delete"></i>
                                 <span>Xóa danh sách phát</span>
                             </div>
                             <div className={cx('download')} onClick={() => dispatch(setModalVip(true))}>
-                                <i class="icon ic-download"></i>
+                                <i className="icon ic-download"></i>
                                 <span>Tải danh sách phát</span>
                             </div>
                         </div>
@@ -128,18 +137,27 @@ function QueuePlayList() {
                 <div className={cx('list')}>
                     {convertTab ? (
                         <>
-                            {listMusic.map(
-                                (e, i) =>
-                                    i <= currentIndex && (
+                            {playListAudio.map((e, i) =>
+                                i < currentIndex ? (
+                                    <ItemSong
+                                        className={cx('is-pre')}
+                                        onClick={() => handleOnClick(e)}
+                                        data={e}
+                                        key={e.encodeId}
+                                        type="player-queue"
+                                    />
+                                ) : (
+                                    i === currentIndex && (
                                         <ItemSong
-                                            onClick={() => handleOnClick(i)}
+                                            onClick={() => handleOnClick(e)}
                                             data={e}
                                             key={e.encodeId}
                                             type="player-queue"
                                         />
-                                    ),
+                                    )
+                                ),
                             )}
-                            {currentIndex < listMusic.length - 1 && (
+                            {currentIndex < playListAudio.length - 1 && (
                                 <div className={cx('next')}>
                                     <h3>Tiếp theo</h3>
                                     {playListTitle.length > 0 && (
@@ -152,11 +170,11 @@ function QueuePlayList() {
                                     )}
                                 </div>
                             )}
-                            {listMusic.map(
+                            {playListAudio.map(
                                 (e, i) =>
                                     i > currentIndex && (
                                         <ItemSong
-                                            onClick={() => handleOnClick(i)}
+                                            onClick={() => handleOnClick(e)}
                                             data={e}
                                             key={e.encodeId}
                                             type="player-queue"
@@ -164,17 +182,15 @@ function QueuePlayList() {
                                     ),
                             )}
                         </>
-                    ) : recentList.length > 0 ? (
-                        recentList.map((e, i) => (
+                    ) : (
+                        recentList.map((e) => (
                             <ItemSong
-                                onClick={() => handleOnClick(i)}
+                                onClick={() => handleOnClick(e)}
                                 data={e}
-                                key={e.encodeId}
+                                key={e?.encodeId}
                                 type="player-queue-recent"
                             />
                         ))
-                    ) : (
-                        <p>không có dữ liệu</p>
                     )}
                 </div>
             </div>

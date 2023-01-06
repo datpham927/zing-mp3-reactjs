@@ -480,7 +480,7 @@ const IconLoadControl = () => {
     return (
         <i className="icon" style={{ border: '1px solid white', borderRadius: '50%', margin: '0 2px' }}>
             <svg
-                class="lds-spinner"
+                className="lds-spinner"
                 width="34px"
                 height="34px"
                 fill="#f1f1f1"
@@ -639,7 +639,7 @@ const IconLoadControl = () => {
 const IconLoadMusic = ({ font = ' 30px' }) => {
     return (
         <svg
-            class="lds-spinner"
+            className="lds-spinner"
             width={font}
             height={font}
             fill="#f1f1f1"

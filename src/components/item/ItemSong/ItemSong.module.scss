@@ -163,7 +163,10 @@
                     -webkit-box-orient: vertical;
                     -webkit-line-clamp: 1;
                     overflow: hidden;
-                    overflow: hidden;
+                    &:hover {
+                        color: var(--link-text-hover);
+                        text-decoration: underline;
+                    }
                 }
             }
             .media-right {
@@ -267,6 +270,16 @@
         }
     }
 }
+.active-checkbox {
+    background-color: transparent;
+    & i {
+        display: none;
+    }
+    .checkbox {
+        display: block;
+    }
+}
+
 .add.item:hover .action-checkbox .checkbox {
     display: block;
 }
@@ -276,4 +289,10 @@
 
 .vip {
     opacity: 0.8;
+}
+.add.item:hover .not-checkbox > i {
+    display: block;
+}
+.add.item:hover .not-checkbox .checkbox {
+    display: none;
 }

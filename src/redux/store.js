@@ -4,10 +4,11 @@ import zingArtist from './dataArtist';
 import zingHome from './dataHome';
 import zingRadio from './dataRadio';
 import zingChart from './dataZingChart';
-import dataVideoFollow from './dataVideoFollow';
+import dataFollow from './dataFollow';
 import zingAudio from './dataControl';
 import zingPlayMv from './dataMV';
 import zingFavorite from './FavoriteList';
+import currentTime from './currentTimeAudio';
 export default configureStore({
     reducer: {
         action: zingAction,
@@ -15,9 +16,10 @@ export default configureStore({
         dataHome: zingHome,
         dataZingChart: zingChart,
         dataRadio: zingRadio,
-        dataVideo: dataVideoFollow,
+        dataVideo: dataFollow,
         dataControl: zingAudio,
         dataMv: zingPlayMv,
+        currentTimeAudio: currentTime,
         Favorite: zingFavorite,
     },
 });

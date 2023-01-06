@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import ButtonAction from '~/components/Button/ButtonAction';
 import className from 'classnames/bind';
 import style from './MvBody.module.scss';
 import { useLocation } from 'react-router-dom';
@@ -15,43 +14,45 @@ const cx = className.bind(style);
 function MvBody() {
     const [data, setData] = useState([]);
     const [index, setIndex] = useState(1);
-    const [btn, setBtn] = useState(false);
-    const [hideBtn, setHideBtn] = useState(false);
+    const [hideBtn, setHideBtn] = useState(true);
     const id = useLocation().pathname.split('/').pop().split('.')[0];
 
     useEffect(() => {
         const api = async () => {
             const datas = await getMv(id, index);
-            setBtn(false);
             if (data?.length === 0) {
                 setData(datas?.items || []);
             } else {
                 if (datas?.items) {
                     setData((e) => [...e, ...datas?.items]);
                 } else {
-                    setHideBtn(true);
+                    setHideBtn(false);
                 }
             }
         };
         api();
     }, [index]);
-    const handelClick = () => {
-        setIndex(index + 1);
-        setBtn(true);
-    };
+
+    useEffect(() => {
+        const onScroll = (e) => {
+            const scrollTop = e.target.scrollTop;
+            const scrollHeight = e?.target?.scrollHeight;
+            const clientHeight = e?.target?.clientHeight;
+
+            if (scrollTop + clientHeight >= scrollHeight - 200) {
+                setIndex(index + 1);
+            }
+        };
+        document.querySelector('.AppLayout_main__Dvwp4')?.addEventListener('scroll', onScroll);
+    }, [data.length]);
+
     return data?.length > 0 ? (
         <div className={cx('body')}>
             <KindMusic />
             <ContainerVideos data={data} index={data?.length} />
-            {!hideBtn && (
+            {hideBtn && (
                 <div className={cx('btn')}>
-                    {btn ? (
-                        <Loading image={iconLoad[1]?.path} className={cx('load-img')} />
-                    ) : (
-                        <ButtonAction className={cx('btn-more')} onClick={() => handelClick()}>
-                            Xem thêm
-                        </ButtonAction>
-                    )}
+                    <Loading image={iconLoad[1]?.path} className={cx('load-img')} />
                 </div>
             )}
         </div>

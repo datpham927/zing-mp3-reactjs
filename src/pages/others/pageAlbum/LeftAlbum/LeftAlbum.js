@@ -1,30 +1,38 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import ButtonAction from '~/components/Button/ButtonAction';
-
-import style from './PageAlbum.module.scss';
+import style from './LeftAlbum.module.scss';
 import Follow from '~/components/number/follow/Follow';
 import Button from '~/components/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActivePlay, setOpenControl } from '~/redux/action';
+import { setActivePlay } from '~/redux/action';
 import { IconLoadMusic } from '~/components/Icons/Icons';
+import { setPlayListFavorite } from '~/redux/FavoriteList';
+import { setLoadMusic, setOpenControl } from '~/redux/dataControl';
 const cx = classNames.bind(style);
+
 function LeftAlbum({ data }) {
     const dispatch = useDispatch();
-    const { activePlay, loadMusic } = useSelector((state) => state.action);
-    const [like, setLike] = useState(false);
+    const [favorite, setFavorite] = useState([]);
+    const { activePlay } = useSelector((state) => state.action);
+    const { loadMusic } = useSelector((state) => state.dataControl);
+    const { playListFavorite } = useSelector((state) => state.Favorite);
+
+    useEffect(() => {
+        setFavorite(playListFavorite?.map((e) => e.encodeId));
+    }, [playListFavorite]);
     const handleLike = () => {
-        setLike(!like);
+        dispatch(setPlayListFavorite(data));
     };
     const handlePlay = () => {
         dispatch(setActivePlay(!activePlay));
+        dispatch(setLoadMusic(false));
         dispatch(setOpenControl(true));
     };
     const handlePause = () => {
         dispatch(setActivePlay(false));
     };
-
     return (
         <div className={cx('left') + ' l-4'}>
             <div className={cx('image', activePlay ? 'rotate' : 'rotate-pause')}>
@@ -70,7 +78,6 @@ function LeftAlbum({ data }) {
                 action
                 onClick={() => {
                     dispatch(setActivePlay(!activePlay));
-                    dispatch(setOpenControl(true));
                 }}
             >
                 {activePlay ? 'TẠM DỪNG' : 'TIẾP TỤC PHÁT'}
@@ -78,9 +85,15 @@ function LeftAlbum({ data }) {
             <div className={cx('wrapper-icon')}>
                 <Button
                     onClick={() => handleLike()}
-                    small
-                    content={like ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
-                    iconLeft={like ? <i className="icon ic-like-full"></i> : <i className="icon ic-like"></i>}
+                    primary
+                    content={favorite.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
+                    iconLeft={
+                        favorite.includes(data.encodeId) ? (
+                            <i className="icon ic-like-full"></i>
+                        ) : (
+                            <i className="icon ic-like"></i>
+                        )
+                    }
                 />
                 <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />
             </div>

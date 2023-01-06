@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-import { setOpenControl } from '~/redux/action';
 import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import ItemAlbum from '../item/ItemAlBum/ItemAlBum';
 
@@ -8,7 +7,6 @@ function ContainerAlbum({ data, index = 12 }) {
     const handleOnClick = (i) => {
         dispatch(setPlayListAudio(data));
         dispatch(setCurrentIndex(i));
-        dispatch(setOpenControl(true));
     };
     return (
         data &&

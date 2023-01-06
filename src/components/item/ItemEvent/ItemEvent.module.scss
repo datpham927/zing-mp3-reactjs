@@ -79,10 +79,12 @@
             }
         }
         .right {
+            display: flex;
             flex-shrink: 0;
             text-align: end;
+            justify-content: end;
             .btn {
-                padding: 8px 15px;
+                padding: 8px 7px;
                 text-transform: uppercase;
             }
             .care {

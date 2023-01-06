@@ -7,7 +7,7 @@ import ItemPlayList from '~/components/item/ItemPlayList/ItemPlayList';
 const cx = classNames.bind(styles);
 
 function ArtistSinger() {
-    const data = useSelector((state) => state.dataArtist.artist_Singer);
+    const data = useSelector((state) => state.dataArtist.artistSinger);
     return data.items ? (
         <Container title={data.title}>
             {data?.items.map((item, index) => (

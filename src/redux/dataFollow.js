@@ -4,7 +4,7 @@ const initialState = {
     dataVideoFl: [],
 };
 
-export const dataVideoFollow = createSlice({
+export const dataFollow = createSlice({
     name: 'dataVideo',
     initialState,
     reducers: {
@@ -14,5 +14,5 @@ export const dataVideoFollow = createSlice({
     },
 });
 
-export const { setDataFollow } = dataVideoFollow.actions;
-export default dataVideoFollow.reducer;
+export const { setDataFollow } = dataFollow.actions;
+export default dataFollow.reducer;

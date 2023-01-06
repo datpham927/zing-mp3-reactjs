@@ -30,11 +30,17 @@ body .tippy-content {
 .ic-download:before {
     content: '\67';
 }
+.ic-add-play-now:before {
+    content: '\e010';
+}
 .ic-20-Clock:before {
     content: '\ea5b';
 }
 .ic-song:before {
     content: '\e004';
+}
+.ic-add:before {
+    content: '\62';
 }
 .ic-go-up:before {
     content: '\42';

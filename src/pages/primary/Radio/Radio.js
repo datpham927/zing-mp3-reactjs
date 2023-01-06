@@ -23,7 +23,7 @@ function Radio() {
     }, []);
     const data = useSelector((state) => state.dataRadio.data_Radio);
 
-    return data.length !== 0 ? (
+    return data?.length !== 0 ? (
         <>
             {data?.map((i) =>
                 i?.sectionType === 'livestream' ? (

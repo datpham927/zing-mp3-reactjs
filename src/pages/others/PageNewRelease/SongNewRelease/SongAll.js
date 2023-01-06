@@ -3,7 +3,7 @@ import Container from '~/components/container/Container';
 import ContainerSongs from '~/components/container/ContainerSongs';
 
 function SongAll() {
-    const api = useSelector((state) => state.dataHome.data_Home);
+    const api = useSelector((state) => state.dataHome.dataHome);
     const data = api.find((e) => e.sectionType === 'new-release')?.items;
 
     return (

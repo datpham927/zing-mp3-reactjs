@@ -15,9 +15,13 @@ function ItemChartBox({ data, title = '' }) {
                     <h1>{title}</h1>
                     <Button noContent iconLeft={<i className="icon ic-play"></i>} className={cx('btn')} />
                 </div>
-                <ContainerSongs type="top100-small" data={data} index={5} />
+
+                <ContainerSongs type="top100-small" data={data} index={5} title={'#zingChart'} link={'/zing-chart'} />
                 <div className={cx('wrapper-btn')}>
-                    <ButtonAction link={'/moi-phat-hanh'} className={cx('btn-more')}>
+                    <ButtonAction
+                        link={'/album/zingchart-DIMZ-TVk-NH4T-Phat-Ho/ZO68OC68.html'}
+                        className={cx('btn-more')}
+                    >
                         Xem tất cả
                     </ButtonAction>
                 </div>

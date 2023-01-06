@@ -151,11 +151,11 @@ function ModalTimer() {
                     </div>
 
                     {hour || minute > 0 ? (
-                        <p>
+                        <h3 className={cx('estimate')}>
                             Dự tính dừng phát nhạc lúc :<span> {intendTime[0].hour + ' ' + intendTime[0].day}</span>
-                        </p>
+                        </h3>
                     ) : (
-                        <p>chọn thời gian để dừng phát nhạc</p>
+                        <h3 className={cx('estimate')}>chọn thời gian để dừng phát nhạc</h3>
                     )}
 
                     <ButtonAction className={cx('save', hour <= 0 && minute <= 0 && 'visible')} onClick={handleSummit}>

@@ -4,7 +4,7 @@ import Button from '~/components/Button';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setDataFollow } from '~/redux/dataVideoFollow';
+import { setDataFollow } from '~/redux/dataFollow';
 import { setModalFollow } from '~/redux/action';
 
 import FormatDate from '~/components/number/time/FormatDate';

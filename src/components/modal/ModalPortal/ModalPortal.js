@@ -1,48 +1,35 @@
 import className from 'classnames/bind';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ButtonAction from '~/components/Button/ButtonAction';
-import { setModalPortal, setTimer } from '~/redux/action';
+import { setModalPortal, setModalPortalDelete } from '~/redux/action';
+import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import style from './ModalPortal.module.scss';
 
 const cx = className.bind(style);
 
-function ModalPortal() {
+function ModalPortal({ title, content, onClick }) {
     const dispatch = useDispatch();
-    const handleModal = (e) => {
-        if (e.target === e.currentTarget) {
-            dispatch(setModalPortal(false));
-        }
-    };
-    const { booleanModalPortal } = useSelector((state) => state.action);
     return (
-        booleanModalPortal && (
-            <div className={cx('modal')} onClick={(e) => handleModal(e)}>
-                <div className={cx('portal')}>
-                    <h3 className={cx('title')}>Xóa hẹn giờ</h3>
-                    <span>Bạn có chắc chắn muốn xóa hẹn giờ?</span>
-                    <div className={cx('action')}>
-                        <ButtonAction
-                            className={cx('btn')}
-                            onClick={() => {
-                                dispatch(setModalPortal(false));
-                            }}
-                        >
-                            Không
-                        </ButtonAction>
-                        <ButtonAction
-                            className={cx('btn')}
-                            action
-                            onClick={() => {
-                                dispatch(setModalPortal(false));
-                                dispatch(setTimer(0));
-                            }}
-                        >
-                            Có
-                        </ButtonAction>
-                    </div>
+        <ModalWrapper>
+            <div className={cx('portal')}>
+                <h3 className={cx('title')}>{title}</h3>
+                <span>{content}</span>
+                <div className={cx('action')}>
+                    <ButtonAction
+                        className={cx('btn')}
+                        onClick={() => {
+                            dispatch(setModalPortal(false));
+                            dispatch(setModalPortalDelete(false));
+                        }}
+                    >
+                        Không
+                    </ButtonAction>
+                    <ButtonAction className={cx('btn')} action onClick={onClick}>
+                        Có
+                    </ButtonAction>
                 </div>
             </div>
-        )
+        </ModalWrapper>
     );
 }
 

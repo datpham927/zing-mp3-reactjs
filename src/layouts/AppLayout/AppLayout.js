@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 
 function AppLayout({ children }) {
     const [bgrHeader, setBgrHeader] = useState(false);
-    const { booleanControl } = useSelector((state) => state.action);
+    const { booleanControl } = useSelector((state) => state.dataControl);
 
     const handleScroll = (e) => {
         if (e.currentTarget.scrollTop === 0) {

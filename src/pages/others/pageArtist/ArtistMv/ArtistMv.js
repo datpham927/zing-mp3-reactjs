@@ -5,7 +5,7 @@ import ItemVideo from '~/components/item/ItemVideo/ItemVideo';
 import NoContent from '~/components/noContent/NoConTent';
 
 function ArtistMv() {
-    const data = useSelector((state) => state.dataArtist.artist_MV);
+    const data = useSelector((state) => state.dataArtist.artistMV);
     return data.items ? (
         <Container title="">
             {data?.items.map((item, index) => (

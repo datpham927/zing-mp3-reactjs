@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    data_zingChart: [],
+    dataZingChart: [],
 };
 
 export const zingChart = createSlice({
@@ -9,7 +9,7 @@ export const zingChart = createSlice({
     initialState,
     reducers: {
         setDataZingChart: (state, action) => {
-            state.data_zingChart = action.payload;
+            state.dataZingChart = action.payload;
         },
     },
 });

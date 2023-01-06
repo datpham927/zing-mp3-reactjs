@@ -2,24 +2,25 @@
 import classNames from 'classnames/bind';
 import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
-import { setActivePlay, setLoadMusic, zingAction } from '~/redux/action';
+import { setActivePlay, zingAction } from '~/redux/action';
 
 import styles from './ItemSong.module.scss';
 import { setSongFavorite } from '~/redux/FavoriteList';
-import { setIdAudio } from '~/redux/dataControl';
+import { setIdAudio, setLoadMusic } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { IconLoadMusic } from '~/components/Icons/Icons';
 
 const cx = classNames.bind(styles);
-function ItemSong({ data, type = '', index = '', onClick }) {
+function ItemSong({ data, type = '', index = '', onClick, className }) {
     const [favorite, setFavorite] = useState([]);
-    const dispatch = useDispatch();
-    const { idAudio } = useSelector((state) => state.dataControl);
-    const { activePlay, loadMusic } = useSelector((state) => state.action);
+    const { idAudio, loadMusic } = useSelector((state) => state.dataControl);
+    const { activePlay } = useSelector((state) => state.action);
     const { songFavorite } = useSelector((state) => state.Favorite);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     useEffect(() => {
         setFavorite(songFavorite?.map((e) => e.encodeId));
     }, [songFavorite]);
@@ -44,12 +45,22 @@ function ItemSong({ data, type = '', index = '', onClick }) {
     const handlePause = () => {
         dispatch(setActivePlay(false));
     };
+
+    const songPlayView = document.querySelector('.ItemSong_active__3E3Wz');
+    if (songPlayView) {
+        songPlayView?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest',
+        });
+    }
+
     return type === 'song-12' ? (
         <li
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
             onDoubleClick={() => handlePlay()}
         >
-            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
+            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
@@ -97,7 +108,9 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                         </div>
                     </div>
                     <div className={cx('media-main') + ' c-0'}>
-                        <h3 className={cx('title')}>{data.title}</h3>
+                        <h3 className={cx('title')} onClick={() => navigate(data.link)}>
+                            {data.title}
+                        </h3>
                     </div>
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
@@ -111,7 +124,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                                 className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                                 iconLeft={
                                     favorite?.includes(data.encodeId) ? (
                                         <i className="icon ic-like-full"></i>
@@ -139,7 +152,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
             onDoubleClick={() => handlePlay()}
         >
-            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
+            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-ratings')}>
                         <h1
@@ -216,7 +229,9 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                         </div>
                     </div>
                     <div className={cx('media-main') + ' c-0'}>
-                        <h3 className={cx('title')}>{data.title}</h3>
+                        <h3 className={cx('title')} onClick={() => navigate(data.link)}>
+                            {data.title}
+                        </h3>
                     </div>
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
@@ -230,7 +245,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                                 className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                                 iconLeft={
                                     favorite?.includes(data.encodeId) ? (
                                         <i className="icon ic-like-full"></i>
@@ -258,7 +273,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
             onDoubleClick={() => handlePlay()}
         >
-            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
+            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
                 <div className={cx('media-wrapper', 'media-top100-small')}>
                     <div className={cx('media-ratings')}>
                         <h1
@@ -341,7 +356,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                                 className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                                 iconLeft={
                                     favorite?.includes(data.encodeId) ? (
                                         <i className="icon ic-like-full"></i>
@@ -360,7 +375,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
         </li>
     ) : type === 'player-queue' ? (
         <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12'} onDoubleClick={() => handlePlay()}>
-            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'queue-active')}>
+            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'queue-active')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left', 'l-6')}>
                         <div className={cx('thumb')}>
@@ -377,10 +392,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                                     )}
                                 </div>
                             ) : (
-                                <div
-                                    className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
-                                    onClick={() => handlePlay()}
-                                >
+                                <div className={cx('play')} onClick={() => handlePlay()}>
                                     <i className="icon action-play ic-play"></i>
                                 </div>
                             )}
@@ -410,10 +422,10 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
                             <Button
-                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                className={cx('icon')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                                 iconLeft={
                                     favorite?.includes(data.encodeId) ? (
                                         <i className="icon ic-like-full"></i>
@@ -429,7 +441,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
         </li>
     ) : type === 'player-queue-recent' ? (
         <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12'} onDoubleClick={() => handlePlay()}>
-            <div className={cx('media')}>
+            <div className={cx('media', className)}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left', 'l-6')}>
                         <div className={cx('thumb')}>
@@ -463,10 +475,10 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
                             <Button
-                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                className={cx('icon')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                                 iconLeft={
                                     favorite?.includes(data.encodeId) ? (
                                         <i className="icon ic-like-full"></i>
@@ -485,7 +497,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-6 col'}
             onDoubleClick={() => handlePlay()}
         >
-            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
+            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left', 'l-6')}>
                         <div className={cx('thumb')}>
@@ -539,7 +551,7 @@ function ItemSong({ data, type = '', index = '', onClick }) {
                                 className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                                 iconLeft={
                                     favorite?.includes(data.encodeId) ? (
                                         <i className="icon ic-like-full"></i>

@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getPlayMv } from '~/components/Api/Service';
 import Button from '~/components/Button';
-import { setIdAudio } from '~/redux/dataControl';
+import { setIdAudio, setLoadMusic, setOpenControl } from '~/redux/dataControl';
 import { setIdMv, setIndexOpenMv, setPlayMv } from '~/redux/dataMV';
 import ItemPlayMv from './ItemPlayMv';
 import style from './PlayMv.module.scss';
 import MvArtist from './MvArtist';
 import { setMvFavorite } from '~/redux/FavoriteList';
-import { setActivePlay, setLoadMusic, setOpenControl } from '~/redux/action';
+import { setActivePlay } from '~/redux/action';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);
@@ -60,18 +60,27 @@ function PlayMv() {
 
     const handleClose = () => {
         dispatch(setPlayMv(false));
-        navigate(-indexOpenMv);
+        if (indexOpenMv < 1) {
+            navigate('/the-loai-video/Viet-Nam/IWZ9Z08I.html');
+        } else {
+            navigate(-indexOpenMv);
+        }
+
         dispatch(setIndexOpenMv(0));
     };
 
     const handleListenAudio = () => {
-        dispatch(setIdAudio(data?.song));
-        dispatch(setPlayMv(false));
-        dispatch(setActivePlay(true));
-        dispatch(setOpenControl(true));
-        dispatch(setLoadMusic(false));
-        navigate(-indexOpenMv);
-        dispatch(setIndexOpenMv(0));
+        if (data.song) {
+            dispatch(setIdAudio(data?.song));
+            dispatch(setPlayMv(false));
+            dispatch(setActivePlay(true));
+            dispatch(setOpenControl(true));
+            dispatch(setLoadMusic(false));
+            navigate(-indexOpenMv);
+            dispatch(setIndexOpenMv(0));
+        } else {
+            alert('Video này không có audio');
+        }
     };
     return (
         <div className={cx('wrapper', 'close')}>
@@ -94,7 +103,7 @@ function PlayMv() {
                             ))}
                         </div>
                         <Button
-                            onClick={() => handleLike()}
+                            onClick={handleLike}
                             primary
                             content={favorite.includes(header[0]?.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                             iconLeft={
@@ -123,7 +132,14 @@ function PlayMv() {
                 </div>
                 <div className={cx('content')}>
                     <div className={cx('video')}>
-                        <video src={mp4} autoPlay={true} controls />
+                        <video
+                            src={mp4}
+                            autoPlay={true}
+                            controls
+                            onPlay={() => {
+                                dispatch(setActivePlay(false));
+                            }}
+                        />
                     </div>
                     <div className={cx('list')}>
                         <h3>Danh Sách Phát</h3>

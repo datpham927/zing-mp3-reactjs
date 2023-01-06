@@ -1,0 +1,23 @@
+.empty {
+    text-align: center;
+    .image {
+        background-image: var(--empty-song-icon);
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 120px;
+    }
+    & h3 {
+        font-size: 16px;
+        margin-top: 16px;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+    .discover {
+        margin: auto;
+        margin-top: 16px;
+        padding: 10px 20px;
+        background-color: var(--purple-primary);
+        border-color: var(--purple-primary);
+        color: #fff;
+    }
+}

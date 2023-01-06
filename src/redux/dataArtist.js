@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     dataSearch: [],
     dataArtist: [],
-    artist_Song: [],
-    artist_MV: [],
-    artist_Singer: [],
-    artist_Album: [],
+    artistSong: [],
+    artistMV: [],
+    artistSinger: [],
+    artistAlbum: [],
     modalArtist: false,
 };
 
@@ -21,24 +21,19 @@ export const zingArtist = createSlice({
         //data Artist
         setDataArtist: (state, action) => {
             state.dataArtist = action.payload;
-        },
-        setArtist_Song: (state, action) => {
-            state.artist_Song = action.payload;
-        },
-        setArtist_Singer: (state, action) => {
-            state.artist_Singer = action.payload;
-        },
-        setArtist_MV: (state, action) => {
-            state.artist_MV = action.payload;
-        },
-        setArtist_Album: (state, action) => {
-            state.artist_Album = action.payload;
-        },
-        setModalArtist: (state, action) => {
-            state.modalArtist = action.payload;
-        },
-        setDataHome: (state, action) => {
-            state.data_Home = action.payload;
+            if (state.dataArtist.sections?.length > 0) {
+                state.dataArtist.sections.forEach((i) => {
+                    if (i.title === 'Bài hát nổi bật') {
+                        state.artistSong = i;
+                    } else if (i.title === 'Single & EP') {
+                        state.artistSinger = i;
+                    } else if (i.title === 'MV') {
+                        state.artistMV = i;
+                    } else if (i.title === 'Album') {
+                        state.artistAlbum = i;
+                    }
+                });
+            }
         },
     },
 });
@@ -46,10 +41,10 @@ export const zingArtist = createSlice({
 export const {
     setDataSearch,
     setDataArtist,
-    setArtist_Song,
-    setArtist_Singer,
-    setArtist_MV,
-    setArtist_Album,
+    setartistSong,
+    setartistSinger,
+    setartistMV,
+    setartistAlbum,
     setArtist_Modal,
     setModalArtist,
     setDataHome,

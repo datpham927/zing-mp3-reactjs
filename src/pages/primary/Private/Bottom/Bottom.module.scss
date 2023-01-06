@@ -1,0 +1,114 @@
+.bottom {
+    .body {
+        margin-top: 0;
+    }
+    .select-menu {
+        display: flex;
+        align-items: center;
+        margin-top: 32px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border-primary);
+        & .btn {
+            font-size: 1.6rem;
+            margin-right: 4rem;
+            color: var(--navigation-text);
+            margin: 0;
+            margin-right: 40px;
+            padding: 10px 0;
+            border: none;
+            border-radius: 0;
+            & p {
+                margin: 0;
+            }
+        }
+        & .active {
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 7%);
+            border-bottom: 2px solid var(--purple-primary);
+        }
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        border-bottom: 1px solid var(--border-secondary);
+        padding: 20px 10px 20px 35px;
+        .song {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+        .right,
+        .main {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+        .main {
+            flex: 1;
+        }
+        .left {
+            width: 50%;
+            .add-playlist {
+                display: flex;
+                margin-left: -25px;
+                .action-checkbox {
+                    display: flex;
+                    align-items: center;
+                    & > i {
+                        color: var(--text-secondary);
+                    }
+
+                    .checkbox {
+                        display: none;
+                        & input {
+                            position: relative;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            border: 1px solid var(--border-box);
+                            padding: 6px;
+                            border-radius: 4px;
+                        }
+                        & input:checked::after {
+                            content: ' ';
+                            border-left-color: #fff;
+                            border-bottom: 2px solid #fff;
+                            border-right: 2px solid #fff;
+                            border-top-color: #fff;
+                            height: 47%;
+                            width: 20%;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -63%) rotate(45deg);
+                        }
+                        & input:checked {
+                            border: 1px solid #fff;
+                        }
+                    }
+                }
+                .active-checkbox {
+                    background-color: transparent;
+                    & i {
+                        display: none;
+                    }
+                    .checkbox {
+                        display: block;
+                    }
+                }
+                .add.item:hover .action-checkbox .checkbox {
+                    display: block;
+                }
+                .add.item:hover .action-checkbox > i {
+                    display: none;
+                }
+                .btn-add {
+                    color: var(--text-secondary);
+                    border: 1px solid var(--border-box);
+                    background-color: hsla(0, 0%, 100%, 0.05);
+                }
+            }
+        }
+    }
+}

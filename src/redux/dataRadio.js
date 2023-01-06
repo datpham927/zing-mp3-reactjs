@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    data_Radio: [],
+    dataRadio: [],
 };
 
 export const zingRadio = createSlice({

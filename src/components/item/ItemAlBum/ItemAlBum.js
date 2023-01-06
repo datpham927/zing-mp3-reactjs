@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setActivePlay, setLoadMusic, zingAction } from '~/redux/action';
+import { setActivePlay, zingAction } from '~/redux/action';
 import Button from '../../Button';
 import styles from './ItemAlBum.module.scss';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import { setIdAudio } from '~/redux/dataControl';
+import { setIdAudio, setLoadMusic } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
 import { setPlayListTitle } from '~/redux/FavoriteList';
 import { IconLoadMusic } from '~/components/Icons/Icons';
@@ -14,8 +14,8 @@ const cx = classNames.bind(styles);
 
 function ItemAlbum({ data, onClick }) {
     const dispatch = useDispatch();
-    const { idAudio } = useSelector((state) => state.dataControl);
-    const { activePlay, loadMusic } = useSelector((state) => state.action);
+    const { idAudio, loadMusic } = useSelector((state) => state.dataControl);
+    const { activePlay } = useSelector((state) => state.action);
 
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {

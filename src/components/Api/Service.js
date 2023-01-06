@@ -13,6 +13,15 @@ export const search = async (value) => {
         alert('Api đã bị lỗi bạn vui lòng truy cập lại');
     }
 };
+
+export const getSearch = async (value) => {
+    try {
+        const res = await axios.get(`https://api-zingmp3.vercel.app/api/suggestionkeyword?keyword=${value}`);
+        return res.data.data;
+    } catch (error) {
+        alert('Api đã bị lỗi bạn vui lòng truy cập lại');
+    }
+};
 export const artist = async (value) => {
     try {
         const res = await httpRequest.get('artist/', value);

@@ -16,7 +16,7 @@ const MENU_ITEM = [
         id: 0,
         title: 'Danh sách chặn',
         iconLeft: <i className="icon ic-20-Block"></i>,
-        path: '/block',
+        // path: '/block',
     },
     {
         id: 1,

@@ -7,8 +7,8 @@ import * as searchApi from '~/components/Api/Service';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Follow from '~/components/number/follow/Follow';
-import { setActivePlay, setOpenControl } from '~/redux/action';
-import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
+import { setActivePlay } from '~/redux/action';
+import { setCurrentIndex, setOpenControl, setPlayListAudio } from '~/redux/dataControl';
 import style from './ArtistHero.module.scss';
 
 const cx = classNames.bind(style);
@@ -33,7 +33,6 @@ function ArtistHeroTop() {
             dispatch(setCurrentIndex(0));
             dispatch(setPlayListAudio(data.sections.find((e) => e.sectionType === 'song').items));
             dispatch(setActivePlay(true));
-            dispatch(setOpenControl(true));
         }
     };
     return (

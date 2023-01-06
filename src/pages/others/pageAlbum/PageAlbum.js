@@ -7,8 +7,8 @@ import ContainerArtists from '~/components/container/ContainerArtists';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
 import ContainerVideos from '~/components/container/ContainerVideos';
 import style from './PageAlbum.module.scss';
-import LeftAlbum from './LeftAlbum';
-import RightAlbum from './RightAlbum';
+import LeftAlbum from './LeftAlbum/LeftAlbum';
+import RightAlbum from './RightAlbum/RightAlbum';
 import Loading from '~/components/load/Loading/Loading';
 const cx = classNames.bind(style);
 

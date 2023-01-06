@@ -6,9 +6,9 @@ const cx = classNames.bind(styles);
 
 function RecentlyItem({ data, onClick }) {
     return (
-        <Link to={data.link} className={cx('song-item')} onClick={onClick}>
+        <Link to={data.link.split('https://zingmp3.vn')[1]} className={cx('song-item')} onClick={onClick}>
             <div className={cx('wrapper-image')}>
-                <img src={data.thumbnail} alt="" className={cx('image')} />
+                <img src={data.thumb} alt="" className={cx('image')} />
                 <div className={cx('icon')}>
                     <ion-icon name="play"></ion-icon>
                 </div>

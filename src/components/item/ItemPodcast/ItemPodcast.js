@@ -16,7 +16,7 @@ function ItemPodcast({ data, col = 'l-12', index, className, onClick }) {
 
     const handlePlay = () => {
         // dispatch(setIdAudio(data));
-        // dispatch(setActivePlay(true));
+        ////dispatch(setActivePlay(true));
         // onClick();
     };
     const handlePause = () => {

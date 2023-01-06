@@ -11,7 +11,7 @@ function Follow({ follow }) {
             setFollow((follow / 1000000).toFixed(1) + 'M ');
         }
     }, [follow]);
-    return <>{newFollow}</>;
+    return newFollow;
 }
 
 export default Follow;

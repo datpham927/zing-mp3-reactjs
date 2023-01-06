@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon } from '~/components/Icons';
-import { zingArtist } from '~/redux/dataArtist';
+import { setModalArtist, zingArtist } from '~/redux/dataArtist';
 import style from './ModalArtist.module.scss';
 
 const cx = classNames.bind(style);
@@ -24,7 +24,7 @@ function ModalArtist() {
                 <div className={cx('body')}>
                     <div className={cx('describe')} dangerouslySetInnerHTML={{ __html: dataArtist?.biography }}></div>
                 </div>
-                <span onClick={() => dispatch(zingArtist.actions.setModalArtist(false))}>
+                <span onClick={() => dispatch(setModalArtist(false))}>
                     <Icon.IconClose />
                 </span>
             </div>

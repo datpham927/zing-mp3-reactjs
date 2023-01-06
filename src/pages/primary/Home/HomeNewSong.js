@@ -8,7 +8,6 @@ import Container from '~/components/container/Container';
 import ItemNewRelease from '~/components/item/ItemNewRelease/ItemNewRelease';
 import { useDispatch } from 'react-redux';
 import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
-import { setOpenControl } from '~/redux/action';
 
 const cx = className.bind(style);
 
@@ -17,7 +16,6 @@ function HomeNewSong({ data }) {
     const handleClick = (i) => {
         dispatch(setPlayListAudio(data?.items));
         dispatch(setCurrentIndex(i));
-        dispatch(setOpenControl(true));
     };
     return (
         <Container title={data.title} all link={data.link} swiper>

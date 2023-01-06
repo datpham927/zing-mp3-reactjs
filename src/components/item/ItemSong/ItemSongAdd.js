@@ -1,28 +1,34 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import styles from './ItemSong.module.scss';
-import { setSongFavorite } from '~/redux/FavoriteList';
-import { setIdAudio } from '~/redux/dataControl';
+import { setAddPlayList, setSongFavorite } from '~/redux/FavoriteList';
+import { setIdAudio, setLoadMusic } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
-import { setActivePlay, setLoadMusic, setModalVip, zingAction } from '~/redux/action';
+import { setActivePlay, zingAction } from '~/redux/action';
 import { memo } from 'react';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { IconLoadMusic } from '~/components/Icons/Icons';
 
 const cx = classNames.bind(styles);
-function ItemSongAdd({ data, onClick }) {
+function ItemSongAdd({ data, onClick, checkBox = false }) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [favorite, setFavorite] = useState([]);
-    const { idAudio } = useSelector((state) => state.dataControl);
-    const { activePlay, loadMusic } = useSelector((state) => state.action);
-    const { songFavorite } = useSelector((state) => state.Favorite);
+    const [checkbox, setCheckbox] = useState([]);
+    const { idAudio, loadMusic } = useSelector((state) => state.dataControl);
+    const { activePlay } = useSelector((state) => state.action);
+    const { songFavorite, addPlayList } = useSelector((state) => state.Favorite);
 
     useEffect(() => {
         setFavorite(songFavorite?.map((e) => e.encodeId));
     }, [songFavorite]);
+
+    useEffect(() => {
+        setCheckbox(addPlayList?.map((e) => e.encodeId));
+    }, [addPlayList]);
 
     const handleLike = () => {
         dispatch(setSongFavorite(data));
@@ -31,7 +37,7 @@ function ItemSongAdd({ data, onClick }) {
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
-            onClick();
+            // onClick();
             if (data.encodeId === idAudio.encodeId) {
                 dispatch(setLoadMusic(true));
             } else {
@@ -46,15 +52,35 @@ function ItemSongAdd({ data, onClick }) {
     const handlePause = () => {
         dispatch(setActivePlay(false));
     };
+
+    const handleCheckbox = () => {
+        dispatch(setAddPlayList(data));
+    };
+
     return (
         <li className={cx('item', 'add') + ' l-12 col'}>
-            <div className={cx('media', data.encodeId === idAudio?.encodeId && 'active')}>
+            <div
+                className={cx(
+                    'media',
+                    (data.encodeId === idAudio?.encodeId || checkbox.includes(data.encodeId)) && 'active',
+                )}
+            >
                 <div className={cx('media-wrapper')} onDoubleClick={() => handlePlay()}>
                     <div className={cx('media-left')}>
-                        <div className={cx('action-checkbox')}>
+                        <div
+                            className={cx(
+                                'action-checkbox',
+                                !checkBox && 'not-checkbox',
+                                checkbox.includes(data.encodeId) && 'active-checkbox',
+                            )}
+                        >
                             <i className="icon ic-song"></i>
                             <div className={cx('checkbox')}>
-                                <input type="checkBox"></input>
+                                <input
+                                    type="checkBox"
+                                    onClick={handleCheckbox}
+                                    defaultChecked={checkbox.includes(data.encodeId)}
+                                ></input>
                             </div>
                         </div>
                         <div className={cx('thumb')}>
@@ -102,7 +128,9 @@ function ItemSongAdd({ data, onClick }) {
                         </div>
                     </div>
                     <div className={cx('media-main') + ' c-0'}>
-                        <h3 className={cx('title')}>{data?.title}</h3>
+                        <span className={cx('title')} onClick={() => navigate(data.link)}>
+                            {data?.title}
+                        </span>
                     </div>
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
@@ -116,7 +144,7 @@ function ItemSongAdd({ data, onClick }) {
                                 className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Đã thêm' : 'Thêm vào Thư viện'}
+                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                                 iconLeft={
                                     favorite?.includes(data.encodeId) ? (
                                         <i className="icon ic-like-full"></i>

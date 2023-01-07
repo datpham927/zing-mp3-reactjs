@@ -1,0 +1,23 @@
+.portal {
+    width: 500px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--primary-bg);
+    & h3 {
+        font-size: 18px;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+    }
+    & span {
+        color: var(--text-primary);
+    }
+    .action {
+        display: flex;
+        justify-content: end;
+        padding-top: 10px;
+        & .btn {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    }
+}

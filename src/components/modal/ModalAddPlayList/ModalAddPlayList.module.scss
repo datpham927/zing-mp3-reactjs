@@ -1,0 +1,100 @@
+.vip-ctn {
+    position: relative;
+    background-color: var(--primary-bg);
+    border-radius: 10px;
+    padding: 20px;
+    width: 330px;
+
+    & .title {
+        font-size: 19px;
+        text-align: center;
+        margin: auto;
+    }
+    & .input {
+        margin-top: 10px;
+        input {
+            height: 40px;
+            width: 100%;
+            border-radius: 999px;
+            border: 1px solid var(--border-primary);
+            background-color: var(--alpha-bg);
+            padding: 0 15px;
+            font-size: 14px;
+            color: var(--text-primary);
+            outline: none;
+            &::placeholder {
+                color: #a0a0a0;
+            }
+        }
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        align-items: center;
+        padding: 20px 15px 0;
+        .left {
+            pointer-events: none;
+            & h3 {
+                line-height: 1.8;
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: var(--text-primary);
+            }
+            & span {
+                font-size: 1.2rem;
+                color: var(--text-secondary);
+            }
+        }
+        .right {
+            .button {
+                position: relative;
+                width: 24px;
+                height: 14px;
+                border-radius: 999px;
+                background-color: #a0a0a0;
+                overflow: hidden;
+                &::after {
+                    position: absolute;
+                    content: '';
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 13px;
+                    left: 1px;
+                    height: 13px;
+                    background-color: #fff;
+                    border-radius: 999px;
+                }
+            }
+            .action {
+                background-color: var(--purple-primary);
+                &::after {
+                    left: 10px;
+                }
+            }
+        }
+    }
+    & .btn {
+        width: 100%;
+        margin: auto;
+        margin-top: 20px;
+        background-color: var(--purple-primary);
+        opacity: 0.5;
+        border-color: var(--purple-primary);
+        color: white;
+    }
+    .active {
+        opacity: 1;
+    }
+    & .close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: white;
+        & ion-icon {
+            font-size: 30px;
+        }
+    }
+}

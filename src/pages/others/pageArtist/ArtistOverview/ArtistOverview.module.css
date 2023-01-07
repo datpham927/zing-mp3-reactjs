@@ -1,0 +1,59 @@
+.right {
+  width: 100%;
+  max-height: 260px;
+  overflow-y: scroll;
+}
+.right::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+.right::-webkit-scrollbar-thumb {
+  background-color: var(--alpha-bg);
+}
+
+.left {
+  position: relative;
+}
+.left img {
+  border-radius: 5px;
+}
+.left .image {
+  position: absolute;
+  transition: 0.6s linear;
+}
+.left .img-first {
+  top: 8%;
+  transform: translateX(36%);
+  opacity: 1;
+  z-index: 4;
+  width: 70%;
+  height: auto;
+}
+.left .img-second {
+  transform: translateX(32%);
+  opacity: 0.7;
+  z-index: 3;
+  width: 55%;
+  height: auto;
+  top: 17%;
+}
+.left .img-third {
+  transform: translateX(26%);
+  opacity: 0.5;
+  z-index: 2;
+  width: 40%;
+  height: auto;
+  top: 26%;
+}
+.left .img-four {
+  transform: translateX(14%);
+  opacity: 0.2;
+  z-index: 1;
+  width: 28%;
+  height: auto;
+  top: 34%;
+}
+
+.wrapper {
+  margin-top: 38px;
+}/*# sourceMappingURL=ArtistOverview.module.css.map */

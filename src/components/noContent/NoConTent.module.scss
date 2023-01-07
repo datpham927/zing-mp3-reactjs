@@ -1,0 +1,14 @@
+.no-content-box {
+    width: 100%;
+    padding: 30px 0;
+    min-height: 220px;
+    background-color: var(--alpha-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & span {
+        font-size: 16px;
+        color: var(--text-secondary);
+    }
+}

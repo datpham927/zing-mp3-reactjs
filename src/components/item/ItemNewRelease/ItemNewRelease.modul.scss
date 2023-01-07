@@ -1,0 +1,111 @@
+.new-release {
+    width: 100%;
+    padding: 0 15px;
+    .wrapper {
+        display: flex;
+        border-radius: 5px;
+        overflow: hidden;
+        padding: 15px;
+        background-color: var(--box-item-bg);
+        .left {
+            position: relative;
+            flex-shrink: 0;
+            width: 45%;
+            height: 100%;
+            border-radius: 5px;
+            margin-right: 10px;
+            overflow: hidden;
+            & img {
+                width: 100%;
+                height: 100%;
+                transition: 0.3s linear;
+                display: block;
+            }
+            .song-play,
+            .play {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                text-align: center;
+                align-items: center;
+                color: white;
+                line-height: 100%;
+                background-color: var(--dark-alpha-50);
+                justify-content: center;
+            }
+            .song-play {
+                & img {
+                    width: 2rem;
+                    height: 2rem;
+                }
+                display: flex;
+            }
+            .play {
+                & i {
+                    font-size: 3rem;
+                }
+                display: none;
+            }
+            .active {
+                display: flex;
+            }
+            &:hover {
+                & img {
+                    transform: scale(1.2);
+                }
+            }
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .top {
+                padding-right: 10px;
+                & h1 {
+                    font-size: 1.6rem;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    color: var(--text-primary);
+                    overflow: hidden;
+                }
+                .singer {
+                    color: var(--text-secondary);
+                    & a {
+                        color: var(--text-secondary);
+                        font-size: 1.2rem;
+                        &:hover {
+                            color: var(--link-text-hover);
+                        }
+                    }
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                }
+            }
+
+            .order {
+                & span {
+                    font-size: 4rem;
+                    -webkit-text-stroke: 1px var(--text-secondary);
+                    color: rgba(74, 144, 226, 0);
+                    font-weight: 800;
+                    line-height: 1;
+                }
+                & small {
+                    color: var(--text-secondary);
+                    font-size: 1.6rem;
+                    margin-left: 5px;
+                }
+            }
+        }
+        &:hover {
+            .play {
+                display: flex;
+            }
+        }
+    }
+}

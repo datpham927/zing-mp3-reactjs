@@ -1,0 +1,92 @@
+.wrapper {
+    width: var(--Width-sidebar);
+    background-color: var(--sidebar-bg);
+    height: 100vh;
+    .logo-pc {
+        display: flex;
+        align-items: center;
+        padding: 0 25px 0 28px;
+        height: 70px;
+        img {
+            width: 120px;
+            height: 40px;
+            display: inline-block;
+        }
+    }
+
+    .menu {
+        position: relative;
+        padding-bottom: 24px;
+        .divide {
+            position: absolute;
+            content: ' ';
+            width: 80%;
+            height: 1px;
+            bottom: 10px;
+            background-color: var(--border-primary);
+            margin-left: 22px;
+        }
+    }
+
+    .navbar {
+        height: 44vh;
+        -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
+        scrollbar-width: none;
+        overflow-y: scroll;
+        border-bottom: 1px solid var(--background-while);
+        transition: 0.4s linear;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .navbar-menu {
+            position: relative;
+            margin-top: 10px;
+        }
+    }
+    .active {
+        height: calc(44vh - 9rem);
+    }
+}
+//----------------
+.login {
+    margin: 20px auto;
+    border-radius: 10px;
+    width: 90%;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px 10px;
+    color: #fff;
+    background-color: var(--purple-primary);
+    .title {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .btn {
+        border: 1px solid #fff;
+        font-size: 1.2rem;
+        padding: 5px 30px;
+        border-radius: 20px;
+        color: #fff;
+        background-color: var(--alpha-bg);
+        cursor: pointer;
+    }
+}
+
+//-----------------
+.create-list {
+    position: fixed;
+    cursor: pointer;
+    width: var(--Width-sidebar);
+    left: 0;
+    bottom: 0;
+    border-top: 1px solid var(--border-primary);
+    border-radius: 0;
+    display: flex;
+    padding: 20px 28px;
+    align-items: center;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+.active-add-list {
+    bottom: 90px;
+}

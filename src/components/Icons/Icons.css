@@ -1,0 +1,256 @@
+body #tippy-10 {
+    position: absolute;
+    top: 50px;
+}
+
+body .tippy-box {
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    outline: 0;
+    font-size: 1.2rem;
+}
+body .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
+    top: -6px;
+}
+body .tippy-content {
+    padding: 3px 9px;
+}
+
+/* --------------- */
+.ic-restore:before {
+    content: '\30';
+}
+.ic-go-down:before {
+    content: '\79';
+}
+.ic-delete:before {
+    content: '\73';
+}
+.ic-download:before {
+    content: '\67';
+}
+.ic-edit:before {
+    content: '\33';
+}
+.ic-go-down:before {
+    content: '\79';
+}
+.ic-scale-1:before {
+    content: '\e91f';
+}
+.ic-settings:before {
+    content: '\e001';
+}
+.ic-add-play-now:before {
+    content: '\e010';
+}
+.ic-20-Clock:before {
+    content: '\ea5b';
+}
+.ic-song:before {
+    content: '\e004';
+}
+.ic-add:before {
+    content: '\62';
+}
+.ic-go-up:before {
+    content: '\42';
+}
+.ic-volume:before {
+    content: '\e009';
+}
+.ic-next:before {
+    content: '\4e';
+}
+.ic-repeat-one:before {
+    content: '\5a';
+    color: var(--link-text-hover);
+}
+.ic-play-circle-outline:before {
+    content: '\5f';
+}
+.ic-pause-circle-outline:before {
+    content: '\3f';
+}
+.ic-volume-mute:before {
+    content: '\e00a';
+}
+.ic-info:before {
+    content: '\45';
+}
+.ic-20-info:before {
+    content: '';
+}
+.ic-comment:before {
+    content: '\71';
+}
+.ic-20-Block:before {
+    content: '\e9d1';
+}
+.ic-20-quaility-SQ:before {
+    content: '\ea52';
+}
+.ic-20-Play-Outline:before {
+    content: '\e9ec';
+}
+.ic-20-info:before {
+    content: '\e9e4';
+}
+.ic-20-Call:before {
+    content: '\e9c4';
+}
+.ic-20-quaility:before {
+    content: '\e9f3';
+}
+.ic-back:before {
+    content: '\25';
+}
+.ic-forward:before {
+    content: '\22';
+}
+.ic-20-VIP-2:before {
+    content: '\ea73';
+}
+.ic-upload:before {
+    content: '\21';
+}
+.ic-24-LibraryTab:before {
+    content: '\e906';
+}
+.ic-24-LibraryTab:before {
+    content: '\e906';
+}
+.ic-24-ChartTab:before {
+    content: '\e902';
+}
+.ic-24-RadioTab:before {
+    content: '\e924';
+}
+.ic-24-FeedTab:before {
+    content: '\e903';
+}
+.ic-24-NewReleaseTab:before {
+    content: '\e908';
+}
+.ic-24-GenreTab:before {
+    content: '\e904';
+}
+.ic-24-MVTab:before {
+    content: '\e907';
+}
+.ic-karaoke:before {
+    content: '\46';
+}
+.ic-like:before {
+    content: '\3b';
+}
+.ic-shuffle:before {
+    content: '\e003';
+}
+.ic-pre:before {
+    content: '\56';
+}
+.ic-play-circle-outline:before {
+    content: '\5f';
+}
+.ic-repeat:before {
+    content: '\59';
+}
+.ic-go-right:before {
+    content: '\41';
+}
+.ic-go-left:before {
+    content: '\7a';
+}
+.ic-go-left:before {
+    content: '\7a';
+}
+.ic-mv:before {
+    content: '\4b';
+}
+.ic-volume-mute:before {
+    content: '\e00a';
+}
+.ic-list-music:before {
+    content: '\49';
+}
+.ic-song:before {
+    content: '\e004';
+}
+.ic-check:before {
+    content: '\65';
+}
+.ic-log-out:before {
+    content: '\3a';
+}
+.ic-24-HomeTab:before {
+    content: '\e905';
+}
+.ic-24-Top100Tab:before {
+    content: '\e925';
+}
+.ic-search:before {
+    content: '\e000';
+}
+.ic-trend:before {
+    content: '\37';
+}
+.ic-play:before {
+    content: '\5e';
+}
+.ic-24-Shuffle:before {
+    content: '\e9b0';
+}
+.ic-like:before {
+    content: '\3b';
+}
+.ic-like:before {
+    content: '\3b';
+}
+.ic-more:before {
+    content: '\4a';
+}
+.ic-more:before {
+    content: '\4a';
+}
+.ic-like-full:before {
+    content: '\3c';
+    color: var(--purple-primary);
+}
+.ic-play-circle-outline:before {
+    content: '\5f';
+}
+.ic-balance:before {
+    content: '\54';
+}
+.is-center {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+.ic-addfriend:before {
+    content: '\68';
+}
+.ic-go-right:before {
+    content: '\41';
+}
+.ic-close:before {
+    content: '\6f';
+}
+.ic-song:before {
+    content: '\e004';
+}
+.ic-24-Sort:before {
+    content: '\e9b2';
+}
+.ic-up:before {
+    content: '\39';
+}
+.ic-down:before {
+    content: '\66';
+}
+.ic-20-Bookmark:before {
+    content: '\ea6f';
+}

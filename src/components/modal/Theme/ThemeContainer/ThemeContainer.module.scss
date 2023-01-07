@@ -1,0 +1,10 @@
+.topic-title h1 {
+    font-size: 20px;
+    color: var(--text-primary);
+    margin: 0 8px 10px 8px;
+}
+.topic-body-list {
+    display: flex;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}

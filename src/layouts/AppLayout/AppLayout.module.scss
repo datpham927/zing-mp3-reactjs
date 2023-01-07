@@ -1,0 +1,27 @@
+.Wrapper {
+    display: flex;
+    height: 100vh;
+
+    overflow: hidden;
+}
+.active {
+    height: calc(100vh - 9rem);
+}
+.main {
+    position: relative;
+    width: calc(100% - var(--Width-sidebar));
+    -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
+    scrollbar-width: none; /* sử dụng Firefox */
+    overflow-y: overlay;
+    &::-webkit-scrollbar {
+        width: 4px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--alpha-bg);
+    }
+    .container {
+        padding: 0 var(--padding-section);
+        padding-bottom: 9rem;
+    }
+}

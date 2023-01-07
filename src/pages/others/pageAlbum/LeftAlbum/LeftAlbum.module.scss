@@ -1,0 +1,133 @@
+.left {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 100px;
+    padding: 10px 10px 0 0;
+    text-align: center;
+    .image {
+        width: 100%;
+        position: relative;
+        border-radius: 10px;
+        transition: 0.8s linear;
+        overflow: hidden;
+        & img {
+            display: block;
+            width: 100%;
+            transition: 0.3s linear;
+        }
+        &:hover img {
+            transform: scale(1.1);
+        }
+        .song-play,
+        .play {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            line-height: 100%;
+            background-color: var(--dark-alpha-50);
+            justify-content: center;
+        }
+        .song-play {
+            & img {
+                width: 3rem;
+                height: 3rem;
+            }
+            display: flex;
+        }
+        .play {
+            & i {
+                font-size: 5rem;
+            }
+            display: flex;
+        }
+        &:hover {
+            background-color: var(--box-hot-item-bg-hover);
+        }
+        &:hover .play {
+            display: flex;
+        }
+    }
+    & .rotate.image {
+        border-radius: 999px;
+        border: 1px solid black;
+        animation: rotatePlay 10s linear 0s infinite;
+        -webkit-animation: rotatePlay 10s linear 0s infinite;
+        -moz-animation: rotatePlay 10s linear 0s infinite;
+        -o-animation: rotatePlay 10s linear 0s infinite;
+    }
+    & .rotate-pause.image {
+        animation: rotatePause 0.3s linear 0s 1;
+        -webkit-animation: rotatePause 0.3s linear 0s 1;
+        -moz-animation: rotatePause 0.3s linear 0s 1;
+        -o-animation: rotatePause 0.3s linear 0s 1;
+    }
+    .content {
+        text-align: center;
+        margin-bottom: 16px;
+        & h3 {
+            display: flex;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-top: 10px;
+        }
+        .artist {
+            color: var(--text-secondary);
+            & span {
+                & a {
+                    align-items: center;
+                    color: var(--text-secondary);
+                }
+                transition: 0.1s linear;
+                &:hover a {
+                    color: var(--link-text-hover);
+                    text-decoration: underline;
+                }
+            }
+        }
+        .like {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+    }
+    & .btn-album {
+        margin: auto;
+    }
+}
+.wrapper-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@keyframes rotatePlay {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+@keyframes rotatePause {
+    from {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+    to {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+}

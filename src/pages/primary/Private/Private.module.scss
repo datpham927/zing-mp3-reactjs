@@ -1,0 +1,14 @@
+.top {
+    display: flex;
+    padding-top: 50px;
+    align-items: center;
+    & h1 {
+        font-size: 4rem;
+    }
+    .btn {
+        background-color: var(--purple-primary);
+        margin-left: 10px;
+    }
+}
+
+// --------------------

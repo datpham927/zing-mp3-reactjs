@@ -1,0 +1,120 @@
+.media {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--box-hot-item-bg);
+    .wrapper {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        .song-thumb {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+            border-radius: 5px;
+            margin-right: 16px;
+            cursor: pointer;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            .song-play,
+            .play {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                text-align: center;
+                align-items: center;
+                color: white;
+                font-size: 20px;
+                line-height: 100%;
+                background-color: var(--dark-alpha-50);
+                justify-content: center;
+                display: none;
+            }
+            .song-play {
+                & img {
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+            .play {
+                & i {
+                    font-size: 2.6rem;
+                }
+            }
+        }
+        .artist {
+            border-radius: 50%;
+        }
+        .content {
+            align-items: center;
+            .type,
+            .singer a {
+                font-size: 1.2rem;
+                line-height: 1.8rem;
+                font-weight: 600;
+                color: var(--text-secondary);
+            }
+            .singer {
+                display: flex;
+                line-height: 2rem;
+                & :hover {
+                    color: var(--link-text-hover);
+                    text-decoration: underline;
+                }
+                span {
+                    color: var(--text-secondary);
+                }
+            }
+
+            .type,
+            .singer a,
+            .title span {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+            .type {
+                margin-bottom: 4px;
+                pointer-events: none;
+            }
+            .title span {
+                color: var(--text-primary);
+                margin-bottom: 2px;
+                font-weight: 700;
+                pointer-events: none;
+            }
+        }
+        .content-artist {
+            .singer {
+                & a {
+                    font-size: 1.4rem;
+                }
+
+                margin-bottom: 2px;
+                & a {
+                    color: var(--text-primary);
+                }
+                & :hover {
+                    text-decoration: none;
+                }
+            }
+            .title span {
+                font-size: 1.2rem;
+                font-weight: 400;
+                color: var(--text-secondary);
+            }
+        }
+    }
+    &:hover {
+        background-color: var(--box-hot-item-bg-hover);
+    }
+    &:hover .wrapper .play {
+        display: flex;
+    }
+}

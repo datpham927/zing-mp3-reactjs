@@ -1,0 +1,27 @@
+.wrapper {
+    margin-top: 40px;
+    .header {
+        display: flex;
+        align-items: center;
+        & h3 {
+            font-size: 2rem;
+            color: var(--text-primary);
+        }
+        & .btn {
+            padding: 0;
+            background-color: var(--alpha-bg);
+            width: 25px;
+            height: 25px;
+            margin-left: 5px;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+    .body {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+        margin-top: 20px;
+    }
+}

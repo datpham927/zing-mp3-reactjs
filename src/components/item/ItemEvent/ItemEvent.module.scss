@@ -1,0 +1,95 @@
+.event {
+    .wrapper-image {
+        position: relative;
+        width: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+        & img {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.3s linear;
+        }
+        & .describe {
+            position: absolute;
+            bottom: 0;
+            padding: 10px;
+            padding-right: 25px;
+            width: 100%;
+            background-image: linear-gradient(180deg, transparent 27%, rgba(0, 0, 0, 0.5));
+            & .tag {
+                font-size: 0.9rem;
+                padding: 2px 4px;
+                border-radius: 2px;
+                color: #ff0101;
+                background-color: #fff;
+                text-transform: uppercase;
+            }
+            & .title {
+                font-size: 1.6rem;
+                color: #fff;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+            & .endText {
+                color: #fff;
+                font-size: 1.4rem;
+            }
+        }
+        &:hover img {
+            transform: scale(1.05);
+        }
+    }
+
+    .info {
+        display: flex;
+        margin-top: 10px;
+        .left {
+            flex-shrink: 0;
+            & small {
+                font-size: 1.4rem;
+                color: var(--text-primary);
+            }
+            .avatar {
+                display: flex;
+                flex-shrink: 0;
+                .avatar-item {
+                    width: 4%;
+                    border-radius: 999px;
+                    overflow: hidden;
+                    height: 20px;
+                    width: 20px;
+                    border: 2px solid var(--primary-bg);
+                    & img {
+                        display: block;
+                        object-fit: cover;
+                        width: 100%;
+                    }
+                }
+                & .text {
+                    font-weight: 500;
+                    color: var(--text-secondary);
+                }
+
+                .avatar-item + .avatar-item {
+                    margin-left: -5px;
+                }
+            }
+        }
+        .right {
+            display: flex;
+            flex-shrink: 0;
+            text-align: end;
+            justify-content: end;
+            .btn {
+                padding: 8px 7px;
+                text-transform: uppercase;
+            }
+            .care {
+                background-color: var(--purple-primary);
+            }
+        }
+    }
+}

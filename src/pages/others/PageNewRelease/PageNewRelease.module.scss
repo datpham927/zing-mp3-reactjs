@@ -1,0 +1,54 @@
+.NewRelease {
+    .header {
+        .top {
+            display: flex;
+            padding: 50px 0;
+            align-items: center;
+            & h1 {
+                font-size: 4rem;
+            }
+            .btn {
+                background-color: var(--purple-primary);
+                margin-left: 10px;
+            }
+        }
+        .navbar-menu {
+            display: flex;
+            border-bottom: 1px solid var(--border-primary);
+            .navbar-link {
+                & a {
+                    color: var(--text-secondary);
+                    display: block;
+                    border-bottom: 2px solid transparent;
+                    padding: 15px 0;
+                }
+                .active {
+                    color: var(--text-primary);
+                    border-bottom: 2px solid var(--purple-primary);
+                }
+            }
+            .navbar-link + .navbar-link {
+                margin-left: 40px;
+            }
+        }
+        .select-menu {
+            display: flex;
+            margin-top: 30px;
+            margin-left: -10px;
+        }
+    }
+    .body {
+        .body-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: -38px;
+            .text {
+                color: var(--text-secondary);
+                padding: 20px 0 10px 30px;
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+            border-bottom: 1px solid var(--border-secondary);
+        }
+    }
+}

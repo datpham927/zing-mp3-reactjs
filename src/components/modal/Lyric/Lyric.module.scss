@@ -1,0 +1,114 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    // background-color: var(--queue-player-popup-bg);
+    .content {
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        .header {
+            display: flex;
+            justify-content: end;
+            padding: 20px;
+            .title {
+                margin-right: 30%;
+                font-size: 3rem;
+                color: var(--text-primary);
+                font-weight: 700px;
+                text-shadow: var(--link-text-hover) 1px 0 10px;
+            }
+            .action {
+                display: flex;
+            }
+        }
+        .body {
+            display: flex;
+            .left {
+                padding-left: 40px;
+                & .image {
+                    position: relative;
+                    & > img {
+                        width: 80%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                        border-radius: 8px;
+                    }
+                    .play-music {
+                        position: absolute;
+                        bottom: 10px;
+                        left: 15px;
+                        & > img {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+            .right {
+                max-height: 400px;
+                overflow-y: scroll;
+                &::-webkit-scrollbar {
+                    width: 4px;
+                    background-color: transparent;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: var(--alpha-bg);
+                }
+                -webkit-mask-image: linear-gradient(
+                    180deg,
+                    hsla(0, 0%, 100%, 0),
+                    hsla(0, 0%, 100%, 0.8) 10%,
+                    #fff 25%,
+                    #fff 75%,
+                    hsla(0, 0%, 100%, 0.8) 90%,
+                    hsla(0, 0%, 100%, 0)
+                );
+                .lyric {
+                    width: 100%;
+                    height: 100%;
+                    .item {
+                        font-size: 3rem;
+                        padding: 10px;
+                        color: var(--text-primary);
+                    }
+                    .active {
+                        color: var(--link-text-hover);
+                        transition: 0.3s linear;
+                    }
+                    .is-over {
+                        color: var(--text-secondary);
+                        transition: 0.3s linear;
+                    }
+                }
+            }
+        }
+    }
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        & .blur-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            & img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        & .overlay {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: var(--queue-player-popup-bg);
+            opacity: 0.8;
+        }
+    }
+}

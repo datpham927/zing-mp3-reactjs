@@ -1,0 +1,101 @@
+//--------------
+.item {
+    width: 100%;
+    height: 100%;
+    .wrapper {
+        height: 100%;
+        border-radius: 4px;
+        overflow: hidden;
+
+        .image-hover {
+            .container-image {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                cursor: pointer;
+                overflow: hidden;
+                & img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: 0.4s linear;
+                }
+                .modal-image {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    background-color: var(--dark-alpha-50);
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0 25px;
+                    display: none;
+                    & i {
+                        color: #fff;
+                        font-size: 2rem;
+                    }
+                    .favorite {
+                        overflow: hidden;
+                        border-radius: 4px;
+                    }
+                    .icon-play {
+                        font-size: 3rem;
+                        color: #fff;
+                        & i {
+                            font-size: 4.5rem;
+                        }
+                    }
+                }
+            }
+
+            &:hover .container-image img {
+                transform: scale(1.1);
+                border-radius: 4px;
+            }
+            &:hover .modal-image {
+                display: flex;
+            }
+        }
+        .content {
+            margin-top: 10px;
+            .title {
+                & a {
+                    line-height: 2.5rem;
+                    align-items: center;
+                    color: var(--text-primary);
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                }
+                & :hover {
+                    color: var(--link-text-hover);
+                }
+            }
+            .subtitle {
+                display: flex;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                cursor: pointer;
+                color: var(--text-secondary);
+                overflow: hidden;
+                span {
+                    & a {
+                        color: var(--text-secondary);
+                    }
+                    &:hover a {
+                        color: var(--link-text-hover);
+                        text-decoration: underline;
+                    }
+                }
+                & span {
+                    color: var(--text-secondary);
+                }
+            }
+        }
+    }
+}

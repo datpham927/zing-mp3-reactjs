@@ -1,0 +1,15 @@
+import Container from './Container';
+import { memo } from 'react';
+import ItemVideo from '../item/ItemVideo/ItemVideo';
+
+function ContainerVideos({ data, title, link, all = false, index = 3 }) {
+    return (
+        data && (
+            <Container title={title} data={data} link={link} all={all}>
+                {data?.map((e, i) => i < index && <ItemVideo key={e.encodeId} data={e} />)}
+            </Container>
+        )
+    );
+}
+
+export default memo(ContainerVideos);

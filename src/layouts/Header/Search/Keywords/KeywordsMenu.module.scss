@@ -1,0 +1,26 @@
+// --------- suggest ---------
+.item {
+    display: flex;
+    line-height: 40px;
+    border-radius: 4px;
+    padding: 0 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    &:hover {
+        background-color: rgba(225, 225, 225, 0.1);
+        color: var(--link-text-hover);
+    }
+    & span {
+        font-size: 14px;
+        margin-right: 10px;
+        color: var(--text-primary);
+        cursor: pointer;
+        & i {
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+    }
+}

@@ -1,6 +1,7 @@
 .left {
     position: sticky;
     position: -webkit-sticky;
+    float: left;
     top: 100px;
     padding: 10px 10px 0 0;
     text-align: center;
@@ -95,16 +96,17 @@
             font-size: 1.2rem;
             color: var(--text-secondary);
             line-height: 1.75;
+            margin-bottom: 10px;
+        }
+        .wrapper-icon {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
     }
     & .btn-album {
         margin: auto;
     }
-}
-.wrapper-icon {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
 }
 
 @keyframes rotatePlay {

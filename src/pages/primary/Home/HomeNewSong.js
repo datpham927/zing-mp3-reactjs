@@ -28,10 +28,17 @@ function HomeNewSong({ data }) {
                 allowTouchMove={false}
                 loop={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                slidesPerView={3}
+                breakpoints={{
+                    740: {
+                        slidesPerView: 2,
+                    },
+                    1025: {
+                        slidesPerView: 3,
+                    },
+                }}
             >
                 {data?.items?.map((item, index) => (
-                    <li className="1-2" key={item.encodeId}>
+                    <li key={item.encodeId}>
                         <SwiperSlide>
                             <ItemNewRelease col="" data={item} index={index + 1} onClick={() => handleClick(index)} />
                         </SwiperSlide>

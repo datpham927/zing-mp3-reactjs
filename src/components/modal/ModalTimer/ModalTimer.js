@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Slide, toast } from 'react-toastify';
 import ButtonAction from '~/components/Button/ButtonAction';
 import { setDateTime, setModalTimer, setTimer } from '~/redux/action';
+import toastMessage from '../toast';
 import style from './ModalTimer.module.scss';
 
 const cx = className.bind(style);
@@ -56,15 +57,7 @@ function ModalTimer() {
             dispatch(setTimer(minute * 60 + hour * 3600));
             dispatch(setModalTimer(false));
             dispatch(setDateTime(intendTime));
-            toast('Hẹn giờ dừng phát nhạc thành công', {
-                position: 'bottom-left',
-                autoClose: 2000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                transition: Slide,
-            });
+            toastMessage('Hẹn giờ dừng phát nhạc thành công');
         }
     };
     const { booleanTimer } = useSelector((state) => state.action);

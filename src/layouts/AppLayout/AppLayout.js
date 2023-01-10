@@ -8,8 +8,9 @@ import Modal from '~/components/modal/Modal';
 import Control from '../Control/Control';
 import { useSelector } from 'react-redux';
 import PlayMv from '~/pages/others/PlayMv/PlayMv';
-import { useLocation } from 'react-router-dom';
 import QueuePlayList from '../QueuePlayList/QueuePlayList';
+import Lyric from '../../components/Lyric/Lyric';
+import FooterMobile from '../FooterMobile/FooterMobile';
 
 const cx = classNames.bind(styles);
 
@@ -24,7 +25,6 @@ function AppLayout({ children }) {
             setBgrHeader(true);
         }
     };
-    const { pathname } = useLocation();
     return (
         <>
             <div className={cx('Wrapper', booleanControl && 'active')}>
@@ -36,8 +36,10 @@ function AppLayout({ children }) {
                 </div>
                 <QueuePlayList />
                 {booleanControl && <Control />}
+                <Lyric />
+                <FooterMobile />
             </div>
-            {pathname.includes('/video-clip') && <PlayMv />}
+            <PlayMv />
         </>
     );
 }

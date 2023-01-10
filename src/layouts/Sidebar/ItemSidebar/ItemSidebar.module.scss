@@ -1,4 +1,4 @@
-.navbar {
+.item-navbar {
     position: relative;
     & span {
         position: absolute;
@@ -11,47 +11,59 @@
         border-radius: 4px;
         left: 100px;
     }
-    &:hover .play {
-        display: block;
-    }
-    &:hover {
-        color: var(--text-item-hover);
-    }
-}
-.wrapper {
-    padding: 8px 25px;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    color: var(--navigation-text);
-    border-left: 3px solid transparent;
-    font-weight: 400;
-    height: 100%;
-    line-height: 20px;
-    & h1 {
-        font-size: 1.3rem;
-    }
-    & i {
-        margin-right: 10px;
-        font-size: 1.8rem;
-    }
 
-    .play {
-        position: absolute;
-        font-size: 1.6rem;
-        right: 20px;
-        bottom: 5px;
-        right: 10px;
-        color: var(--text-item-hover);
-        display: none;
+    .item-wrapper {
+        padding: 8px 25px;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        color: var(--navigation-text);
+        border-left: 3px solid transparent;
+        font-weight: 400;
+        height: 100%;
+        line-height: 20px;
+        & h1 {
+            font-size: 1.3rem;
+        }
         & i {
-            font-size: 2rem;
-            font-weight: 500;
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .item-play {
+            position: absolute;
+            font-size: 1.6rem;
+            right: 20px;
+            bottom: 5px;
+            right: 10px;
+            color: var(--text-item-hover);
+            display: none;
+            & i {
+                font-size: 2rem;
+                font-weight: 500;
+            }
         }
     }
 }
-.active .wrapper {
+
+.active .item-wrapper {
     background-color: var(--alpha-bg);
     border-left: 3px solid var(--purple-primary);
     color: var(--text-item-hover);
+}
+
+@media (min-width: 740px) and (max-width: 1024px) {
+    .item-navbar {
+        & .item-wrapper {
+            & h1 {
+                display: none;
+            }
+        }
+        & .active {
+            & h1 {
+                display: flex;
+                white-space: nowrap;
+            }
+        }
+    }
 }

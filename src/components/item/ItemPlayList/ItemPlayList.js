@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
+import toastMessage from '~/components/modal/toast';
 import { setBooleanEdit, setKindPlaylist, setModalAddPlayList, setModalPortalDelete } from '~/redux/action';
 import { setIdPlayList, setPlayListFavorite, setPlayListTitle } from '~/redux/FavoriteList';
 import styles from './ItemPlayList.module.scss';
@@ -15,11 +16,12 @@ function ItemPlayList({ data, type = '', description, className }) {
     const dispatch = useDispatch();
     const [favorite, setFavorite] = useState([]);
     const { playListFavorite } = useSelector((state) => state.Favorite);
+    const { user } = useSelector((state) => state.action);
     useEffect(() => {
         setFavorite(playListFavorite?.map((e) => e.encodeId));
     }, [playListFavorite]);
     const handleLike = () => {
-        dispatch(setPlayListFavorite(data));
+        user ? dispatch(setPlayListFavorite(data)) : toastMessage('Bạn vui lòng đăng nhập');
     };
 
     const handleOnClick = (e) => {
@@ -37,7 +39,7 @@ function ItemPlayList({ data, type = '', description, className }) {
         }
     };
     return type === 'Single & EP' ? (
-        <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
+        <li className={cx('item', className) + ' l-3 m-3 col '}>
             <div className={cx('wrapper')}>
                 <div className={cx('image-hover')}>
                     <div className={cx('container-image')}>
@@ -48,10 +50,12 @@ function ItemPlayList({ data, type = '', description, className }) {
                                     onClick={() => handleLike()}
                                     small
                                     content={
-                                        favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'
+                                        favorite?.includes(data.encodeId) && user
+                                            ? 'Xóa khỏi thư viện'
+                                            : 'Thêm vào Thư viện'
                                     }
                                     iconLeft={
-                                        favorite?.includes(data.encodeId) ? (
+                                        favorite?.includes(data.encodeId) && user ? (
                                             <i className="icon ic-like-full"></i>
                                         ) : (
                                             <i className="icon ic-like"></i>
@@ -87,7 +91,7 @@ function ItemPlayList({ data, type = '', description, className }) {
             </div>
         </li>
     ) : type === 'private-playlist' ? (
-        <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
+        <li className={cx('item', className) + ' l-3 m-3 c-6 col '}>
             <div className={cx('wrapper')}>
                 <div className={cx('image-hover')}>
                     <div className={cx('container-image')}>
@@ -139,7 +143,7 @@ function ItemPlayList({ data, type = '', description, className }) {
             </div>
         </li>
     ) : (
-        <li className={cx('item', className) + ' l-3 m-4 c-6 col '}>
+        <li className={cx('item', className) + ' l-3 m-3 c-6 col '}>
             <div className={cx('wrapper')}>
                 <div className={cx('image-hover')}>
                     <div className={cx('container-image')}>
@@ -150,10 +154,12 @@ function ItemPlayList({ data, type = '', description, className }) {
                                     onClick={() => handleLike()}
                                     small
                                     content={
-                                        favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'
+                                        favorite?.includes(data.encodeId) && user
+                                            ? 'Xóa khỏi thư viện'
+                                            : 'Thêm vào Thư viện'
                                     }
                                     iconLeft={
-                                        favorite?.includes(data.encodeId) ? (
+                                        favorite?.includes(data.encodeId) && user ? (
                                             <i className="icon ic-like-full"></i>
                                         ) : (
                                             <i className="icon ic-like"></i>

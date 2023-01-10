@@ -33,8 +33,16 @@ function RadioLivestream({ data }) {
                 mousewheel={true}
                 loop={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                slidesPerView={6}
-                slidesPerGroup={3}
+                breakpoints={{
+                    740: {
+                        slidesPerView: 5,
+                        slidesPerGroup: 2,
+                    },
+                    1025: {
+                        slidesPerView: 6,
+                        slidesPerGroup: 3,
+                    },
+                }}
             >
                 {data?.items?.map((item, index) => (
                     <li className="1-2">

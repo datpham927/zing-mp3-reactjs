@@ -29,7 +29,7 @@ function ItemFollowing({ data }) {
     };
 
     return (
-        <div className="l-6 col">
+        <div className="l-6 m-6 c-12 col">
             <div className={cx('feed-card')}>
                 <div className={cx('top')}>
                     <div className={cx('image')}>

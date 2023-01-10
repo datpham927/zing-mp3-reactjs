@@ -1,5 +1,8 @@
 import { memo } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import LibraryPlaylist from '~/pages/others/Library/LibraryPlaylist/LibraryPlaylist';
+import LibraryRecent from '~/pages/others/Library/LibraryRecent/LibraryRecent';
+import LibrarySongs from '~/pages/others/Library/LibrarySongs/LibrarySongs';
 import PageAlbum from '~/pages/others/pageAlbum/PageAlbum';
 import ArtistAlbum from '~/pages/others/pageArtist/ArtistAlbum/ArtistAlbum';
 import ArtistHero from '~/pages/others/pageArtist/ArtistHero/ArtistHero';
@@ -95,6 +98,9 @@ const RouterPage = () => {
             <Route path={'bai-hat/:name/:id'} element={<PageAlbum />}></Route>
             {/* ------------------ page hub -------------------- */}
             <Route path={'hub/:name/:id'} element={<PageHub />}></Route>
+            <Route path={'/library/songs'} element={<LibrarySongs />}></Route>
+            <Route path={'/library/play-list'} element={<LibraryPlaylist />}></Route>
+            <Route path={'/library/recently'} element={<LibraryRecent />}></Route>
         </Routes>
     );
 };

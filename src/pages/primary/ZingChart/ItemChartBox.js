@@ -9,7 +9,7 @@ const cx = className.bind(style);
 
 function ItemChartBox({ data, title = '' }) {
     return (
-        <div className="l-4 col">
+        <div className={cx('item') + ' l-4 m-6 col'}>
             <div className={cx('wrapper')}>
                 <div className={cx('header')}>
                     <h1>{title}</h1>

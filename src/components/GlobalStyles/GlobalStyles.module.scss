@@ -95,3 +95,23 @@ body a {
     text-decoration: none;
     cursor: pointer;
 }
+
+@media (max-width: 740px) {
+    :root {
+        --navigation-text: #32323d !important;
+        --text-secondary: rgba(0, 0, 0, 0.6) !important;
+        --text-primary: #32323d !important;
+        --search-text: #282828 !important;
+        --text-placeholder: #757575 !important;
+        --setting-icon-text: #495057 !important;
+        --alpha-bg: rgba(0, 0, 0, 0.05) !important;
+        --sidebar-bg: hsla(0, 0%, 100%, 0.3) !important;
+        --border-primary: rgba(0, 0, 0, 0.03) !important;
+        --loading-bg: rgba(0, 0, 0, 0.05) !important;
+        --portal-menu-box-shadow: rgba(0, 0, 0, 0.3) !important;
+        --layout-bg: #fcfcfc !important;
+        --player-bg: #fcfcfc !important;
+        --primary-bg: #fcfcfc !important;
+        --border-player: rgba(0, 0, 0, 0.05);
+    }
+}

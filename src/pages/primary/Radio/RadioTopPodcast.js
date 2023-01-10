@@ -13,7 +13,7 @@ function RadioTopPodcast({ data }) {
     };
     return (
         <Container title={data?.title} all link={data.link}>
-            <div className="l-6 col">
+            <div className="l-6 m-6 col">
                 <div className={cx('box-left')}>
                     {data?.items?.map(
                         (item, index) =>
@@ -29,7 +29,7 @@ function RadioTopPodcast({ data }) {
                     )}
                 </div>
             </div>
-            <div className="l-6 col">
+            <div className="l-6 m-6 col">
                 <div className={cx('box-right')}>
                     {data?.items?.map(
                         (item, index) =>

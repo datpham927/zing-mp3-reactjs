@@ -18,8 +18,16 @@ function HomeSpotlight({ data }) {
                 navigation={true}
                 loop={true}
                 modules={[Autoplay, Pagination]}
-                slidesPerView={6}
-                slidesPerGroup={3}
+                breakpoints={{
+                    740: {
+                        slidesPerView: 5,
+                        slidesPerGroup: 2,
+                    },
+                    1025: {
+                        slidesPerView: 6,
+                        slidesPerGroup: 3,
+                    },
+                }}
             >
                 {data?.items?.map((item) => (
                     <li className="1-2" key={item.encodeId}>

@@ -1,7 +1,6 @@
 .right {
     margin-left: 300px;
     padding-left: 20px;
-    margin-top: -500px;
     .description {
         padding: 0 10px;
         font-size: 1.4rem;
@@ -159,5 +158,10 @@
             font-size: 12px;
             margin: 0 10px;
         }
+    }
+    &::after {
+        display: block;
+        clear: both;
+        content: '';
     }
 }

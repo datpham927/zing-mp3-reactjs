@@ -1,6 +1,13 @@
 import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
-import { setModalAddPlayList, setModalFollow, setModalPortal, setModalPortalDelete, setModalVip } from '~/redux/action';
+import {
+    setModalAddPlayList,
+    setModalFollow,
+    setModalPortal,
+    setModalPortalDelete,
+    setModalVip,
+    setOpenModalLogin,
+} from '~/redux/action';
 import style from './ModalWrapper.module.scss';
 const cx = classNames.bind(style);
 
@@ -14,6 +21,8 @@ function ModalWrapper({ children }) {
             dispatch(setModalVip(false));
             dispatch(setModalAddPlayList(false));
             dispatch(setModalPortalDelete(false));
+            dispatch(setOpenModalLogin(false));
+            dispatch(setOpenModalLogin(false));
         }
     };
     return (

@@ -5,12 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import styles from './ItemSong.module.scss';
 import { setAddPlayList, setSongFavorite } from '~/redux/FavoriteList';
-import { setIdAudio, setLoadMusic } from '~/redux/dataControl';
+import { setActivePlay, setIdAudio, setLoadMusic } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
-import { setActivePlay, zingAction } from '~/redux/action';
+import { setOpenLyric, setOpenModalLogin, zingAction } from '~/redux/action';
 import { memo } from 'react';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { IconLoadMusic } from '~/components/Icons/Icons';
+import toastMessage from '~/components/modal/toast';
 
 const cx = classNames.bind(styles);
 function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
@@ -18,9 +19,9 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
     const navigate = useNavigate();
     const [favorite, setFavorite] = useState([]);
     const [checkbox, setCheckbox] = useState([]);
-    const { idAudio, loadMusic } = useSelector((state) => state.dataControl);
-    const { activePlay } = useSelector((state) => state.action);
+    const { idAudio, loadMusic, activePlay } = useSelector((state) => state.dataControl);
     const { songFavorite, addPlayList } = useSelector((state) => state.Favorite);
+    const { user } = useSelector((state) => state.action);
 
     useEffect(() => {
         setFavorite(songFavorite?.map((e) => e.encodeId));
@@ -31,12 +32,11 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
     }, [addPlayList]);
 
     const handleLike = () => {
-        dispatch(setSongFavorite(data));
+        user ? dispatch(setSongFavorite(data)) : toastMessage('Bạn vui lòng đăng nhập');
     };
 
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
-            dispatch(setIdAudio(data));
             onClick();
             if (data.encodeId === idAudio.encodeId) {
                 dispatch(setLoadMusic(true));
@@ -48,7 +48,12 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
         }
         dispatch(setActivePlay(true));
     };
-
+    const handleLyric = () => {
+        handlePlay();
+        if (data?.streamingStatus === 1) {
+            dispatch(setOpenLyric(true));
+        }
+    };
     const handlePause = () => {
         dispatch(setActivePlay(false));
     };
@@ -58,7 +63,7 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
     };
 
     return (
-        <li className={cx('item', 'add') + ' l-12 col'}>
+        <li className={cx('item', 'add') + ' l-12 m-12 c-12 scol'}>
             <div
                 className={cx(
                     'media',
@@ -80,7 +85,7 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
                                 <input
                                     type="checkBox"
                                     onClick={handleCheckbox}
-                                    defaultChecked={checkbox.includes(data.encodeId)}
+                                    checked={checkbox.includes(data.encodeId)}
                                 ></input>
                             </div>
                         </div>
@@ -138,16 +143,22 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
                             <Button
                                 small
                                 content="Phát cùng lời hát"
+                                onClick={handleLyric}
+                                disable={!data?.hasLyric || data?.streamingStatus === 2}
                                 className={cx('icon')}
                                 iconLeft={<i className="icon ic-karaoke"></i>}
                             />
                             <Button
-                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                className={cx('icon', favorite?.includes(data.encodeId) && user && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
+                                content={
+                                    favorite?.includes(data.encodeId) && user
+                                        ? 'Xóa khỏi thư viện'
+                                        : 'Thêm vào Thư viện'
+                                }
                                 iconLeft={
-                                    favorite?.includes(data.encodeId) ? (
+                                    favorite?.includes(data.encodeId) && user ? (
                                         <i className="icon ic-like-full"></i>
                                     ) : (
                                         <i className="icon ic-like"></i>

@@ -1,19 +1,16 @@
 import className from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setActivePlay } from '~/redux/action';
-import { setIdAudio } from '~/redux/dataControl';
+import { setActivePlay, setIdAudio } from '~/redux/dataControl';
 import style from './ItemNewRelease.modul.scss';
 
 const cx = className.bind(style);
-function ItemNewRelease({ data, index, col = ' l-4', onClick }) {
+function ItemNewRelease({ data, index, col = ' l-4 m-4', onClick }) {
     const dispatch = useDispatch();
-    const { idAudio } = useSelector((state) => state.dataControl);
-    const { activePlay } = useSelector((state) => state.action);
+    const { idAudio, activePlay } = useSelector((state) => state.dataControl);
 
     const handleClick = () => {
         dispatch(setIdAudio(data));
-        dispatch(setActivePlay(true));
         onClick();
     };
 

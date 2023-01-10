@@ -53,3 +53,18 @@
         font-size: 1.6rem;
     }
 }
+
+@media (min-width: 740px) and (max-width: 1024px) {
+    .wrapper {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 740px) {
+    .wrapper {
+        padding: 10px;
+    }
+    .avatar {
+        margin: 0 10px;
+    }
+}

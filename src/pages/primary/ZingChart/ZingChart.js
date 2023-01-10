@@ -11,6 +11,7 @@ import ButtonAction from '~/components/Button/ButtonAction';
 import ItemChartBox from './ItemChartBox';
 import Loading from '~/components/load/Loading/Loading';
 import ContainerSongs from '~/components/container/ContainerSongs';
+import { setCurrentIndex } from '~/redux/dataControl';
 
 const cx = className.bind(style);
 function ZingChart() {
@@ -28,7 +29,12 @@ function ZingChart() {
         <div>
             <div className={cx('top')}>
                 <h1>#zingchart</h1>
-                <Button noContent iconLeft={<i className="icon ic-play"></i>} className={cx('btn')} />
+                <Button
+                    noContent
+                    iconLeft={<i className="icon ic-play"></i>}
+                    className={cx('btn')}
+                    onClick={() => dispatch(setCurrentIndex(Math.floor(Math.random() * 100)))}
+                />
             </div>
             <div>
                 <Container>

@@ -17,12 +17,16 @@
     color: var(--text-primary);
     margin-top: 40px;
 }
-.wrapper {
-    border-radius: 20px;
-    background-color: var(--chart-box-bg-alpha);
-    width: 100%;
-    height: 100%;
+.item {
+    margin-bottom: 20px;
+    .wrapper {
+        border-radius: 20px;
+        background-color: var(--chart-box-bg-alpha);
+        width: 100%;
+        height: 100%;
+    }
 }
+
 .btn-more {
     margin: 20px auto;
     background-color: transparent;

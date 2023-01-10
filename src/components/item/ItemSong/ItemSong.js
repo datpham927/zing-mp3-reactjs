@@ -4,21 +4,22 @@ import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
-import { setActivePlay, zingAction } from '~/redux/action';
+import { setOpenLyric, zingAction } from '~/redux/action';
 
 import styles from './ItemSong.module.scss';
 import { setSongFavorite } from '~/redux/FavoriteList';
-import { setIdAudio, setLoadMusic } from '~/redux/dataControl';
+import { setActivePlay, setLoadMusic } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { IconLoadMusic } from '~/components/Icons/Icons';
+import toastMessage from '~/components/modal/toast';
 
 const cx = classNames.bind(styles);
 function ItemSong({ data, type = '', index = '', onClick, className }) {
     const [favorite, setFavorite] = useState([]);
-    const { idAudio, loadMusic } = useSelector((state) => state.dataControl);
-    const { activePlay } = useSelector((state) => state.action);
+    const { idAudio, loadMusic, activePlay } = useSelector((state) => state.dataControl);
     const { songFavorite } = useSelector((state) => state.Favorite);
+    const { user } = useSelector((state) => state.action);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
@@ -26,11 +27,10 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
     }, [songFavorite]);
 
     const handleLike = () => {
-        dispatch(setSongFavorite(data));
+        user ? dispatch(setSongFavorite(data)) : toastMessage('Bạn vui lòng đăng nhập');
     };
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
-            dispatch(setIdAudio(data));
             onClick();
             if (data.encodeId === idAudio.encodeId) {
                 dispatch(setLoadMusic(true));
@@ -41,6 +41,13 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
             dispatch(zingAction.actions.setModalVip(true));
         }
         dispatch(setActivePlay(true));
+    };
+
+    const handleLyric = () => {
+        handlePlay();
+        if (data?.streamingStatus === 1) {
+            dispatch(setOpenLyric(true));
+        }
     };
     const handlePause = () => {
         dispatch(setActivePlay(false));
@@ -57,7 +64,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
 
     return type === 'song-12' ? (
         <li
-            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
+            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 c-12 m-12 col'}
             onDoubleClick={() => handlePlay()}
         >
             <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
@@ -117,16 +124,22 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             <Button
                                 small
                                 content="Phát cùng lời hát"
+                                disable={!data?.hasLyric || data?.streamingStatus === 2}
+                                onClick={handleLyric}
                                 className={cx('icon')}
                                 iconLeft={<i className="icon ic-karaoke"></i>}
                             />
                             <Button
-                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                className={cx('icon', favorite?.includes(data.encodeId) && user && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
+                                content={
+                                    favorite?.includes(data.encodeId) && user
+                                        ? 'Xóa khỏi thư viện'
+                                        : 'Thêm vào Thư viện'
+                                }
                                 iconLeft={
-                                    favorite?.includes(data.encodeId) ? (
+                                    favorite?.includes(data.encodeId) && user ? (
                                         <i className="icon ic-like-full"></i>
                                     ) : (
                                         <i className="icon ic-like"></i>
@@ -149,7 +162,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
         </li>
     ) : type === 'top100' ? (
         <li
-            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
+            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 c-12 m-12 col'}
             onDoubleClick={() => handlePlay()}
         >
             <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
@@ -238,16 +251,22 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             <Button
                                 small
                                 content="Phát cùng lời hát"
+                                disable={!data?.hasLyric || data?.streamingStatus === 2}
+                                onClick={handleLyric}
                                 className={cx('icon')}
                                 iconLeft={<i className="icon ic-karaoke"></i>}
                             />
                             <Button
-                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                className={cx('icon', favorite?.includes(data.encodeId) && user && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
+                                content={
+                                    favorite?.includes(data.encodeId) && user
+                                        ? 'Xóa khỏi thư viện'
+                                        : 'Thêm vào Thư viện'
+                                }
                                 iconLeft={
-                                    favorite?.includes(data.encodeId) ? (
+                                    favorite?.includes(data.encodeId) && user ? (
                                         <i className="icon ic-like-full"></i>
                                     ) : (
                                         <i className="icon ic-like"></i>
@@ -270,7 +289,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
         </li>
     ) : type === 'top100-small' ? (
         <li
-            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 col'}
+            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 c-12 m-12 col'}
             onDoubleClick={() => handlePlay()}
         >
             <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
@@ -353,12 +372,16 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
                             <Button
-                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                className={cx('icon', favorite?.includes(data.encodeId) && user && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
+                                content={
+                                    favorite?.includes(data.encodeId) && user
+                                        ? 'Xóa khỏi thư viện'
+                                        : 'Thêm vào Thư viện'
+                                }
                                 iconLeft={
-                                    favorite?.includes(data.encodeId) ? (
+                                    favorite?.includes(data.encodeId) && user ? (
                                         <i className="icon ic-like-full"></i>
                                     ) : (
                                         <i className="icon ic-like"></i>
@@ -374,132 +397,13 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
             </div>
         </li>
     ) : type === 'player-queue' ? (
-        <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12'} onDoubleClick={() => handlePlay()}>
-            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'queue-active')}>
-                <div className={cx('media-wrapper')}>
-                    <div className={cx('media-left', 'l-6')}>
-                        <div className={cx('thumb')}>
-                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
-                            {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
-                                <div className={cx('song-play')} onClick={() => handlePause()}>
-                                    {loadMusic ? (
-                                        <img
-                                            src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                            alt=""
-                                        />
-                                    ) : (
-                                        <IconLoadMusic />
-                                    )}
-                                </div>
-                            ) : (
-                                <div className={cx('play')} onClick={() => handlePlay()}>
-                                    <i className="icon action-play ic-play"></i>
-                                </div>
-                            )}
-                        </div>
-                        <div className={cx('info', 'weight')}>
-                            <div style={{ display: 'flex' }}>
-                                <h3 className={cx('title')}>{data.title}</h3>
-                                {data?.streamingStatus === 2 && (
-                                    <img
-                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
-                                        alt=""
-                                    />
-                                )}
-                            </div>
-                            <span className={cx('singer')}>
-                                {data?.artists?.map((i, index) => (
-                                    <>
-                                        <span>
-                                            <Link to={i.link}>{i.name}</Link>
-                                        </span>
-                                        {index < data?.artists.length - 1 && ', '}
-                                    </>
-                                ))}
-                            </span>
-                        </div>
-                    </div>
-                    <div className={cx('media-right')}>
-                        <div className={cx('action')}>
-                            <Button
-                                className={cx('icon')}
-                                onClick={() => handleLike()}
-                                small
-                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
-                                iconLeft={
-                                    favorite?.includes(data.encodeId) ? (
-                                        <i className="icon ic-like-full"></i>
-                                    ) : (
-                                        <i className="icon ic-like"></i>
-                                    )
-                                }
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-    ) : type === 'player-queue-recent' ? (
-        <li className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12'} onDoubleClick={() => handlePlay()}>
-            <div className={cx('media', className)}>
-                <div className={cx('media-wrapper')}>
-                    <div className={cx('media-left', 'l-6')}>
-                        <div className={cx('thumb')}>
-                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
-                            <div className={cx('play')} onClick={() => handlePlay()}>
-                                <i className="icon action-play ic-play"></i>
-                            </div>
-                        </div>
-                        <div className={cx('info', 'weight')}>
-                            <div style={{ display: 'flex' }}>
-                                <h3 className={cx('title')}>{data.title}</h3>
-                                {data?.streamingStatus === 2 && (
-                                    <img
-                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
-                                        alt=""
-                                    />
-                                )}
-                            </div>
-                            <span className={cx('singer')}>
-                                {data?.artists?.map((i, index) => (
-                                    <>
-                                        <span>
-                                            <Link to={i.link}>{i.name}</Link>
-                                        </span>
-                                        {index < data?.artists.length - 1 && ', '}
-                                    </>
-                                ))}
-                            </span>
-                        </div>
-                    </div>
-                    <div className={cx('media-right')}>
-                        <div className={cx('action')}>
-                            <Button
-                                className={cx('icon')}
-                                onClick={() => handleLike()}
-                                small
-                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
-                                iconLeft={
-                                    favorite?.includes(data.encodeId) ? (
-                                        <i className="icon ic-like-full"></i>
-                                    ) : (
-                                        <i className="icon ic-like"></i>
-                                    )
-                                }
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-    ) : (
         <li
-            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-6 col'}
+            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 c-12 m-12'}
             onDoubleClick={() => handlePlay()}
         >
-            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
+            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'queue-active')}>
                 <div className={cx('media-wrapper')}>
-                    <div className={cx('media-left', 'l-6')}>
+                    <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
                             {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
                             {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
@@ -546,14 +450,160 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                     </div>
                     <div className={cx('media-right')}>
                         <div className={cx('action')}>
-                            <Button small content="Phát cùng lời hát" iconLeft={<i className="icon ic-karaoke"></i>} />
                             <Button
-                                className={cx('icon', favorite?.includes(data.encodeId) && 'active-tym')}
+                                className={cx('icon')}
                                 onClick={() => handleLike()}
                                 small
-                                content={favorite?.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
+                                content={
+                                    favorite?.includes(data.encodeId) && user
+                                        ? 'Xóa khỏi thư viện'
+                                        : 'Thêm vào Thư viện'
+                                }
                                 iconLeft={
-                                    favorite?.includes(data.encodeId) ? (
+                                    favorite?.includes(data.encodeId) && user ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
+                                }
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    ) : type === 'player-queue-recent' ? (
+        <li
+            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 c-12 m-12'}
+            onDoubleClick={() => handlePlay()}
+        >
+            <div className={cx('media', className)}>
+                <div className={cx('media-wrapper')}>
+                    <div className={cx('media-left')}>
+                        <div className={cx('thumb')}>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            <div className={cx('play')} onClick={() => handlePlay()}>
+                                <i className="icon action-play ic-play"></i>
+                            </div>
+                        </div>
+                        <div className={cx('info', 'weight')}>
+                            <div style={{ display: 'flex' }}>
+                                <h3 className={cx('title')}>{data.title}</h3>
+                                {data?.streamingStatus === 2 && (
+                                    <img
+                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
+                                        alt=""
+                                    />
+                                )}
+                            </div>
+                            <span className={cx('singer')}>
+                                {data?.artists?.map((i, index) => (
+                                    <>
+                                        <span>
+                                            <Link to={i.link}>{i.name}</Link>
+                                        </span>
+                                        {index < data?.artists.length - 1 && ', '}
+                                    </>
+                                ))}
+                            </span>
+                        </div>
+                    </div>
+                    <div className={cx('media-right')}>
+                        <div className={cx('action')}>
+                            <Button
+                                className={cx('icon')}
+                                onClick={() => handleLike()}
+                                small
+                                content={
+                                    favorite?.includes(data.encodeId) && user
+                                        ? 'Xóa khỏi thư viện'
+                                        : 'Thêm vào Thư viện'
+                                }
+                                iconLeft={
+                                    favorite?.includes(data.encodeId) && user ? (
+                                        <i className="icon ic-like-full"></i>
+                                    ) : (
+                                        <i className="icon ic-like"></i>
+                                    )
+                                }
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    ) : (
+        <li
+            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-6 m-6 col'}
+            onDoubleClick={() => handlePlay()}
+        >
+            <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>
+                <div className={cx('media-wrapper')}>
+                    <div className={cx('media-left')}>
+                        <div className={cx('thumb')}>
+                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                                <div className={cx('song-play')} onClick={() => handlePause()}>
+                                    {loadMusic ? (
+                                        <img
+                                            src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                            alt=""
+                                        />
+                                    ) : (
+                                        <IconLoadMusic />
+                                    )}
+                                </div>
+                            ) : (
+                                <div
+                                    className={cx('play', data?.encodeId === idAudio?.encodeId && 'pause')}
+                                    onClick={() => handlePlay()}
+                                >
+                                    <i className="icon action-play ic-play"></i>
+                                </div>
+                            )}
+                        </div>
+                        <div className={cx('info', 'weight')}>
+                            <div style={{ display: 'flex' }}>
+                                <h3 className={cx('title')}>{data.title}</h3>
+                                {data?.streamingStatus === 2 && (
+                                    <img
+                                        src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.7.34/static/media/vip-label.3dd6ac7e.svg"
+                                        alt=""
+                                    />
+                                )}
+                            </div>
+                            <span className={cx('singer')}>
+                                {data?.artists?.map((i, index) => (
+                                    <>
+                                        <span>
+                                            <Link to={i.link}>{i.name}</Link>
+                                        </span>
+                                        {index < data?.artists.length - 1 && ', '}
+                                    </>
+                                ))}
+                            </span>
+                        </div>
+                    </div>
+                    <div className={cx('media-right')}>
+                        <div className={cx('action')}>
+                            <Button
+                                small
+                                content="Phát cùng lời hát"
+                                disable={!data?.hasLyric || data?.streamingStatus === 2}
+                                onClick={handleLyric}
+                                iconLeft={<i className="icon ic-karaoke"></i>}
+                            />
+                            <Button
+                                className={cx('icon', favorite?.includes(data.encodeId) && user && 'active-tym')}
+                                onClick={() => handleLike()}
+                                small
+                                content={
+                                    favorite?.includes(data.encodeId) && user
+                                        ? 'Xóa khỏi thư viện'
+                                        : 'Thêm vào Thư viện'
+                                }
+                                iconLeft={
+                                    favorite?.includes(data.encodeId) && user ? (
                                         <i className="icon ic-like-full"></i>
                                     ) : (
                                         <i className="icon ic-like"></i>

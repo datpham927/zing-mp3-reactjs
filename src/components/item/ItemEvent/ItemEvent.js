@@ -1,10 +1,12 @@
 import className from 'classnames/bind';
 import { useState } from 'react';
 import ButtonAction from '~/components/Button/ButtonAction';
+
 import style from './ItemEvent.module.scss';
 const cx = className.bind(style);
-function ItemEvent({ data, col = 'l-4' }) {
+function ItemEvent({ data, col = 'l-4 m-4' }) {
     const [care, setCare] = useState(false);
+
     return (
         <li className={cx('event') + ' col ' + col}>
             <div className={cx('wrapper-image')}>

@@ -12,7 +12,7 @@ function RecentlyMenu({ data, onClick }) {
                 <h1>Gợi ý kết quả</h1>
             </div>
             <div className={cx('body')}>
-                {data?.map((item, index) => (
+                {data?.map((item) => (
                     <RecentlyItem key={item.encodeId} data={item} onClick={onClick} />
                 ))}
             </div>

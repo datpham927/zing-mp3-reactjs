@@ -7,8 +7,7 @@ import * as searchApi from '~/components/Api/Service';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Follow from '~/components/number/follow/Follow';
-import { setActivePlay } from '~/redux/action';
-import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
+import { setActivePlay, setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import style from './ArtistHero.module.scss';
 
 const cx = classNames.bind(style);
@@ -25,7 +24,7 @@ function ArtistHeroTop() {
         };
         fetchApi();
     }, [id.name]);
-    const play = useSelector((state) => state.action.activePlay);
+    const play = useSelector((state) => state.dataControl.activePlay);
     const handleOnClick = () => {
         if (play) {
             dispatch(setActivePlay(false));
@@ -36,15 +35,16 @@ function ArtistHeroTop() {
         }
     };
     return (
-        <div
-            className={cx('header')}
-            style={{
-                backgroundImage: `url(${
-                    data?.cover ||
-                    'https://bienthuy.com/bienthuy-img/2020/02/hinh-nen-girl-xinh-4k-cho-laptop22-scaled.jpg'
-                }) `,
-            }}
-        >
+        <div className={cx('header')}>
+            <div
+                className={cx('background')}
+                style={{
+                    backgroundImage: `url(${
+                        data?.cover ||
+                        'https://bienthuy.com/bienthuy-img/2020/02/hinh-nen-girl-xinh-4k-cho-laptop22-scaled.jpg'
+                    }) `,
+                }}
+            />
             <div className={cx('content')}>
                 <div className={cx('title')}>
                     <h1>{data?.name}</h1>

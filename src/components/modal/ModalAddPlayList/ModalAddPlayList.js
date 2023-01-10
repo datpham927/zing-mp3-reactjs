@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Slide, toast } from 'react-toastify';
 import { setCreatePlayList, setEditPlayList } from '~/redux/FavoriteList';
 import { useNavigate } from 'react-router-dom';
+import toastMessage from '../toast';
 const cx = className.bind(style);
 function ModalAddPlayList() {
     const dispatch = useDispatch();
@@ -61,15 +62,7 @@ function ModalAddPlayList() {
                     dispatch(setCreatePlayList(data));
                     navigate('/mymusic');
                 } else {
-                    toast('Tạo danh sách không thành công', {
-                        position: 'bottom-left',
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        transition: Slide,
-                    });
+                    toastMessage('Tạo danh sách không thành công');
                 }
             }
         }

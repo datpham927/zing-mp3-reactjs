@@ -7,42 +7,44 @@
     align-items: center;
     z-index: 1000;
     animation: scaleIn ease 0.3s;
-}
-.topic {
-    display: block;
-    width: 900px;
-    margin: auto;
-    height: 100%;
-    padding-bottom: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: var(--primary-bg);
-}
-.topic-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 23px 10px 30px;
-    line-height: 40px;
-}
-.topic-header h1 {
-    font-size: 25px;
-    color: var(--text-primary);
-}
-.icon-close ion-icon {
-    color: var(--text-primary);
-    font-size: 30px;
+    .topic {
+        display: block;
+        width: 900px;
+        margin: auto;
+        height: 100%;
+        padding-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: var(--primary-bg);
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 23px 10px 30px;
+            line-height: 40px;
+            & h1 {
+                font-size: 25px;
+                color: var(--text-primary);
+            }
+            .icon-close {
+                ion-icon {
+                    color: var(--text-primary);
+                    font-size: 30px;
+                }
+            }
+        }
+        .topic-body {
+            -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
+            scrollbar-width: none; /* sử dụng Firefox */
+            overflow-y: scroll;
+            padding: 10px 22px;
+            height: 500px;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
 }
 
-.topic-body {
-    -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
-    scrollbar-width: none; /* sử dụng Firefox */
-    overflow-y: scroll;
-    padding: 10px 22px;
-    height: 500px;
-}
-.topic-body::-webkit-scrollbar {
-    display: none;
-}
 @keyframes scaleIn {
     from {
         opacity: 0;
@@ -51,5 +53,14 @@
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+@media (min-width: 740px) and (max-width: 1024px) {
+    .topic {
+        width: 100% !important;
+        .topic-body {
+            height: 100% !important;
+        }
     }
 }

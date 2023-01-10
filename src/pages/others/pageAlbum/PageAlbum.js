@@ -25,16 +25,21 @@ function PageAlbum() {
         if (booleanKindPlaylist) {
             const fetchApi = async () => {
                 const data = await playList(id);
-                setData(data || []);
                 if (!data) {
                     navigate('/');
+                } else {
+                    setData(data || []);
                 }
             };
             fetchApi();
         } else {
             const listId = privatePlayLists.map((e) => e.encodeId);
             const index = listId.indexOf(id);
-            setData(privatePlayLists[index] || []);
+            if (privatePlayLists[index]) {
+                setData(privatePlayLists[index] || []);
+            } else {
+                navigate('/');
+            }
         }
     }, [id]);
     return data.length !== 0 ? (
@@ -43,11 +48,13 @@ function PageAlbum() {
                 <LeftAlbum data={data} />
                 <RightAlbum data={data} />
             </div>
-            {data?.playlists && <ContainerPlaylist data={data?.playlists} title="Playlist/Album" />}
-            {/* ---------------------- */}
-            {data?.videos && <ContainerVideos data={data?.videos} title="MV" />}
-            {/* ---------------------- */}
-            {data?.artists && <ContainerArtists data={data?.artists} title="Nghệ Sĩ/OA" />}
+            <div className={cx('body')}>
+                {data?.playlists && <ContainerPlaylist data={data?.playlists} title="Playlist/Album" />}
+                {/* ---------------------- */}
+                {data?.videos && <ContainerVideos data={data?.videos} title="MV" />}
+                {/* ---------------------- */}
+                {data?.artists && <ContainerArtists data={data?.artists} title="Nghệ Sĩ/OA" />}
+            </div>
         </div>
     ) : (
         <Loading />

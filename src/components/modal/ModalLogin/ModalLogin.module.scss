@@ -1,0 +1,67 @@
+.login {
+    position: relative;
+    width: 350px;
+    height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    .background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        .image {
+            width: 370px;
+            height: 500px;
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                animation: image 5ss linear infinite;
+            }
+        }
+    }
+    .content {
+        position: absolute;
+        width: 80%;
+        border-radius: 4px;
+        bottom: 10%;
+        left: 10%;
+        background-color: rgb(3, 155, 229);
+        display: flex;
+        text-align: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 1;
+        overflow: hidden;
+        & > img {
+            width: 40px;
+            height: 40px;
+        }
+        & h3 {
+            margin: auto;
+            color: #fff;
+            font-weight: 500;
+        }
+    }
+    & .close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        z-index: 1;
+        color: white;
+        & ion-icon {
+            font-size: 30px;
+        }
+    }
+}
+
+@keyframes image {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

@@ -8,30 +8,32 @@ import { setChangerVolume, setCurrentVolume, setOpenQueueList, setVolume } from 
 import style from './ControlRight.module.scss';
 const cx = className.bind(style);
 
-function ControlRight({ audioRef }) {
-    const { changerVolume, volume, currentVolume } = useSelector((state) => state.dataControl);
-
+function ControlRight() {
+    const { changerVolume, volume, currentVolume, idAudio } = useSelector((state) => state.dataControl);
     const [queueList, setQueueList] = useState(false);
     const dispatch = useDispatch();
-
+    var audioRef = document.querySelector('audio');
     const handleDuration = (e) => {
         const newVolume = (e.nativeEvent.offsetX / e.currentTarget.clientWidth) * 100;
-        audioRef.current.volume = newVolume / 100;
+        audioRef.volume = newVolume / 100;
         dispatch(setCurrentVolume(newVolume));
         dispatch(setChangerVolume(newVolume));
     };
     useEffect(() => {
-        audioRef.current.volume = changerVolume / 100;
+        if (audioRef?.volume) {
+            audioRef.volume = changerVolume / 100;
+        }
     }, [changerVolume]);
     useEffect(() => {
         queueList ? dispatch(setOpenQueueList(true)) : dispatch(setOpenQueueList(false));
     }, [queueList]);
     return (
-        <div className={cx('right') + ' l-3'}>
+        <div className={cx('right') + ' l-3 m-3 c-0'}>
             <Button
                 onClick={() => dispatch(setOpenLyric(true))}
                 className={cx('btn')}
                 small
+                disable={!idAudio?.hasLyric}
                 content={'Xem lời bài hát'}
                 iconLeft={<i className="icon ic-karaoke"></i>}
             />
@@ -46,11 +48,15 @@ function ControlRight({ audioRef }) {
                 onClick={() => {
                     dispatch(setVolume(!volume));
                     if (volume) {
-                        audioRef.current.volume = 1;
-                        dispatch(setChangerVolume(currentVolume));
+                        if (audioRef?.volume) {
+                            audioRef.volume = 1;
+                            dispatch(setChangerVolume(currentVolume));
+                        }
                     } else {
-                        audioRef.current.volume = 0;
-                        dispatch(setChangerVolume(0));
+                        if (audioRef?.volume) {
+                            audioRef.volume = 0;
+                            dispatch(setChangerVolume(0));
+                        }
                     }
                 }}
                 small

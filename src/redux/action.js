@@ -2,7 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     // đăng nhập
-    currentUser: false,
+    currentUser: JSON.parse(localStorage.getItem('currentUser')) || {
+        displayName: '',
+        email: '',
+        photoURL: '',
+    },
+    user: JSON.parse(localStorage.getItem('user')) || false,
+    openModalLogin: false,
     //mở modal lựa chọn background
     booleanTheme: false,
     // index background
@@ -21,9 +27,8 @@ const initialState = {
     booleanModalPortal: false,
     booleanModalPortalDelete: false,
     booleanEdit: false,
-    activePlay: false, //nhạc đang pause hay play
     booleanModalAddPlayList: false,
-    booleanKindPlaylist: false, //true playlist cá nhân
+    booleanKindPlaylist: JSON.parse(localStorage.getItem('booleanKindPlaylist')) || false, //true playlist cá nhân
     openLyric: false,
     bgrIndex: JSON.parse(localStorage.getItem('bgrIndex')) || 2,
     timer: JSON.parse(localStorage.getItem('timer')) || 0, //thời gian hẹn giờ (second)
@@ -37,6 +42,13 @@ export const zingAction = createSlice({
         // đăng nhập
         setCurrentUser: (state, action) => {
             state.currentUser = action.payload;
+            if (state.currentUser) {
+                state.user = true;
+            } else {
+                state.user = false;
+            }
+            localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+            localStorage.setItem('user', JSON.stringify(state.user));
         },
         //mở modal lựa chọn background
         modalTheme: (state, action) => {
@@ -77,9 +89,6 @@ export const zingAction = createSlice({
             state.booleanModalFollow = action.payload;
         },
 
-        setActivePlay: (state, action) => {
-            state.activePlay = action.payload;
-        },
         setModalTimer: (state, action) => {
             state.booleanTimer = action.payload;
         },
@@ -106,9 +115,13 @@ export const zingAction = createSlice({
         },
         setKindPlaylist: (state, action) => {
             state.booleanKindPlaylist = action.payload;
+            localStorage.setItem('booleanKindPlaylist', JSON.stringify(state.booleanKindPlaylist));
         },
         setOpenLyric: (state, action) => {
             state.openLyric = action.payload;
+        },
+        setOpenModalLogin: (state, action) => {
+            state.openModalLogin = action.payload;
         },
     },
 });
@@ -125,7 +138,6 @@ export const {
     setValueSearch,
     setModalVip,
     setModalFollow,
-    setActivePlay,
     setModalTimer,
     setTimer,
     setDateTime,
@@ -135,6 +147,7 @@ export const {
     setBooleanEdit,
     setKindPlaylist,
     setOpenLyric,
+    setOpenModalLogin,
 } = zingAction.actions;
 
 export default zingAction.reducer;

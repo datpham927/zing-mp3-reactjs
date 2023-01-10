@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ModalAddPlayList from './ModalAddPlayList/ModalAddPlayList';
 import { setModalPortal, setModalPortalDelete, setTimer } from '~/redux/action';
 import { setDeletePlayList } from '~/redux/FavoriteList';
+import ModalLogin from './ModalLogin/ModalLogin';
 const cx = classNames.bind(style);
 
 function Modal() {
@@ -29,6 +30,7 @@ function Modal() {
             <ModalFollow />
             <ModalVip />
             <ModalTimer />
+            <ModalLogin />
             {booleanModalPortal && (
                 <ModalPortal
                     title="Xóa hẹn giờ"

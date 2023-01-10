@@ -25,7 +25,7 @@
     justify-content: center;
     pointer-events: none;
     background-color: var(--alpha-bg);
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .primary {
@@ -42,8 +42,8 @@
 }
 
 .image {
-    width: 3.8rem;
-    height: 3.8rem;
+    width: 4rem;
+    height: 4rem;
     object-fit: cover;
 }
 .logout {

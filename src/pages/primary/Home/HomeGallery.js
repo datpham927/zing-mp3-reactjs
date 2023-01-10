@@ -51,7 +51,7 @@ function HomeGallery({ data }) {
                         className={cx(
                             'item',
                             index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : 'four',
-                            ' l-4',
+                            ' l-4 m-6 c-12',
                         )}
                         onLoad={() => setHeightImg(itemRef.current.offsetHeight)}
                     >

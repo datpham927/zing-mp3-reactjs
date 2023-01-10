@@ -3,24 +3,26 @@ import className from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import Loading from '~/components/load/Loading/Loading';
+import toastMessage from '~/components/modal/toast';
 import FormatDate from '~/components/number/time/FormatDate';
 import Minute from '~/components/number/time/Minute';
 import style from './ItemPodcast.module.scss';
 
 const cx = className.bind(style);
 
-function ItemPodcast({ data, col = 'l-12', index, className, onClick }) {
+function ItemPodcast({ data, col = 'l-12 m-12', index, className, onClick }) {
     // const dispatch = useDispatch();
     const idAudio = useSelector((state) => state.dataControl.idAudio);
     const play = useSelector((state) => state.dataControl.activePlay);
 
     const handlePlay = () => {
         // dispatch(setIdAudio(data));
-        ////dispatch(setActivePlay(true));
+        ////////dispatch(setActivePlay(true));
         // onClick();
+        toastMessage('Phần ngày không có gọi api được :((');
     };
     const handlePause = () => {
-        //  dispatch(setActivePlay(false));
+        //  //dispatch(setActivePlay(false));
     };
     return (
         <div className={cx('item', className) + ` ${col} col `}>

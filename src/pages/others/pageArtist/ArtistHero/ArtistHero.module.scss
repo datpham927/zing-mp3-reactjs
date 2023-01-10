@@ -9,13 +9,21 @@
     height: 410px;
     margin: 0 -59px;
     margin-top: -70px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 20%;
+    .background {
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 20%;
+        -webkit-mask-image: linear-gradient(var(--purple-primary), transparent);
+        width: 100%;
+        z-index: 1;
+        height: 100%;
+    }
     .content {
         position: absolute;
         bottom: 20px;
         left: 50px;
+        z-index: 2;
         .title {
             display: flex;
             align-items: center;

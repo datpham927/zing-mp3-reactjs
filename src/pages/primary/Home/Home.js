@@ -32,9 +32,9 @@ function Home() {
                 i.sectionType === 'banner' ? (
                     <HomeGallery data={i} />
                 ) : i.sectionType === 'playlist' && i.sectionId === 'h100' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} link={i.link} all />
+                    <ContainerPlaylist data={i?.items} title={i?.title} link={i.link} all className={cx('playlist')} />
                 ) : i.sectionType === 'playlist' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} />
+                    <ContainerPlaylist data={i?.items} title={i?.title} className={cx('playlist')} />
                 ) : i.sectionType === 'livestream' ? (
                     <HomeLiveRadio data={i} />
                 ) : i.sectionType === 'new-release' ? (

@@ -2,14 +2,14 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Slide, toast } from 'react-toastify';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Container from '~/components/container/Container';
 import ContainerSongs from '~/components/container/ContainerSongs';
 import ContainerVideos from '~/components/container/ContainerVideos';
+import Empty from '~/components/Empty/Empty';
+import toastMessage from '~/components/modal/toast';
 import { setCurrentIndex, setOpenQueueList, setPlayListAudio } from '~/redux/dataControl';
 import { setAddPlayList, setSelectionAll } from '~/redux/FavoriteList';
-import Empty from '../Empty/Empty';
 import style from './Bottom.module.scss';
 
 const cx = classNames.bind(style);
@@ -43,15 +43,8 @@ function Bottom() {
         dispatch(setCurrentIndex(1));
         dispatch(setPlayListAudio(listNew));
         dispatch(setOpenQueueList(true));
-        toast(`Đã ${addPlayList.length} thêm bài hát vào danh sách`, {
-            position: 'bottom-left',
-            autoClose: 2000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            transition: Slide,
-        });
+
+        toastMessage(`Đã ${addPlayList.length} thêm bài hát vào danh sách`);
     };
     return (
         <div className={cx('bottom')}>

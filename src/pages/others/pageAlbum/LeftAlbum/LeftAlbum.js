@@ -6,24 +6,25 @@ import Follow from '~/components/number/follow/Follow';
 import Button from '~/components/Button';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActivePlay, setBooleanEdit, setModalAddPlayList } from '~/redux/action';
+import { setBooleanEdit, setModalAddPlayList } from '~/redux/action';
 import { IconLoadMusic } from '~/components/Icons/Icons';
 import { setIdPlayList, setPlayListFavorite } from '~/redux/FavoriteList';
-import { setLoadMusic, setOpenControl } from '~/redux/dataControl';
+import { setActivePlay, setLoadMusic, setOpenControl } from '~/redux/dataControl';
+import toastMessage from '~/components/modal/toast';
 const cx = classNames.bind(style);
 
 function LeftAlbum({ data }) {
     const dispatch = useDispatch();
     const [favorite, setFavorite] = useState([]);
-    const { activePlay, booleanKindPlaylist } = useSelector((state) => state.action);
-    const { loadMusic } = useSelector((state) => state.dataControl);
+    const { booleanKindPlaylist } = useSelector((state) => state.action);
+    const { loadMusic, activePlay } = useSelector((state) => state.dataControl);
     const { playListFavorite } = useSelector((state) => state.Favorite);
-
+    const { user } = useSelector((state) => state.action);
     useEffect(() => {
         setFavorite(playListFavorite?.map((e) => e.encodeId));
     }, [playListFavorite]);
     const handleLike = () => {
-        dispatch(setPlayListFavorite(data));
+        user ? dispatch(setPlayListFavorite(data)) : toastMessage('Bạn vui lòng đăng nhập');
     };
     const handlePlay = () => {
         dispatch(setActivePlay(!activePlay));
@@ -34,7 +35,7 @@ function LeftAlbum({ data }) {
         dispatch(setActivePlay(false));
     };
     return (
-        <div className={cx('left') + ' l-4'}>
+        <div className={cx('left') + ' l-4 m-4'}>
             <div className={cx('image', activePlay ? 'rotate' : 'rotate-pause')}>
                 <img src={data?.thumbnailM} alt="" />
 
@@ -87,35 +88,35 @@ function LeftAlbum({ data }) {
                         người yêu thích
                     </div>
                 )}
-            </div>
-            <ButtonAction
-                className={cx('btn-album')}
-                icon={<i className="icon ic-play"></i>}
-                action
-                onClick={() => {
-                    dispatch(setActivePlay(!activePlay));
-                    dispatch(setOpenControl(true));
-                    dispatch(setLoadMusic(false));
-                }}
-            >
-                {activePlay ? 'TẠM DỪNG' : 'TIẾP TỤC PHÁT'}
-            </ButtonAction>
-            <div className={cx('wrapper-icon')}>
-                {booleanKindPlaylist && (
-                    <Button
-                        onClick={() => handleLike()}
-                        primary
-                        content={favorite.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
-                        iconLeft={
-                            favorite.includes(data.encodeId) ? (
-                                <i className="icon ic-like-full"></i>
-                            ) : (
-                                <i className="icon ic-like"></i>
-                            )
-                        }
-                    />
-                )}
-                <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />
+                <ButtonAction
+                    className={cx('btn-album')}
+                    icon={<i className="icon ic-play"></i>}
+                    action
+                    onClick={() => {
+                        dispatch(setActivePlay(!activePlay));
+                        dispatch(setOpenControl(true));
+                        dispatch(setLoadMusic(false));
+                    }}
+                >
+                    {activePlay ? 'TẠM DỪNG' : 'TIẾP TỤC PHÁT'}
+                </ButtonAction>
+                <div className={cx('wrapper-icon')}>
+                    {booleanKindPlaylist && (
+                        <Button
+                            onClick={() => handleLike()}
+                            primary
+                            content={favorite.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
+                            iconLeft={
+                                favorite.includes(data.encodeId) ? (
+                                    <i className="icon ic-like-full"></i>
+                                ) : (
+                                    <i className="icon ic-like"></i>
+                                )
+                            }
+                        />
+                    )}
+                    <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />
+                </div>
             </div>
         </div>
     );

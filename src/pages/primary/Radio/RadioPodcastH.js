@@ -38,7 +38,7 @@ function RadioPodcastH({ data }) {
                 <Container title={data.title}>
                     {data?.items?.map((item, index) => (
                         <SwiperSlide>
-                            <ItemPodcastH key={item.encodeId} data={item} col={'l-12'} />
+                            <ItemPodcastH key={item.encodeId} data={item} col={'l-12 m-12'} />
                         </SwiperSlide>
                     ))}
                 </Container>

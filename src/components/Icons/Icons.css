@@ -21,6 +21,13 @@ body .tippy-content {
 .ic-restore:before {
     content: '\30';
 }
+.ic-go-right:before {
+    content: '\41';
+}
+
+.ic-go-left:before {
+    content: '\7a';
+}
 .ic-go-down:before {
     content: '\79';
 }

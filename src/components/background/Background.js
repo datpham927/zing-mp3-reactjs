@@ -11,14 +11,17 @@ function Background() {
     const previewIndex = useSelector((state) => state.action.previewBgrIndex);
 
     return (
-        <div
-            className={cx('background')}
-            style={
-                preview
-                    ? { backgroundImage: `url(${background[previewIndex].path})` }
-                    : { backgroundImage: `url(${background[index].path})` }
-            }
-        ></div>
+        <>
+            <div
+                className={cx('background') + ' c-0'}
+                style={
+                    preview
+                        ? { backgroundImage: `url(${background[previewIndex].path})` }
+                        : { backgroundImage: `url(${background[index].path})` }
+                }
+            ></div>
+            <div className={cx('background') + ' l-0'}></div>
+        </>
     );
 }
 

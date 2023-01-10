@@ -5,10 +5,10 @@ import { Icon } from '../../components/Icons';
 import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
 import { zingAction } from '~/redux/action';
-
 import TippyMenu from '~/components/menu/tippyMenu/TippyMenu';
-import { useDispatch, useSelector } from 'react-redux';
-import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import Avatar from './Avatar';
+
 const cx = classNames.bind(style);
 
 const MENU_ITEM = [
@@ -53,32 +53,11 @@ const MENU_ITEM = [
         iconLeft: <i className="icon ic-20-Call"></i>,
     },
 ];
-const MENU_LOGOUT = [
-    {
-        id: 0,
-        title: 'Nâng cấp VIP',
-        iconLeft: <Icon.IconVip />,
-    },
-    {
-        id: 1,
-        title: 'Mua code VIP',
-        iconLeft: <i className="icon ic-20-quaility-SQ"></i>,
-    },
-    {
-        id: 1,
-        title: 'Đăng xuất',
-        iconLeft: <i className="icon ic-log-out"></i>,
-        type: 'separate',
-    },
-];
 
 function HeaderRight() {
-    const currentUser = useSelector((state) => state.action.currentUser);
-
     const dispatch = useDispatch();
-    const refAvatar = useRef();
     return (
-        <div className={cx('right') + ' l-5'}>
+        <div className={cx('right') + ' l-5 c-0'}>
             {/* ------ theme ------ */}
             <Button
                 primary
@@ -96,18 +75,7 @@ function HeaderRight() {
                     <ion-icon name="settings-outline"></ion-icon>
                 </div>
             </TippyMenu>
-            {currentUser ? (
-                //------ đã đăng nhập ------
-                <TippyMenu MENU_ITEM={MENU_LOGOUT}>
-                    <Button
-                        ref={refAvatar}
-                        src="https://3.bp.blogspot.com/-dNqe_M2-wQE/W-_crKMFCBI/AAAAAAAACYw/H13b7yXBYkICwwPkIz9pbg_ijnAn2NeKACLcBGAs/s1600/gai-xinh-4k-17.jpg"
-                    />
-                </TippyMenu>
-            ) : (
-                //------ chưa  đăng nhập ------
-                <Button src="https://avatar.talk.zdn.vn/default" onClick={() => console.log('hihi')} />
-            )}
+            <Avatar className="c-0" />
         </div>
     );
 }

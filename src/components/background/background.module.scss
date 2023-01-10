@@ -8,3 +8,16 @@
     background-size: 1920px auto;
     z-index: -1;
 }
+
+@media (max-width: 740px) {
+    .background {
+        background-image: none;
+        background-color: #fcfcfc !important;
+    }
+}
+@media (min-width: 2130px) {
+    .background {
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+}

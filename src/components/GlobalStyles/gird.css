@@ -32,7 +32,7 @@
         padding-right: 0;
     }
     .c-0 {
-        display: none;
+        display: none !important;
     }
 
     .c-1 {
@@ -151,7 +151,7 @@
 @media (max-width:1023px) {
 
 .c-0 {
-    display: none;
+    display: none !important;
 }
 
 .c-1 {
@@ -262,19 +262,19 @@
 }
 }
 /* >= Tablet */
-@media (min-width: 740px) and (max-width: 1023px) {
+@media (min-width: 740px) and (max-width: 1024px) {
     .row {
-        margin-left: -14px;
-        margin-right: -14px;
+        margin-left: -12px;
+        margin-right: -12px;
     }
 
     .col {
-        padding-left: 4px;
-        padding-right: 4px;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     .m-0 {
-        display: none;
+        display: none !important;
     }
 
     .m-1,
@@ -402,7 +402,7 @@
 }
 
 /* PC medium resolution > */
-@media (min-width: 1024px) and (max-width: 4260px) {
+@media (min-width: 1025px) and (max-width: 5260px) {
     .row {
         margin-left: -14px;
         margin-right: -14px;
@@ -424,7 +424,7 @@
     }
 
     .l-0 {
-        display: none;
+        display: none !important;
     }
 
     /* .l-1,
@@ -583,7 +583,7 @@
 
 @media (width: 1024px) {
     .m-pro-0 {
-        display: none;
+        display: none !important;
     }
     /* .m-pro-1,
     .m-pro-2,
@@ -741,7 +741,7 @@
 /* Tablet - PC low resolution */
 
 .hide {
-    display: none;
+    display: none !important;
 }
 .swiper {
     margin: 0 -15px;

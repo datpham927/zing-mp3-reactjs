@@ -14,6 +14,7 @@ const initialState = JSON.parse(localStorage.getItem('audio')) || {
     currentVolume: 100,
     booleanControl: false,
     booleanQueueList: false,
+    activePlay: false, //nhạc đang pause hay play
     loadMusic: true, //load nhạc
 };
 
@@ -23,17 +24,21 @@ export const zingAudio = createSlice({
     reducers: {
         setIdAudio: (state, action) => {
             state.idAudio = action.payload;
+            state.activePlay = true;
+            state.booleanControl = true;
+            state.loadMusic = false;
             localStorage.setItem('audio', JSON.stringify(state));
         },
         setPlayListAudio: (state, action) => {
             state.playListAudio = action.payload.filter((e) => e.streamingStatus !== 2);
-            state.booleanControl = true;
+            state.idAudio = state.playListAudio[0];
             localStorage.setItem('audio', JSON.stringify(state));
         },
 
         setCurrentIndex: (state, action) => {
             state.currentIndex = action.payload;
             state.booleanControl = true;
+            state.idAudio = state.playListAudio[state.currentIndex];
             localStorage.setItem('audio', JSON.stringify(state));
         },
         setRepeat: (state, action) => {
@@ -43,13 +48,15 @@ export const zingAudio = createSlice({
         setNext: (state, action) => {
             state.next = action.payload;
             if (state.next) {
-                state.loadMusic = false;
+                if (state.activePlay) {
+                    state.loadMusic = false;
+                }
                 if (state.shuffle && !state.booleanQueueList) {
-                    let shuffle;
+                    let index;
                     do {
-                        shuffle = Math.floor(Math.random() * state.playListAudio.length - 1);
-                    } while (state.playListAudio[shuffle]?.streamingStatus === 2);
-                    state.currentIndex = shuffle;
+                        index = Math.floor(Math.random() * state.playListAudio.length);
+                    } while (state.playListAudio[index]?.streamingStatus === 2);
+                    state.currentIndex = index;
                     state.idAudio = state.playListAudio[state.currentIndex];
                 } else {
                     let index = state.currentIndex;
@@ -65,11 +72,13 @@ export const zingAudio = createSlice({
         setPrev: (state, action) => {
             state.prev = action.payload;
             if (state.prev) {
-                state.loadMusic = false;
+                if (state.activePlay) {
+                    state.loadMusic = false;
+                }
                 if (state.shuffle && !state.booleanQueueList) {
                     let shuffle;
                     do {
-                        shuffle = Math.floor(Math.random() * state.playListAudio.length - 1);
+                        shuffle = Math.floor(Math.random() * state.playListAudio.length);
                     } while (state.playListAudio[shuffle]?.streamingStatus === 2);
                     state.currentIndex = shuffle;
                     state.idAudio = state.playListAudio[state.currentIndex];
@@ -83,8 +92,16 @@ export const zingAudio = createSlice({
                 }
             }
         },
+
         setShuffle: (state, action) => {
             state.shuffle = action.payload;
+            localStorage.setItem('audio', JSON.stringify(state));
+        },
+        setActivePlay: (state, action) => {
+            state.activePlay = action.payload;
+            if (state.activePlay) {
+                state.booleanControl = true;
+            }
             localStorage.setItem('audio', JSON.stringify(state));
         },
 
@@ -103,6 +120,7 @@ export const zingAudio = createSlice({
         deleteDataPlayList: (state) => {
             state.playListAudio = [];
             state.recentList = [];
+            state.idAudio = [];
             state.booleanControl = false;
             state.booleanQueueList = false;
             localStorage.setItem('audio', JSON.stringify(state));
@@ -111,8 +129,8 @@ export const zingAudio = createSlice({
             if (state.recentList.length === 0) {
                 state.recentList.push(action.payload);
             } else {
-                const id = state.recentList.map((e) => e.encodeId);
-                const check = id.includes(action.payload.encodeId);
+                const id = state.recentList.map((e) => e?.encodeId);
+                const check = id.includes(action.payload?.encodeId);
                 if (!check) {
                     state.recentList.push(action.payload);
                 }
@@ -121,9 +139,6 @@ export const zingAudio = createSlice({
         },
         setOpenControl: (state, action) => {
             state.booleanControl = action.payload;
-            if (state.booleanControl) {
-                state.activePlay = true;
-            }
             localStorage.setItem('audio', JSON.stringify(state));
         },
         setLoadMusic: (state, action) => {
@@ -151,5 +166,6 @@ export const {
     setOpenQueueList,
     setLoadMusic,
     setPrev,
+    setActivePlay,
 } = zingAudio.actions;
 export default zingAudio.reducer;

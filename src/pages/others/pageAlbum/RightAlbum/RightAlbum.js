@@ -8,16 +8,15 @@ import { setCurrentIndex, setLoadMusic, setOpenQueueList, setPlayListAudio } fro
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonAction from '~/components/Button/ButtonAction';
 import { setAddPlayList, setSelectionAll } from '~/redux/FavoriteList';
-import { Slide, toast } from 'react-toastify';
+import toastMessage from '~/components/modal/toast';
 const cx = classNames.bind(style);
 
 function RightAlbum({ data }) {
     const [newDataSong, setDateSong] = useState(data.song.items);
     const [openMenu, setOpenMenu] = useState(false);
     const [all, setAll] = useState(false);
-    const { activePlay } = useSelector((state) => state.action);
     const { addPlayList } = useSelector((state) => state.Favorite);
-    const { playListAudio } = useSelector((state) => state.dataControl);
+    const { playListAudio, activePlay } = useSelector((state) => state.dataControl);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -78,18 +77,10 @@ function RightAlbum({ data }) {
         });
         dispatch(setPlayListAudio(listNew));
         dispatch(setOpenQueueList(true));
-        toast(`Đã ${addPlayList.length} thêm bài hát vào danh sách`, {
-            position: 'bottom-left',
-            autoClose: 2000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            transition: Slide,
-        });
+        toastMessage(`Đã ${addPlayList.length} thêm bài hát vào danh sách`);
     };
     return (
-        <div className={cx('right') + ' l-8'}>
+        <div className={cx('right') + ' l-8 m-8'}>
             {data?.description && (
                 <div className={cx('description')}>
                     <span>Lời tựa</span>
@@ -181,15 +172,13 @@ function RightAlbum({ data }) {
                         </>
                     )}
                     {data?.sections[0] && (
-                        <Container title={data?.sections[0]?.title} className={cx('container')}>
-                            <div className={cx('list') + ' row'}>
-                                <ContainerSongs
-                                    type="add"
-                                    data={data?.sections[0]?.items}
-                                    index={data?.sections[0]?.items?.length}
-                                    link={data.link}
-                                />
-                            </div>
+                        <Container title={data?.sections[0]?.title} className={cx('list')}>
+                            <ContainerSongs
+                                type="add"
+                                data={data?.sections[0]?.items}
+                                index={data?.sections[0]?.items?.length}
+                                link={data.link}
+                            />
                         </Container>
                     )}
                 </>

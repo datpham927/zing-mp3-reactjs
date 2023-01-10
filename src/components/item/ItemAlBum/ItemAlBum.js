@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setActivePlay, zingAction } from '~/redux/action';
+import { zingAction } from '~/redux/action';
 import Button from '../../Button';
 import styles from './ItemAlBum.module.scss';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import { setIdAudio, setLoadMusic } from '~/redux/dataControl';
+import { setActivePlay, setIdAudio, setLoadMusic } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
 import { setPlayListTitle } from '~/redux/FavoriteList';
 import { IconLoadMusic } from '~/components/Icons/Icons';
@@ -14,15 +14,13 @@ const cx = classNames.bind(styles);
 
 function ItemAlbum({ data, onClick }) {
     const dispatch = useDispatch();
-    const { idAudio, loadMusic } = useSelector((state) => state.dataControl);
-    const { activePlay } = useSelector((state) => state.action);
+    const { idAudio, loadMusic, activePlay } = useSelector((state) => state.dataControl);
 
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
-            dispatch(setActivePlay(true));
             dispatch(setPlayListTitle([]));
-            if (data.encodeId === idAudio.encodeId) {
+            if (data.encodeId === idAudio?.encodeId) {
                 dispatch(setLoadMusic(true));
             } else {
                 dispatch(setLoadMusic(false));
@@ -36,8 +34,8 @@ function ItemAlbum({ data, onClick }) {
         dispatch(setActivePlay(false));
     };
     return (
-        <div className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-4 m-6 c-12 m-pro-6'}>
-            <div className={cx('include', data.encodeId === idAudio.encodeId && 'active')} onDoubleClick={handlePlay}>
+        <div className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-4 m-4 c-12'}>
+            <div className={cx('include', data.encodeId === idAudio?.encodeId && 'active')} onDoubleClick={handlePlay}>
                 <div className={cx('left')}>
                     <div className={cx('wrapper-img')}>
                         {data?.thumbnail ? (
@@ -45,7 +43,7 @@ function ItemAlbum({ data, onClick }) {
                         ) : (
                             <LoadImg className={cx('image')} />
                         )}
-                        {activePlay === true && data?.encodeId === idAudio.encodeId ? (
+                        {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                             <div className={cx('play-song')} onClick={() => handlePause()}>
                                 {loadMusic ? (
                                     <img
@@ -58,7 +56,7 @@ function ItemAlbum({ data, onClick }) {
                             </div>
                         ) : (
                             <div
-                                className={cx('icon-play', data?.encodeId === idAudio.encodeId && 'play')}
+                                className={cx('icon-play', data?.encodeId === idAudio?.encodeId && 'play')}
                                 onClick={handlePlay}
                             >
                                 <ion-icon name="play" role="img" className="md hydrated" aria-label="play"></ion-icon>

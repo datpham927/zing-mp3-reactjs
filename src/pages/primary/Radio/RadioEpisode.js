@@ -9,6 +9,7 @@ import Button from '~/components/Button';
 import { useRef } from 'react';
 import Container from '~/components/container/Container';
 import LoadImg from '~/components/load/loadImg/LoadImg';
+import toastMessage from '~/components/modal/toast';
 
 const cx = className.bind(style);
 function RadioEpisode({ data }) {
@@ -39,14 +40,12 @@ function RadioEpisode({ data }) {
             >
                 {data?.items?.map((i) => (
                     <SwiperSlide>
-                        <div className="l-12 col">
-                            <div className={cx('episode-item')}>
-                                {i.thumbnail ? (
-                                    <img src={i.thumbnail} alt={i.title} />
-                                ) : (
-                                    <LoadImg className={cx('padding-img')} />
-                                )}
-                            </div>
+                        <div className={cx('episode-item')} onClick={() => toastMessage('phần này gọi api được không')}>
+                            {i.thumbnail ? (
+                                <img src={i.thumbnail} alt={i.title} />
+                            ) : (
+                                <LoadImg className={cx('padding-img')} />
+                            )}
                         </div>
                     </SwiperSlide>
                 ))}

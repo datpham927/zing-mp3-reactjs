@@ -1,17 +1,18 @@
 .wrapper {
+    position: fixed;
     width: var(--Width-sidebar);
     background-color: var(--sidebar-bg);
     height: 100vh;
-    .logo-pc {
+    z-index: 100;
+    transition: 0.3s linear;
+    .logo {
         display: flex;
         align-items: center;
-        padding: 0 25px 0 28px;
-        height: 70px;
-        img {
-            width: 120px;
-            height: 40px;
-            display: inline-block;
-        }
+        margin: 10px 25px 10px 28px;
+        height: 40px;
+        background-image: url(https://sona7ns.github.io/zingmp3.vn/assets/img/sidebar-icon/logo/logo-dark.svg);
+        background-size: 120px 40px;
+        background-repeat: no-repeat;
     }
 
     .menu {
@@ -29,12 +30,13 @@
     }
 
     .navbar {
-        height: 44vh;
+        height: 40vh;
         -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
         scrollbar-width: none;
         overflow-y: scroll;
         border-bottom: 1px solid var(--background-while);
         transition: 0.4s linear;
+        -webkit-mask-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.8) 10%, #fff 25%, #fff);
         &::-webkit-scrollbar {
             display: none;
         }
@@ -44,7 +46,16 @@
         }
     }
     .active {
-        height: calc(44vh - 9rem);
+        height: calc(40vh - 9rem);
+    }
+    .sidebar-divide {
+        position: absolute;
+        content: ' ';
+        width: 80%;
+        height: 1px;
+        bottom: 10px;
+        background-color: var(--background-while);
+        margin-left: 22px;
     }
 }
 //----------------
@@ -72,6 +83,52 @@
     }
 }
 
+.library-list {
+    list-style: none;
+    .library-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        color: var(--text-primary);
+    }
+    .library-item {
+        border-left: 3px solid transparent;
+        font-size: 14px;
+        padding: 7px 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        span {
+            color: var(--text-primary);
+
+            margin-left: 10px;
+        }
+    }
+}
+
+//---------------------------------
+.zing-vip {
+    background-image: linear-gradient(117deg, #614de5, #b567d9);
+    margin: 20px auto;
+    border-radius: 10px;
+    width: 90%;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px 10px;
+    .zing-vip-title {
+        display: block;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+    .btn {
+        padding: 5px 30px;
+        border-radius: 20px;
+        background-color: #ffdb00;
+        cursor: pointer;
+        border: none;
+    }
+}
+
 //-----------------
 .create-list {
     position: fixed;
@@ -89,4 +146,210 @@
 }
 .active-add-list {
     bottom: 90px;
+}
+
+.item-navbar {
+    position: relative;
+    cursor: pointer;
+    & span {
+        position: absolute;
+        bottom: 12px;
+        padding: 1px 6px 0 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        background-color: red;
+        color: #fff;
+        border-radius: 4px;
+        left: 100px;
+    }
+    &:hover .item-play {
+        display: block;
+    }
+    &:hover {
+        color: var(--text-item-hover);
+    }
+    .item-wrapper {
+        padding: 8px 25px;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        color: var(--navigation-text);
+        border-left: 3px solid transparent;
+        font-weight: 400;
+        height: 100%;
+        line-height: 20px;
+        & h1 {
+            font-size: 1.3rem;
+        }
+        & i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .item-play {
+            position: absolute;
+            font-size: 1.6rem;
+            right: 20px;
+            bottom: 5px;
+            right: 10px;
+            color: var(--text-item-hover);
+            display: none;
+            & i {
+                font-size: 2rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
+.active-private,
+.active-private.library-item {
+    border-left: 3px solid var(--purple-primary);
+    background-color: var(--alpha-bg);
+    color: var(--text-item-hover);
+}
+//table
+@media (min-width: 740px) and (max-width: 1024px) {
+    .wrapper {
+        width: 70px;
+        background-color: var(--queue-player-popup-bg);
+        overflow: hidden;
+        .logo {
+            margin: 10px;
+            background-image: url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.22/static/media/icon_zing_mp3_60.f6b51045.svg);
+            background-size: 45px 45px;
+            background-position: center;
+            height: 45px;
+        }
+        .item-navbar {
+            & .item-wrapper {
+                & h1 {
+                    display: none;
+                }
+            }
+        }
+        .navbar {
+            height: 32vh;
+            -webkit-mask-image: none;
+        }
+        .active {
+            height: calc(32vh - 9rem);
+        }
+        .expanded {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            transition: 0.3s linear;
+            .expanded-btn {
+                background-color: var(--alpha-bg);
+            }
+        }
+        .active-expanded {
+            bottom: 100px;
+        }
+        .library-list {
+            .library-item {
+                & span {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .create-list {
+        & span {
+            display: none;
+        }
+    }
+    .active-menu {
+        width: var(--Width-sidebar);
+        .item-navbar {
+            & .item-wrapper {
+                & h1 {
+                    display: flex;
+                    white-space: nowrap;
+                }
+            }
+        }
+        .library-list {
+            .library-item {
+                & span {
+                    display: flex;
+                    white-space: nowrap;
+                }
+            }
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin: 10px 25px 10px 28px;
+            height: 45px;
+            background-image: url(https://sona7ns.github.io/zingmp3.vn/assets/img/sidebar-icon/logo/logo-dark.svg);
+            background-size: 120px 40px;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+@media (min-width: 1163px) {
+    .wrapper {
+        .navbar {
+            height: 40vh;
+            -webkit-mask-image: none;
+        }
+        .active {
+            height: calc(40vh - 9rem);
+        }
+    }
+}
+@media (min-width: 1280px) {
+    .wrapper {
+        .navbar {
+            height: 46vh;
+            -webkit-mask-image: none;
+        }
+        .active {
+            height: calc(46vh - 9rem);
+        }
+    }
+}
+@media (min-width: 1422px) {
+    .wrapper {
+        .navbar {
+            height: 51vh;
+            -webkit-mask-image: none;
+        }
+        .active {
+            height: calc(51vh - 9rem);
+        }
+    }
+}
+@media (min-width: 1600px) {
+    .wrapper {
+        .navbar {
+            height: 55%;
+            -webkit-mask-image: none;
+        }
+        .active {
+            height: calc(55% - 9rem);
+        }
+    }
+}
+@media (min-width: 1706px) {
+    .wrapper {
+        .navbar {
+            height: 59vh;
+            -webkit-mask-image: none;
+        }
+        .active {
+            height: calc(59vh - 9rem);
+        }
+    }
+}
+@media (min-width: 1920px) {
+    .wrapper {
+        .navbar {
+            height: 100%;
+            -webkit-mask-image: none;
+        }
+    }
 }

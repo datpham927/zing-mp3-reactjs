@@ -10,13 +10,14 @@ import { setModalFollow } from '~/redux/action';
 import style from './ModalFollow.module.scss';
 import FormatDate from '~/components/number/time/FormatDate';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
+import toastMessage from '../toast';
 const cx = className.bind(style);
 function ModalFollow() {
     const [selection, setSelection] = useState(false);
-
+    const { user } = useSelector((state) => state.action);
     const [like, setLike] = useState(false);
     const handleLike = () => {
-        setLike(!like);
+        user ? setLike(!like) : toastMessage('Bạn vui lòng đăng nhập');
     };
     const dispatch = useDispatch();
 

@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 
 import Duration from '~/components/number/time/Duration';
-import { setActivePlay } from '~/redux/action';
+import { setActivePlay } from '~/redux/dataControl';
 import { setChangerDataMv, setIndexOpenMv, setPlayMv } from '~/redux/dataMV';
 import styles from './ItemVideo.module.scss';
 
@@ -27,7 +27,7 @@ function ItemVideo({ data }) {
     const id = useSelector((state) => state.dataMv.idMv);
     return (
         data && (
-            <li className={cx('item') + ' l-4 col'}>
+            <li className={cx('item') + ' l-4 m-4 col'}>
                 <div className={cx('wrapper')}>
                     <div className={cx('video-img')} onClick={handleOnclick}>
                         {data?.thumbnailM ? (

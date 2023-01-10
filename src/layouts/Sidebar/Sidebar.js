@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import Button from '~/components/Button';
 import { Icon } from '~/components/Icons';
-import { setBooleanEdit, setModalAddPlayList } from '~/redux/action';
-
+import { setBooleanEdit, setModalAddPlayList, setOpenModalLogin } from '~/redux/action';
 import ItemSidebar from './ItemSidebar/ItemSidebar';
 import style from './Sidebar.module.scss';
 const cx = classNames.bind(style);
@@ -76,47 +77,124 @@ const MENU_SCROLL = [
         type: false,
     },
 ];
+const LIBRARY = [
+    {
+        title: 'Bài Hát',
+        img: 'https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.0.13/static/media/my-song.cf0cb0b4.svg',
+        encodeId: '01',
+        path: '/library/songs',
+    },
+    {
+        title: 'Playlist',
+        img: 'https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.0.13/static/media/my-playlist.7e92a5f0.svg',
+        encodeId: '02',
+        path: '/library/play-list',
+    },
+    {
+        title: 'Gần Đây',
+        img: 'https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.0.13/static/media/my-history.374cb625.svg',
+        encodeId: '03',
+        path: '/library/recently',
+    },
+];
 function Sidebar() {
     const { booleanControl } = useSelector((state) => state.dataControl);
+    const [openMenu, setOpenMenu] = useState(false);
+    const { user } = useSelector((state) => state.action);
     const dispatch = useDispatch();
-    return (
-        <div className={cx('wrapper')}>
-            <div className={cx('logo', 'c-0')}>
-                <Link className={cx('logo-pc')} to={'/'}>
-                    <img src="https://sona7ns.github.io/zingmp3.vn/assets/img/sidebar-icon/logo/logo-dark.svg" alt="" />
-                </Link>
-            </div>
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
 
-            <div className={cx('menu', 'c-0')}>
-                {MENU_SIDEBAR.map((item, index) => (
-                    <ItemSidebar key={item.encodeId} data={item} />
-                ))}
+    const handleCreateList = () => {
+        if (user) {
+            dispatch(setModalAddPlayList(true));
+            dispatch(setBooleanEdit(false));
+        } else {
+            dispatch(setOpenModalLogin(true));
+        }
+    };
+    return (
+        <div className={cx('wrapper', openMenu && 'active-menu') + ' c-0'}>
+            <Link className={cx('logo')} to={'/'}></Link>
+            <div className={cx('menu')}>
+                {/* //cá nhân */}
+                <div
+                    end
+                    title={MENU_SIDEBAR[0].title}
+                    className={cx('item-navbar', pathname.includes(MENU_SIDEBAR[0].path) && 'active-private')}
+                    onClick={() => {
+                        if (user) {
+                            navigate(MENU_SIDEBAR[0].path);
+                        } else {
+                            dispatch(setOpenModalLogin(true));
+                        }
+                    }}
+                >
+                    <div className={cx('item-wrapper')}>
+                        {MENU_SIDEBAR[0].icon}
+                        <h1>{MENU_SIDEBAR[0].title}</h1>
+                    </div>
+                </div>
+                {MENU_SIDEBAR.map(
+                    (item, index) => index > 0 && <ItemSidebar activeMenu={openMenu} key={item.encodeId} data={item} />,
+                )}
                 <div className={cx('divide')}></div>
             </div>
-
+            <div className={cx('sidebar-divide')}></div>
             <div className={cx('navbar', booleanControl && 'active')}>
                 <div className={cx('navbar-menu')}>
-                    {MENU_SCROLL.map((item, index) => (
-                        <ItemSidebar key={item.encodeId} data={item} />
+                    {MENU_SCROLL.map((item) => (
+                        <ItemSidebar activeMenu={openMenu} key={item.encodeId} data={item} />
                     ))}
                 </div>
-                <div className={cx('login', 'c-0')}>
-                    <span className={cx('title')}>Đăng nhập để khám phá playlist dành riêng cho bạn</span>
-                    <button className={cx('btn')}>ĐĂNG NHẬP</button>
-                </div>
+                {!user ? (
+                    <div className={cx('login') + ' m-0'} onClick={() => dispatch(setOpenModalLogin(true))}>
+                        <span className={cx('title')}>Đăng nhập để khám phá playlist dành riêng cho bạn</span>
+                        <button className={cx('btn')}>ĐĂNG NHẬP</button>
+                    </div>
+                ) : (
+                    <>
+                        <div className={cx('zing-vip') + ' m-0'}>
+                            <span className={cx('zing-vip-title')}>Nghe nhạc không quảng cáo cùng kho nhạc VIP</span>
+                            <button className={cx('btn', 'btn-lever')}>NÂNG CẤP VIP</button>
+                        </div>
+                        <ul className={cx('library-list')}>
+                            <li className={(cx('library-item'), ' m-0')}>
+                                <h1 className={cx('library-title')}>Thư viện</h1>
+                            </li>
+                            {LIBRARY.map((e) => (
+                                <NavLink
+                                    end
+                                    className={(nav) => cx('library-item', { 'active-private': nav.isActive })}
+                                    to={e.path}
+                                >
+                                    <img src={e.img} alt="" />
+                                    <span className={cx('content')}>{e.title}</span>
+                                </NavLink>
+                            ))}
+                        </ul>
+                    </>
+                )}
+            </div>
+            <div className={cx('create-list', booleanControl && 'active-add-list') + ' m-0'} onClick={handleCreateList}>
+                <ion-icon name="add-outline"></ion-icon>
+                <span>Tạo playlist mới</span>
             </div>
             <div
-                className={cx('create-list', 'm-0 ', booleanControl && 'active-add-list')}
-                onClick={() => {
-                    dispatch(setModalAddPlayList(true));
-                    dispatch(setBooleanEdit(false));
-                }}
+                className={cx('expanded', booleanControl && 'active-expanded') + ' l-0'}
+                onClick={() => setOpenMenu((e) => ~e)}
             >
-                <ion-icon className="m-0" name="add-outline"></ion-icon>
-                <span className="m-0">Tạo playlist mới</span>
+                <Button
+                    primary
+                    className={cx('expanded-btn')}
+                    noContent
+                    iconLeft={openMenu ? <i class="icon ic-go-left"></i> : <i class="icon ic-go-right"></i>}
+                />
             </div>
         </div>
     );
 }
-
+{
+    /* <i class="icon ic-go-"></i> */
+}
 export default Sidebar;

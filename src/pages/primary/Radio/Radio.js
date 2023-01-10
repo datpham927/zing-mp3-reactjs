@@ -29,11 +29,11 @@ function Radio() {
                 i?.sectionType === 'livestream' ? (
                     <RadioLivestream data={i} />
                 ) : i?.sectionType === 'podcast' && i?.sectionId === 'radPromoteProgram' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} link={i?.link} all description />
+                    <ContainerPlaylist data={i?.items} title={i?.title} link={'/'} all description />
                 ) : i?.sectionType === 'podcast' && i?.sectionId === 'radReplay' ? (
-                    <ContainerPlaylist data={i} spotlight title={i?.title} link={i?.link} description />
+                    <ContainerPlaylist data={i} spotlight title={i?.title} link={'/'} description />
                 ) : i?.sectionType === 'podcast' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} link={i?.link} all description />
+                    <ContainerPlaylist data={i?.items} title={i?.title} link={'/'} all description />
                 ) : i?.sectionType === 'podcast_category' ? (
                     <RadioCategory data={i} />
                 ) : i?.sectionType === 'podcastH' ? (

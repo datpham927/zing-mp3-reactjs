@@ -26,10 +26,10 @@ function ArtistHero() {
         };
         fetchApi();
     }, [id.name]);
-    return kt && data.length !== 0 ? (
+    return kt && data?.length !== 0 ? (
         <div className={cx('wrapper')}>
             <ArtistHeroTop />
-            {data.sections.map((e, i) =>
+            {data?.sections.map((e, i) =>
                 e.sectionType === 'song' ? (
                     <ContainerSongs data={e.items} title={e.title} index={6} all link={e.link} />
                 ) : e.sectionType === 'playlist' ? (

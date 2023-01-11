@@ -37,31 +37,46 @@ function RadioEpisode({ data }) {
                 modules={[Autoplay, Pagination, Navigation]}
                 slidesPerView={2}
                 slidesPerGroup={1}
+                breakpoints={{
+                    1: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                    },
+                }}
             >
                 {data?.items?.map((i) => (
                     <SwiperSlide>
-                        <div className={cx('episode-item')} onClick={() => toastMessage('phần này gọi api được không')}>
-                            {i.thumbnail ? (
-                                <img src={i.thumbnail} alt={i.title} />
-                            ) : (
-                                <LoadImg className={cx('padding-img')} />
-                            )}
+                        <div className={'col'}>
+                            <div
+                                className={cx('episode-item')}
+                                onClick={() => toastMessage('phần này gọi api được không')}
+                            >
+                                {i.thumbnail ? (
+                                    <img src={i.thumbnail} alt={i.title} />
+                                ) : (
+                                    <LoadImg className={cx('padding-img')} />
+                                )}
+                            </div>
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <Button
-                noContent
-                ref={navigationPrevRef}
-                className={cx('btn-right-banner')}
-                iconLeft={<i className="icon ic-go-right"></i>}
-            />
-            <Button
-                noContent
-                ref={navigationNextRef}
-                className={cx('btn-left-banner')}
-                iconLeft={<i className="icon ic-go-left"></i>}
-            />
+            {data.items.length > 3 && (
+                <>
+                    <Button
+                        noContent
+                        ref={navigationPrevRef}
+                        className={cx('btn-right-banner')}
+                        iconLeft={<i className="icon ic-go-right"></i>}
+                    />
+                    <Button
+                        noContent
+                        ref={navigationNextRef}
+                        className={cx('btn-left-banner')}
+                        iconLeft={<i className="icon ic-go-left"></i>}
+                    />
+                </>
+            )}
         </Container>
     );
 }

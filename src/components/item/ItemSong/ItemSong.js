@@ -196,7 +196,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             </h1>
                         )}
                     </div>
-                    <div className={cx('media-left')}>
+                    <div className={cx('media-left', 'media-left-mb')}>
                         <div className={cx('thumb')}>
                             {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
                             {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
@@ -246,7 +246,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             {data.title}
                         </h3>
                     </div>
-                    <div className={cx('media-right')}>
+                    <div className={cx('media-right') + ' c-0'}>
                         <div className={cx('action')}>
                             <Button
                                 small

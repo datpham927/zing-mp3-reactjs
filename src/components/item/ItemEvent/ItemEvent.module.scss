@@ -46,6 +46,7 @@
     .info {
         display: flex;
         margin-top: 10px;
+        justify-content: space-between;
         .left {
             flex-shrink: 0;
             & small {
@@ -88,6 +89,7 @@
                 text-transform: uppercase;
             }
             .care {
+                color: #fff;
                 background-color: var(--purple-primary);
             }
         }

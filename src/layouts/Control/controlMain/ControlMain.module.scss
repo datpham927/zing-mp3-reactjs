@@ -31,6 +31,9 @@
                 color: var(--link-text-hover);
             }
         }
+        .icon-load {
+            border: 1px solid var(--text-primary) !important;
+        }
     }
     & .time {
         display: flex;
@@ -86,6 +89,28 @@
 @media (max-width: 740px) {
     .main {
         padding: 0;
+        .action {
+            & .btn {
+                margin: 0 5px;
+            }
+        }
+    }
+    .active-lyric {
+        .btn-play,
+        .shuffle,
+        .icon-load,
+        .btn {
+            & span {
+                & i {
+                    color: #fff !important;
+                }
+            }
+        }
+        .time {
+            .end,
+            .start {
+                color: #fff;
+            }
+        }
     }
 }
-// 192.168.1.7

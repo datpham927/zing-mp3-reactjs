@@ -1,5 +1,5 @@
 import className from 'classnames/bind';
-import style from './Home.module.scss';
+import style from './HomeLiveRadio.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -38,6 +38,7 @@ function HomeLiveRadio({ data }) {
                     1: {
                         slidesPerView: 2,
                         slidesPerGroup: 1,
+                        allowTouchMove: true,
                     },
                     740: {
                         slidesPerView: 5,
@@ -59,13 +60,13 @@ function HomeLiveRadio({ data }) {
                 <Button
                     noContent
                     ref={navigationPrevRef}
-                    className={cx('btn-right')}
+                    className={cx('btn-right') + ' c-0'}
                     iconLeft={<i className="icon ic-go-right"></i>}
                 />
                 <Button
                     noContent
                     ref={navigationNextRef}
-                    className={cx('btn-left')}
+                    className={cx('btn-left') + ' c-0'}
                     iconLeft={<i className="icon ic-go-left"></i>}
                 />
             </Swiper>

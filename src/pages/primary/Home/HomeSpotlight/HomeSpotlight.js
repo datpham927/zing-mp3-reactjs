@@ -14,11 +14,15 @@ function HomeSpotlight({ data }) {
                     delay: 3000,
                     disableOnInteraction: false,
                 }}
-                allowTouchMove={false}
-                navigation={true}
                 loop={true}
-                modules={[Autoplay, Pagination]}
+                modules={[Autoplay]}
+                allowTouchMove={false}
                 breakpoints={{
+                    1: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1,
+                        allowTouchMove: true,
+                    },
                     740: {
                         slidesPerView: 5,
                         slidesPerGroup: 2,

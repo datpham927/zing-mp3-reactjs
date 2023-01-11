@@ -8,6 +8,9 @@
     .btn {
         background-color: var(--purple-primary);
         margin-left: 10px;
+        & i {
+            color: #fff;
+        }
     }
 }
 
@@ -39,13 +42,25 @@
     & h1 {
         font-size: 2.4rem;
     }
-    .btn {
+    & .btn {
         background-color: var(--purple-primary);
         margin-left: 10px;
         width: 3rem;
         height: 3rem;
+        & i {
+            color: #fff;
+        }
     }
 }
 .wrapper-btn {
     display: flex;
+}
+
+@media (max-width: 740px) {
+    .title {
+        font-size: 2rem;
+    }
+    .header {
+        padding: 10px 0;
+    }
 }

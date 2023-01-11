@@ -39,3 +39,11 @@
         width: 50px;
     }
 }
+@media (max-width: 740px) {
+    .select-menu {
+        overflow-x: scroll !important;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}

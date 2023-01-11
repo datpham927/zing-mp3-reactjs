@@ -1,0 +1,22 @@
+.wrapper-event {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+.btn-right {
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+    background-color: var(--alpha-bg);
+    z-index: 10;
+}
+.btn-left {
+    position: absolute;
+    bottom: 50%;
+    background-color: var(--alpha-bg);
+    z-index: 10;
+}
+.btn-right + .btn-left {
+    left: 0;
+    margin-left: 0;
+}

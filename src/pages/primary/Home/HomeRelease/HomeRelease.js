@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ButtonAction from '~/components/Button/ButtonAction';
 import Container from '~/components/container/Container';
 import ContainerAlbum from '~/components/container/ContainerAlbum';
-import style from './Home.module.scss';
+import style from './HomeRelease.module.scss';
 const cx = className.bind(style);
 
 function HomeRelease({ data }) {

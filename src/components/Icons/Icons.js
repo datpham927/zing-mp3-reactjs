@@ -476,9 +476,9 @@ const ImgTop100 = () => {
         </svg>
     );
 };
-const IconLoadControl = () => {
+const IconLoadControl = ({ className }) => {
     return (
-        <i className="icon" style={{ border: '1px solid white', borderRadius: '50%', margin: '0 2px' }}>
+        <i className={className} style={{ border: '1px solid white', borderRadius: '50%', margin: '0 2px' }}>
             <svg
                 className="lds-spinner"
                 width="34px"

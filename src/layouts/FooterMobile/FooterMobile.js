@@ -49,7 +49,7 @@ function FooterMobile() {
 
     const handleClick = () => {
         if (user) {
-            navigate(MENU_SIDEBAR[0]);
+            navigate(MENU_SIDEBAR[0].path);
         } else {
             navigate('/');
             dispatch(setOpenModalLogin(true));
@@ -60,7 +60,7 @@ function FooterMobile() {
             <div
                 end
                 to={MENU_SIDEBAR[0].path}
-                className={cx('item', pathname.includes(MENU_SIDEBAR[0].path)) + ' c-2-4'}
+                className={cx('item', pathname.includes(MENU_SIDEBAR[0].path) && 'active') + ' c-2-4'}
                 onClick={handleClick}
             >
                 {MENU_SIDEBAR[0].icon}

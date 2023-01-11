@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Api from '~/components/Api/Service';
 import { zingHome } from '~/redux/dataHome';
 import style from './Home.module.scss';
-import HomeGallery from './HomeGallery';
-import HomeRelease from './HomeRelease';
-import HomeSpotlight from './HomeSpotlight';
-import HomeNewSong from './HomeNewSong';
-import HomeLiveRadio from './HomeLiveRadio';
-import HomeEvent from './HomeEvent';
+import HomeGallery from './HomeGallery/HomeGallery';
+import HomeRelease from './HomeRelease/HomeRelease';
+import HomeSpotlight from './HomeSpotlight/HomeSpotlight';
+import HomeNewSong from './HomeNewSong/HomeNewSong';
+import HomeLiveRadio from './HomeLiveRadio/HomeLiveRadio';
+import HomeEvent from './HomeEvent/HomeEvent';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
 import Loading from '~/components/load/Loading/Loading';
 
@@ -32,9 +32,9 @@ function Home() {
                 i.sectionType === 'banner' ? (
                     <HomeGallery data={i} />
                 ) : i.sectionType === 'playlist' && i.sectionId === 'h100' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} link={i.link} all className={cx('playlist')} />
+                    <ContainerPlaylist data={i?.items} title={i?.title} link={i.link} all scroll />
                 ) : i.sectionType === 'playlist' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} className={cx('playlist')} />
+                    <ContainerPlaylist data={i?.items} title={i?.title} scroll />
                 ) : i.sectionType === 'livestream' ? (
                     <HomeLiveRadio data={i} />
                 ) : i.sectionType === 'new-release' ? (

@@ -163,7 +163,7 @@
                         color: var(--text-primary);
                     }
                     .active {
-                        color: var(--link-text-hover);
+                        color: var(--link-text-hover) !important;
                         transition: 0.3s linear;
                     }
                     .is-over {

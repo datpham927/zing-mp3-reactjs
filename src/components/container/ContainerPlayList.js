@@ -11,17 +11,26 @@ function ContainerPlaylist({
     spotlight = false,
     description = false,
     className,
+    scroll,
 }) {
     return spotlight
         ? data && (
-              <Container title={title} data={data} link={link} all={all} spotlight={spotlight} className={className}>
+              <Container
+                  scroll
+                  title={title}
+                  data={data}
+                  link={link}
+                  all={all}
+                  spotlight={spotlight}
+                  className={className}
+              >
                   {data?.items.map(
                       (e, i) => i < index && <ItemPlayList description={description} data={e} key={e.encodeId} />,
                   )}
               </Container>
           )
         : data && (
-              <Container title={title} link={link} all={all} className={className}>
+              <Container scroll title={title} link={link} all={all} className={className}>
                   {data?.map(
                       (e, i) => i < index && <ItemPlayList description={description} data={e} key={e.encodeId} />,
                   )}

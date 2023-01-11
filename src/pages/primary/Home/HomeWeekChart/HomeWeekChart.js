@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Container from '~/components/container/Container';
 
 import className from 'classnames/bind';
-import style from './Home.module.scss';
+import style from './HomeSpotlight.module.scss';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);

@@ -75,6 +75,7 @@
     font-size: 1.4rem;
     padding: 9px 24px;
     border-radius: 999px;
+    flex-shrink: 0;
     & p {
         margin: 0 8px;
     }
@@ -85,12 +86,7 @@
         color: var(--text-primary);
     }
 }
-.btn.action {
-    background-color: var(--purple-primary);
-    border-color: var(--purple-primary);
-    margin-right: 10px;
-    color: #fff;
-}
+
 .btnItem {
     font-size: 1.2rem;
     padding: 4px 24px;
@@ -99,4 +95,21 @@
 }
 .content {
     margin-left: 5px;
+}
+.btn.action {
+    background-color: var(--purple-primary);
+    border-color: var(--purple-primary);
+    margin-right: 10px;
+    & p {
+        color: #fff;
+    }
+}
+@media (max-width: 740px) {
+    .btnItem {
+        padding: 6px 15px !important;
+        margin: 0 5px !important;
+    }
+    .content {
+        margin-left: 5px !important;
+    }
 }

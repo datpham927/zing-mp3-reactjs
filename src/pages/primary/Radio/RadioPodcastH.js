@@ -32,13 +32,21 @@ function RadioPodcastH({ data }) {
                 mousewheel={true}
                 loop={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                slidesPerView={2}
-                slidesPerGroup={1}
+                breakpoints={{
+                    1: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                    },
+                    740: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1,
+                    },
+                }}
             >
                 <Container title={data.title}>
-                    {data?.items?.map((item, index) => (
+                    {data?.items?.map((item) => (
                         <SwiperSlide>
-                            <ItemPodcastH key={item.encodeId} data={item} col={'l-12 m-12'} />
+                            <ItemPodcastH key={item.encodeId} data={item} col={'l-12 m-12 c-12'} />
                         </SwiperSlide>
                     ))}
                 </Container>

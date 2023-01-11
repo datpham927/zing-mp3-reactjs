@@ -34,6 +34,10 @@ function RadioLivestream({ data }) {
                 loop={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 breakpoints={{
+                    1: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1,
+                    },
                     740: {
                         slidesPerView: 5,
                         slidesPerGroup: 2,

@@ -1,7 +1,7 @@
 import Button from '~/components/Button';
 import Container from '~/components/container/Container';
 import className from 'classnames/bind';
-import style from './Home.module.scss';
+import style from './HomeEvent.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/scss';
@@ -20,10 +20,9 @@ function HomeEvent({ data }) {
             <Swiper
                 className={('swiper', 'mySwiper')}
                 autoplay={{
-                    delay: 1000,
+                    // delay: 2000,
                     disableOnInteraction: false,
                 }}
-                allowTouchMove={false}
                 navigation={{
                     prevEl: navigationPrevRef.current,
                     nextEl: navigationNextRef.current,
@@ -34,29 +33,37 @@ function HomeEvent({ data }) {
                 }}
                 mousewheel={true}
                 loop={true}
-                modules={[Autoplay, Pagination, Navigation]}
-                slidesPerView={3}
-                slidesPerGroup={1}
+                // modules={[Autoplay, Pagination, Navigation]}
+                breakpoints={{
+                    1: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                        allowTouchMove: true,
+                    },
+                    740: {
+                        allowTouchMove: false,
+                        slidesPerView: 3,
+                        slidesPerGroup: 2,
+                    },
+                }}
             >
                 <div className={cx('wrapper-event')}>
                     {data?.items?.map((item) => (
-                        <li className="1-4" key={item.encodeId}>
-                            <SwiperSlide>
-                                <ItemEvent col="" data={item} />
-                            </SwiperSlide>
-                        </li>
+                        <SwiperSlide>
+                            <ItemEvent col="" data={item} />
+                        </SwiperSlide>
                     ))}
                 </div>
                 <Button
                     noContent
                     ref={navigationPrevRef}
-                    className={cx('btn-right')}
+                    className={cx('btn-right') + ' c-0'}
                     iconLeft={<i className="icon ic-go-right"></i>}
                 />
                 <Button
                     noContent
                     ref={navigationNextRef}
-                    className={cx('btn-left')}
+                    className={cx('btn-left') + ' c-0'}
                     iconLeft={<i className="icon ic-go-left"></i>}
                 />
             </Swiper>

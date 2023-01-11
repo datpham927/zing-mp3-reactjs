@@ -5,7 +5,7 @@ function RadioRadPromoteEpisode({ data }) {
     return (
         <Container title={data?.title}>
             {data?.items?.map(
-                (item, index) => index < 6 && <ItemPodcast col={'l-6 m-6'} key={item.encodeId} data={item} />,
+                (item, index) => index < 6 && <ItemPodcast col={'l-6 m-6 c-12'} key={item.encodeId} data={item} />,
             )}
         </Container>
     );

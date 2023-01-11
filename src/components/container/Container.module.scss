@@ -85,3 +85,17 @@
         margin-top: 0;
     }
 }
+
+@media (max-width: 740px) {
+    .header {
+        .title {
+            font-size: 1.8rem !important;
+        }
+    }
+    .scroll {
+        & .body {
+            flex-wrap: nowrap;
+            overflow-x: scroll;
+        }
+    }
+}

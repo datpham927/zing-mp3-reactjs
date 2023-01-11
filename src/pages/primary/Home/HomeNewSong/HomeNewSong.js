@@ -1,6 +1,6 @@
 import className from 'classnames/bind';
 
-import style from './Home.module.scss';
+import style from './HomeNewSong.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper';

@@ -3,7 +3,7 @@ import className from 'classnames/bind';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import style from './Home.module.scss';
+import style from './HomeGallery.module.scss';
 const cx = className.bind(style);
 
 function HomeGallery({ data }) {

@@ -14,9 +14,10 @@ function Container({
     spotlight,
     subtitle = 'PLAYLIST NỔI BẬT',
     swiper,
+    scroll,
 }) {
     return spotlight ? (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', { scroll })}>
             <div className={cx('header-spotlight')}>
                 <div className={cx('image')}>
                     <img src={data?.top?.thumbnail || data?.subTitle?.thumbnail} alt="" />
@@ -51,7 +52,7 @@ function Container({
             {children}
         </div>
     ) : (
-        <div className={cx('container', className)}>
+        <div className={cx('container', className, { scroll })}>
             {title && (
                 <div className={cx('header')}>
                     <h1 className={cx('title')}>{title}</h1>

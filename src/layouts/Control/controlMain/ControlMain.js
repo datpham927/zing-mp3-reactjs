@@ -87,11 +87,11 @@ function ControlMain() {
         audioRef.current.currentTime = (newTime * audioRef?.current.duration) / 100;
     };
     return (
-        <div className={cx('main', openLyric && 'active-lyric') + ' l-6 m-6 c-4'}>
+        <div className={cx('main', openLyric && 'active-lyric') + ' l-6 m-6 ' + (!openLyric ? 'c-4' : 'c-12')}>
             <div className={cx('action')}>
                 <Button
                     onClick={() => dispatch(setShuffle(!shuffle))}
-                    className={cx('btn', shuffle && 'shuffle') + ' c-0'}
+                    className={cx('btn', shuffle && 'shuffle') + (!openLyric ? ' c-0' : '')}
                     small
                     disable={listMusic?.length === 1}
                     content={shuffle ? 'Tắt phát ngẫu nhiên' : 'Bật phát ngẫu nhiên'}
@@ -102,7 +102,7 @@ function ControlMain() {
                     onClick={() => {
                         dispatch(setPrev(true));
                     }}
-                    className={cx('btn') + ' c-0'}
+                    className={cx('btn') + (!openLyric ? ' c-0' : '')}
                     small
                     noContent
                     iconLeft={<i className="icon ic-pre"></i>}
@@ -120,7 +120,7 @@ function ControlMain() {
                                 <i className="icon ic-play-circle-outline"></i>
                             )
                         ) : (
-                            <IconLoadControl />
+                            <IconLoadControl className={cx('icon-load')} />
                         )
                     }
                 />
@@ -136,13 +136,13 @@ function ControlMain() {
                 />
                 <Button
                     onClick={() => dispatch(setRepeat(!repeat))}
-                    className={cx('btn') + ' c-0'}
+                    className={cx('btn') + (!openLyric ? ' c-0' : '')}
                     small
                     content={repeat ? 'Tắt phát lại một bài' : 'bật phát lại một bài'}
                     iconLeft={repeat ? <i className="icon ic-repeat-one"></i> : <i className="icon ic-repeat"></i>}
                 />
             </div>
-            <div className={cx('time') + ' c-0'}>
+            <div className={cx('time') + (!openLyric ? ' c-0' : '')}>
                 <p className={cx('start')}>
                     {('0' + Math.floor(audioRef?.current?.currentTime / 60)).slice(-2) +
                         ':' +

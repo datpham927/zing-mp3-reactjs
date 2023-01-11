@@ -403,7 +403,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
         >
             <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'queue-active')}>
                 <div className={cx('media-wrapper')}>
-                    <div className={cx('media-left')}>
+                    <div className={cx('media-left')} style={{ width: '100%' }}>
                         <div className={cx('thumb')}>
                             {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
                             {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
@@ -479,7 +479,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
         >
             <div className={cx('media', className)}>
                 <div className={cx('media-wrapper')}>
-                    <div className={cx('media-left')}>
+                    <div className={cx('media-left')} style={{ width: '100%' }}>
                         <div className={cx('thumb')}>
                             {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
                             <div className={cx('play')} onClick={() => handlePlay()}>

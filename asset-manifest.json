@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ZingMp3-Reacjs/static/css/main.21b45b54.css",
-    "main.js": "/ZingMp3-Reacjs/static/js/main.13fa2f01.js",
+    "main.js": "/ZingMp3-Reacjs/static/js/main.80ded270.js",
     "static/js/496.65c176aa.chunk.js": "/ZingMp3-Reacjs/static/js/496.65c176aa.chunk.js",
     "static/media/mp3-zing.2a3edced.woff": "/ZingMp3-Reacjs/static/media/mp3-zing.2a3edced.ef4b15bdf37ade62d7f0.woff",
     "static/media/2.jpg": "/ZingMp3-Reacjs/static/media/2.57fba1c83934444cb2d0.jpg",
@@ -16,11 +16,11 @@
     "static/media/2.gif": "/ZingMp3-Reacjs/static/media/2.d0c511a1f3b2ef977382.gif",
     "index.html": "/ZingMp3-Reacjs/index.html",
     "main.21b45b54.css.map": "/ZingMp3-Reacjs/static/css/main.21b45b54.css.map",
-    "main.13fa2f01.js.map": "/ZingMp3-Reacjs/static/js/main.13fa2f01.js.map",
+    "main.80ded270.js.map": "/ZingMp3-Reacjs/static/js/main.80ded270.js.map",
     "496.65c176aa.chunk.js.map": "/ZingMp3-Reacjs/static/js/496.65c176aa.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.21b45b54.css",
-    "static/js/main.13fa2f01.js"
+    "static/js/main.80ded270.js"
   ]
 }

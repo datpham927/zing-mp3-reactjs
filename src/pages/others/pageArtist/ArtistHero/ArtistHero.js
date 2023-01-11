@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-implied-eval */
 import classNames from 'classnames/bind';
 import styles from './ArtistHero.module.scss';
@@ -6,7 +7,7 @@ import ContainerSongs from '~/components/container/ContainerSongs';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
 import ContainerVideos from '~/components/container/ContainerVideos';
 import ContainerArtists from '~/components/container/ContainerArtists';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { artist } from '~/components/Api/Service';
 import Loading from '~/components/load/Loading/Loading';
@@ -14,6 +15,7 @@ import Loading from '~/components/load/Loading/Loading';
 const cx = classNames.bind(styles);
 
 function ArtistHero() {
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [kt, setKt] = useState(false);
 
@@ -21,8 +23,12 @@ function ArtistHero() {
     useEffect(() => {
         const fetchApi = async () => {
             const data = await artist(id.name);
-            setData(data);
-            setKt(true);
+            if (data) {
+                setData(data);
+                setKt(true);
+            } else {
+                navigate('/');
+            }
         };
         fetchApi();
     }, [id.name]);

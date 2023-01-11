@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';

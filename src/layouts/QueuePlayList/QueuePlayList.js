@@ -2,7 +2,6 @@ import className from 'classnames/bind';
 import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Slide, toast } from 'react-toastify';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
 import ItemSong from '~/components/item/ItemSong/ItemSong';

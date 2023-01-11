@@ -2,7 +2,6 @@
     "name": "zingmp3",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://datpham927.github.io/ZingMp3-Reacjs",
     "dependencies": {
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
@@ -19,6 +18,7 @@
         "firebase": "^9.15.0",
         "firebaseui": "^6.0.1",
         "gh-pages": "^4.0.0",
+        "netlify-cli": "^12.7.0",
         "next": "^13.0.1",
         "normalize.css": "^8.0.1",
         "prop-types": "^15.8.1",
@@ -48,9 +48,7 @@
         "start": "react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
-        "eject": "react-scripts eject",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build"
+        "eject": "react-scripts eject"
     },
     "eslintConfig": {
         "extends": [

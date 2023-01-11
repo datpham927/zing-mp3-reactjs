@@ -1,6 +1,6 @@
 import className from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { setOpenModalLogin } from '~/redux/action';
 import style from './FooterMobile.module.scss';
 const cx = className.bind(style);

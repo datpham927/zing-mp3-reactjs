@@ -194,7 +194,4 @@ function Sidebar() {
         </div>
     );
 }
-{
-    /* <i class="icon ic-go-"></i> */
-}
 export default Sidebar;

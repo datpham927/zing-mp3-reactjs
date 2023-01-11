@@ -1,5 +1,4 @@
 import className from 'classnames/bind';
-import toastMessage from '~/components/modal/toast';
 import style from './ItemTopic.module.scss';
 
 const cx = className.bind(style);

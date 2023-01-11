@@ -1,15 +1,9 @@
-/* eslint-disable react/jsx-pascal-case */
-import classNames from 'classnames/bind';
 import Button from '~/components/Button';
 import { Icon } from '../../components/Icons';
-import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
 import { setOpenModalLogin } from '~/redux/action';
 import { useDispatch, useSelector } from 'react-redux';
 import TippyMenu from '~/components/menu/tippyMenu/TippyMenu';
-
-const cx = classNames.bind(style);
-
 const MENU_LOGOUT = [
     {
         id: 0,

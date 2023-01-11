@@ -81,8 +81,8 @@
         .right {
             display: flex;
             flex-shrink: 0;
-            text-align: end;
-            justify-content: end;
+            text-align: flex-end;
+            justify-content: flex-end;
             .btn {
                 padding: 8px 7px;
                 text-transform: uppercase;

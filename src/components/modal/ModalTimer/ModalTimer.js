@@ -2,7 +2,6 @@
 import className from 'classnames/bind';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Slide, toast } from 'react-toastify';
 import ButtonAction from '~/components/Button/ButtonAction';
 import { setDateTime, setModalTimer, setTimer } from '~/redux/action';
 import toastMessage from '../toast';

@@ -9,7 +9,6 @@ import { setModalAddPlayList } from '~/redux/action';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import style from './ModalAddPlayList.module.scss';
 import { v4 as uuidv4 } from 'uuid';
-import { Slide, toast } from 'react-toastify';
 import { setCreatePlayList, setEditPlayList } from '~/redux/FavoriteList';
 import { useNavigate } from 'react-router-dom';
 import toastMessage from '../toast';

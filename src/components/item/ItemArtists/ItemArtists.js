@@ -9,7 +9,7 @@ import styles from './ItemArtists.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ItemArtists({ data, col = 'l-3 m-3 ' }) {
+function ItemArtists({ data, col = 'l-3 m-3 c-6' }) {
     const [care, setCare] = useState(false);
     return (
         <li className={cx('item') + ` ${col} col `}>

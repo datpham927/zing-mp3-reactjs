@@ -11,6 +11,7 @@ import { IconLoadMusic } from '~/components/Icons/Icons';
 import { setIdPlayList, setPlayListFavorite } from '~/redux/FavoriteList';
 import { setActivePlay, setLoadMusic, setOpenControl } from '~/redux/dataControl';
 import toastMessage from '~/components/modal/toast';
+import TimeAlbum from '../TimeAlbum/TimeAlbum';
 const cx = classNames.bind(style);
 
 function LeftAlbum({ data }) {
@@ -35,12 +36,12 @@ function LeftAlbum({ data }) {
         dispatch(setActivePlay(false));
     };
     return (
-        <div className={cx('left') + ' l-4 m-4'}>
+        <div className={cx('left') + ' l-4 m-4 c-12'}>
             <div className={cx('image', activePlay ? 'rotate' : 'rotate-pause')}>
                 <img src={data?.thumbnailM} alt="" />
 
                 {activePlay ? (
-                    <div className={cx('song-play')} onClick={handlePause}>
+                    <div className={cx('song-play') + ' c-0'} onClick={handlePause}>
                         {loadMusic ? (
                             <img
                                 src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -51,7 +52,7 @@ function LeftAlbum({ data }) {
                         )}
                     </div>
                 ) : (
-                    <div className={cx('play')} onClick={handlePlay}>
+                    <div className={cx('play') + ' c-0'} onClick={handlePlay}>
                         <i className="icon ic-play-circle-outline"></i>
                     </div>
                 )}
@@ -100,7 +101,7 @@ function LeftAlbum({ data }) {
                 >
                     {activePlay ? 'TẠM DỪNG' : 'TIẾP TỤC PHÁT'}
                 </ButtonAction>
-                <div className={cx('wrapper-icon')}>
+                <div className={cx('wrapper-icon') + ' c-0'}>
                     {booleanKindPlaylist && (
                         <Button
                             onClick={() => handleLike()}
@@ -117,6 +118,7 @@ function LeftAlbum({ data }) {
                     )}
                     <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />
                 </div>
+                <TimeAlbum data={data} />
             </div>
         </div>
     );

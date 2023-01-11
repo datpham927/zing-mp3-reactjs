@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ButtonAction from '~/components/Button/ButtonAction';
 import { setAddPlayList, setSelectionAll } from '~/redux/FavoriteList';
 import toastMessage from '~/components/modal/toast';
+import TimeAlbum from '../TimeAlbum/TimeAlbum';
 const cx = classNames.bind(style);
 
 function RightAlbum({ data }) {
@@ -141,17 +142,9 @@ function RightAlbum({ data }) {
                             link={data.link}
                         />
                     </div>
-                    <h1 className={cx('bottom')}>
-                        <span>{data.song?.total + ' bài hát •'} </span>
-                        <span>
-                            {data.song?.totalDuration > 3600
-                                ? Math.floor(data.song?.totalDuration / 3600) +
-                                  ' giờ ' +
-                                  (data.song?.totalDuration % 3600 !== 0 &&
-                                      Math.floor((data.song?.totalDuration % 3600) / 60) + ' phút')
-                                : Math.floor(data.song?.totalDuration / 60) + ' phút'}
-                        </span>
-                    </h1>
+                    <div className={cx('bottom') + ' c-0'}>
+                        <TimeAlbum data={data} />
+                    </div>
                 </>
             ) : (
                 <>

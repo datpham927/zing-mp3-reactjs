@@ -149,19 +149,17 @@
             }
         }
     }
-    .bottom {
-        margin-top: 10px;
-        color: var(--text-secondary);
-        font-size: 1.4rem;
-        font-weight: 500;
-        & span {
-            font-size: 12px;
-            margin: 0 10px;
-        }
-    }
+
     &::after {
         display: block;
         clear: both;
         content: '';
+    }
+}
+
+@media (max-width: 740px) {
+    .right {
+        margin: 0;
+        padding: 0;
     }
 }

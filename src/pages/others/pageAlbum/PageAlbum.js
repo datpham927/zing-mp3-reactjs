@@ -49,11 +49,11 @@ function PageAlbum() {
                 <RightAlbum data={data} />
             </div>
             <div className={cx('body')}>
-                {data?.playlists && <ContainerPlaylist data={data?.playlists} title="Playlist/Album" />}
+                {data?.playlists && <ContainerPlaylist scroll data={data?.playlists} title="Playlist/Album" />}
                 {/* ---------------------- */}
-                {data?.videos && <ContainerVideos data={data?.videos} title="MV" />}
+                {data?.videos && <ContainerVideos scroll data={data?.videos} title="MV" />}
                 {/* ---------------------- */}
-                {data?.artists && <ContainerArtists data={data?.artists} title="Nghệ Sĩ/OA" />}
+                {data?.artists && <ContainerArtists scroll data={data?.artists} title="Nghệ Sĩ/OA" />}
             </div>
         </div>
     ) : (

@@ -106,6 +106,9 @@
     }
     & .btn-album {
         margin: auto;
+        i {
+            color: #fff;
+        }
     }
 }
 
@@ -131,5 +134,104 @@
         -webkit-transform: rotate(0deg);
         -moz-transform: rotate(0deg);
         -o-transform: rotate(0deg);
+    }
+}
+@media (max-width: 740px) {
+    .left {
+        position: unset;
+        text-align: center;
+        .image {
+            width: 50%;
+            margin: auto;
+            & img {
+                display: block;
+                width: 100%;
+                transition: 0.3s linear;
+            }
+            &:hover img {
+                transform: scale(1.1);
+            }
+            .song-play,
+            .play {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                text-align: center;
+                align-items: center;
+                color: white;
+                font-size: 20px;
+                line-height: 100%;
+                background-color: var(--dark-alpha-50);
+                justify-content: center;
+            }
+            .song-play {
+                & img {
+                    width: 3rem;
+                    height: 3rem;
+                }
+                display: flex;
+            }
+            .play {
+                & i {
+                    font-size: 5rem;
+                }
+                display: flex;
+            }
+            &:hover {
+                background-color: var(--box-hot-item-bg-hover);
+            }
+            &:hover .play {
+                display: flex;
+            }
+        }
+        & .rotate.image {
+            border-radius: 0;
+            border: 1px solid black;
+            animation: none;
+        }
+        & .rotate-pause.image {
+            animation: none;
+        }
+        .content {
+            text-align: center;
+            margin-bottom: 16px;
+            & h3 {
+                display: flex;
+                justify-content: center;
+                font-size: 2rem;
+                color: var(--text-primary);
+                margin-top: 10px;
+            }
+            .artist {
+                color: var(--text-secondary);
+                & span {
+                    & a {
+                        align-items: center;
+                        color: var(--text-secondary);
+                    }
+                    transition: 0.1s linear;
+                    &:hover a {
+                        color: var(--link-text-hover);
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .like {
+                font-size: 1.2rem;
+                color: var(--text-secondary);
+                line-height: 1.75;
+                margin-bottom: 10px;
+            }
+            .wrapper-icon {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+        }
+        & .btn-album {
+            margin: auto;
+        }
     }
 }

@@ -2,10 +2,10 @@ import Container from './Container';
 import { memo } from 'react';
 import ItemVideo from '../item/ItemVideo/ItemVideo';
 
-function ContainerVideos({ data, title, link, all = false, index = 3 }) {
+function ContainerVideos({ data, title, link, all = false, index = 3, scroll }) {
     return (
         data && (
-            <Container title={title} data={data} link={link} all={all}>
+            <Container title={title} data={data} link={link} all={all} scroll>
                 {data?.map((e, i) => i < index && <ItemVideo key={e.encodeId} data={e} />)}
             </Container>
         )

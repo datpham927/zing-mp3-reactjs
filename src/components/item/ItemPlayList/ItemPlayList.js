@@ -39,7 +39,7 @@ function ItemPlayList({ data, type = '', description, className }) {
         }
     };
     return type === 'Single & EP' ? (
-        <li className={cx('item', className) + ' l-3 m-3 col '}>
+        <li className={cx('item', className) + ' l-3 m-3 c-6 col '}>
             <div className={cx('wrapper')}>
                 <div className={cx('image-hover')}>
                     <div className={cx('container-image')}>

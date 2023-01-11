@@ -54,7 +54,7 @@ export const zingAudio = createSlice({
                 if (state.shuffle && !state.booleanQueueList) {
                     let index;
                     do {
-                        index = Math.floor(Math.random() * state.playListAudio.length);
+                        index = Math.floor(Math.random() * state.playListAudio?.length);
                     } while (state.playListAudio[index]?.streamingStatus === 2);
                     state.currentIndex = index;
                     state.idAudio = state.playListAudio[state.currentIndex];
@@ -63,7 +63,7 @@ export const zingAudio = createSlice({
                     do {
                         index++;
                     } while (state.playListAudio[index]?.streamingStatus === 2);
-                    index > state.playListAudio.length - 1 ? (state.currentIndex = 0) : (state.currentIndex = index);
+                    index > state.playListAudio?.length - 1 ? (state.currentIndex = 0) : (state.currentIndex = index);
 
                     state.idAudio = state.playListAudio[state.currentIndex];
                 }
@@ -78,7 +78,7 @@ export const zingAudio = createSlice({
                 if (state.shuffle && !state.booleanQueueList) {
                     let shuffle;
                     do {
-                        shuffle = Math.floor(Math.random() * state.playListAudio.length);
+                        shuffle = Math.floor(Math.random() * state.playListAudio?.length);
                     } while (state.playListAudio[shuffle]?.streamingStatus === 2);
                     state.currentIndex = shuffle;
                     state.idAudio = state.playListAudio[state.currentIndex];
@@ -87,7 +87,7 @@ export const zingAudio = createSlice({
                     do {
                         index--;
                     } while (state.playListAudio[index]?.streamingStatus === 2);
-                    index < 0 ? (state.currentIndex = state.playListAudio.length - 1) : (state.currentIndex = index);
+                    index < 0 ? (state.currentIndex = state.playListAudio?.length - 1) : (state.currentIndex = index);
                     state.idAudio = state.playListAudio[state.currentIndex];
                 }
             }
@@ -126,7 +126,7 @@ export const zingAudio = createSlice({
             localStorage.setItem('audio', JSON.stringify(state));
         },
         setRecentList: (state, action) => {
-            if (state.recentList.length === 0) {
+            if (state.recentList?.length === 0) {
                 state.recentList.push(action.payload);
             } else {
                 const id = state.recentList.map((e) => e?.encodeId);

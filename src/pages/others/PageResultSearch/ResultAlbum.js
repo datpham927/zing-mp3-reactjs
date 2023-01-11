@@ -8,7 +8,7 @@ function ResultAlbum() {
     return (
         <>
             {data?.playlists ? (
-                <ContainerPlaylist data={data?.playlists} title={'Playlist/Album'} index={data?.playlists.length} />
+                <ContainerPlaylist data={data?.playlists} title={'Playlist/Album'} index={data?.playlists?.length} />
             ) : (
                 <NoContent />
             )}

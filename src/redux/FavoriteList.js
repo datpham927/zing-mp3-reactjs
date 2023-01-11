@@ -15,7 +15,7 @@ export const zingFavorite = createSlice({
     initialState,
     reducers: {
         setSongFavorite: (state, action) => {
-            if (state.songFavorite.length === 0) {
+            if (state.songFavorite?.length === 0) {
                 state.songFavorite.push(action.payload);
             } else {
                 const id = state.songFavorite.map((e) => e.encodeId);
@@ -30,7 +30,7 @@ export const zingFavorite = createSlice({
         },
 
         setMvFavorite: (state, action) => {
-            if (state.mvFavorite.length === 0) {
+            if (state.mvFavorite?.length === 0) {
                 state.mvFavorite.push(action.payload);
             } else {
                 const id = state.mvFavorite.map((e) => e.encodeId);
@@ -45,7 +45,7 @@ export const zingFavorite = createSlice({
         },
 
         setPlayListFavorite: (state, action) => {
-            if (state.playListFavorite.length === 0) {
+            if (state.playListFavorite?.length === 0) {
                 state.playListFavorite.push(action.payload);
             } else {
                 const id = state.playListFavorite.map((e) => e.encodeId);
@@ -70,7 +70,7 @@ export const zingFavorite = createSlice({
             if (action.payload === {}) {
                 state.addPlayList = [];
             } else {
-                if (state.addPlayList.length === 0) {
+                if (state.addPlayList?.length === 0) {
                     state.addPlayList.push(action.payload);
                 } else {
                     const id = state.addPlayList.map((e) => e.encodeId);
@@ -101,7 +101,7 @@ export const zingFavorite = createSlice({
         },
 
         setDeletePlayList: (state) => {
-            if (state.privatePlayLists.length === 1) {
+            if (state.privatePlayLists?.length === 1) {
                 state.privatePlayLists = [];
             } else {
                 state.privatePlayLists = state.privatePlayLists.filter((e) => e.encodeId !== state.idDeletePlayList);

@@ -7,7 +7,7 @@ function SongUsuk() {
     const { dataNewSongs } = useSelector((state) => state.dataHome);
     return (
         <Container>
-            <ContainerSongs data={dataNewSongs?.others} type={'add'} index={dataNewSongs?.others.length} />
+            <ContainerSongs data={dataNewSongs?.others} type={'add'} index={dataNewSongs?.others?.length} />
         </Container>
     );
 }

@@ -44,7 +44,7 @@ function Bottom() {
         dispatch(setPlayListAudio(listNew));
         dispatch(setOpenQueueList(true));
 
-        toastMessage(`Đã ${addPlayList.length} thêm bài hát vào danh sách`);
+        toastMessage(`Đã ${addPlayList?.length} thêm bài hát vào danh sách`);
     };
     return (
         <div className={cx('bottom')}>
@@ -57,7 +57,7 @@ function Bottom() {
                 </ButtonAction>
             </div>
             {covertTap ? (
-                mvFavorite.length > 0 ? (
+                mvFavorite?.length > 0 ? (
                     <ContainerVideos data={mvFavorite} />
                 ) : (
                     <Empty
@@ -65,18 +65,18 @@ function Bottom() {
                         link="/the-loai-video/Viet-Nam/IWZ9Z08I.html"
                     />
                 )
-            ) : songFavorite.length > 0 ? (
+            ) : songFavorite?.length > 0 ? (
                 <>
                     <div className={cx('header')}>
                         <div className={cx('left')}>
-                            {addPlayList.length > 0 ? (
+                            {addPlayList?.length > 0 ? (
                                 <div className={cx('add-playlist')}>
                                     <div className={cx('action-checkbox', 'active-checkbox')}>
                                         <i className="icon ic-song"></i>
                                         <div className={cx('checkbox')} onClick={() => setAll((e) => !e)}>
                                             <input
                                                 type="checkBox"
-                                                checked={songFavorite.length === addPlayList.length}
+                                                checked={songFavorite?.length === addPlayList?.length}
                                             ></input>
                                         </div>
                                     </div>

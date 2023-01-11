@@ -40,7 +40,7 @@ function ItemPlayMv({ data }) {
                                 <Link onClick={handleClickArtist} to={i.link}>
                                     {i.name}
                                 </Link>
-                                {index < data?.artists.length - 1 && ', '}
+                                {index < data?.artists?.length - 1 && ', '}
                             </>
                         ))}
                     </span>

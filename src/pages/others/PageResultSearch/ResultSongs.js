@@ -7,7 +7,7 @@ function ResultSongs() {
     return (
         <div>
             {data.songs ? (
-                <ContainerSongs title={'Bài Hát'} data={data?.songs} type={'song-12'} index={data?.songs.length} />
+                <ContainerSongs title={'Bài Hát'} data={data?.songs} type={'song-12'} index={data?.songs?.length} />
             ) : (
                 <NoContent />
             )}

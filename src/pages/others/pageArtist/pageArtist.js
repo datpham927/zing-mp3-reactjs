@@ -27,7 +27,7 @@ function PageArtist() {
         navigate(-1);
     }, []);
     const data = useSelector((state) => state.dataArtist.dataArtist);
-    return data.length !== 0 ? (
+    return data?.length !== 0 ? (
         <div className={cx('wrapper')}>
             <ArtistHeader data={data} />
             <ArtistBody />

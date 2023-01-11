@@ -13,13 +13,13 @@ const cx = classNames.bind(styles);
 
 function ArtistOverview() {
     const data = useSelector((state) => state.dataArtist.dataArtist);
-    return data.length !== 0 ? (
+    return data?.length !== 0 ? (
         <div className={cx('wrapper')}>
             {data?.sections ? (
                 <>
                     {data?.sections?.map((e) =>
                         e.sectionType === 'song' ? (
-                            e.items.length > 3 && <SongSpotlight data={e} />
+                            e.items?.length > 3 && <SongSpotlight data={e} />
                         ) : e.sectionType === 'playlist' ? (
                             <ContainerPlaylist data={e.items} title={e.title} />
                         ) : e.sectionType === 'video' ? (

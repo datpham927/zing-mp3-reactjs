@@ -27,7 +27,7 @@ function PageHub() {
                     <img src={image} alt="" />
                 </div>
             </div>
-            <ContainerPlayList data={dataPlaylist} index={dataPlaylist.length} />
+            <ContainerPlayList data={dataPlaylist} index={dataPlaylist?.length} />
         </>
     );
 }

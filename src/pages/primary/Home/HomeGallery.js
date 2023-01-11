@@ -23,23 +23,23 @@ function HomeGallery({ data }) {
                 } else {
                     item.classList.replace('Home_first__6BikT', 'Home_four__iAiTT');
                 }
-                if (numberIndex === listImg.length - 2) {
+                if (numberIndex === listImg?.length - 2) {
                     listImg[0].classList.replace('Home_four__iAiTT', 'Home_third__zpBHp');
                 }
-                if (numberIndex === listImg.length - 1) {
+                if (numberIndex === listImg?.length - 1) {
                     listImg[0].classList.replace('Home_third__zpBHp', 'Home_second__RvisO');
                     listImg[1].classList.replace('Home_four__iAiTT', 'Home_third__zpBHp');
                 }
             });
             numberIndex++;
-            if (numberIndex > listImg.length - 1) {
+            if (numberIndex > listImg?.length - 1) {
                 numberIndex = 0;
             }
         };
         setInterval(() => change(), 3000);
     };
 
-    listImg.length > 0 && autoChange();
+    listImg?.length > 0 && autoChange();
 
     return (
         <div className={cx('gallery')} style={{ height: heightImg }}>

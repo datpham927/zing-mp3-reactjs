@@ -7,7 +7,7 @@ function ResultMv() {
     return (
         <>
             {data.videos ? (
-                <ContainerVideos data={data?.videos} index={data.videos.length} title={'MV'} />
+                <ContainerVideos data={data?.videos} index={data.videos?.length} title={'MV'} />
             ) : (
                 <NoContent />
             )}

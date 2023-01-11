@@ -44,18 +44,21 @@ function LibrarySongs() {
         dispatch(setPlayListAudio(listNew));
         dispatch(setOpenQueueList(true));
 
-        toastMessage(`Đã ${addPlayList.length} thêm bài hát vào danh sách`);
+        toastMessage(`Đã ${addPlayList?.length} thêm bài hát vào danh sách`);
     };
-    return songFavorite.length > 0 ? (
+    return songFavorite?.length > 0 ? (
         <Container title="Bài hát yêu thích">
             <div className={cx('header')}>
                 <div className={cx('left')}>
-                    {addPlayList.length > 0 ? (
+                    {addPlayList?.length > 0 ? (
                         <div className={cx('add-playlist')}>
                             <div className={cx('action-checkbox', 'active-checkbox')}>
                                 <i className="icon ic-song"></i>
                                 <div className={cx('checkbox')} onClick={() => setAll((e) => !e)}>
-                                    <input type="checkBox" checked={songFavorite.length === addPlayList.length}></input>
+                                    <input
+                                        type="checkBox"
+                                        checked={songFavorite?.length === addPlayList?.length}
+                                    ></input>
                                 </div>
                             </div>
                             <ButtonAction

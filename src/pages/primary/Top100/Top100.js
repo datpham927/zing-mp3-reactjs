@@ -23,13 +23,13 @@ function Top100() {
                 <ImgTop100 />
             </div>
 
-            {data.length !== 0 ? (
+            {data?.length !== 0 ? (
                 data?.map((e, i) => (
                     <ContainerPlayList
                         key={i}
                         data={e?.items}
                         title={e.title}
-                        index={e?.items.length}
+                        index={e?.items?.length}
                         className={cx('item')}
                     />
                 ))

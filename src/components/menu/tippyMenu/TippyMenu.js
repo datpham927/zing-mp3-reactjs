@@ -17,11 +17,11 @@ function TippyMenu({ MENU_ITEM = [], children }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [history, setHistory] = useState([{ data: MENU_ITEM }]);
-    const current = history[history.length - 1];
+    const current = history[history?.length - 1];
 
     const onBack = () => {
-        if (history.length > 1) {
-            setHistory((prev) => prev.slice(0, prev.length - 1));
+        if (history?.length > 1) {
+            setHistory((prev) => prev.slice(0, prev?.length - 1));
         }
     };
     const handleRender = (attrs) => (

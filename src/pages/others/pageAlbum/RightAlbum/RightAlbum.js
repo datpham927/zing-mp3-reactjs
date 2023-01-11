@@ -21,7 +21,7 @@ function RightAlbum({ data }) {
 
     useEffect(() => {
         dispatch(setPlayListAudio(newDataSong));
-        const index = Math.floor(Math.random() * newDataSong.length - 1);
+        const index = Math.floor(Math.random() * newDataSong?.length - 1);
         dispatch(setCurrentIndex(index));
         if (activePlay) {
             dispatch(setLoadMusic(false));
@@ -77,7 +77,7 @@ function RightAlbum({ data }) {
         });
         dispatch(setPlayListAudio(listNew));
         dispatch(setOpenQueueList(true));
-        toastMessage(`Đã ${addPlayList.length} thêm bài hát vào danh sách`);
+        toastMessage(`Đã ${addPlayList?.length} thêm bài hát vào danh sách`);
     };
     return (
         <div className={cx('right') + ' l-8 m-8'}>
@@ -91,14 +91,14 @@ function RightAlbum({ data }) {
                 <>
                     <div className={cx('header')}>
                         <div className={cx('left')}>
-                            {addPlayList.length > 0 ? (
+                            {addPlayList?.length > 0 ? (
                                 <div className={cx('add-playlist')}>
                                     <div className={cx('action-checkbox', 'active-checkbox')}>
                                         <i className="icon ic-song"></i>
                                         <div className={cx('checkbox')} onClick={() => setAll((e) => !e)}>
                                             <input
                                                 type="checkBox"
-                                                checked={newDataSong.length === addPlayList.length}
+                                                checked={newDataSong?.length === addPlayList?.length}
                                             ></input>
                                         </div>
                                     </div>

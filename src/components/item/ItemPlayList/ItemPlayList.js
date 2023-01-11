@@ -80,7 +80,7 @@ function ItemPlayList({ data, type = '', description, className }) {
                         <Link to={data.link}>{data.title}</Link>
                     </span>
                     {data.artists &&
-                        (data.artists.length > 0 ? (
+                        (data.artists?.length > 0 ? (
                             <span className={cx('subtitle')} style={{ color: 'var(--text-secondary)' }}>
                                 {data.releaseDate}
                             </span>
@@ -191,7 +191,7 @@ function ItemPlayList({ data, type = '', description, className }) {
                                     <span>
                                         <Link to={item.link}>{item.name}</Link>
                                     </span>
-                                    {index < data.artists.length - 1 && ', '}
+                                    {index < data.artists?.length - 1 && ', '}
                                 </span>
                             ))
                         ) : (

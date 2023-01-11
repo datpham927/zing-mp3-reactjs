@@ -31,7 +31,7 @@ function TopPagesAll({ data, type = '' }) {
                             {data?.artistsNames.split(',').map((i, index) => (
                                 <>
                                     <Link to={data?.artists[index]?.link}>{i}</Link>
-                                    <span>{index < data?.artistsNames.split(',').length - 1 && ', '}</span>
+                                    <span>{index < data?.artistsNames.split(',')?.length - 1 && ', '}</span>
                                 </>
                             ))}
                         </div>

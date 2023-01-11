@@ -42,7 +42,7 @@ function ItemNewRelease({ data, index, col = ' l-4 m-4', onClick }) {
                             {data?.artists?.map((i, index) => (
                                 <div key={index}>
                                     <Link to={i.link}>{i.name}</Link>
-                                    {index < data?.artists.length - 1 && ', '}
+                                    {index < data?.artists?.length - 1 && ', '}
                                 </div>
                             ))}
                         </span>

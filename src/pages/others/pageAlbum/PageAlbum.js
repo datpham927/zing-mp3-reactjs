@@ -42,7 +42,7 @@ function PageAlbum() {
             }
         }
     }, [id]);
-    return data.length !== 0 ? (
+    return data?.length !== 0 ? (
         <div className={cx('wrapper')}>
             <div className={cx('top')}>
                 <LeftAlbum data={data} />

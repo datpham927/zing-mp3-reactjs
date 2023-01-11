@@ -27,7 +27,7 @@ function Category() {
     const topic = datas?.topic;
     const nations = datas?.nations;
     const genre = datas?.genre;
-    return datas.length !== 0 ? (
+    return datas?.length !== 0 ? (
         <div>
             <div className={cx('header')}>
                 <Link to={banner?.link}>

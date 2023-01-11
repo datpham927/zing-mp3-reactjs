@@ -26,7 +26,7 @@ function Home() {
         getTodoItems();
     }, []);
     const { dataHome } = useSelector((state) => state.dataHome);
-    return dataHome.length !== 0 ? (
+    return dataHome?.length !== 0 ? (
         <div className={cx('wrapper')}>
             {dataHome?.map((i) =>
                 i.sectionType === 'banner' ? (

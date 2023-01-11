@@ -18,7 +18,7 @@ function SongNew() {
         };
         api();
     }, []);
-    return data.length !== 0 ? (
+    return data?.length !== 0 ? (
         <div>
             <div className={cx('top')}>
                 <h1>{data.title}</h1>
@@ -28,7 +28,7 @@ function SongNew() {
                 <ContainerSongs
                     type="top100"
                     data={data?.items}
-                    index={data?.items.length}
+                    index={data?.items?.length}
                     title={'Nhạc mới'}
                     link={'/moi-phat-hanh'}
                 />

@@ -8,9 +8,9 @@ function SongAll() {
 
     return (
         <Container>
-            <ContainerSongs data={data?.all} type={'add'} index={data?.all.length} />
-            <ContainerSongs data={data?.vPop} type={'add'} index={data?.vPop.length} />;
-            <ContainerSongs data={data?.others} type={'add'} index={data?.others.length} />;
+            <ContainerSongs data={data?.all} type={'add'} index={data?.all?.length} />
+            <ContainerSongs data={data?.vPop} type={'add'} index={data?.vPop?.length} />;
+            <ContainerSongs data={data?.others} type={'add'} index={data?.others?.length} />;
         </Container>
     );
 }

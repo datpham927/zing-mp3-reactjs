@@ -127,7 +127,7 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
-                                        {index < data?.artists.length - 1 && ', '}
+                                        {index < data?.artists?.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>

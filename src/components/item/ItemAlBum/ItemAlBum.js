@@ -77,7 +77,7 @@ function ItemAlbum({ data, onClick }) {
                             {data?.artists?.map((item, index) => (
                                 <li key={index}>
                                     <Link to={item?.link}>{item.name}</Link>
-                                    {index < data.artists.length - 1 && ', '}
+                                    {index < data.artists?.length - 1 && ', '}
                                 </li>
                             ))}
                         </span>

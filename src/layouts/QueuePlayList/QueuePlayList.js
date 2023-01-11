@@ -164,10 +164,10 @@ function QueuePlayList() {
                                         )
                                     ),
                                 )}
-                                {currentIndex < playListAudio.length - 1 && (
+                                {currentIndex < playListAudio?.length - 1 && (
                                     <div className={cx('next')}>
                                         <h3>Tiếp theo</h3>
-                                        {playListTitle.length > 0 && (
+                                        {playListTitle?.length > 0 && (
                                             <div>
                                                 <span>Từ PlayList </span>
                                                 <span onClick={() => navigate(playListTitle[1])}>

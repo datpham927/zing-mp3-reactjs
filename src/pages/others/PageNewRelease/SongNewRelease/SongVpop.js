@@ -7,7 +7,7 @@ function SongVpop() {
     const { dataNewSongs } = useSelector((state) => state.dataHome);
     return (
         <Container>
-            <ContainerSongs data={dataNewSongs?.all} type={'add'} index={dataNewSongs?.all.length} />
+            <ContainerSongs data={dataNewSongs?.all} type={'add'} index={dataNewSongs?.all?.length} />
         </Container>
     );
 }

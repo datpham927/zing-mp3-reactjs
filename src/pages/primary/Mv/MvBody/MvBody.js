@@ -44,7 +44,7 @@ function MvBody() {
             }
         };
         document.querySelector('.AppLayout_main__Dvwp4')?.addEventListener('scroll', onScroll);
-    }, [data.length]);
+    }, [data?.length]);
 
     return data?.length > 0 ? (
         <div className={cx('body')}>

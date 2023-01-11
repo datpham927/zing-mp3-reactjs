@@ -19,7 +19,7 @@ function BodyFollowing() {
     useEffect(() => {
         const api = async () => {
             const datas = await getFollowing(id, index);
-            if (data.length === 0) {
+            if (data?.length === 0) {
                 setData(datas.items);
             } else {
                 if (datas?.items) {
@@ -41,7 +41,7 @@ function BodyFollowing() {
             }
         };
         document.querySelector('.AppLayout_main__Dvwp4')?.addEventListener('scroll', onScroll);
-    }, [data.length]);
+    }, [data?.length]);
 
     return data?.length !== 0 ? (
         <div className={cx('body')}>

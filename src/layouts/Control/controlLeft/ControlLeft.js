@@ -33,7 +33,7 @@ function ControlLeft() {
                     {idAudio?.artists?.map((i, index) => (
                         <span key={index}>
                             <Link to={i.link}>{i.name}</Link>
-                            {index < idAudio?.artists.length - 1 && ', '}
+                            {index < idAudio?.artists?.length - 1 && ', '}
                         </span>
                     ))}
                 </p>

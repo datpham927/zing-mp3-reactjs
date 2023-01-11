@@ -25,7 +25,7 @@ function ZingChart() {
         chartApi();
     }, []);
     const data = useSelector((state) => state.dataZingChart.dataZingChart);
-    return data.length !== 0 ? (
+    return data?.length !== 0 ? (
         <div>
             <div className={cx('top')}>
                 <h1>#zingchart</h1>
@@ -43,7 +43,7 @@ function ZingChart() {
                             type="top100"
                             title={'#zingChart'}
                             data={data?.RTChart?.items}
-                            index={data?.RTChart?.items.length}
+                            index={data?.RTChart?.items?.length}
                             link={'/album/zingchart-DIMZ-TVk-NH4T-Phat-Ho/ZO68OC68.html'}
                         />
                     ) : (

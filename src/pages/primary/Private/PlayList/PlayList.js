@@ -26,7 +26,7 @@ function PlayList() {
                     onClick={handleAddPlayList}
                 />
             </div>
-            {playListFavorite.length > 0 || privatePlayLists.length > 0 ? (
+            {playListFavorite?.length > 0 || privatePlayLists?.length > 0 ? (
                 <div className={cx('body')}>
                     {playListFavorite.map((e) => (
                         <ItemPlayList data={e} />

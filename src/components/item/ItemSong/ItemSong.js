@@ -108,7 +108,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
-                                        {index < data?.artists.length - 1 && ', '}
+                                        {index < data?.artists?.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>
@@ -235,7 +235,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
-                                        {index < data?.artists.length - 1 && ', '}
+                                        {index < data?.artists?.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>
@@ -363,7 +363,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
-                                        {index < data?.artists.length - 1 && ', '}
+                                        {index < data?.artists?.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>
@@ -442,7 +442,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
-                                        {index < data?.artists.length - 1 && ', '}
+                                        {index < data?.artists?.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>
@@ -502,7 +502,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
-                                        {index < data?.artists.length - 1 && ', '}
+                                        {index < data?.artists?.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>
@@ -578,7 +578,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
-                                        {index < data?.artists.length - 1 && ', '}
+                                        {index < data?.artists?.length - 1 && ', '}
                                     </>
                                 ))}
                             </span>

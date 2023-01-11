@@ -40,7 +40,7 @@ function ControlMain() {
 
     useEffect(() => {
         setSrc(`http://api.mp3.zing.vn/api/streaming/audio/${idAudio?.encodeId}/320`);
-        for (let i = 0; i < listMusic.length; i++) {
+        for (let i = 0; i < listMusic?.length; i++) {
             if (listMusic[i].encodeId === idAudio?.encodeId) {
                 dispatch(setCurrentIndex(i));
                 break;

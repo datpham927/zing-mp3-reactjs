@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/ZingMp3-Reacjs/static/css/main.21b45b54.css",
+    "main.js": "/ZingMp3-Reacjs/static/js/main.13fa2f01.js",
+    "static/js/496.65c176aa.chunk.js": "/ZingMp3-Reacjs/static/js/496.65c176aa.chunk.js",
+    "static/media/mp3-zing.2a3edced.woff": "/ZingMp3-Reacjs/static/media/mp3-zing.2a3edced.ef4b15bdf37ade62d7f0.woff",
+    "static/media/2.jpg": "/ZingMp3-Reacjs/static/media/2.57fba1c83934444cb2d0.jpg",
+    "static/media/7.jpg": "/ZingMp3-Reacjs/static/media/7.dfcce05bcc5953df93c2.jpg",
+    "static/media/4.jpg": "/ZingMp3-Reacjs/static/media/4.073706e7acbef7c07431.jpg",
+    "static/media/3.jpg": "/ZingMp3-Reacjs/static/media/3.a926db07ce9cc0a98984.jpg",
+    "static/media/1.jpg": "/ZingMp3-Reacjs/static/media/1.c09d65e9ebd08b7eb338.jpg",
+    "static/media/8.jpg": "/ZingMp3-Reacjs/static/media/8.80d526777491e500c022.jpg",
+    "static/media/6.jpg": "/ZingMp3-Reacjs/static/media/6.faf3ee6fd05fe3a933bb.jpg",
+    "static/media/5.jpg": "/ZingMp3-Reacjs/static/media/5.7578359136561404415d.jpg",
+    "static/media/0.svg": "/ZingMp3-Reacjs/static/media/0.3fefa2a226d121ce7d2a668967367b51.svg",
+    "static/media/2.gif": "/ZingMp3-Reacjs/static/media/2.d0c511a1f3b2ef977382.gif",
+    "index.html": "/ZingMp3-Reacjs/index.html",
+    "main.21b45b54.css.map": "/ZingMp3-Reacjs/static/css/main.21b45b54.css.map",
+    "main.13fa2f01.js.map": "/ZingMp3-Reacjs/static/js/main.13fa2f01.js.map",
+    "496.65c176aa.chunk.js.map": "/ZingMp3-Reacjs/static/js/496.65c176aa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21b45b54.css",
+    "static/js/main.13fa2f01.js"
+  ]
+}

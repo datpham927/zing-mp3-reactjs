@@ -1,0 +1,80 @@
+.recently {
+  margin-top: 10px;
+  border-top: 1px solid var(--alpha-bg);
+}
+.recently .header {
+  margin: 10px;
+}
+.recently .header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+.song-item:hover {
+  background-color: var(--alpha-bg);
+}
+.song-item .wrapper-image {
+  position: relative;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.song-item .wrapper-image .image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.song-item .wrapper-image .round {
+  border-radius: 50%;
+}
+.song-item .wrapper-image .icon-play,
+.song-item .wrapper-image .icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: var(--alpha-bg);
+  text-align: center;
+  line-height: 5.2rem;
+  font-size: 2rem;
+  display: none;
+  color: #fff;
+}
+.song-item .title {
+  margin-left: 10px;
+  flex: 1;
+}
+.song-item .title span, .song-item .title small {
+  display: flex;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  cursor: pointer;
+  text-transform: capitalize;
+  color: var(--text-primary);
+}
+.song-item .title small {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin-top: 4px;
+}
+.song-item .title span:hover {
+  color: var(--link-text-hover);
+}
+.song-item:hover .icon {
+  display: block;
+}/*# sourceMappingURL=RecentlyMenu.module.css.map */

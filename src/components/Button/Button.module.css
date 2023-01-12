@@ -1,0 +1,122 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.wrapper ion-icon,
+.wrapper i {
+  color: var(--setting-icon-text);
+  display: flex;
+  line-height: 40px;
+  font-size: 1.6rem;
+}
+.wrapper + .wrapper {
+  margin-left: 12px;
+}
+
+.disable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background-color: var(--alpha-bg);
+  opacity: 0.4;
+}
+
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--alpha-bg);
+}
+.primary:hover {
+  opacity: 0.9;
+}
+
+.outline {
+  background-color: transparent;
+}
+
+.image {
+  width: 4rem;
+  height: 4rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.logout {
+  margin-top: 20px;
+}
+
+.small {
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+}
+.small:hover {
+  background-color: hsla(0deg, 0%, 100%, 0.1);
+}
+
+.noContent {
+  background-color: transparent;
+}
+.noContent:hover {
+  opacity: 0.9;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  background-color: var(--alpha-bg);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  padding: 9px 24px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.btn p {
+  margin: 0 8px;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+.btn a {
+  color: var(--text-primary);
+}
+
+.btnItem {
+  font-size: 1.2rem;
+  padding: 4px 24px;
+  background-color: transparent;
+  margin: 0 10px;
+}
+
+.content {
+  margin-left: 5px;
+}
+
+.btn.action {
+  background-color: var(--purple-primary);
+  border-color: var(--purple-primary);
+  margin-right: 10px;
+}
+.btn.action p {
+  color: #fff;
+}
+
+@media (max-width: 740px) {
+  .btnItem {
+    padding: 6px 15px !important;
+    margin: 0 5px !important;
+  }
+  .content {
+    margin-left: 5px !important;
+  }
+}/*# sourceMappingURL=Button.module.css.map */

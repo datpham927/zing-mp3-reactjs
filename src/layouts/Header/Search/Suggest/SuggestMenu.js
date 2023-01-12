@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-
+import { v4 as uuidv4 } from 'uuid';
 import SuggestItem from './SuggestItem';
 import styles from './SuggestMenu.module.scss';
 

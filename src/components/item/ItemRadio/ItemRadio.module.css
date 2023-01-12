@@ -1,0 +1,84 @@
+.radio-item {
+  width: 100%;
+  height: 100%;
+  display: grid;
+}
+.radio-item .wrapper-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.radio-item .wrapper-image .image {
+  position: relative;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 3px solid #fd79a8;
+  width: 100%;
+}
+.radio-item .wrapper-image .image img {
+  display: block;
+  width: 100%;
+  transition: 0.3s linear;
+}
+.radio-item .wrapper-image .image .icon-play {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: var(--dark-alpha-50);
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.radio-item .wrapper-image .image .icon-play i {
+  font-size: 2rem;
+  color: #fff;
+}
+.radio-item .wrapper-image .image-small {
+  position: absolute;
+  width: 35%;
+  border-radius: 999px;
+  overflow: hidden;
+  right: 0;
+  bottom: 0;
+  border: 1px solid black;
+}
+.radio-item .wrapper-image .image-small img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.radio-item .wrapper-image::after {
+  position: absolute;
+  content: "LIKE";
+  background-color: red;
+  color: white;
+  bottom: -4px;
+  padding: 1px 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.radio-item .wrapper-image:hover .icon-play {
+  display: flex;
+}
+.radio-item .wrapper-image:hover .image img {
+  transform: scale(1.05);
+}
+.radio-item .info {
+  margin-top: 20px;
+  text-align: center;
+}
+.radio-item .info h1 {
+  color: var(--text-primary);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.radio-item .info span {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1;
+}/*# sourceMappingURL=ItemRadio.module.css.map */

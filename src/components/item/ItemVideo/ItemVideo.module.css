@@ -1,0 +1,113 @@
+.item {
+  margin-bottom: 30px;
+}
+.item .wrapper {
+  width: 100%;
+  height: 100%;
+}
+.item .wrapper .load-video {
+  padding-bottom: 56%;
+}
+.item .wrapper .video-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: aqua;
+}
+.item .wrapper .video-img .play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  line-height: 100%;
+  background-color: var(--dark-alpha-50);
+  justify-content: center;
+  display: none;
+}
+.item .wrapper .video-img .play i {
+  font-size: 5rem;
+}
+.item .wrapper .video-img .play i:hover {
+  opacity: 0.9;
+}
+.item .wrapper .video-img .active {
+  display: flex;
+}
+.item .wrapper .video-img .time {
+  position: absolute;
+  display: inline-block;
+  font-size: 12px;
+  line-height: normal;
+  right: 5px;
+  bottom: 5px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.item .wrapper .video-img img {
+  display: block;
+  width: 100%;
+  transition: 0.4s linear;
+}
+.item .wrapper .video-img:hover img {
+  transform: scale(1.1);
+}
+.item .wrapper .video-img:hover .play {
+  display: flex;
+}
+.item .wrapper .video-info {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+}
+.item .wrapper .video-info .info-img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  margin-right: 10px;
+  overflow: hidden;
+}
+.item .wrapper .video-info .info-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.item .wrapper .video-info .content .title {
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.item .wrapper .video-info .content .title:hover {
+  color: var(--link-text-hover);
+}
+.item .wrapper .video-info .content .singer {
+  flex-shrink: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  color: var(--text-secondary);
+}
+.item .wrapper .video-info .content .singer a {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.item .wrapper .video-info .content .singer a:hover {
+  color: var(--link-text-hover);
+  text-decoration: underline;
+}/*# sourceMappingURL=ItemVideo.module.css.map */

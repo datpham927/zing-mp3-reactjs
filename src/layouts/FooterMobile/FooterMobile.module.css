@@ -1,0 +1,35 @@
+.wrapper {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: 6rem;
+  background-color: #fff;
+  align-items: center;
+  border-top: 1px solid var(--border-player);
+  z-index: 109;
+}
+.wrapper .item {
+  text-align: center;
+  height: 100%;
+  border-bottom: 1px solid transparent;
+}
+.wrapper .item i {
+  color: var(--text-secondary);
+  font-size: 2.5rem;
+}
+.wrapper .item h3 {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1;
+  font-weight: 500;
+}
+.wrapper .active {
+  border-bottom: 1px solid var(--purple-primary);
+}
+.wrapper .active i {
+  color: var(--purple-primary);
+}
+.wrapper .active h3 {
+  color: var(--purple-primary);
+}/*# sourceMappingURL=FooterMobile.module.css.map */

@@ -1,5 +1,6 @@
 import className from 'classnames/bind';
 import style from './Radio.module.scss';
+import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import 'swiper/scss/navigation';

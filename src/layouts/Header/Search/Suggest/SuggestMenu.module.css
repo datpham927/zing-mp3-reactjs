@@ -1,0 +1,37 @@
+.Keywords .Keywords-header h1 {
+  font-size: 16px;
+  margin: 5px 0 10px 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.Keywords .Keywords-body {
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  line-height: 40px;
+  border-radius: 4px;
+  padding: 0 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  color: var(--text-primary);
+}
+.item span {
+  font-size: 14px;
+  margin-right: 10px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.item span i {
+  color: var(--text-secondary);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.item:hover {
+  background-color: rgba(225, 225, 225, 0.1);
+  color: var(--link-text-hover);
+}/*# sourceMappingURL=SuggestMenu.module.css.map */

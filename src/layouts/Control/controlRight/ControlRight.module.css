@@ -1,0 +1,51 @@
+.right {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+}
+.right .volume {
+  position: relative;
+  width: 70px;
+  height: 3px;
+  background-color: hsla(0deg, 0%, 100%, 0.3);
+  border-radius: 999px;
+}
+.right .volume:hover {
+  height: 5px;
+}
+.right .volume .volume-play {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background-color: var(--purple-primary);
+}
+.right .volume .volume-play::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: var(--purple-primary);
+  display: none;
+}
+.right .volume:hover .volume-play::after {
+  display: block;
+}
+.right .btn i {
+  font-size: 1.6rem;
+  color: var(--text-primary);
+}
+.right .playlist {
+  flex-shrink: 0;
+  border-radius: 5px;
+  background-color: hsla(0deg, 0%, 100%, 0.1);
+  margin-left: 40px;
+}
+.right .active {
+  background-color: var(--purple-primary);
+}/*# sourceMappingURL=ControlRight.module.css.map */

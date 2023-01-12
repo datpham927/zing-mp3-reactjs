@@ -1,0 +1,63 @@
+.wrapper .image {
+  position: relative;
+  border-radius: 50%;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.wrapper .image img {
+  display: block;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wrapper .image .play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 3rem;
+  line-height: 100%;
+  background-color: var(--dark-alpha-50);
+  justify-content: center;
+  display: none;
+}
+.wrapper .image:hover .play {
+  display: flex;
+}
+.wrapper .info {
+  display: block;
+  text-align: center;
+}
+.wrapper .info .content {
+  text-align: center;
+  margin-top: 10px;
+}
+.wrapper .info .content .singer a {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.wrapper .info .content .singer :hover {
+  color: var(--link-text-hover);
+}
+.wrapper .info .content .follow {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+.wrapper .info .btn {
+  margin: auto;
+  margin-top: 5px;
+  padding: 3px 6px;
+}
+.wrapper .info .btn i {
+  margin-right: 5px;
+}
+.wrapper .info .care {
+  background-color: var(--purple-primary);
+  color: #fff;
+}/*# sourceMappingURL=ItemArtists.module.css.map */

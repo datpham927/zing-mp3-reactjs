@@ -1,0 +1,11 @@
+.modal-wrapper {
+  display: flex;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-alpha-80);
+}/*# sourceMappingURL=ModalWrapper.module.css.map */

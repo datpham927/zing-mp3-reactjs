@@ -1,0 +1,46 @@
+.header {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.header img {
+  display: block;
+  width: 100%;
+}
+
+.btn {
+  margin: 20px auto;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.nations-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+.nations-item .nations-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.nations-item .nations-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: 0.3s linear;
+}
+.nations-item .title {
+  position: absolute;
+  font-size: 2.6rem;
+  bottom: 20px;
+  right: 0;
+  left: 0;
+  text-align: center;
+  text-shadow: var(--purple-primary) 1px 0 10px;
+  color: #fff;
+}
+.nations-item:hover img {
+  transform: scale(1.05);
+}/*# sourceMappingURL=Category.module.css.map */

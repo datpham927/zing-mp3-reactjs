@@ -1,0 +1,264 @@
+.left {
+  position: sticky;
+  position: -webkit-sticky;
+  float: left;
+  top: 100px;
+  padding: 10px 10px 0 0;
+  text-align: center;
+}
+.left .image {
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  transition: 0.8s linear;
+  overflow: hidden;
+}
+.left .image img {
+  display: block;
+  width: 100%;
+  transition: 0.3s linear;
+}
+.left .image:hover img {
+  transform: scale(1.1);
+}
+.left .image .song-play,
+.left .image .play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  line-height: 100%;
+  background-color: var(--dark-alpha-50);
+  justify-content: center;
+}
+.left .image .song-play {
+  display: flex;
+}
+.left .image .song-play img {
+  width: 3rem;
+  height: 3rem;
+}
+.left .image .play {
+  display: flex;
+}
+.left .image .play i {
+  font-size: 5rem;
+}
+.left .image:hover {
+  background-color: var(--box-hot-item-bg-hover);
+}
+.left .image:hover .play {
+  display: flex;
+}
+.left .rotate.image {
+  border-radius: 999px;
+  border: 1px solid black;
+  animation: rotatePlay 10s linear 0s infinite;
+  -webkit-animation: rotatePlay 10s linear 0s infinite;
+  -moz-animation: rotatePlay 10s linear 0s infinite;
+  -o-animation: rotatePlay 10s linear 0s infinite;
+}
+.left .rotate-pause.image {
+  animation: rotatePause 0.3s linear 0s 1;
+  -webkit-animation: rotatePause 0.3s linear 0s 1;
+  -moz-animation: rotatePause 0.3s linear 0s 1;
+  -o-animation: rotatePause 0.3s linear 0s 1;
+}
+.left .content {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.left .content h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-top: 10px;
+}
+.left .content .artist {
+  color: var(--text-secondary);
+}
+.left .content .artist span {
+  transition: 0.1s linear;
+}
+.left .content .artist span a {
+  align-items: center;
+  color: var(--text-secondary);
+}
+.left .content .artist span:hover a {
+  color: var(--link-text-hover);
+  text-decoration: underline;
+}
+.left .content .like {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+.left .content .wrapper-icon {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.left .btn-album {
+  margin: auto;
+}
+.left .btn-album i {
+  color: #fff;
+}
+
+@-webkit-keyframes rotatePlay {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotatePlay {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotatePause {
+  from {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+}
+@keyframes rotatePause {
+  from {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+}
+@media (max-width: 740px) {
+  .left {
+    position: unset;
+    text-align: center;
+  }
+  .left .image {
+    width: 50%;
+    margin: auto;
+  }
+  .left .image img {
+    display: block;
+    width: 100%;
+    transition: 0.3s linear;
+  }
+  .left .image:hover img {
+    transform: scale(1.1);
+  }
+  .left .image .song-play,
+.left .image .play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    line-height: 100%;
+    background-color: var(--dark-alpha-50);
+    justify-content: center;
+  }
+  .left .image .song-play {
+    display: flex;
+  }
+  .left .image .song-play img {
+    width: 3rem;
+    height: 3rem;
+  }
+  .left .image .play {
+    display: flex;
+  }
+  .left .image .play i {
+    font-size: 5rem;
+  }
+  .left .image:hover {
+    background-color: var(--box-hot-item-bg-hover);
+  }
+  .left .image:hover .play {
+    display: flex;
+  }
+  .left .rotate.image {
+    border-radius: 0;
+    border: 1px solid black;
+    -webkit-animation: none;
+            animation: none;
+  }
+  .left .rotate-pause.image {
+    -webkit-animation: none;
+            animation: none;
+  }
+  .left .content {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .left .content h3 {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-top: 10px;
+  }
+  .left .content .artist {
+    color: var(--text-secondary);
+  }
+  .left .content .artist span {
+    transition: 0.1s linear;
+  }
+  .left .content .artist span a {
+    align-items: center;
+    color: var(--text-secondary);
+  }
+  .left .content .artist span:hover a {
+    color: var(--link-text-hover);
+    text-decoration: underline;
+  }
+  .left .content .like {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+  .left .content .wrapper-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .left .btn-album {
+    margin: auto;
+  }
+}/*# sourceMappingURL=LeftAlbum.module.css.map */

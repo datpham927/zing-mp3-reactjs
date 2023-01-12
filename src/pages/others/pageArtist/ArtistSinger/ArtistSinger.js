@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './ArtistSinger.module.scss';
 import Container from '~/components/container/Container';
 import NoContent from '~/components/noContent/NoConTent';

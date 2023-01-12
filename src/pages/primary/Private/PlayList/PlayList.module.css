@@ -1,0 +1,27 @@
+.wrapper {
+  margin-top: 40px;
+}
+.wrapper .header {
+  display: flex;
+  align-items: center;
+}
+.wrapper .header h3 {
+  font-size: 2rem;
+  color: var(--text-primary);
+}
+.wrapper .header .btn {
+  padding: 0;
+  background-color: var(--alpha-bg);
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+}
+.wrapper .header .btn:hover {
+  opacity: 0.7;
+}
+.wrapper .body {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  margin-top: 20px;
+}/*# sourceMappingURL=PlayList.module.css.map */

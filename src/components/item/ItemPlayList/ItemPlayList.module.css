@@ -1,0 +1,94 @@
+.item {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 30px;
+}
+.item .wrapper {
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.item .wrapper .image-hover .container-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.item .wrapper .image-hover .container-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.4s linear;
+}
+.item .wrapper .image-hover .container-image .modal-image {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--dark-alpha-50);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  display: none;
+}
+.item .wrapper .image-hover .container-image .modal-image i {
+  color: #fff;
+  font-size: 2rem;
+}
+.item .wrapper .image-hover .container-image .modal-image .favorite {
+  overflow: hidden;
+  border-radius: 4px;
+}
+.item .wrapper .image-hover .container-image .modal-image .icon-play {
+  font-size: 3rem;
+  color: #fff;
+}
+.item .wrapper .image-hover .container-image .modal-image .icon-play i {
+  font-size: 4.5rem;
+}
+.item .wrapper .image-hover:hover .container-image img {
+  transform: scale(1.1);
+  border-radius: 4px;
+}
+.item .wrapper .image-hover:hover .modal-image {
+  display: flex;
+}
+.item .wrapper .content {
+  margin-top: 10px;
+}
+.item .wrapper .content .title a {
+  line-height: 2.5rem;
+  align-items: center;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.item .wrapper .content .title :hover {
+  color: var(--link-text-hover);
+}
+.item .wrapper .content .subtitle {
+  display: flex;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  cursor: pointer;
+  color: var(--text-secondary);
+  overflow: hidden;
+}
+.item .wrapper .content .subtitle span a {
+  color: var(--text-secondary);
+}
+.item .wrapper .content .subtitle span:hover a {
+  color: var(--link-text-hover);
+  text-decoration: underline;
+}
+.item .wrapper .content .subtitle span {
+  color: var(--text-secondary);
+}/*# sourceMappingURL=ItemPlayList.module.css.map */

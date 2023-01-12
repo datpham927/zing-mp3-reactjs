@@ -1,0 +1,23 @@
+.background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-size: 1920px auto;
+  z-index: -1;
+}
+
+@media (max-width: 740px) {
+  .background {
+    background-image: none;
+    background-color: #fcfcfc !important;
+  }
+}
+@media (min-width: 2130px) {
+  .background {
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+}/*# sourceMappingURL=background.module.css.map */

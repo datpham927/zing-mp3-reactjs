@@ -1,0 +1,12 @@
+.box {
+  position: absolute;
+  background-color: var(--primary-bg);
+  width: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px 0;
+  right: 10px;
+  right: 0;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  top: 10px;
+}/*# sourceMappingURL=TippyMenu.module.css.map */

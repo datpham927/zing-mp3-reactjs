@@ -1,0 +1,35 @@
+.vip-ctn {
+  position: relative;
+  width: 340px;
+  height: 176px;
+  background-color: var(--primary-bg);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+.vip-ctn .title {
+  font-size: 19px;
+  color: var(--text-primary);
+}
+.vip-ctn .describe {
+  color: var(--text-secondary);
+  padding: 15px 0;
+  font-size: 15px;
+  line-height: 20px;
+}
+.vip-ctn .btn {
+  background-color: #f8e71c;
+  color: #32323d;
+  width: 90%;
+  padding: 7px 0;
+  margin: auto;
+}
+.vip-ctn .close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: white;
+}
+.vip-ctn .close ion-icon {
+  font-size: 30px;
+}/*# sourceMappingURL=ModalVip.module.css.map */

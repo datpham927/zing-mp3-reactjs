@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { getFollowing } from '~/components/Api/Service';
 import ItemFollowing from './ItemFollowing/ItemFollowing';
 import className from 'classnames/bind';

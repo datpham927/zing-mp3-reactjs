@@ -1,0 +1,104 @@
+.container {
+  width: 100%;
+  height: 100%;
+  margin-top: 38px;
+  position: relative;
+}
+.container .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.container .header .title {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-primary);
+}
+.container .body {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.all {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.all a {
+  color: var(--text-secondary);
+}
+.all a:hover {
+  color: var(--color-pink);
+}
+
+.wrapper {
+  margin-top: 38px;
+}
+.wrapper .header-spotlight {
+  display: flex;
+  margin-bottom: 20px;
+}
+.wrapper .header-spotlight .image {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.wrapper .header-spotlight .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.3s linear;
+}
+.wrapper .header-spotlight .image :hover {
+  transform: scale(1.05);
+}
+.wrapper .header-spotlight .content {
+  display: block;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+}
+.wrapper .header-spotlight .content .subtitle {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.wrapper .header-spotlight .content .title {
+  line-height: 1.8rem;
+}
+.wrapper .header-spotlight .content .title a {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+}
+.wrapper .header-spotlight .content .title :hover {
+  color: var(--link-text-hover);
+}
+.wrapper .container {
+  margin-top: 0;
+}
+
+@media (max-width: 740px) {
+  .header .title {
+    font-size: 1.8rem !important;
+  }
+  .scroll .body {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+  .scroll .body::-webkit-scrollbar {
+    display: none;
+  }
+}/*# sourceMappingURL=Container.module.css.map */

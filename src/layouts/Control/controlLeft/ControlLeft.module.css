@@ -1,0 +1,42 @@
+.left {
+  display: flex !important;
+  align-items: center;
+}
+.left .image {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.left .image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.left .info {
+  width: 80%;
+  padding: 0 10px;
+}
+.left .info h3 {
+  font-size: 1.4rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  cursor: pointer;
+  overflow: hidden;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.left .info p {
+  font-size: 1.2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  cursor: pointer;
+  color: var(--text-secondary);
+  overflow: hidden;
+}
+.left .info p a {
+  color: var(--text-secondary);
+}/*# sourceMappingURL=ControlLeft.module.css.map */

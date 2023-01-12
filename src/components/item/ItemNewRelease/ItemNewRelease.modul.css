@@ -1,0 +1,104 @@
+.new-release {
+  width: 100%;
+  padding: 0 15px;
+}
+.new-release .wrapper {
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 15px;
+  background-color: var(--box-item-bg);
+}
+.new-release .wrapper .left {
+  position: relative;
+  flex-shrink: 0;
+  width: 45%;
+  height: 100%;
+  border-radius: 5px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+.new-release .wrapper .left img {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s linear;
+  display: block;
+}
+.new-release .wrapper .left .song-play,
+.new-release .wrapper .left .play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  color: white;
+  line-height: 100%;
+  background-color: var(--dark-alpha-50);
+  justify-content: center;
+}
+.new-release .wrapper .left .song-play {
+  display: flex;
+}
+.new-release .wrapper .left .song-play img {
+  width: 2rem;
+  height: 2rem;
+}
+.new-release .wrapper .left .play {
+  display: none;
+}
+.new-release .wrapper .left .play i {
+  font-size: 3rem;
+}
+.new-release .wrapper .left .active {
+  display: flex;
+}
+.new-release .wrapper .left:hover img {
+  transform: scale(1.2);
+}
+.new-release .wrapper .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.new-release .wrapper .right .top {
+  padding-right: 10px;
+}
+.new-release .wrapper .right .top h1 {
+  font-size: 1.6rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: var(--text-primary);
+  overflow: hidden;
+}
+.new-release .wrapper .right .top .singer {
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.new-release .wrapper .right .top .singer a {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.new-release .wrapper .right .top .singer a:hover {
+  color: var(--link-text-hover);
+}
+.new-release .wrapper .right .order span {
+  font-size: 4rem;
+  -webkit-text-stroke: 1px var(--text-secondary);
+  color: rgba(74, 144, 226, 0);
+  font-weight: 800;
+  line-height: 1;
+}
+.new-release .wrapper .right .order small {
+  color: var(--text-secondary);
+  font-size: 1.6rem;
+  margin-left: 5px;
+}
+.new-release .wrapper:hover .play {
+  display: flex;
+}/*# sourceMappingURL=ItemNewRelease.modul.css.map */

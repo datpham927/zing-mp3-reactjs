@@ -1,0 +1,12 @@
+.top {
+  display: flex;
+  padding-top: 50px;
+  align-items: center;
+}
+.top h1 {
+  font-size: 4rem;
+}
+.top .btn {
+  background-color: var(--purple-primary);
+  margin-left: 10px;
+}/*# sourceMappingURL=Private.module.css.map */

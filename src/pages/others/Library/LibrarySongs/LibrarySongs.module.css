@@ -1,0 +1,89 @@
+.body {
+  margin-top: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid var(--border-secondary);
+  padding: 0 10px 0 35px;
+  width: 100%;
+}
+.header .song {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.header .right,
+.header .main {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.header .main {
+  flex: 1;
+}
+.header .left {
+  width: 50%;
+}
+.header .left .add-playlist {
+  display: flex;
+  margin-left: -25px;
+}
+.header .left .add-playlist .action-checkbox {
+  display: flex;
+  align-items: center;
+}
+.header .left .add-playlist .action-checkbox > i {
+  color: var(--text-secondary);
+}
+.header .left .add-playlist .action-checkbox .checkbox {
+  display: none;
+}
+.header .left .add-playlist .action-checkbox .checkbox input {
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid var(--border-box);
+  padding: 6px;
+  border-radius: 4px;
+}
+.header .left .add-playlist .action-checkbox .checkbox input:checked::after {
+  content: " ";
+  border-left-color: #fff;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  border-top-color: #fff;
+  height: 47%;
+  width: 20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -63%) rotate(45deg);
+}
+.header .left .add-playlist .action-checkbox .checkbox input:checked {
+  border: 1px solid #fff;
+}
+.header .left .add-playlist .active-checkbox {
+  background-color: transparent;
+}
+.header .left .add-playlist .active-checkbox i {
+  display: none;
+}
+.header .left .add-playlist .active-checkbox .checkbox {
+  display: block;
+}
+.header .left .add-playlist .add.item:hover .action-checkbox .checkbox {
+  display: block;
+}
+.header .left .add-playlist .add.item:hover .action-checkbox > i {
+  display: none;
+}
+.header .left .add-playlist .btn-add {
+  color: var(--text-secondary);
+  border: 1px solid var(--border-box);
+  background-color: hsla(0deg, 0%, 100%, 0.05);
+}/*# sourceMappingURL=LibrarySongs.module.css.map */

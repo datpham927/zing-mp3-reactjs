@@ -1,0 +1,160 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  box-shadow: var(--box-shadow-queue);
+  background-color: var(--queue-player-popup-bg);
+  bottom: 90px;
+  z-index: 90;
+  width: 330px;
+  overflow: hidden;
+}
+.container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 10px;
+}
+.container .header .tab {
+  display: flex;
+  background-color: var(--alpha-bg);
+  align-items: center;
+  text-align: center;
+  padding: 3px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 999px;
+}
+.container .header .tab .btn {
+  font-size: 1.2rem;
+  padding: 8px;
+  line-height: 1;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+}
+.container .header .tab .active {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  background-color: var(--tab-active-bg);
+  color: var(--text-item-hover);
+}
+.container .header .action {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.container .header .action .btn-action {
+  margin-left: 8px;
+  width: 32px;
+  height: 32px;
+}
+.container .header .action .active {
+  background-color: var(--purple-primary);
+}
+.container .body {
+  width: 100%;
+  height: calc(100% - 70px);
+  padding: 0 10px;
+  overflow-y: overlay;
+}
+.container .body::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+.container .body::-webkit-scrollbar-thumb {
+  background-color: var(--alpha-bg);
+}
+.container .body .list .is-pre {
+  opacity: 0.6;
+}
+.container .body .list .is-pre:hover {
+  opacity: 1;
+}
+.container .body .list .next {
+  padding: 10px;
+}
+.container .body .list .next h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--link-text-hover);
+}
+.container .body .list .next div {
+  display: flex;
+  line-height: 1;
+  margin-top: 2px;
+}
+.container .body .list .next div span {
+  line-height: 1;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+.container .body .list .next div span span {
+  margin-left: 4px;
+  cursor: pointer;
+  color: var(--link-text-hover);
+  line-height: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  max-width: 222px;
+  overflow: hidden;
+}
+
+.close {
+  transform: translateX(100%);
+  transition: 0.4s linear;
+}
+
+.open {
+  transform: translateX(0);
+  -webkit-animation: open 0.5s linear;
+          animation: open 0.5s linear;
+}
+
+@-webkit-keyframes open {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes open {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+.other {
+  position: absolute;
+  top: calc(100% - 8px);
+  right: 0;
+  background-color: var(--primary-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  width: 240px;
+  padding: 10px 0;
+  z-index: 101;
+}
+.other .download,
+.other .delete {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.other .download span,
+.other .delete span {
+  margin-left: 10px;
+}
+.other .download:hover,
+.other .delete:hover {
+  background-color: var(--alpha-bg);
+  color: var(--text-item-hover);
+}/*# sourceMappingURL=QueuePlayList.module.css.map */

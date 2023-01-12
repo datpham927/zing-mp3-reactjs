@@ -33,8 +33,8 @@ function PageAlbum() {
             };
             fetchApi();
         } else {
-            const listId = privatePlayLists.map((e) => e.encodeId);
-            const index = listId.indexOf(id);
+            const listId = privatePlayLists?.map((e) => e.encodeId);
+            const index = listId?.indexOf(id);
             if (privatePlayLists[index]) {
                 setData(privatePlayLists[index] || []);
             } else {

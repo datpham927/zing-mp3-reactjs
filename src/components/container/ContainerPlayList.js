@@ -17,7 +17,7 @@ function ContainerPlaylist({
     return spotlight
         ? data && (
               <Container
-                  scroll
+                  scroll={scroll}
                   title={title}
                   data={data}
                   link={link}
@@ -31,7 +31,7 @@ function ContainerPlaylist({
               </Container>
           )
         : data && (
-              <Container scroll title={title} link={link} all={all} className={className}>
+              <Container scroll={scroll} title={title} link={link} all={all} className={className}>
                   {data?.map((e, i) => i < index && <ItemPlayList description={description} data={e} key={uuidv4()} />)}
               </Container>
           );

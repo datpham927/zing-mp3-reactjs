@@ -38,27 +38,34 @@ function ResultAll() {
 
     return data.songs ? (
         <div>
-            <Container title="Nổi Bật" className={cx('spotlight')}>
+            <Container title="Nổi Bật" className={cx('spotlight')} scroll>
                 {data.artists && <TopPagesAll type="artist" data={data?.artists[0]} />}
                 {data.playlists && <TopPagesAll type="playlist" data={data?.playlists[0]} />}
                 {data.songs && <TopPagesAll data={data?.songs[0]} type="song" />}
             </Container>
             {data.playlists && data.top && (
-                <Container spotlight data={data}>
+                <Container spotlight data={data} scroll>
                     {data?.playlists?.map(
                         (item, index) => index >= 2 && index < 6 && <ItemPlayList key={uuidv4()} data={item} />,
                     )}
                 </Container>
             )}
-            <ContainerSongs title={'Bài Hát'} data={data?.songs} all link={`/tim-kiem/bai-hat/${value}`} />
+            <ContainerSongs title={'Bài Hát'} scroll data={data?.songs} all link={`/tim-kiem/bai-hat/${value}`} />
             <ContainerPlaylist
                 data={data?.playlists}
                 title={'Playlist/Album'}
                 all
+                scroll
                 link={`/tim-kiem/playlist/${value}`}
             />
-            <ContainerVideos data={data?.videos} title={'MV'} all link={`/tim-kiem/video/${value}`} />
-            <ContainerArtists data={data?.artists} title={'Nghệ Sĩ/OA'} all link={`/tim-kiem/artist/ ${value}`} />
+            <ContainerVideos scroll data={data?.videos} title={'MV'} all link={`/tim-kiem/video/${value}`} />
+            <ContainerArtists
+                scroll
+                data={data?.artists}
+                title={'Nghệ Sĩ/OA'}
+                all
+                link={`/tim-kiem/artist/ ${value}`}
+            />
         </div>
     ) : check ? (
         <NoContent />

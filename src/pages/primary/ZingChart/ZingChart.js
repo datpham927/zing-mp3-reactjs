@@ -26,7 +26,7 @@ function ZingChart() {
     }, []);
     const data = useSelector((state) => state.dataZingChart.dataZingChart);
     return data?.length !== 0 ? (
-        <div>
+        <div className={cx('wrapper')}>
             <div className={cx('top')}>
                 <h1>#zingchart</h1>
                 <Button

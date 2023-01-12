@@ -310,4 +310,13 @@
         width: 90% !important;
         flex-shrink: 0;
     }
+    .add {
+        .media {
+            .media-wrapper {
+                .media-left {
+                    width: 100% !important;
+                }
+            }
+        }
+    }
 }

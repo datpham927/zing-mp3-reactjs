@@ -8,7 +8,7 @@ import ContainerSongs from '~/components/container/ContainerSongs';
 import ContainerVideos from '~/components/container/ContainerVideos';
 import Empty from '~/components/Empty/Empty';
 import toastMessage from '~/components/modal/toast';
-import { setCurrentIndex, setOpenQueueList, setPlayListAudio } from '~/redux/dataControl';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import { setAddPlayList, setSelectionAll } from '~/redux/FavoriteList';
 import style from './Bottom.module.scss';
 
@@ -42,8 +42,6 @@ function Bottom() {
         });
         dispatch(setCurrentIndex(1));
         dispatch(setPlayListAudio(listNew));
-        dispatch(setOpenQueueList(true));
-
         toastMessage(`Đã ${addPlayList?.length} thêm bài hát vào danh sách`);
     };
     return (

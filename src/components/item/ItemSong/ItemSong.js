@@ -535,7 +535,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
         </li>
     ) : (
         <li
-            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-6 m-6 col'}
+            className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-6 m-6 c-12 col'}
             onDoubleClick={() => handlePlay()}
         >
             <div className={cx('media', className, data.encodeId === idAudio?.encodeId && 'active')}>

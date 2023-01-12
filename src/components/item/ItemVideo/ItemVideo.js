@@ -27,7 +27,7 @@ function ItemVideo({ data }) {
     const id = useSelector((state) => state.dataMv.idMv);
     return (
         data && (
-            <li className={cx('item') + ' l-4 m-4 c-1 col'}>
+            <li className={cx('item') + ' l-4 m-4 c-12 col'}>
                 <div className={cx('wrapper')}>
                     <div className={cx('video-img')} onClick={handleOnclick}>
                         {data?.thumbnailM ? (

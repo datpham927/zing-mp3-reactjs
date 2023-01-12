@@ -34,7 +34,7 @@ function PageResultSearch() {
     return (
         <div className={cx('wrapper')}>
             <nav className={cx('header')}>
-                <h1 className={cx('title')}>Kết Quả Tìm Kiếm</h1>
+                <h1 className={cx('title') + ' c-0'}>Kết Quả Tìm Kiếm</h1>
                 <ul className={cx('menu')}>
                     <li className={cx('item')}>
                         <NavLink

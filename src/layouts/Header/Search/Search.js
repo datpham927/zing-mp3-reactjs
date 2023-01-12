@@ -135,7 +135,7 @@ function Search() {
                 onFocus={focusInput}
                 onKeyDown={(e) => handleEnter(e)}
             />
-            <div className={cx('icon-action')}>
+            <div className={cx('icon-action') + ' c-0'}>
                 {showBtn && (
                     <>
                         {changeBtn ? (

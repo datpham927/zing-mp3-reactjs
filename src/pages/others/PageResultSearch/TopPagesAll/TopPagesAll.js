@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 function TopPagesAll({ data, type = '' }) {
     return type === 'song' ? (
-        <div className=" l-4 col">
+        <div className=" l-4 m-4 c-12 col">
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb')}>
@@ -40,7 +40,7 @@ function TopPagesAll({ data, type = '' }) {
             </div>
         </div>
     ) : type === 'artist' ? (
-        <div className=" l-4 col">
+        <div className="  l-4 m-4 c-12 col">
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb', 'artist')}>
@@ -70,7 +70,7 @@ function TopPagesAll({ data, type = '' }) {
             </div>
         </div>
     ) : type === 'playlist' ? (
-        <div className=" l-4 col">
+        <div className=" l-4 m-4 c-12 col">
             <div className={cx('media')}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb', 'artist')}>

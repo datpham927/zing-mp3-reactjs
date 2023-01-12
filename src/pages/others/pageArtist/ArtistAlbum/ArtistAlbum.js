@@ -8,7 +8,7 @@ function ArtistAlbum() {
     const data = useSelector((state) => state.dataArtist.artistAlbum);
     return data.items ? (
         <Container title={data.title}>
-            {data?.items.map((item, index) => (
+            {data?.items.map((item) => (
                 <ItemPlayList key={uuidv4()} data={item} />
             ))}
         </Container>

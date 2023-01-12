@@ -22,7 +22,6 @@ function RadioLivestream({ data }) {
                     delay: 3000,
                     disableOnInteraction: false,
                 }}
-                allowTouchMove={false}
                 navigation={{
                     prevEl: navigationPrevRef.current,
                     nextEl: navigationNextRef.current,
@@ -38,14 +37,17 @@ function RadioLivestream({ data }) {
                     1: {
                         slidesPerView: 2,
                         slidesPerGroup: 1,
+                        allowTouchMove: true,
                     },
                     740: {
                         slidesPerView: 5,
                         slidesPerGroup: 2,
+                        allowTouchMove: false,
                     },
                     1025: {
                         slidesPerView: 6,
                         slidesPerGroup: 3,
+                        allowTouchMove: false,
                     },
                 }}
             >
@@ -59,13 +61,13 @@ function RadioLivestream({ data }) {
                 <Button
                     noContent
                     ref={navigationPrevRef}
-                    className={cx('btn-right')}
+                    className={cx('btn-right') + ' c-0'}
                     iconLeft={<i className="icon ic-go-right"></i>}
                 />
                 <Button
                     noContent
                     ref={navigationNextRef}
-                    className={cx('btn-left')}
+                    className={cx('btn-left') + ' c-0'}
                     iconLeft={<i className="icon ic-go-left"></i>}
                 />
             </Swiper>

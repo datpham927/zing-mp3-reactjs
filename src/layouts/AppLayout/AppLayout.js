@@ -20,9 +20,17 @@ function AppLayout({ children }) {
 
     const handleScroll = (e) => {
         if (e.currentTarget.scrollTop === 0) {
-            setBgrHeader(false);
+            document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(0)';
+            if (window.innerWidth <= 740) {
+            } else {
+                setBgrHeader(false);
+            }
         } else {
-            setBgrHeader(true);
+            if (window.innerWidth <= 740) {
+                document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(-100%)';
+            } else {
+                setBgrHeader(true);
+            }
         }
     };
     return (

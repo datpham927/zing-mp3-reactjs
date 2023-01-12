@@ -24,6 +24,15 @@ function ZingChart() {
         };
         chartApi();
     }, []);
+
+    const handleClickPlay = () => {
+        if (data?.length > 0) {
+            dispatch(setCurrentIndex(Math.floor(Math.random() * 100)));
+        } else {
+            dispatch(setCurrentIndex(Math.floor(Math.random() * 9)));
+        }
+    };
+
     const data = useSelector((state) => state.dataZingChart.dataZingChart);
     return data?.length !== 0 ? (
         <div className={cx('wrapper')}>
@@ -33,7 +42,7 @@ function ZingChart() {
                     noContent
                     iconLeft={<i className="icon ic-play"></i>}
                     className={cx('btn')}
-                    onClick={() => dispatch(setCurrentIndex(Math.floor(Math.random() * 100)))}
+                    onClick={handleClickPlay}
                 />
             </div>
             <div>
@@ -64,9 +73,9 @@ function ZingChart() {
                 <div>
                     <div className={cx('title')}>Bảng Xếp Hạng Tuần</div>
                     <Container>
-                        <ItemChartBox title={'Việt Nam'} data={data?.weekChart?.vn?.items} />
-                        <ItemChartBox title={'US-UK'} data={data?.weekChart?.us?.items} />
-                        <ItemChartBox title={'K-POP'} data={data?.weekChart?.korea?.items} />
+                        <ItemChartBox title={'Việt Nam'} data={data?.weekChart?.vn?.items} onClick={handleClickPlay} />
+                        <ItemChartBox title={'US-UK'} data={data?.weekChart?.us?.items} onClick={handleClickPlay} />
+                        <ItemChartBox title={'K-POP'} data={data?.weekChart?.korea?.items} onClick={handleClickPlay} />
                     </Container>
                 </div>
             </div>

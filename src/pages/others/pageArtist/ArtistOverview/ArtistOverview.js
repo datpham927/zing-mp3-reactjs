@@ -21,7 +21,7 @@ function ArtistOverview() {
                         e.sectionType === 'song' ? (
                             e.items?.length > 3 && <SongSpotlight data={e} />
                         ) : e.sectionType === 'playlist' ? (
-                            <ContainerPlaylist data={e.items} title={e.title} />
+                            <ContainerPlaylist data={e.items} title={e.title} scroll />
                         ) : e.sectionType === 'video' ? (
                             <ContainerVideos data={e.items} title={e.title} />
                         ) : e.sectionType === 'artist' ? (

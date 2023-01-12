@@ -20,7 +20,7 @@ function Background() {
                         : { backgroundImage: `url(${background[index].path})` }
                 }
             ></div>
-            <div className={cx('background') + ' l-0'}></div>
+            <div className={cx('background') + ' l-0 m-0'}></div>
         </>
     );
 }

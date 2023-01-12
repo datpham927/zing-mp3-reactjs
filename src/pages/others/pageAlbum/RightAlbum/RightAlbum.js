@@ -17,6 +17,7 @@ function RightAlbum({ data }) {
     const [openMenu, setOpenMenu] = useState(false);
     const [all, setAll] = useState(false);
     const { addPlayList } = useSelector((state) => state.Favorite);
+    const { booleanKindPlaylist } = useSelector((state) => state.action);
     const { playListAudio, activePlay } = useSelector((state) => state.dataControl);
     const dispatch = useDispatch();
 
@@ -142,9 +143,11 @@ function RightAlbum({ data }) {
                             link={data.link}
                         />
                     </div>
-                    <div className={cx('bottom') + ' c-0'}>
-                        <TimeAlbum data={data} />
-                    </div>
+                    {booleanKindPlaylist && (
+                        <div className={cx('bottom') + ' c-0'}>
+                            <TimeAlbum data={data} />
+                        </div>
+                    )}
                 </>
             ) : (
                 <>

@@ -41,6 +41,7 @@ function RadioEpisode({ data }) {
                     1: {
                         slidesPerView: 1,
                         slidesPerGroup: 1,
+                        allowTouchMove: true,
                     },
                 }}
             >
@@ -66,13 +67,13 @@ function RadioEpisode({ data }) {
                     <Button
                         noContent
                         ref={navigationPrevRef}
-                        className={cx('btn-right-banner')}
+                        className={cx('btn-right-banner') + ' c-0'}
                         iconLeft={<i className="icon ic-go-right"></i>}
                     />
                     <Button
                         noContent
                         ref={navigationNextRef}
-                        className={cx('btn-left-banner')}
+                        className={cx('btn-left-banner') + ' c-0'}
                         iconLeft={<i className="icon ic-go-left"></i>}
                     />
                 </>

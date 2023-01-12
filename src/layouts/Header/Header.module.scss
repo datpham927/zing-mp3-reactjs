@@ -5,6 +5,7 @@
     height: var(--height-header);
     display: flex;
     justify-content: space-between;
+    transition: 0.2s linear;
     z-index: 10;
     .left {
         display: flex;

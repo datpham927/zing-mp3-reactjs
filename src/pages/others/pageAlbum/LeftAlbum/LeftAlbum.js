@@ -87,7 +87,7 @@ function LeftAlbum({ data }) {
                         người yêu thích
                     </div>
                 )}
-                <TimeAlbum data={data} />
+
                 <ButtonAction
                     className={cx('btn-album')}
                     icon={<i className="icon ic-play"></i>}
@@ -95,7 +95,7 @@ function LeftAlbum({ data }) {
                     onClick={() => {
                         dispatch(setActivePlay(!activePlay));
                         dispatch(setOpenControl(true));
-                        dispatch(setLoadMusic(false));
+                        dispatch(setLoadMusic(true));
                     }}
                 >
                     {activePlay ? 'TẠM DỪNG' : 'TIẾP TỤC PHÁT'}
@@ -117,6 +117,9 @@ function LeftAlbum({ data }) {
                     )}
                     <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />
                 </div>
+            </div>
+            <div className="m-0 l-0">
+                <TimeAlbum data={data} />
             </div>
         </div>
     );

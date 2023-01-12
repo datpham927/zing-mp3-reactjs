@@ -24,17 +24,25 @@ function Radio() {
     }, []);
     const data = useSelector((state) => state.dataRadio.data_Radio);
 
-    return data?.length !== 0 ? (
+    return data?.length > 0 ? (
         <>
             {data?.map((i) =>
                 i?.sectionType === 'livestream' ? (
                     <RadioLivestream key={uuidv4()} data={i} />
                 ) : i?.sectionType === 'podcast' && i?.sectionId === 'radPromoteProgram' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} link={'/'} all description />
+                    <ContainerPlaylist data={i?.items} title={i?.title} link={'/'} all description scroll />
                 ) : i?.sectionType === 'podcast' && i?.sectionId === 'radReplay' ? (
-                    <ContainerPlaylist key={uuidv4()} data={i} spotlight title={i?.title} link={'/'} description />
+                    <ContainerPlaylist
+                        key={uuidv4()}
+                        data={i}
+                        spotlight
+                        title={i?.title}
+                        link={'/'}
+                        description
+                        scroll
+                    />
                 ) : i?.sectionType === 'podcast' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} link={'/'} all description />
+                    <ContainerPlaylist data={i?.items} title={i?.title} link={'/'} all description scroll />
                 ) : i?.sectionType === 'podcast_category' ? (
                     <RadioCategory key={uuidv4()} data={i} />
                 ) : i?.sectionType === 'podcastH' ? (

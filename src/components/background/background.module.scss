@@ -8,11 +8,9 @@
     background-size: 1920px auto;
     z-index: -1;
 }
-
 @media (max-width: 740px) {
     .background {
-        background-image: none;
-        background-color: #fcfcfc !important;
+        background-color: var(--player-bg);
     }
 }
 @media (min-width: 2130px) {

@@ -42,6 +42,23 @@
             font-weight: 500;
         }
     }
+    .user-test {
+        position: absolute;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        bottom: 3%;
+        right: 0;
+        left: 0;
+        cursor: pointer;
+        z-index: 1;
+        color: var(--link-text-hover);
+        transition: 0.3s linear;
+        text-decoration: underline;
+        &:hover {
+            opacity: 0.6;
+        }
+    }
     & .close {
         position: absolute;
         right: 5px;

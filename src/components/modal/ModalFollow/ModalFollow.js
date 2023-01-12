@@ -32,14 +32,14 @@ function ModalFollow() {
             <ModalWrapper>
                 {' '}
                 <div className={cx('body')}>
-                    <div className={cx('left') + ' l-7'}>
+                    <div className={cx('left') + ' l-7 m-7 c-12'}>
                         {data?.content?.type === 'album' ? (
                             <img src={data?.content?.photos[0].url} alt="" />
                         ) : (
-                            <video controls src={Video} />
+                            <video controls src={Video} autoPlay />
                         )}
                     </div>
-                    <div className={cx('right') + ' l-5'}>
+                    <div className={cx('right') + ' l-5 m-5 c-0'}>
                         <div className={cx('top')}>
                             <div className={cx('image')}>
                                 <img src={data?.publisher.thumbnail} alt="" />

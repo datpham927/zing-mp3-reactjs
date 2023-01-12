@@ -16,7 +16,7 @@ function Control() {
     const { bgrIndex, previewBgrIndex, openLyric } = useSelector((state) => state.action);
     const dispatch = useDispatch();
     const handleCLickMobile = (e) => {
-        if (e.target === e.currentTarget) {
+        if (e.target === e.currentTarget || e.target.closest('.ControlLeft_image__HpxGx')) {
             if (window.innerWidth <= 740) {
                 dispatch(setOpenLyric(true));
             }

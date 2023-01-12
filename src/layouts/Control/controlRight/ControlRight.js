@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import { setOpenLyric } from '~/redux/action';
@@ -9,8 +9,9 @@ import style from './ControlRight.module.scss';
 const cx = className.bind(style);
 
 function ControlRight() {
-    const { changerVolume, volume, currentVolume, idAudio } = useSelector((state) => state.dataControl);
-    const [queueList, setQueueList] = useState(false);
+    const { changerVolume, volume, currentVolume, idAudio, booleanQueueList } = useSelector(
+        (state) => state.dataControl,
+    );
     const dispatch = useDispatch();
     var audioRef = document.querySelector('audio');
     const handleDuration = (e) => {
@@ -24,9 +25,6 @@ function ControlRight() {
             audioRef.volume = changerVolume / 100;
         }
     }, [changerVolume]);
-    useEffect(() => {
-        queueList ? dispatch(setOpenQueueList(true)) : dispatch(setOpenQueueList(false));
-    }, [queueList]);
     return (
         <div className={cx('right') + ' l-3 m-3 c-0'}>
             <Button
@@ -68,9 +66,9 @@ function ControlRight() {
                 <div className={cx('volume-play')} style={{ width: `${changerVolume}%` }}></div>
             </div>
             <Button
-                onClick={() => setQueueList(!queueList)}
+                onClick={() => dispatch(setOpenQueueList(!booleanQueueList))}
                 small
-                className={cx('playlist', 'btn', queueList && 'active')}
+                className={cx('playlist', 'btn', booleanQueueList && 'active')}
                 noContent={'Danh sách phát'}
                 iconLeft={<i className="icon ic-list-music"></i>}
             />

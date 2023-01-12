@@ -63,4 +63,11 @@
     .header {
         padding: 10px 0;
     }
+    .item {
+        .wrapper {
+            .header {
+                margin-left: 20px;
+            }
+        }
+    }
 }

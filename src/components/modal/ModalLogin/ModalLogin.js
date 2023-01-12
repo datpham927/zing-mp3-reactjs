@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
-import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect } from 'firebase/auth';
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '~/firebasse/firebase';
 import { setCurrentUser, setOpenModalLogin } from '~/redux/action';
@@ -20,7 +20,7 @@ function ModalLogin() {
 
     const handleUser = () => {
         const provider = new GoogleAuthProvider();
-        signInWithRedirect(auth, provider);
+        signInWithPopup(auth, provider);
         onAuthStateChanged(auth, (currents) => {
             if (currents?.displayName) {
                 dispatch(
@@ -80,7 +80,31 @@ function ModalLogin() {
                         />
                         <h3>Đăng nhập bằng google</h3>
                     </div>
-                    <div className={cx('close')} onClick={() => dispatch(setOpenModalLogin(false))}>
+
+                    <div
+                        className={cx('user-test')}
+                        onClick={() => {
+                            dispatch(
+                                setCurrentUser({
+                                    user: true,
+                                    displayName: 'Test',
+                                    email: '',
+                                    photoURL:
+                                        'https://keomoi.com/wp-content/uploads/2019/05/anh-gai-xinh-toc-ngan-de-thuong.jpg',
+                                }),
+                            );
+                            dispatch(setOpenModalLogin(false));
+                            toastMessage('Đăng nhập thành công');
+                        }}
+                    >
+                        Click vào đây để dùng thử
+                    </div>
+                    <div
+                        className={cx('close')}
+                        onClick={() => {
+                            dispatch(setOpenModalLogin(false));
+                        }}
+                    >
                         <ion-icon name="close-outline"></ion-icon>
                     </div>
                 </div>

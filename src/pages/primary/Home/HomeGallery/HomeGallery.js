@@ -9,26 +9,26 @@ const cx = className.bind(style);
 function HomeGallery({ data }) {
     const [heightImg, setHeightImg] = useState(0);
     const itemRef = useRef();
-    const listImg = document.querySelectorAll('.Home_item__BetTT');
+    const listImg = document.querySelectorAll('.HomeGallery_item-image__2Df6B');
     const autoChange = () => {
         let numberIndex = 0;
         const change = () => {
             listImg.forEach((item, i) => {
                 if (i === numberIndex) {
-                    item.classList.replace('Home_second__RvisO', 'Home_first__6BikT');
+                    item.classList.replace('HomeGallery_second__b5Uio', 'HomeGallery_first__Nlpab');
                 } else if (i === numberIndex + 1) {
-                    item.classList.replace('Home_third__zpBHp', 'Home_second__RvisO');
+                    item.classList.replace('HomeGallery_third__7WCGB', 'HomeGallery_second__b5Uio');
                 } else if (i === numberIndex + 2) {
-                    item.classList.replace('Home_four__iAiTT', 'Home_third__zpBHp');
+                    item.classList.replace('HomeGallery_four__ZDitJ', 'HomeGallery_third__7WCGB');
                 } else {
-                    item.classList.replace('Home_first__6BikT', 'Home_four__iAiTT');
+                    item.classList.replace('HomeGallery_first__Nlpab', 'HomeGallery_four__ZDitJ');
                 }
                 if (numberIndex === listImg?.length - 2) {
-                    listImg[0].classList.replace('Home_four__iAiTT', 'Home_third__zpBHp');
+                    listImg[0].classList.replace('HomeGallery_four__ZDitJ', 'HomeGallery_third__7WCGB');
                 }
                 if (numberIndex === listImg?.length - 1) {
-                    listImg[0].classList.replace('Home_third__zpBHp', 'Home_second__RvisO');
-                    listImg[1].classList.replace('Home_four__iAiTT', 'Home_third__zpBHp');
+                    listImg[0].classList.replace('HomeGallery_third__7WCGB', 'HomeGallery_second__b5Uio');
+                    listImg[1].classList.replace('HomeGallery_four__ZDitJ', 'HomeGallery_third__7WCGB');
                 }
             });
             numberIndex++;
@@ -49,7 +49,7 @@ function HomeGallery({ data }) {
                         key={uuidv4()}
                         ref={itemRef}
                         className={cx(
-                            'item',
+                            'item-image',
                             index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : 'four',
                             ' l-4 m-6 c-12',
                         )}

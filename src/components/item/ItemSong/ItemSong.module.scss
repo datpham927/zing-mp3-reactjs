@@ -300,14 +300,16 @@
 }
 
 @media (max-width: 740px) {
+    .media-left {
+        width: 90% !important;
+    }
     .media-ratings {
         & .number {
-            font-size: 2.5rem;
-            width: 3rem;
+            font-size: 2.5rem !important;
+            width: 3rem !important;
         }
     }
     .media-left-mb {
-        width: 90% !important;
         flex-shrink: 0;
     }
     .add {

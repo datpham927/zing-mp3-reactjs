@@ -7,13 +7,18 @@ import ContainerSongs from '~/components/container/ContainerSongs';
 
 const cx = className.bind(style);
 
-function ItemChartBox({ data, title = '' }) {
+function ItemChartBox({ data, title = '', onClick }) {
     return (
         <div className={cx('item') + ' l-4 m-6 col'}>
             <div className={cx('wrapper')}>
                 <div className={cx('header')}>
                     <h1>{title}</h1>
-                    <Button noContent iconLeft={<i className="icon ic-play"></i>} className={cx('btn')} />
+                    <Button
+                        noContent
+                        iconLeft={<i className="icon ic-play"></i>}
+                        className={cx('btn')}
+                        onClick={onClick}
+                    />
                 </div>
 
                 <ContainerSongs type="top100-small" data={data} index={5} title={'#zingChart'} link={'/zing-chart'} />

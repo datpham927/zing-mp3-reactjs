@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '~/firebasse/firebase';
 import { setCurrentUser, setOpenModalLogin } from '~/redux/action';
@@ -20,7 +20,7 @@ function ModalLogin() {
 
     const handleUser = () => {
         const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider);
+        signInWithRedirect(auth, provider);
         onAuthStateChanged(auth, (currents) => {
             if (currents?.displayName) {
                 dispatch(

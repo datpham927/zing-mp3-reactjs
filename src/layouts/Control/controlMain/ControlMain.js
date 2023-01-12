@@ -48,11 +48,12 @@ function ControlMain() {
         }
         if (activePlay) {
             if (loadMusic) {
-                audioRef?.current.play();
+                audioRef.current.play();
             } else {
                 setTimeout(() => {
                     dispatch(setRecentList(idAudio));
                     dispatch(setLoadMusic(true));
+                    audioRef?.current?.play();
                 }, 1000);
             }
         } else {

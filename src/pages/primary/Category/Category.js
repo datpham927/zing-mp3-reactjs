@@ -1,4 +1,5 @@
 import className from 'classnames/bind';
+import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCategory } from '~/components/Api/Service';
@@ -36,7 +37,7 @@ function Category() {
             </div>
             <div className={cx('body')}>
                 <Container title={'Tâm Trạng Và Hoạt Động'}>
-                    {topic?.map((e, i) => i < indexTopic && <ItemTopic data={e} key={e.encodeId} />)}
+                    {topic?.map((e, i) => i < indexTopic && <ItemTopic data={e} key={uuidv4()} />)}
                     {indexTopic === 6 && (
                         <ButtonAction className={cx('btn')} onClick={() => setIndexTopic(topic?.length)}>
                             Tất cả
@@ -47,7 +48,7 @@ function Category() {
                     {nations?.map(
                         (e, i) =>
                             i < indexNations && (
-                                <div className={cx('nations-item') + ' l-4 col'}>
+                                <div className={cx('nations-item') + ' l-4 col'} key={uuidv4()}>
                                     <Link to={e.link}>
                                         <div className={cx('nations-image')}>
                                             <img src={e.thumbnail} alt="" />
@@ -64,7 +65,7 @@ function Category() {
                     )}
                 </Container>
                 {genre?.map((e, i) => (
-                    <ContainerPlaylist key={i} data={e.playlists} title={e.title} all link={e.link} />
+                    <ContainerPlaylist key={uuidv4()} data={e.playlists} title={e.title} all link={e.link} />
                 ))}
             </div>
         </div>

@@ -6,6 +6,7 @@ import Tippy from '@tippyjs/react/headless';
 import ItemMenu from '../ItemMenu/ItemMenu';
 import { useState } from 'react';
 import { auth } from '~/firebasse/firebase';
+import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from '~/redux/action';
 import toastMessage from '~/components/modal/toast';
@@ -31,7 +32,7 @@ function TippyMenu({ MENU_ITEM = [], children }) {
                 return (
                     <ItemMenu
                         type={item.type}
-                        key={item.id}
+                        key={uuidv4()}
                         id={item.id}
                         iconLeft={item.iconLeft}
                         iconRight={item.iconRight}

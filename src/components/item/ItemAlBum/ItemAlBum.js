@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { zingAction } from '~/redux/action';
 import Button from '../../Button';
 import styles from './ItemAlBum.module.scss';
+import { v4 as uuidv4 } from 'uuid';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { setActivePlay, setIdAudio, setLoadMusic } from '~/redux/dataControl';
 import Duration from '~/components/number/time/Duration';
@@ -75,7 +76,7 @@ function ItemAlbum({ data, onClick }) {
                         </div>
                         <span className={cx('singer')}>
                             {data?.artists?.map((item, index) => (
-                                <li key={index}>
+                                <li key={uuidv4()}>
                                     <Link to={item?.link}>{item.name}</Link>
                                     {index < data.artists?.length - 1 && ', '}
                                 </li>

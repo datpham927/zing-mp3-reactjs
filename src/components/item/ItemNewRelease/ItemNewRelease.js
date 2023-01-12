@@ -2,6 +2,7 @@ import className from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setActivePlay, setIdAudio } from '~/redux/dataControl';
+import { v4 as uuidv4 } from 'uuid';
 import style from './ItemNewRelease.modul.scss';
 
 const cx = className.bind(style);
@@ -40,7 +41,7 @@ function ItemNewRelease({ data, index, col = ' l-4 m-4', onClick }) {
                         <h1>{data?.title}</h1>
                         <span className={cx('singer')}>
                             {data?.artists?.map((i, index) => (
-                                <div key={index}>
+                                <div key={uuidv4()}>
                                     <Link to={i.link}>{i.name}</Link>
                                     {index < data?.artists?.length - 1 && ', '}
                                 </div>

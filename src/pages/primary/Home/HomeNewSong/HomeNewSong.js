@@ -1,7 +1,7 @@
 import className from 'classnames/bind';
 
 import style from './HomeNewSong.module.scss';
-
+import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import Container from '~/components/container/Container';
@@ -38,7 +38,7 @@ function HomeNewSong({ data }) {
                 }}
             >
                 {data?.items?.map((item, index) => (
-                    <li key={item.encodeId}>
+                    <li key={uuidv4()}>
                         <SwiperSlide>
                             <ItemNewRelease col="" data={item} index={index + 1} onClick={() => handleClick(index)} />
                         </SwiperSlide>

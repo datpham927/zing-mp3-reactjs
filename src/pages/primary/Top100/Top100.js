@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { ImgTop100 } from '~/components/Icons/Icons';
 import className from 'classnames/bind';
 import style from './Top100.module.scss';
@@ -24,9 +25,9 @@ function Top100() {
             </div>
 
             {data?.length !== 0 ? (
-                data?.map((e, i) => (
+                data?.map((e) => (
                     <ContainerPlayList
-                        key={i}
+                        key={uuidv4()}
                         data={e?.items}
                         title={e.title}
                         index={e?.items?.length}

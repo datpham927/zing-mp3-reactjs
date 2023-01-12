@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import { Icon } from '~/components/Icons';
@@ -11,35 +12,35 @@ const cx = classNames.bind(style);
 
 const MENU_SIDEBAR = [
     {
-        encodeId: 'sb1',
+        encodeId: uuidv4(),
         title: 'Cá Nhân',
         icon: <i className="icon  ic-24-LibraryTab"></i>,
         path: '/mymusic',
         type: false,
     },
     {
-        encodeId: 'sb2',
+        encodeId: uuidv4(),
         title: 'Khám Phá',
         icon: <i className="icon  ic-24-HomeTab"></i>,
         path: '/',
         type: false,
     },
     {
-        encodeId: 'sb3',
+        encodeId: uuidv4(),
         title: '#zingchart',
         icon: <i className="icon  ic-24-ChartTab"></i>,
         path: '/zing-chart',
         type: true,
     },
     {
-        encodeId: 'sb4',
+        encodeId: uuidv4(),
         title: 'Radio',
         icon: <i className="icon  ic-24-RadioTab"></i>,
         path: `/radio`,
         type: true,
     },
     {
-        encodeId: 'sb5',
+        encodeId: uuidv4(),
         title: 'Theo Dõi',
         icon: <i className="icon  ic-24-FeedTab"></i>,
         path: `/the-loai-nghe-si/Viet-Nam/IWZ9Z08I.html`,
@@ -49,28 +50,28 @@ const MENU_SIDEBAR = [
 
 const MENU_SCROLL = [
     {
-        encodeId: 'sb6',
+        encodeId: uuidv4(),
         title: 'Nhạc Mới',
         icon: <Icon.IconMusic />,
         path: '/moi-phat-hanh',
         type: true,
     },
     {
-        encodeId: 'sb7',
+        encodeId: uuidv4(),
         title: 'Thể Loại',
         icon: <i className="icon  ic-24-GenreTab"></i>,
         path: '/hub',
         type: false,
     },
     {
-        encodeId: 'sb8',
+        encodeId: uuidv4(),
         title: 'Top 100',
         icon: <i className="icon  ic-24-Top100Tab"></i>,
         path: '/top100',
         type: false,
     },
     {
-        encodeId: 'sb9',
+        encodeId: uuidv4(),
         title: 'MV',
         icon: <i className="icon  ic-24-MVTab"></i>,
         path: '/the-loai-video/Viet-Nam/IWZ9Z08I.html',
@@ -81,19 +82,19 @@ const LIBRARY = [
     {
         title: 'Bài Hát',
         img: 'https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.0.13/static/media/my-song.cf0cb0b4.svg',
-        encodeId: '01',
+        encodeId: uuidv4(),
         path: '/library/songs',
     },
     {
         title: 'Playlist',
         img: 'https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.0.13/static/media/my-playlist.7e92a5f0.svg',
-        encodeId: '02',
+        encodeId: uuidv4(),
         path: '/library/play-list',
     },
     {
         title: 'Gần Đây',
         img: 'https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.0.13/static/media/my-history.374cb625.svg',
-        encodeId: '03',
+        encodeId: uuidv4(),
         path: '/library/recently',
     },
 ];
@@ -136,7 +137,7 @@ function Sidebar() {
                     </div>
                 </div>
                 {MENU_SIDEBAR.map(
-                    (item, index) => index > 0 && <ItemSidebar activeMenu={openMenu} key={item.encodeId} data={item} />,
+                    (item, index) => index > 0 && <ItemSidebar activeMenu={openMenu} key={uuidv4()} data={item} />,
                 )}
                 <div className={cx('divide')}></div>
             </div>
@@ -144,7 +145,7 @@ function Sidebar() {
             <div className={cx('navbar', booleanControl && 'active')}>
                 <div className={cx('navbar-menu')}>
                     {MENU_SCROLL.map((item) => (
-                        <ItemSidebar activeMenu={openMenu} key={item.encodeId} data={item} />
+                        <ItemSidebar activeMenu={openMenu} key={uuidv4()} data={item} />
                     ))}
                 </div>
                 {!user ? (
@@ -164,6 +165,7 @@ function Sidebar() {
                             </li>
                             {LIBRARY.map((e) => (
                                 <NavLink
+                                    key={uuidv4()}
                                     end
                                     className={(nav) => cx('library-item', { 'active-private': nav.isActive })}
                                     to={e.path}
@@ -188,7 +190,7 @@ function Sidebar() {
                     primary
                     className={cx('expanded-btn')}
                     noContent
-                    iconLeft={openMenu ? <i class="icon ic-go-left"></i> : <i class="icon ic-go-right"></i>}
+                    iconLeft={openMenu ? <i className="icon ic-go-left"></i> : <i className="icon ic-go-right"></i>}
                 />
             </div>
         </div>

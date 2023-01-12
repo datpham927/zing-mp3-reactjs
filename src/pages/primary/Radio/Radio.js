@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRadio } from '~/components/Api/Service';
 import { zingRadio } from '~/redux/dataRadio';
+import { v4 as uuidv4 } from 'uuid';
 import RadioBanner from './RadioEpisode';
 import RadioCategory from './RadioCategory';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
@@ -27,23 +28,23 @@ function Radio() {
         <>
             {data?.map((i) =>
                 i?.sectionType === 'livestream' ? (
-                    <RadioLivestream data={i} />
+                    <RadioLivestream key={uuidv4()} data={i} />
                 ) : i?.sectionType === 'podcast' && i?.sectionId === 'radPromoteProgram' ? (
                     <ContainerPlaylist data={i?.items} title={i?.title} link={'/'} all description />
                 ) : i?.sectionType === 'podcast' && i?.sectionId === 'radReplay' ? (
-                    <ContainerPlaylist data={i} spotlight title={i?.title} link={'/'} description />
+                    <ContainerPlaylist key={uuidv4()} data={i} spotlight title={i?.title} link={'/'} description />
                 ) : i?.sectionType === 'podcast' ? (
                     <ContainerPlaylist data={i?.items} title={i?.title} link={'/'} all description />
                 ) : i?.sectionType === 'podcast_category' ? (
-                    <RadioCategory data={i} />
+                    <RadioCategory key={uuidv4()} data={i} />
                 ) : i?.sectionType === 'podcastH' ? (
-                    <RadioPodcastH data={i} />
+                    <RadioPodcastH key={uuidv4()} data={i} />
                 ) : i?.sectionType === 'episode' ? (
-                    <RadioRadPromoteEpisode data={i} />
+                    <RadioRadPromoteEpisode key={uuidv4()} data={i} />
                 ) : i?.sectionType === 'top_episode' ? (
-                    <RadioTopPodcast data={i} />
+                    <RadioTopPodcast key={uuidv4()} data={i} />
                 ) : i?.sectionType === 'Radio_Banner' ? (
-                    <RadioBanner data={i} />
+                    <RadioBanner key={uuidv4()} data={i} />
                 ) : (
                     ''
                 ),

@@ -64,7 +64,7 @@ function LeftAlbum({ data }) {
                         <Button
                             small
                             noContent
-                            iconLeft={<i class="icon ic-edit"></i>}
+                            iconLeft={<i className="icon ic-edit"></i>}
                             onClick={() => {
                                 dispatch(setModalAddPlayList(true));
                                 dispatch(setIdPlayList(data.encodeId));

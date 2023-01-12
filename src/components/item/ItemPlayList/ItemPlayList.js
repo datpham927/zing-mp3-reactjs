@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
+import { v4 as uuidv4 } from 'uuid';
 import toastMessage from '~/components/modal/toast';
 import { setBooleanEdit, setKindPlaylist, setModalAddPlayList, setModalPortalDelete } from '~/redux/action';
 import { setIdPlayList, setPlayListFavorite, setPlayListTitle } from '~/redux/FavoriteList';
@@ -110,7 +111,7 @@ function ItemPlayList({ data, type = '', description, className }) {
                                     }}
                                     small
                                     content={'Xóa khỏi thư viện'}
-                                    iconLeft={<i class="icon ic-close"></i>}
+                                    iconLeft={<i className="icon ic-close"></i>}
                                 />
                             </div>
                             <div className={cx('icon-play')}>
@@ -124,7 +125,7 @@ function ItemPlayList({ data, type = '', description, className }) {
                                     dispatch(setIdPlayList(data.encodeId));
                                     dispatch(setBooleanEdit(true));
                                 }}
-                                iconLeft={<i class="icon ic-edit"></i>}
+                                iconLeft={<i className="icon ic-edit"></i>}
                             />
                         </div>
                     </div>
@@ -187,7 +188,7 @@ function ItemPlayList({ data, type = '', description, className }) {
                     <span className={cx('subtitle')}>
                         {!description ? (
                             data?.artists?.map((item, index) => (
-                                <span key={index}>
+                                <span key={uuidv4()}>
                                     <span>
                                         <Link to={item.link}>{item.name}</Link>
                                     </span>

@@ -1,5 +1,6 @@
 import className from 'classnames/bind';
 import Container from '~/components/container/Container';
+import { v4 as uuidv4 } from 'uuid';
 import ItemPodcast from '~/components/item/ItemPodcast/ItemPodcast';
 import style from './Radio.module.scss';
 
@@ -12,8 +13,8 @@ function RadioTopPodcast({ data }) {
         // console.log(item.album);
     };
     return (
-        <Container title={data?.title} all link={data.link}>
-            <div className="l-6 m-6 col">
+        <Container title={data?.title} all link={data.link} scroll>
+            <div className="l-6 m-6 c-12 col">
                 <div className={cx('box-left')}>
                     {data?.items?.map(
                         (item, index) =>
@@ -21,7 +22,7 @@ function RadioTopPodcast({ data }) {
                                 <ItemPodcast
                                     className={cx('topPodcast')}
                                     index={index + 1}
-                                    key={index}
+                                    key={uuidv4()}
                                     data={item}
                                     onClick={() => handleOnClick(item)}
                                 />
@@ -29,7 +30,7 @@ function RadioTopPodcast({ data }) {
                     )}
                 </div>
             </div>
-            <div className="l-6 m-6 col">
+            <div className="l-6 m-6 c-12 col">
                 <div className={cx('box-right')}>
                     {data?.items?.map(
                         (item, index) =>
@@ -38,7 +39,7 @@ function RadioTopPodcast({ data }) {
                                 <ItemPodcast
                                     className={cx('topPodcast')}
                                     index={index + 1}
-                                    key={index}
+                                    key={uuidv4()}
                                     data={item}
                                     onClick={() => handleOnClick(item)}
                                 />

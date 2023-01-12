@@ -175,7 +175,7 @@ function PlayMv() {
                         </div>
                     </div>
                     <div className={cx('body')}>
-                        {data?.artists && data?.artists?.map((e, i) => <MvArtist value={e.alias} key={e.encodeId} />)}
+                        {data?.artists && data?.artists?.map((e, i) => <MvArtist value={e.alias} key={uuidv4()} />)}
                     </div>
                 </div>
             </div>

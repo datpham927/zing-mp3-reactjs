@@ -3,6 +3,7 @@ import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
+import { v4 as uuidv4 } from 'uuid';
 import toastMessage from '~/components/modal/toast';
 import { setSongFavorite } from '~/redux/FavoriteList';
 import style from './ControlLeft.module.scss';
@@ -31,7 +32,7 @@ function ControlLeft() {
                 <h3>{idAudio?.title}</h3>
                 <p>
                     {idAudio?.artists?.map((i, index) => (
-                        <span key={index}>
+                        <span key={uuidv4()}>
                             <Link to={i.link}>{i.name}</Link>
                             {index < idAudio?.artists?.length - 1 && ', '}
                         </span>

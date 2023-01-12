@@ -1,7 +1,7 @@
 import className from 'classnames/bind';
 import { useState } from 'react';
 import ButtonAction from '~/components/Button/ButtonAction';
-
+import { v4 as uuidv4 } from 'uuid';
 import style from './ItemEvent.module.scss';
 const cx = className.bind(style);
 function ItemEvent({ data, col = 'l-4 m-4' }) {
@@ -22,7 +22,7 @@ function ItemEvent({ data, col = 'l-4 m-4' }) {
                     <small>Lượt quan tâm</small>
                     <div className={cx('avatar')}>
                         {data?.followers?.map((item, index) => (
-                            <div key={index} className={cx('avatar-item')}>
+                            <div key={uuidv4()} className={cx('avatar-item')}>
                                 <img src={item.avatar} alt="" />
                             </div>
                         ))}

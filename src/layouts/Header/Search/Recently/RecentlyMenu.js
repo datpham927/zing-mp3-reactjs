@@ -13,7 +13,7 @@ function RecentlyMenu({ data, onClick }) {
             </div>
             <div className={cx('body')}>
                 {data?.map((item) => (
-                    <RecentlyItem key={item.encodeId} data={item} onClick={onClick} />
+                    <RecentlyItem key={uuidv4()} data={item} onClick={onClick} />
                 ))}
             </div>
         </div>

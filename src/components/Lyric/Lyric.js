@@ -7,6 +7,7 @@ import { setOpenLyric } from '~/redux/action';
 import ItemLyric from './ItemLyric';
 import style from './Lyric.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { v4 as uuidv4 } from 'uuid';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
 
 import 'swiper/css';
@@ -23,7 +24,6 @@ function Lyric() {
     const [playFullscreen, setPlayFullScreen] = useState(false);
     const [bgr, setBgr] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
-    const [fullScreen, setFullScreen] = useState(false);
     const dispatch = useDispatch();
     const { idAudio, activePlay } = useSelector((state) => state.dataControl);
     const { openLyric } = useSelector((state) => state.action);
@@ -43,26 +43,27 @@ function Lyric() {
     };
 
     useEffect(() => {
-        if (fullScreen) {
-            if (document?.documentElement.requestFullScreen) {
+        if (
+            (document.fullScreenElement && document.fullScreenElement !== null) ||
+            (!document.mozFullScreen && !document.webkitIsFullScreen)
+        ) {
+            if (document.documentElement.requestFullScreen) {
                 document.documentElement.requestFullScreen();
-            } else if (document?.documentElement.mozRequestFullScreen) {
+            } else if (document.documentElement.mozRequestFullScreen) {
                 document.documentElement.mozRequestFullScreen();
-            } else if (document?.documentElement.webkitRequestFullScreen) {
+            } else if (document.documentElement.webkitRequestFullScreen) {
                 document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
             }
         } else {
-            if (document?.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document?.webkitExitFullscreen) {
-                /* Safari */
-                document.webkitExitFullscreen();
-            } else if (document?.msExitFullscreen) {
-                /* IE11 */
-                document.msExitFullscreen();
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
             }
         }
-    }, [fullScreen]);
+    }, []);
 
     useEffect(() => {
         var time;
@@ -94,7 +95,7 @@ function Lyric() {
                                 speed={1000}
                             >
                                 {data?.defaultIBGUrls?.map((e) => (
-                                    <SwiperSlide>
+                                    <SwiperSlide key={uuidv4()}>
                                         <div className={cx('item')}>
                                             <img src={e} alt="" />
                                         </div>
@@ -123,12 +124,12 @@ function Lyric() {
                                 <div className={cx('title-mb')}>{idAudio?.title}</div>
                                 <span className={cx('singer')}>
                                     {idAudio?.artists?.map((i, index) => (
-                                        <>
+                                        <span key={uuidv4()}>
                                             <span>
                                                 <Link to={i.link}>{i.name}</Link>
                                             </span>
                                             {index < idAudio?.artists?.length - 1 && ', '}
-                                        </>
+                                        </span>
                                     ))}
                                 </span>
                             </div>
@@ -139,15 +140,14 @@ function Lyric() {
                             <Button
                                 primary
                                 content="Toàn màng hình"
-                                iconLeft={<i class="icon ic-scale-1"></i>}
-                                onClick={() => setFullScreen((e) => !e)}
+                                iconLeft={<i className="icon ic-scale-1"></i>}
                                 className={cx('btn') + ' c-0'}
                             />
                             <div className={cx('setting')} onClick={() => setOpenMenu((e) => !e)}>
                                 <Button
                                     primary
                                     content="Cài đặt"
-                                    iconLeft={<i class="icon ic-settings"></i>}
+                                    iconLeft={<i className="icon ic-settings"></i>}
                                     className={cx('btn')}
                                 />
                                 {openMenu && (
@@ -206,7 +206,7 @@ function Lyric() {
                             <Button
                                 primary
                                 content="Đóng"
-                                iconLeft={<i class="icon ic-go-down"></i>}
+                                iconLeft={<i className="icon ic-go-down"></i>}
                                 onClick={() => {
                                     dispatch(setOpenLyric(false));
                                     setOpenMenu(false);
@@ -233,7 +233,7 @@ function Lyric() {
                         <div className={cx('right') + ' l-7 c-12'}>
                             <ul className={cx('lyric', size)}>
                                 {data?.sentences?.map((e) => (
-                                    <ItemLyric data={e} />
+                                    <ItemLyric data={e} key={uuidv4()} />
                                 ))}
                             </ul>
                         </div>

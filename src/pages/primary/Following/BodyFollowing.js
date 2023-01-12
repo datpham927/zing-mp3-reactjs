@@ -47,7 +47,7 @@ function BodyFollowing() {
         <div className={cx('body')}>
             <Container>
                 {data?.map((e, i) => (
-                    <ItemFollowing data={e} key={e.encodeId}></ItemFollowing>
+                    <ItemFollowing data={e} key={uuidv4()}></ItemFollowing>
                 ))}
             </Container>
             {hideBtn && (

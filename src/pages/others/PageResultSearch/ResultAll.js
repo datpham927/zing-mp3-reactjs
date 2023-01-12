@@ -2,6 +2,7 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLayoutEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Container from '~/components/container/Container';
 import ItemPlayList from '~/components/item/ItemPlayList/ItemPlayList';
 import * as searchApi from '~/components/Api/Service';
@@ -45,7 +46,7 @@ function ResultAll() {
             {data.playlists && data.top && (
                 <Container spotlight data={data}>
                     {data?.playlists?.map(
-                        (item, index) => index >= 2 && index < 6 && <ItemPlayList key={item.encodeId} data={item} />,
+                        (item, index) => index >= 2 && index < 6 && <ItemPlayList key={uuidv4()} data={item} />,
                     )}
                 </Container>
             )}

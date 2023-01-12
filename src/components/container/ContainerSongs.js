@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { setIdAudio, setLoadMusic, setPlayListAudio } from '~/redux/dataControl';
+import { v4 as uuidv4 } from 'uuid';
 import { setPlayListTitle } from '~/redux/FavoriteList';
 import ItemSong from '../item/ItemSong/ItemSong';
 import ItemSongAdd from '../item/ItemSong/ItemSongAdd';
@@ -20,7 +21,7 @@ function ContainerSongs({ data, title, link, all = false, index = 6, type = '', 
         ? data?.map(
               (e, i) =>
                   i < index && (
-                      <ItemSong key={e.encodeId} data={e} type={type} index={i + 1} onClick={() => handleOnClick(e)} />
+                      <ItemSong key={uuidv4()} data={e} type={type} index={i + 1} onClick={() => handleOnClick(e)} />
                   ),
           )
         : type === 'add'
@@ -28,7 +29,7 @@ function ContainerSongs({ data, title, link, all = false, index = 6, type = '', 
               (e, i) =>
                   i < index && (
                       <ItemSongAdd
-                          key={e.encodeId}
+                          key={uuidv4()}
                           data={e}
                           checkBox={checkBox}
                           onClick={() => handleOnClick(e)}
@@ -41,7 +42,7 @@ function ContainerSongs({ data, title, link, all = false, index = 6, type = '', 
                   {data?.map(
                       (e, i) =>
                           i < index && (
-                              <ItemSong key={e.encodeId} data={e} type={type} onClick={() => handleOnClick(e)} />
+                              <ItemSong key={uuidv4()} data={e} type={type} onClick={() => handleOnClick(e)} />
                           ),
                   )}
               </Container>

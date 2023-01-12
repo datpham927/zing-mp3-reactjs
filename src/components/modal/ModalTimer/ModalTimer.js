@@ -3,6 +3,7 @@ import className from 'classnames/bind';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonAction from '~/components/Button/ButtonAction';
+import { v4 as uuidv4 } from 'uuid';
 import { setDateTime, setModalTimer, setTimer } from '~/redux/action';
 import toastMessage from '../toast';
 import style from './ModalTimer.module.scss';
@@ -90,7 +91,7 @@ function ModalTimer() {
                                     <div className={cx('list-hour')}>
                                         {list.map((e) => (
                                             <div
-                                                key={e}
+                                                key={uuidv4()}
                                                 className={cx('option')}
                                                 onClick={() => {
                                                     setHour(e);
@@ -125,7 +126,7 @@ function ModalTimer() {
                                             (e) =>
                                                 e < 12 && (
                                                     <div
-                                                        key={e}
+                                                        key={uuidv4()}
                                                         className={cx('option')}
                                                         onClick={() => {
                                                             setMinute(e * 5);

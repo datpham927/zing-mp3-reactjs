@@ -10,6 +10,7 @@ import HomeGallery from './HomeGallery/HomeGallery';
 import HomeRelease from './HomeRelease/HomeRelease';
 import HomeSpotlight from './HomeSpotlight/HomeSpotlight';
 import HomeNewSong from './HomeNewSong/HomeNewSong';
+import { v4 as uuidv4 } from 'uuid';
 import HomeLiveRadio from './HomeLiveRadio/HomeLiveRadio';
 import HomeEvent from './HomeEvent/HomeEvent';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
@@ -30,21 +31,21 @@ function Home() {
         <div className={cx('wrapper')}>
             {dataHome?.map((i) =>
                 i.sectionType === 'banner' ? (
-                    <HomeGallery data={i} />
+                    <HomeGallery data={i} key={uuidv4()} />
                 ) : i.sectionType === 'playlist' && i.sectionId === 'h100' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} link={i.link} all scroll />
+                    <ContainerPlaylist key={uuidv4()} data={i?.items} title={i?.title} link={i.link} all scroll />
                 ) : i.sectionType === 'playlist' ? (
-                    <ContainerPlaylist data={i?.items} title={i?.title} scroll />
+                    <ContainerPlaylist key={uuidv4()} data={i?.items} title={i?.title} scroll />
                 ) : i.sectionType === 'livestream' ? (
-                    <HomeLiveRadio data={i} />
+                    <HomeLiveRadio key={uuidv4()} data={i} />
                 ) : i.sectionType === 'new-release' ? (
-                    <HomeRelease data={i} />
+                    <HomeRelease key={uuidv4()} data={i} />
                 ) : i.sectionType === 'artistSpotlight' ? (
-                    <HomeSpotlight data={i} />
+                    <HomeSpotlight key={uuidv4()} data={i} />
                 ) : i.sectionType === 'newReleaseChart' ? (
-                    <HomeNewSong data={i} />
+                    <HomeNewSong key={uuidv4()} data={i} />
                 ) : i.sectionType === 'event' ? (
-                    <HomeEvent data={i} />
+                    <HomeEvent key={uuidv4()} data={i} />
                 ) : (
                     ''
                 ),

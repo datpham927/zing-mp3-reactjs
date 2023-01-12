@@ -1,4 +1,5 @@
 import Container from './Container';
+import { v4 as uuidv4 } from 'uuid';
 import { memo } from 'react';
 import ItemPlayList from '../item/ItemPlayList/ItemPlayList';
 
@@ -25,15 +26,13 @@ function ContainerPlaylist({
                   className={className}
               >
                   {data?.items.map(
-                      (e, i) => i < index && <ItemPlayList description={description} data={e} key={e.encodeId} />,
+                      (e, i) => i < index && <ItemPlayList description={description} data={e} key={uuidv4()} />,
                   )}
               </Container>
           )
         : data && (
               <Container scroll title={title} link={link} all={all} className={className}>
-                  {data?.map(
-                      (e, i) => i < index && <ItemPlayList description={description} data={e} key={e.encodeId} />,
-                  )}
+                  {data?.map((e, i) => i < index && <ItemPlayList description={description} data={e} key={uuidv4()} />)}
               </Container>
           );
 }

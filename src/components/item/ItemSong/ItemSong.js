@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import Button from '~/components/Button';
 import { setOpenLyric, zingAction } from '~/redux/action';
 
@@ -104,12 +105,12 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             </div>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
-                                    <>
+                                    <span key={uuidv4()}>
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
                                         {index < data?.artists?.length - 1 && ', '}
-                                    </>
+                                    </span>
                                 ))}
                             </span>
                         </div>
@@ -231,12 +232,12 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             </div>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
-                                    <>
+                                    <span key={uuidv4()}>
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
                                         {index < data?.artists?.length - 1 && ', '}
-                                    </>
+                                    </span>
                                 ))}
                             </span>
                         </div>
@@ -359,12 +360,12 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             </div>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
-                                    <>
+                                    <span key={uuidv4()}>
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
                                         {index < data?.artists?.length - 1 && ', '}
-                                    </>
+                                    </span>
                                 ))}
                             </span>
                         </div>
@@ -438,12 +439,12 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             </div>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
-                                    <>
+                                    <span key={uuidv4()}>
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
                                         {index < data?.artists?.length - 1 && ', '}
-                                    </>
+                                    </span>
                                 ))}
                             </span>
                         </div>
@@ -498,12 +499,12 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             </div>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
-                                    <>
+                                    <span key={uuidv4()}>
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
                                         {index < data?.artists?.length - 1 && ', '}
-                                    </>
+                                    </span>
                                 ))}
                             </span>
                         </div>
@@ -574,12 +575,12 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                             </div>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
-                                    <>
+                                    <span key={uuidv4()}>
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
                                         {index < data?.artists?.length - 1 && ', '}
-                                    </>
+                                    </span>
                                 ))}
                             </span>
                         </div>

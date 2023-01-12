@@ -53,7 +53,6 @@ function ControlMain() {
                 setTimeout(() => {
                     dispatch(setRecentList(idAudio));
                     dispatch(setLoadMusic(true));
-                    audioRef?.current.play();
                 }, 1000);
             }
         } else {

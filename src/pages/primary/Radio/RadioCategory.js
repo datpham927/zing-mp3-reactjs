@@ -9,11 +9,11 @@ const cx = className.bind(style);
 
 function RadioCategory({ data }) {
     return (
-        <Container title={data.title}>
+        <Container title={data.title} scroll>
             {data?.items?.map(
                 (i, index) =>
                     index < 4 && (
-                        <div className="l-3 m-3 col">
+                        <div className="l-3 m-3 c-6 col">
                             <div
                                 className={cx('episode-item')}
                                 onClick={() => toastMessage('phần này gọi api được không')}

@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
+import { v4 as uuidv4 } from 'uuid';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import Container from '~/components/container/Container';
 import Button from '~/components/Button';
@@ -51,9 +52,9 @@ function HomeLiveRadio({ data }) {
                 }}
             >
                 {data?.items?.map((item, index) => (
-                    <li className="1-2" key={index}>
+                    <li className="1-2" key={uuidv4()}>
                         <SwiperSlide>
-                            <ItemRadio col="" key={item.encodeId} data={item} />
+                            <ItemRadio col="" key={uuidv4()} data={item} />
                         </SwiperSlide>
                     </li>
                 ))}

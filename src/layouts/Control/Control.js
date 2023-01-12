@@ -6,9 +6,10 @@ import TimeAlarm from './TimeAlarm/TimeAlarm';
 import ControlLeft from './controlLeft/ControlLeft';
 import ControlMain from './controlMain/ControlMain';
 import { useDispatch, useSelector } from 'react-redux';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import ControlRight from './controlRight/ControlRight';
 import { setOpenLyric } from '~/redux/action';
+import { setActivePlay } from '~/redux/dataControl';
 const cx = className.bind(style);
 
 function Control() {
@@ -21,6 +22,11 @@ function Control() {
             }
         }
     };
+    useEffect(() => {
+        window.onload = function () {
+            dispatch(setActivePlay(false));
+        };
+    }, []);
     return (
         <div
             className={cx(

@@ -22,7 +22,7 @@ function PlayList() {
                 <Button
                     content="Tạo playlist mới"
                     className={cx('btn')}
-                    iconLeft={<i class="icon ic-add"></i>}
+                    iconLeft={<i className="icon ic-add"></i>}
                     onClick={handleAddPlayList}
                 />
             </div>

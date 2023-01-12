@@ -1,4 +1,5 @@
 import className from 'classnames/bind';
+import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { setOpenModalLogin } from '~/redux/action';
@@ -69,7 +70,12 @@ function FooterMobile() {
             {MENU_SIDEBAR.map(
                 (e, index) =>
                     index > 0 && (
-                        <NavLink end to={e.path} className={(nav) => cx('item', { active: nav.isActive }) + ' c-2-4'}>
+                        <NavLink
+                            end
+                            to={e.path}
+                            key={uuidv4()}
+                            className={(nav) => cx('item', { active: nav.isActive }) + ' c-2-4'}
+                        >
                             {e.icon}
                             <h3>{e.title}</h3>
                         </NavLink>

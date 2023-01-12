@@ -5,6 +5,7 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper';
+import { v4 as uuidv4 } from 'uuid';
 import Button from '~/components/Button';
 import { useRef } from 'react';
 import Container from '~/components/container/Container';
@@ -46,7 +47,7 @@ function RadioPodcastH({ data }) {
                 <Container title={data.title}>
                     {data?.items?.map((item) => (
                         <SwiperSlide>
-                            <ItemPodcastH key={item.encodeId} data={item} col={'l-12 m-12 c-12'} />
+                            <ItemPodcastH key={uuidv4()} data={item} col={'l-12 m-12 c-12'} />
                         </SwiperSlide>
                     ))}
                 </Container>

@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { memo } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import style from './PageArtist.module.scss';
@@ -36,7 +37,7 @@ function ArtistBody() {
             <div className={cx('wrapper')}>
                 <ul className={cx('menu')}>
                     {MENU.map((item, index) => (
-                        <li key={index} className={cx('link')}>
+                        <li key={uuidv4()} className={cx('link')}>
                             <NavLink end to={item.to} className={(nav) => cx({ active: nav.isActive })}>
                                 {item.title}
                             </NavLink>

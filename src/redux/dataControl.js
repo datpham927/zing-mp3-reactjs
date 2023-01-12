@@ -45,8 +45,34 @@ export const zingAudio = createSlice({
             state.repeat = action.payload;
             localStorage.setItem('audio', JSON.stringify(state));
         },
+
+        setPrev: (state, action) => {
+            state.prev = action.payload;
+            state.activePlay = true;
+            if (state.prev) {
+                if (state.activePlay) {
+                    state.loadMusic = false;
+                }
+                if (state.shuffle && !state.booleanQueueList) {
+                    let shuffle;
+                    do {
+                        shuffle = Math.floor(Math.random() * state.playListAudio?.length);
+                    } while (state.playListAudio[shuffle]?.streamingStatus === 2);
+                    state.currentIndex = shuffle;
+                    state.idAudio = state.playListAudio[state.currentIndex];
+                } else {
+                    let index = state.currentIndex;
+                    do {
+                        index--;
+                    } while (state.playListAudio[index]?.streamingStatus === 2);
+                    index < 0 ? (state.currentIndex = state.playListAudio?.length - 1) : (state.currentIndex = index);
+                    state.idAudio = state.playListAudio[state.currentIndex];
+                }
+            }
+        },
         setNext: (state, action) => {
             state.next = action.payload;
+            state.activePlay = true;
             if (state.next) {
                 if (state.activePlay) {
                     state.loadMusic = false;
@@ -69,30 +95,6 @@ export const zingAudio = createSlice({
                 }
             }
         },
-        setPrev: (state, action) => {
-            state.prev = action.payload;
-            if (state.prev) {
-                if (state.activePlay) {
-                    state.loadMusic = false;
-                }
-                if (state.shuffle && !state.booleanQueueList) {
-                    let shuffle;
-                    do {
-                        shuffle = Math.floor(Math.random() * state.playListAudio?.length);
-                    } while (state.playListAudio[shuffle]?.streamingStatus === 2);
-                    state.currentIndex = shuffle;
-                    state.idAudio = state.playListAudio[state.currentIndex];
-                } else {
-                    let index = state.currentIndex;
-                    do {
-                        index--;
-                    } while (state.playListAudio[index]?.streamingStatus === 2);
-                    index < 0 ? (state.currentIndex = state.playListAudio?.length - 1) : (state.currentIndex = index);
-                    state.idAudio = state.playListAudio[state.currentIndex];
-                }
-            }
-        },
-
         setShuffle: (state, action) => {
             state.shuffle = action.payload;
             localStorage.setItem('audio', JSON.stringify(state));

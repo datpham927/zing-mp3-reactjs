@@ -8,8 +8,7 @@ function SongOther() {
     return (
         <Container>
             {dataNewSongs?.others?.map(
-                (item, index) =>
-                    index > dataNewSongs?.others?.length - 3 && <ItemSongAdd key={item.encodeId} data={item} />,
+                (item, index) => index > dataNewSongs?.others?.length - 3 && <ItemSongAdd key={uuidv4()} data={item} />,
             )}
         </Container>
     );

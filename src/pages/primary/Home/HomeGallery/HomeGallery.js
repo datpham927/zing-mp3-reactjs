@@ -2,7 +2,7 @@
 import className from 'classnames/bind';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { v4 as uuidv4 } from 'uuid';
 import style from './HomeGallery.module.scss';
 const cx = className.bind(style);
 
@@ -46,7 +46,7 @@ function HomeGallery({ data }) {
             <div className={cx('gallery-wrapper')}>
                 {data?.items?.map((item, index) => (
                     <div
-                        key={item.encodeId}
+                        key={uuidv4()}
                         ref={itemRef}
                         className={cx(
                             'item',

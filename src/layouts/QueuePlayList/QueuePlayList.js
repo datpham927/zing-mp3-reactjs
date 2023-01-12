@@ -1,6 +1,7 @@
 import className from 'classnames/bind';
 import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
@@ -149,7 +150,7 @@ function QueuePlayList() {
                                             className={cx('is-pre')}
                                             onClick={() => handleOnClick(e)}
                                             data={e}
-                                            key={e.encodeId}
+                                            key={uuidv4()}
                                             type="player-queue"
                                         />
                                     ) : (
@@ -157,7 +158,7 @@ function QueuePlayList() {
                                             <ItemSong
                                                 onClick={() => handleOnClick(e)}
                                                 data={e}
-                                                key={e.encodeId}
+                                                key={uuidv4()}
                                                 type="player-queue"
                                             />
                                         )
@@ -182,7 +183,7 @@ function QueuePlayList() {
                                             <ItemSong
                                                 onClick={() => handleOnClick(e)}
                                                 data={e}
-                                                key={e.encodeId}
+                                                key={uuidv4()}
                                                 type="player-queue"
                                             />
                                         ),
@@ -193,7 +194,7 @@ function QueuePlayList() {
                                 <ItemSong
                                     onClick={() => handleOnClick(e)}
                                     data={e}
-                                    key={e?.encodeId}
+                                    key={uuidv4()}
                                     type="player-queue-recent"
                                 />
                             ))

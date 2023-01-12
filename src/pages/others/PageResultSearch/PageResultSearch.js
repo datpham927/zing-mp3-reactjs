@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { v4 as uuidv4 } from 'uuid';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import style from './ResultSearch.module.scss';
@@ -44,7 +45,7 @@ function PageResultSearch() {
                         </NavLink>
                     </li>
                     {MENU_RESULT?.map((item, index) => (
-                        <li className={cx('item')} key={index}>
+                        <li className={cx('item')} key={uuidv4()}>
                             <NavLink to={item?.path} className={(nav) => cx({ active: nav.isActive })}>
                                 {item?.title}
                             </NavLink>

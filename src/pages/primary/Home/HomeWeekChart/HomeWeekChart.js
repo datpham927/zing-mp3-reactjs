@@ -11,7 +11,7 @@ function HomeWeekChart({ data }) {
     return (
         <Container>
             {data?.items?.map((item, index) => (
-                <div key={index} className={cx('weekChart') + ' l-4'}>
+                <div key={uuidv4()} className={cx('weekChart') + ' l-4'}>
                     <div className={cx('image')}>
                         <Link to={item.link}>
                             {item.cover ? <img src={item.cover} alt="" /> : <LoadImg className={cx('load')} />}

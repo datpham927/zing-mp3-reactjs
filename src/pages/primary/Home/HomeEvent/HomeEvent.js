@@ -3,6 +3,7 @@ import Container from '~/components/container/Container';
 import className from 'classnames/bind';
 import style from './HomeEvent.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { v4 as uuidv4 } from 'uuid';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -33,7 +34,7 @@ function HomeEvent({ data }) {
                 }}
                 mousewheel={true}
                 loop={true}
-                // modules={[Autoplay, Pagination, Navigation]}
+                modules={[Autoplay, Pagination, Navigation]}
                 breakpoints={{
                     1: {
                         slidesPerView: 1,
@@ -49,7 +50,7 @@ function HomeEvent({ data }) {
             >
                 <div className={cx('wrapper-event')}>
                     {data?.items?.map((item) => (
-                        <SwiperSlide>
+                        <SwiperSlide key={uuidv4()}>
                             <ItemEvent col="" data={item} />
                         </SwiperSlide>
                     ))}

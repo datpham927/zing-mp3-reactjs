@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
-import { Autoplay, Pagination } from 'swiper';
+import { v4 as uuidv4 } from 'uuid';
+import { Autoplay } from 'swiper';
 import Container from '~/components/container/Container';
 import ItemArtists from '~/components/item/ItemArtists/ItemArtists';
 
@@ -34,11 +35,9 @@ function HomeSpotlight({ data }) {
                 }}
             >
                 {data?.items?.map((item) => (
-                    <li className="1-2" key={item.encodeId}>
-                        <SwiperSlide>
-                            <ItemArtists col="" data={item} />
-                        </SwiperSlide>
-                    </li>
+                    <SwiperSlide key={uuidv4()}>
+                        <ItemArtists col="" data={item} />
+                    </SwiperSlide>
                 ))}
             </Swiper>
         </Container>

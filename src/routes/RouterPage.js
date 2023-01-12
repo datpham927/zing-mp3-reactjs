@@ -36,6 +36,7 @@ import Home from '~/pages/primary/Home';
 import Mv from '~/pages/primary/Mv/Mv';
 import Private from '~/pages/primary/Private';
 import Radio from '~/pages/primary/Radio/Radio';
+import { v4 as uuidv4 } from 'uuid';
 import SongNew from '~/pages/primary/SongNew/SongNew';
 import Top100 from '~/pages/primary/Top100';
 import ZingChart from '~/pages/primary/ZingChart';
@@ -44,7 +45,7 @@ const RouterPage = () => {
     const location = useLocation();
 
     return (
-        <Routes location={location} key={location.pathname}>
+        <Routes location={location} key={uuidv4()}>
             <Route path={'mymusic'} element={<Private />}></Route>
             <Route path={''} element={<Home />}></Route>
             <Route path={'zing-chart'} element={<ZingChart />}></Route>

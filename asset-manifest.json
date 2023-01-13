@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ZingMp3-Reacjs/static/css/main.21b45b54.css",
-    "main.js": "/ZingMp3-Reacjs/static/js/main.6ccda02d.js",
+    "main.css": "/ZingMp3-Reacjs/static/css/main.dd9be74b.css",
+    "main.js": "/ZingMp3-Reacjs/static/js/main.0a53b083.js",
     "static/js/496.65c176aa.chunk.js": "/ZingMp3-Reacjs/static/js/496.65c176aa.chunk.js",
     "static/media/mp3-zing.2a3edced.woff": "/ZingMp3-Reacjs/static/media/mp3-zing.2a3edced.ef4b15bdf37ade62d7f0.woff",
     "static/media/2.jpg": "/ZingMp3-Reacjs/static/media/2.57fba1c83934444cb2d0.jpg",
@@ -15,12 +15,12 @@
     "static/media/0.svg": "/ZingMp3-Reacjs/static/media/0.3fefa2a226d121ce7d2a668967367b51.svg",
     "static/media/2.gif": "/ZingMp3-Reacjs/static/media/2.d0c511a1f3b2ef977382.gif",
     "index.html": "/ZingMp3-Reacjs/index.html",
-    "main.21b45b54.css.map": "/ZingMp3-Reacjs/static/css/main.21b45b54.css.map",
-    "main.6ccda02d.js.map": "/ZingMp3-Reacjs/static/js/main.6ccda02d.js.map",
+    "main.dd9be74b.css.map": "/ZingMp3-Reacjs/static/css/main.dd9be74b.css.map",
+    "main.0a53b083.js.map": "/ZingMp3-Reacjs/static/js/main.0a53b083.js.map",
     "496.65c176aa.chunk.js.map": "/ZingMp3-Reacjs/static/js/496.65c176aa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.21b45b54.css",
-    "static/js/main.6ccda02d.js"
+    "static/css/main.dd9be74b.css",
+    "static/js/main.0a53b083.js"
   ]
 }

@@ -67,20 +67,23 @@
     }
 }
 @media (max-width: 740px) {
-    .content {
-        .title {
-            margin-bottom: 5px;
-            & h1 {
-                font-size: 2.5rem !important;
-            }
-            .btn {
-                background-color: var(--purple-primary);
-                margin-left: 10px;
-                width: 3.5rem !important;
-                height: 3.5rem !important;
-                & i {
+    .header {
+        margin: 0 -30px !important;
+        .content {
+            .title {
+                margin-bottom: 5px;
+                & h1 {
                     font-size: 2.5rem !important;
-                    color: #fff;
+                }
+                .btn {
+                    background-color: var(--purple-primary);
+                    margin-left: 10px;
+                    width: 3.5rem !important;
+                    height: 3.5rem !important;
+                    & i {
+                        font-size: 2.5rem !important;
+                        color: #fff;
+                    }
                 }
             }
         }

@@ -26,12 +26,12 @@ function AppLayout({ children }) {
         const handleScroll = (e) => {
             if (e.currentTarget.scrollTop === 0) {
                 document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(0)';
-                if (e.innerWidth <= 740) {
+                if (e.target.clientWidth <= 740) {
                 } else {
                     setBgrHeader(false);
                 }
             } else {
-                if (e.innerWidth <= 740) {
+                if (e.target.clientWidth <= 740) {
                     document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(-100%)';
                 } else {
                     setBgrHeader(true);

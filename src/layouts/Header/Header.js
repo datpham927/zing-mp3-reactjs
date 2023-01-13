@@ -7,14 +7,15 @@ import HeaderRight from './HeaderRight';
 import HeaderLeft from './HeaderLeft';
 const cx = classNames.bind(style);
 
-function Header({ bgrHeader }) {
+function Header() {
     return (
         <>
-            <div className={cx('wrapper', bgrHeader && 'bgrHeader')}>
+            <div className={cx('wrapper')}>
                 <HeaderLeft />
                 <HeaderRight />
             </div>
         </>
     );
 }
+
 export default Header;

@@ -18,23 +18,22 @@ import { useEffect } from 'react';
 const cx = classNames.bind(styles);
 
 function AppLayout({ children }) {
-    const [bgrHeader, setBgrHeader] = useState(false);
     const { booleanControl } = useSelector((state) => state.dataControl);
     const mainRef = useRef();
 
     useEffect(() => {
         const handleScroll = (e) => {
             if (e.currentTarget.scrollTop === 0) {
-                document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(0)';
                 if (e.target.clientWidth <= 740) {
+                    document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(0)';
                 } else {
-                    setBgrHeader(false);
+                    document.querySelector('.Header_wrapper__dNhyY').classList.remove('Header_scroll__gDK86');
                 }
             } else {
                 if (e.target.clientWidth <= 740) {
                     document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(-100%)';
                 } else {
-                    setBgrHeader(true);
+                    document.querySelector('.Header_wrapper__dNhyY').classList.add('Header_scroll__gDK86');
                 }
             }
         };
@@ -46,7 +45,7 @@ function AppLayout({ children }) {
                 <Modal />
                 <Sidebar />
                 <div className={cx('main')} ref={mainRef}>
-                    <Header bgrHeader={bgrHeader} />
+                    <Header />
                     <div className={cx('container')}>{children}</div>
                 </div>
                 <QueuePlayList />

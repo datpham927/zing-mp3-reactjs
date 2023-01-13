@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
+import { v4 as uuidv4 } from 'uuid';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '~/firebasse/firebase';
@@ -65,7 +66,7 @@ function ModalLogin() {
                             speed={1000}
                         >
                             {imgs.map((e) => (
-                                <SwiperSlide>
+                                <SwiperSlide key={uuidv4()}>
                                     <div className={cx('image')}>
                                         <img src={e} alt="" />
                                     </div>

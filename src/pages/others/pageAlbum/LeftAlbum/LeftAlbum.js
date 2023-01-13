@@ -118,9 +118,11 @@ function LeftAlbum({ data }) {
                     <Button primary content="Khác" iconLeft={<i className="icon ic-more"></i>} />
                 </div>
             </div>
-            <div className="m-0 l-0">
-                <TimeAlbum data={data} />
-            </div>
+            {data.song?.totalDuration && (
+                <div className="m-0 l-0">
+                    <TimeAlbum data={data} />
+                </div>
+            )}
         </div>
     );
 }

@@ -65,6 +65,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
             });
         }, 200);
     }, [idAudio]);
+
     return type === 'song-12' ? (
         <li
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 c-12 m-12 col'}

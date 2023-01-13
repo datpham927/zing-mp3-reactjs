@@ -17,13 +17,13 @@ function Control() {
     const dispatch = useDispatch();
     const handleCLickMobile = (e) => {
         if (e.target === e.currentTarget || e.target.closest('.ControlLeft_image__HpxGx')) {
-            if (window.innerWidth <= 740) {
+            if (document.innerWidth <= 740) {
                 dispatch(setOpenLyric(true));
             }
         }
     };
     useEffect(() => {
-        window.onload = function () {
+        document.onload = function () {
             dispatch(setActivePlay(false));
         };
     }, []);
@@ -39,7 +39,7 @@ function Control() {
             {!openLyric && <ControlLeft />}
             <ControlMain />
             {!openLyric && <ControlRight />}
-            <TimeAlarm />
+            {!openLyric && <TimeAlarm />}
         </div>
     );
 }

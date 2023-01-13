@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classNames from 'classnames/bind';
 import styles from './AppLayout.module.scss';
 import Sidebar from '../Sidebar';
@@ -11,34 +12,40 @@ import PlayMv from '~/pages/others/PlayMv/PlayMv';
 import QueuePlayList from '../QueuePlayList/QueuePlayList';
 import Lyric from '../../components/Lyric/Lyric';
 import FooterMobile from '../FooterMobile/FooterMobile';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
 function AppLayout({ children }) {
     const [bgrHeader, setBgrHeader] = useState(false);
     const { booleanControl } = useSelector((state) => state.dataControl);
+    const mainRef = useRef();
 
-    const handleScroll = (e) => {
-        if (e.currentTarget.scrollTop === 0) {
-            document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(0)';
-            if (window.innerWidth <= 740) {
+    useEffect(() => {
+        const handleScroll = (e) => {
+            if (e.currentTarget.scrollTop === 0) {
+                document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(0)';
+                if (e.innerWidth <= 740) {
+                } else {
+                    setBgrHeader(false);
+                }
             } else {
-                setBgrHeader(false);
+                if (e.innerWidth <= 740) {
+                    document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(-100%)';
+                } else {
+                    setBgrHeader(true);
+                }
             }
-        } else {
-            if (window.innerWidth <= 740) {
-                document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(-100%)';
-            } else {
-                setBgrHeader(true);
-            }
-        }
-    };
+        };
+        mainRef.current.addEventListener('scroll', handleScroll);
+    }, []);
     return (
         <>
             <div className={cx('Wrapper', booleanControl && 'active')}>
                 <Modal />
                 <Sidebar />
-                <div className={cx('main')} onScroll={(e) => handleScroll(e)}>
+                <div className={cx('main')} ref={mainRef}>
                     <Header bgrHeader={bgrHeader} />
                     <div className={cx('container')}>{children}</div>
                 </div>

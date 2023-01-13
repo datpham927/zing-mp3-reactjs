@@ -15,17 +15,14 @@ function ItemLyric({ data }) {
     let start = data.words[0].startTime / 1000;
     let end = data.words[data.words?.length - 1].endTime / 1000;
 
-    useEffect(() => {
-        const lyricView = document?.querySelector('.Lyric_active__BbzsP');
-        if (!lyricView) return;
-        setTimeout(() => {
-            smoothScrollIntoView(lyricView, {
-                block: 'center',
-                behavior: 'smooth',
-                scrollMode: 'if-needed',
-            });
-        }, 200);
-    }, [start]);
+    const lyricView = document?.querySelector('.Lyric_active__BbzsP');
+    if (!lyricView) return;
+    setTimeout(() => {
+        smoothScrollIntoView(lyricView, {
+            block: 'center',
+            behavior: 'smooth',
+        });
+    }, 200);
     return (
         <li
             className={cx(

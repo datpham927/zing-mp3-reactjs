@@ -52,6 +52,7 @@ function ControlMain() {
                 setTimeout(() => {
                     dispatch(setRecentList(idAudio));
                     dispatch(setLoadMusic(true));
+                    dispatch(setActivePlay(true));
                     audioRef.current.play();
                 }, 1000);
             }
@@ -155,7 +156,7 @@ function ControlMain() {
             <audio
                 ref={audioRef}
                 src={src}
-                autoPlay={activePlay}
+                autoPlay={activePlay && loadMusic}
                 onEnded={handleOnEnd}
                 onTimeUpdate={() => {
                     setPercent((100 * audioRef?.current.currentTime) / idAudio?.duration);

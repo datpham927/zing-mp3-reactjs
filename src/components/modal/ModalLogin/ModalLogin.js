@@ -89,8 +89,7 @@ function ModalLogin() {
                                     user: true,
                                     displayName: 'Test',
                                     email: '',
-                                    photoURL:
-                                        'https://keomoi.com/wp-content/uploads/2019/05/anh-gai-xinh-toc-ngan-de-thuong.jpg',
+                                    photoURL: 'https://htran844.github.io/hihi/img/fb/a8.jpg',
                                 }),
                             );
                             dispatch(setOpenModalLogin(false));

@@ -23,7 +23,6 @@ function RadioEpisode({ data }) {
                     delay: 4000,
                     disableOnInteraction: false,
                 }}
-                allowTouchMove={false}
                 navigation={{
                     prevEl: navigationPrevRef.current,
                     nextEl: navigationNextRef.current,
@@ -35,13 +34,16 @@ function RadioEpisode({ data }) {
                 mousewheel={true}
                 loop={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                slidesPerView={2}
-                slidesPerGroup={1}
                 breakpoints={{
                     1: {
                         slidesPerView: 1,
                         slidesPerGroup: 1,
                         allowTouchMove: true,
+                    },
+                    740: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1,
+                        allowTouchMove: false,
                     },
                 }}
             >
@@ -52,11 +54,9 @@ function RadioEpisode({ data }) {
                                 className={cx('episode-item')}
                                 onClick={() => toastMessage('phần này gọi api được không')}
                             >
-                                {i.thumbnail ? (
+                                <LoadImg className={cx('padding-img')}>
                                     <img src={i.thumbnail} alt={i.title} />
-                                ) : (
-                                    <LoadImg className={cx('padding-img')} />
-                                )}
+                                </LoadImg>
                             </div>
                         </div>
                     </SwiperSlide>

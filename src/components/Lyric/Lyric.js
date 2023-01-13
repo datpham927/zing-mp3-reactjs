@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,6 +21,7 @@ const cx = className.bind(style);
 function Lyric() {
     const [data, setData] = useState([]);
     const [size, setSize] = useState('s');
+    const [screens, setFullScreens] = useState(false);
     const [open, setOpen] = useState(false);
     const [playFullscreen, setPlayFullScreen] = useState(false);
     const [bgr, setBgr] = useState(false);
@@ -43,10 +45,7 @@ function Lyric() {
     };
 
     useEffect(() => {
-        if (
-            (document.fullScreenElement && document.fullScreenElement !== null) ||
-            (!document.mozFullScreen && !document.webkitIsFullScreen)
-        ) {
+        if (screens) {
             if (document.documentElement.requestFullScreen) {
                 document.documentElement.requestFullScreen();
             } else if (document.documentElement.mozRequestFullScreen) {
@@ -63,7 +62,7 @@ function Lyric() {
                 document.webkitCancelFullScreen();
             }
         }
-    }, []);
+    }, [screens]);
 
     useEffect(() => {
         var time;
@@ -142,6 +141,7 @@ function Lyric() {
                                 content="Toàn màng hình"
                                 iconLeft={<i className="icon ic-scale-1"></i>}
                                 className={cx('btn') + ' c-0'}
+                                onClick={() => setFullScreens((e) => !e)}
                             />
                             <div className={cx('setting')} onClick={() => setOpenMenu((e) => !e)}>
                                 <Button

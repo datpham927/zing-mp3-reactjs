@@ -11,7 +11,7 @@ const initialState = JSON.parse(localStorage.getItem('audio')) || {
     next: false,
     changerVolume: 100,
     volume: false, //tắt bật
-    currentVolume: 100,
+    currentVolume: 1,
     booleanControl: false,
     booleanQueueList: false,
     activePlay: false, //nhạc đang pause hay play

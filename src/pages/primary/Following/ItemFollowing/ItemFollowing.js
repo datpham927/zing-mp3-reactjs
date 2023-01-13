@@ -9,6 +9,7 @@ import { setModalFollow } from '~/redux/action';
 
 import FormatDate from '~/components/number/time/FormatDate';
 import Follow from '~/components/number/follow/Follow';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);
 
@@ -33,7 +34,9 @@ function ItemFollowing({ data }) {
             <div className={cx('feed-card')}>
                 <div className={cx('top')}>
                     <div className={cx('image')}>
-                        <img src={data?.publisher?.thumbnail} alt="" />
+                        <LoadImg>
+                            <img src={data?.publisher?.thumbnail} alt="" />
+                        </LoadImg>
                     </div>
                     <div className={cx('info')}>
                         <div>
@@ -54,7 +57,15 @@ function ItemFollowing({ data }) {
                 <div className={cx('body')}>
                     <div className={cx('title')}>{data?.shortDescription}</div>
                     <div className={cx('main')} onClick={() => handelClick(data)}>
-                        <img src={img} alt="" />
+                        <LoadImg>
+                            {img ? (
+                                <img src={img} alt="" />
+                            ) : (
+                                <LoadImg>
+                                    <img src={img} alt="" />
+                                </LoadImg>
+                            )}
+                        </LoadImg>
                         {data.content.type === 'feedVideo' && (
                             <div className={cx('modal-image')}>
                                 <div className={cx('icon-play')}>

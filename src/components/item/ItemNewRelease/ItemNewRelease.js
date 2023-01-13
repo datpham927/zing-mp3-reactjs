@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { setActivePlay, setIdAudio } from '~/redux/dataControl';
 import { v4 as uuidv4 } from 'uuid';
 import style from './ItemNewRelease.modul.scss';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);
 function ItemNewRelease({ data, index, col = ' l-4 m-4', onClick }) {
@@ -19,22 +20,24 @@ function ItemNewRelease({ data, index, col = ' l-4 m-4', onClick }) {
         <li className={cx('new-release') + col}>
             <div className={cx('wrapper')} onDoubleClick={() => handleClick()}>
                 <div className={cx('left')}>
-                    <img src={data.thumbnailM} alt="" />
-                    {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
-                        <div className={cx('song-play')} onClick={() => dispatch(setActivePlay(false))}>
-                            <img
-                                src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                alt=""
-                            />
-                        </div>
-                    ) : (
-                        <div
-                            className={cx('play', data?.encodeId === idAudio?.encodeId && 'active')}
-                            onClick={() => handleClick()}
-                        >
-                            <i className="icon action-play ic-play"></i>
-                        </div>
-                    )}
+                    <LoadImg>
+                        <img src={data.thumbnailM} alt="" />
+                        {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
+                            <div className={cx('song-play')} onClick={() => dispatch(setActivePlay(false))}>
+                                <img
+                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                    alt=""
+                                />
+                            </div>
+                        ) : (
+                            <div
+                                className={cx('play', data?.encodeId === idAudio?.encodeId && 'active')}
+                                onClick={() => handleClick()}
+                            >
+                                <i className="icon action-play ic-play"></i>
+                            </div>
+                        )}
+                    </LoadImg>
                 </div>
                 <div className={cx('right')}>
                     <div className={cx('top')}>

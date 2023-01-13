@@ -39,11 +39,10 @@ function ItemAlbum({ data, onClick }) {
             <div className={cx('include', data.encodeId === idAudio?.encodeId && 'active')} onDoubleClick={handlePlay}>
                 <div className={cx('left')}>
                     <div className={cx('wrapper-img')}>
-                        {data?.thumbnail ? (
+                        <LoadImg className={cx('image')}>
                             <img src={data?.thumbnail} className={cx('image')} alt="" />
-                        ) : (
-                            <LoadImg className={cx('image')} />
-                        )}
+                        </LoadImg>
+
                         {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                             <div className={cx('play-song')} onClick={() => handlePause()}>
                                 {loadMusic ? (

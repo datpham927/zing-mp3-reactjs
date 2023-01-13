@@ -15,6 +15,7 @@ import HomeLiveRadio from './HomeLiveRadio/HomeLiveRadio';
 import HomeEvent from './HomeEvent/HomeEvent';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
 import Loading from '~/components/load/Loading/Loading';
+import { memo } from 'react';
 
 const cx = className.bind(style);
 function Home() {
@@ -27,6 +28,7 @@ function Home() {
         getTodoItems();
     }, []);
     const { dataHome } = useSelector((state) => state.dataHome);
+    console.log(dataHome);
     return dataHome?.length !== 0 ? (
         <div className={cx('wrapper')}>
             {dataHome?.map((i) =>
@@ -55,7 +57,7 @@ function Home() {
         <Loading />
     );
 }
-export default Home;
+export default memo(Home);
 // : i.sectionType === 'RTChart' ? (
 //     <HomeChart />
 // )

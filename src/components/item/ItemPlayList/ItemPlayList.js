@@ -44,7 +44,9 @@ function ItemPlayList({ data, type = '', description, className }) {
             <div className={cx('wrapper')}>
                 <div className={cx('image-hover')}>
                     <div className={cx('container-image')}>
-                        {data.thumbnailM ? <img src={data.thumbnailM} alt="" /> : <LoadImg />}
+                        <LoadImg>
+                            <img src={data.thumbnailM} alt="" />
+                        </LoadImg>
                         <div className={cx('modal-image')} onClick={(e) => handleOnClick(e)}>
                             <div className={cx('favorite')}>
                                 <Button
@@ -96,7 +98,9 @@ function ItemPlayList({ data, type = '', description, className }) {
             <div className={cx('wrapper')}>
                 <div className={cx('image-hover')}>
                     <div className={cx('container-image')}>
-                        {data.thumbnailM ? <img src={data.thumbnailM} alt="" /> : <LoadImg />}
+                        <LoadImg>
+                            <img src={data.thumbnailM} alt="" />
+                        </LoadImg>
                         <div
                             className={cx('modal-image')}
                             onClick={(e) => {
@@ -148,7 +152,9 @@ function ItemPlayList({ data, type = '', description, className }) {
             <div className={cx('wrapper')}>
                 <div className={cx('image-hover')}>
                     <div className={cx('container-image')}>
-                        {data.thumbnailM ? <img src={data.thumbnailM} alt="" /> : <LoadImg />}
+                        <LoadImg>
+                            <img src={data.thumbnailM} alt="" />
+                        </LoadImg>
                         <div className={cx('modal-image')} onClick={(e) => handleOnClickPrivate(e)}>
                             <div className={cx('favorite')}>
                                 <Button

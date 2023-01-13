@@ -4,6 +4,9 @@
         width: 100%;
         border-radius: 5px;
         overflow: hidden;
+        .load {
+            padding-bottom: 55%;
+        }
         & img {
             width: 100%;
             object-fit: cover;

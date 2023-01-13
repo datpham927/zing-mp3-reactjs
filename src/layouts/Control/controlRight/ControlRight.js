@@ -17,7 +17,7 @@ function ControlRight() {
     const handleDuration = (e) => {
         const newVolume = (e.nativeEvent.offsetX / e.currentTarget.clientWidth) * 100;
         audioRef.volume = newVolume / 100;
-        dispatch(setCurrentVolume(newVolume));
+        dispatch(setCurrentVolume(newVolume / 100));
         dispatch(setChangerVolume(newVolume));
     };
     useEffect(() => {
@@ -46,15 +46,11 @@ function ControlRight() {
                 onClick={() => {
                     dispatch(setVolume(!volume));
                     if (volume) {
-                        if (audioRef?.volume) {
-                            audioRef.volume = 1;
-                            dispatch(setChangerVolume(currentVolume));
-                        }
+                        audioRef.volume = currentVolume;
+                        dispatch(setChangerVolume(currentVolume * 100));
                     } else {
-                        if (audioRef?.volume) {
-                            audioRef.volume = 0;
-                            dispatch(setChangerVolume(0));
-                        }
+                        audioRef.volume = 0;
+                        dispatch(setChangerVolume(0));
                     }
                 }}
                 small

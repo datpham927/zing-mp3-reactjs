@@ -2,7 +2,7 @@
 import className from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import Button from '~/components/Button';
-import Loading from '~/components/load/Loading/Loading';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import toastMessage from '~/components/modal/toast';
 import FormatDate from '~/components/number/time/FormatDate';
 import Minute from '~/components/number/time/Minute';
@@ -30,7 +30,9 @@ function ItemPodcast({ data, col = 'l-12 m-12', index, className, onClick }) {
                 <div className={cx('left')}>
                     {index && <div className={cx('number')}>{index}</div>}
                     <div className={cx('wrapper-img')}>
-                        {data?.thumbnail ? <img src={data?.thumbnail} className={cx('image')} alt="" /> : <Loading />}
+                        <LoadImg className={cx('image')}>
+                            <img src={data.thumbnailM} className={cx('image')} alt="" />
+                        </LoadImg>
                         {play === true && data?.encodeId === idAudio?.encodeId ? (
                             <div className={cx('play-song')} onClick={() => handlePause()}>
                                 <img

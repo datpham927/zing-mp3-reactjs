@@ -1,4 +1,5 @@
 import className from 'classnames/bind';
+import LoadImg from '~/components/load/loadImg/LoadImg';
 import toastMessage from '~/components/modal/toast';
 import style from './ItemPodcastH.module.scss';
 
@@ -15,7 +16,9 @@ function ItemPodcastH({ data, col = 'l-12 m-12' }) {
                     }}
                 ></div>
                 <div className={cx('left')}>
-                    <img src={data.thumbnailM} alt="" />
+                    <LoadImg>
+                        <img src={data.thumbnailM} className={cx('image')} alt="" />
+                    </LoadImg>
                 </div>
                 <div className={cx('right')}>
                     <h3 className={cx('host')}>{data.artists.name}</h3>

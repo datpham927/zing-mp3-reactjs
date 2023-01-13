@@ -90,7 +90,9 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
                             </div>
                         </div>
                         <div className={cx('thumb')}>
-                            {data.thumbnail ? <img src={data.thumbnail} alt="" /> : <LoadImg />}
+                            <LoadImg>
+                                <img src={data.thumbnailM} alt="" />
+                            </LoadImg>
                             {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                                 <div className={cx('song-play')} onClick={() => handlePause()}>
                                     {loadMusic ? (

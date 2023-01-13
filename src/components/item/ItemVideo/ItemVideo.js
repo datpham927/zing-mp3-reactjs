@@ -29,26 +29,27 @@ function ItemVideo({ data }) {
         data && (
             <li className={cx('item') + ' l-4 m-4 c-12 col'}>
                 <div className={cx('wrapper')}>
-                    <div className={cx('video-img')} onClick={handleOnclick}>
-                        {data?.thumbnailM ? (
-                            <img src={data?.thumbnailM} alt="" />
-                        ) : (
-                            <LoadImg className={cx('load-video')} />
-                        )}
-                        <div className={cx('play', id === data.encodeId && 'active')}>
-                            {playMv && id === data.encodeId ? (
-                                <p style={{ fontSize: '1.4rem' }}>Đang phát </p>
-                            ) : (
-                                <i className="icon ic-play-circle-outline"></i>
-                            )}
+                    <LoadImg className={cx('load-video')}>
+                        <div className={cx('video-img')} onClick={handleOnclick}>
+                            <img src={data.thumbnailM} alt="" />
+                            <div className={cx('play', id === data.encodeId && 'active')}>
+                                {playMv && id === data.encodeId ? (
+                                    <p style={{ fontSize: '1.4rem' }}>Đang phát </p>
+                                ) : (
+                                    <i className="icon ic-play-circle-outline"></i>
+                                )}
+                            </div>
+                            <div className={cx('time')}>
+                                <span>{<Duration duration={data?.duration} />}</span>
+                            </div>
                         </div>
-                        <div className={cx('time')}>
-                            <span>{<Duration duration={data?.duration} />}</span>
-                        </div>
-                    </div>
+                    </LoadImg>
+
                     <div className={cx('video-info')}>
                         <div className={cx('info-img')}>
-                            {data?.thumbnail ? <img src={data?.thumbnail} alt="" /> : <LoadImg radius />}
+                            <LoadImg radius>
+                                <img src={data.thumbnailM} alt="" />
+                            </LoadImg>
                         </div>
                         <div className={cx('content')}>
                             <h3 className={cx('title')} onClick={handleOnclick}>

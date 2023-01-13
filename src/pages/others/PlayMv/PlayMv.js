@@ -109,7 +109,9 @@ function PlayMv() {
                         <div className={cx('header')}>
                             <div className={cx('left')}>
                                 <div className={cx('image')}>
-                                    {header[0]?.thumbnail ? <img src={header[0]?.thumbnail} alt="" /> : <LoadImg />}
+                                    <LoadImg>
+                                        {header[0]?.thumbnail ? <img src={header[0]?.thumbnail} alt="" /> : <LoadImg />}
+                                    </LoadImg>
                                 </div>
                                 <div className={cx('info')}>
                                     <h3>{header[0]?.title}</h3>

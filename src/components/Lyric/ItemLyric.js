@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import smoothScrollIntoView from 'smooth-scroll-into-view-if-needed';
 import style from './Lyric.module.scss';
 const cx = className.bind(style);
 
@@ -12,12 +14,18 @@ function ItemLyric({ data }) {
     });
     let start = data.words[0].startTime / 1000;
     let end = data.words[data.words?.length - 1].endTime / 1000;
-    const songPlayView = document?.querySelector('.Lyric_active__BbzsP');
-    songPlayView?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'nearest',
-    });
+
+    useEffect(() => {
+        const lyricView = document?.querySelector('.Lyric_active__BbzsP');
+        if (!lyricView) return;
+        setTimeout(() => {
+            smoothScrollIntoView(lyricView, {
+                block: 'center',
+                behavior: 'smooth',
+                scrollMode: 'if-needed',
+            });
+        }, 200);
+    }, [start]);
     return (
         <li
             className={cx(

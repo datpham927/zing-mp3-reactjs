@@ -14,12 +14,12 @@ import {
     setRepeat,
     setShuffle,
 } from '~/redux/dataControl';
-import { setTimer } from '~/redux/action';
 import Duration from '~/components/number/time/Duration';
 import { IconLoadControl } from '~/components/Icons/Icons';
 import { setCurrentTimeAudio } from '~/redux/currentTimeAudio';
 import { useLayoutEffect } from 'react';
 import { forwardRef } from 'react';
+import { setTimer } from '~/redux/action';
 const cx = className.bind(style);
 
 function ControlMain() {
@@ -28,8 +28,7 @@ function ControlMain() {
     const dispatch = useDispatch();
     const listMusic = useSelector((state) => state.dataControl.playListAudio);
     const { idAudio, repeat, shuffle, loadMusic, activePlay } = useSelector((state) => state.dataControl);
-    const { timer } = useSelector((state) => state.action);
-    const { currentTimeAudio } = useSelector((state) => state.currentTimeAudio);
+    const { currentTimeAudio, timer } = useSelector((state) => state.currentTimeAudio);
     const { openLyric } = useSelector((state) => state.action);
     const audioRef = useRef();
     useEffect(() => {

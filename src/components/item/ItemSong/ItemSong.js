@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '~/components/Button';
 import { setOpenLyric, zingAction } from '~/redux/action';
-
 import styles from './ItemSong.module.scss';
 import { setSongFavorite } from '~/redux/FavoriteList';
 import { setActivePlay, setLoadMusic } from '~/redux/dataControl';
@@ -14,6 +13,7 @@ import Duration from '~/components/number/time/Duration';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { IconLoadMusic } from '~/components/Icons/Icons';
 import toastMessage from '~/components/modal/toast';
+import smoothScrollIntoView from 'smooth-scroll-into-view-if-needed';
 
 const cx = classNames.bind(styles);
 function ItemSong({ data, type = '', index = '', onClick, className }) {
@@ -54,15 +54,17 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
         dispatch(setActivePlay(false));
     };
 
-    const songPlayView = document.querySelector('.ItemSong_active__3E3Wz');
-    if (songPlayView) {
-        songPlayView?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'nearest',
-        });
-    }
-
+    useEffect(() => {
+        const songPlayView = document.querySelector('.ItemSong_active__3E3Wz');
+        if (!songPlayView) return;
+        setTimeout(() => {
+            smoothScrollIntoView(songPlayView, {
+                block: 'center',
+                behavior: 'smooth',
+                scrollMode: 'if-needed',
+            });
+        }, 200);
+    }, [idAudio]);
     return type === 'song-12' ? (
         <li
             className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-12 c-12 m-12 col'}
@@ -412,9 +414,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')} style={{ width: '100%' }}>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={100}>
-                                <img src={data?.thumbnail} alt="" />
-                            </LoadImg>
+                            <img src={data?.thumbnail} alt="" />
                             {activePlay === true && data?.encodeId === idAudio?.encodeId ? (
                                 <div className={cx('song-play')} onClick={() => handlePause()}>
                                     {loadMusic ? (
@@ -490,9 +490,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')} style={{ width: '100%' }}>
                         <div className={cx('thumb')}>
-                            <LoadImg timeLoad={100}>
-                                <img src={data?.thumbnail} alt="" />
-                            </LoadImg>
+                            <img src={data?.thumbnail} alt="" />
                             <div className={cx('play')} onClick={() => handlePlay()}>
                                 <i className="icon action-play ic-play"></i>
                             </div>
@@ -552,7 +550,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
                 <div className={cx('media-wrapper')}>
                     <div className={cx('media-left')}>
                         <div className={cx('thumb')}>
-                            <LoadImg>
+                            <LoadImg timeLoad={0}>
                                 <img src={data?.thumbnail} alt="" />
                             </LoadImg>
                             {activePlay === true && data?.encodeId === idAudio?.encodeId ? (

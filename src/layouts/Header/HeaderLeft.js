@@ -13,7 +13,7 @@ const cx = classNames.bind(style);
 
 function HeaderLeft() {
     const dispatch = useDispatch();
-    const { timer } = useSelector((state) => state.action);
+    const { timer } = useSelector((state) => state.currentTimeAudio);
     return (
         <div className={cx('left') + ' l-7'}>
             <span className={cx('icon') + ' c-0'}>

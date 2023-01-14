@@ -69,14 +69,24 @@
                             font-size: 1.8rem;
                             color: var(--text-primary);
                             line-height: 1.1;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 1;
+                            overflow: hidden;
                         }
                         & span {
                             & a {
                                 font-size: 1.4rem;
                                 color: var(--text-secondary);
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -webkit-line-clamp: 1;
                             }
                         }
                     }
+                }
+                .right {
+                    margin: 0 10px;
                 }
             }
             .play-video {

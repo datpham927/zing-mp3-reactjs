@@ -9,8 +9,9 @@ import ItemSong from '~/components/item/ItemSong/ItemSong';
 import toastMessage from '~/components/modal/toast';
 import { setModalPortal, setModalTimer, setModalVip } from '~/redux/action';
 import { setCurrentTimeAudio } from '~/redux/currentTimeAudio';
-import { deleteDataPlayList, setActivePlay, setIdAudio, setPlayListAudio } from '~/redux/dataControl';
+import { deleteDataPlayList, setActivePlay, setIdAudio, setOpenQueueList, setPlayListAudio } from '~/redux/dataControl';
 import style from './QueuePlayList.module.scss';
+import { IconClose } from '~/components/Icons/Icons';
 
 const cx = className.bind(style);
 
@@ -78,7 +79,7 @@ function QueuePlayList() {
         !open && (
             <div className={cx('container', booleanQueueList ? 'open' : 'close')}>
                 <div className={cx('header')}>
-                    <div className={cx('tab')}>
+                    <div className={cx('tab') + ' c-0'}>
                         <ButtonAction
                             className={cx('btn', convertTab && 'active')}
                             onClick={() => {
@@ -98,7 +99,7 @@ function QueuePlayList() {
                     </div>
                     <div className={cx('action')}>
                         <Button
-                            className={cx('btn-action', timer > 0 && 'active')}
+                            className={cx('btn-action', timer > 0 && 'active') + ' c-0'}
                             iconLeft={<i className="icon ic-20-Clock"></i>}
                             content={'Hẹn giờ đừng phát nhạc'}
                             primary
@@ -138,6 +139,15 @@ function QueuePlayList() {
                                 </div>
                             </div>
                         )}
+                        <Button
+                            className={cx('btn-action', timer > 0 && 'active') + ' l-0 m-0'}
+                            iconLeft={<IconClose />}
+                            content={'Đóng'}
+                            primary
+                            onClick={() => {
+                                dispatch(setOpenQueueList(false));
+                            }}
+                        />
                     </div>
                 </div>
                 <div className={cx('body')}>

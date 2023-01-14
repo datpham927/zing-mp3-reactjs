@@ -145,3 +145,13 @@
         }
     }
 }
+
+@media (max-width: 740px) {
+    .container {
+        z-index: 200;
+        height: 100%;
+        .header {
+            justify-content: flex-end !important;
+        }
+    }
+}

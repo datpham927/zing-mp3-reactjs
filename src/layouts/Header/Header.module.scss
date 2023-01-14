@@ -66,12 +66,12 @@
         padding: 10px;
     }
     .avatar {
-        margin: 0 10px;
+        margin: 0 !important;
     }
     .scroll.wrapper {
         transform: translateX(-100%);
     }
     .btn-action {
-        margin-right: 5px;
+        margin-right: 10px !important;
     }
 }

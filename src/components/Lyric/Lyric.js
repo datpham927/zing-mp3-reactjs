@@ -18,6 +18,7 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Link } from 'react-router-dom';
+import { setOpenQueueList } from '~/redux/dataControl';
 
 const cx = className.bind(style);
 function Lyric() {
@@ -182,7 +183,6 @@ function Lyric() {
                                                     </button>
                                                 </div>
                                             </div>
-
                                             <div className={cx('option')}>
                                                 <div className={cx('left')}>
                                                     <h3>Luôn phát nhạc toàn màng hình</h3>
@@ -192,6 +192,17 @@ function Lyric() {
                                                         className={cx('button', playFullscreen && 'action')}
                                                         onClick={() => setPlayFullScreen((e) => !e)}
                                                     ></div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className={cx('option') + ' l-0 m-0'}
+                                                onClick={() => {
+                                                    dispatch(setOpenQueueList(true));
+                                                    dispatch(setOpenLyric(false));
+                                                }}
+                                            >
+                                                <div className={cx('left')}>
+                                                    <h3>Danh sách phát</h3>
                                                 </div>
                                             </div>
                                         </div>

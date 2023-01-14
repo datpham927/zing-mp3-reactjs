@@ -22,9 +22,7 @@ function HeaderLeft() {
             <span className={cx('icon') + ' c-0'}>
                 <Icon.IconRight />
             </span>
-            <Avatar className={cx('avatar') + ' l-0 m-0'} />
-            {/* ------ search ------ */}
-            <Search />
+
             <Button
                 className={cx('btn-action', timer > 0 && 'active') + ' l-0 m-0'}
                 iconLeft={<i className="icon ic-20-Clock"></i>}
@@ -38,6 +36,9 @@ function HeaderLeft() {
                     }
                 }}
             />
+            {/* ------ search ------ */}
+            <Search />
+            <Avatar className={cx('avatar') + ' l-0 m-0'} />
         </div>
     );
 }

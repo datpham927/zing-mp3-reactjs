@@ -40,3 +40,12 @@
         }
     }
 }
+
+@media (max-width: 740px) {
+    .left {
+        .image {
+            width: 5rem;
+            height: 5rem;
+        }
+    }
+}

@@ -4,7 +4,6 @@ import styles from './AppLayout.module.scss';
 import Sidebar from '../Sidebar';
 import PropTypes from 'prop-types';
 import Header from '../Header';
-import { useState } from 'react';
 import Modal from '~/components/modal/Modal';
 import Control from '../Control/Control';
 import { useSelector } from 'react-redux';

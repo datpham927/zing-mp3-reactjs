@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import smoothScrollIntoView from 'smooth-scroll-into-view-if-needed';
 import style from './Lyric.module.scss';

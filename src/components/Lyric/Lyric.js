@@ -10,6 +10,8 @@ import style from './Lyric.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { v4 as uuidv4 } from 'uuid';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
+import 'tippy.js/dist/tippy.css';
+import Tippy from '@tippyjs/react/headless';
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
@@ -143,66 +145,75 @@ function Lyric() {
                                 className={cx('btn') + ' c-0'}
                                 onClick={() => setFullScreens((e) => !e)}
                             />
-                            <div className={cx('setting')} onClick={() => setOpenMenu((e) => !e)}>
-                                <Button
-                                    primary
-                                    content="Cài đặt"
-                                    iconLeft={<i className="icon ic-settings"></i>}
-                                    className={cx('btn')}
-                                />
-                                {openMenu && (
-                                    <div className={cx('menu')}>
-                                        <div className={cx('option')}>
-                                            <div className={cx('left')}>
-                                                <h3>Hình nền</h3>
+                            <Tippy
+                                interactive
+                                trigger="click"
+                                offset={[0, -3]}
+                                placement="bottom-end"
+                                render={(attrs) => (
+                                    <div className={cx('box')} tabIndex="-1" {...attrs}>
+                                        <div className={cx('menu')}>
+                                            <div className={cx('option')}>
+                                                <div className={cx('left')}>
+                                                    <h3>Hình nền</h3>
+                                                </div>
+                                                <div className={cx('right')}>
+                                                    <div
+                                                        className={cx('button', bgr && 'action')}
+                                                        onClick={() => setBgr((e) => !e)}
+                                                    ></div>
+                                                </div>
                                             </div>
-                                            <div className={cx('right')}>
-                                                <div
-                                                    className={cx('button', bgr && 'action')}
-                                                    onClick={() => setBgr((e) => !e)}
-                                                ></div>
+                                            <div className={cx('option')}>
+                                                <div className={cx('left')}>
+                                                    <h3>Cỡ chữ lời nhạc</h3>
+                                                </div>
+                                                <div className={cx('right')}>
+                                                    <button
+                                                        className={cx('btn-size', 's', size === 's' && 'active')}
+                                                        onClick={() => setSize('s')}
+                                                    >
+                                                        A
+                                                    </button>
+                                                    <button
+                                                        className={cx('btn-size', 'm', size === 'm' && 'active')}
+                                                        onClick={() => setSize('m')}
+                                                    >
+                                                        A
+                                                    </button>
+                                                    <button
+                                                        className={cx('btn-size', 'l', size === 'l' && 'active')}
+                                                        onClick={() => setSize('l')}
+                                                    >
+                                                        A
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className={cx('option')}>
-                                            <div className={cx('left')}>
-                                                <h3>Cỡ chữ lời nhạc</h3>
-                                            </div>
-                                            <div className={cx('right')}>
-                                                <button
-                                                    className={cx('btn-size', 's', size === 's' && 'active')}
-                                                    onClick={() => setSize('s')}
-                                                >
-                                                    A
-                                                </button>
-                                                <button
-                                                    className={cx('btn-size', 'm', size === 'm' && 'active')}
-                                                    onClick={() => setSize('m')}
-                                                >
-                                                    A
-                                                </button>
-                                                <button
-                                                    className={cx('btn-size', 'l', size === 'l' && 'active')}
-                                                    onClick={() => setSize('l')}
-                                                >
-                                                    A
-                                                </button>
-                                            </div>
-                                        </div>
 
-                                        <div className={cx('option')}>
-                                            <div className={cx('left')}>
-                                                <h3>Luôn phát nhạc toàn màng hình</h3>
-                                            </div>
-                                            <div className={cx('right')}>
-                                                <div
-                                                    className={cx('button', playFullscreen && 'action')}
-                                                    onClick={() => setPlayFullScreen((e) => !e)}
-                                                ></div>
+                                            <div className={cx('option')}>
+                                                <div className={cx('left')}>
+                                                    <h3>Luôn phát nhạc toàn màng hình</h3>
+                                                </div>
+                                                <div className={cx('right')}>
+                                                    <div
+                                                        className={cx('button', playFullscreen && 'action')}
+                                                        onClick={() => setPlayFullScreen((e) => !e)}
+                                                    ></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 )}
-                            </div>
+                            >
+                                <div className={cx('setting')}>
+                                    <Button
+                                        primary
+                                        content="Cài đặt"
+                                        iconLeft={<i className="icon ic-settings"></i>}
+                                        className={cx('btn')}
+                                    />
+                                </div>
+                            </Tippy>
                             <Button
                                 primary
                                 content="Đóng"

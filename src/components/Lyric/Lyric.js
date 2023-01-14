@@ -233,17 +233,17 @@ function Lyric() {
                                 )}
                             </div>
                         </div>
-                        {/* {data?.sentences?.length > 1 ? ( */}
-                        <div className={cx('right') + ' l-7 m-7 c-12'}>
-                            <ul className={cx('lyric', size)}>
-                                {data?.sentences?.map((e) => (
-                                    <ItemLyric data={e} key={uuidv4()} />
-                                ))}
-                            </ul>
-                        </div>
-                        {/* ) : (
+                        {data?.sentences?.length > 1 ? (
+                            <div className={cx('right') + ' l-7 m-7 c-12'}>
+                                <ul className={cx('lyric', size)}>
+                                    {data?.sentences?.map((e) => (
+                                        <ItemLyric data={e} key={uuidv4()} />
+                                    ))}
+                                </ul>
+                            </div>
+                        ) : (
                             <div className={cx('upload')}>Đang cập nhật</div>
-                        )} */}
+                        )}
                     </div>
                 </div>
             </div>

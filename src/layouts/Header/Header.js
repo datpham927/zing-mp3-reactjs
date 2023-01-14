@@ -7,10 +7,10 @@ import HeaderRight from './HeaderRight';
 import HeaderLeft from './HeaderLeft';
 const cx = classNames.bind(style);
 
-function Header() {
+function Header({ active }) {
     return (
         <>
-            <div className={cx('wrapper')}>
+            <div className={cx('wrapper', active && 'scroll')}>
                 <HeaderLeft />
                 <HeaderRight />
             </div>

@@ -11,32 +11,22 @@ import PlayMv from '~/pages/others/PlayMv/PlayMv';
 import QueuePlayList from '../QueuePlayList/QueuePlayList';
 import Lyric from '../../components/Lyric/Lyric';
 import FooterMobile from '../FooterMobile/FooterMobile';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
 function AppLayout({ children }) {
     const { booleanControl } = useSelector((state) => state.dataControl);
+    const [header, setHeader] = useState(false);
     const mainRef = useRef();
 
     useEffect(() => {
-        const header = document.querySelector('.Header_wrapper__dNhyY');
         const handleScroll = (e) => {
             if (e.currentTarget.scrollTop === 0) {
-                if (e.target.clientWidth <= 740) {
-                    header.style.transform = 'translateY(0)';
-                } else {
-                    alert('remove');
-                    header.classList.remove('Header_scroll__gDK86');
-                }
+                setHeader(false);
             } else {
-                if (e.target.clientWidth <= 740) {
-                    header.style.transform = 'translateY(-100%)';
-                } else {
-                    alert('add');
-                    header.classList.add();
-                }
+                setHeader(true);
             }
         };
         mainRef.current.addEventListener('scroll', handleScroll);
@@ -48,7 +38,7 @@ function AppLayout({ children }) {
                 <Modal />
                 <Sidebar />
                 <div className={cx('main')} ref={mainRef}>
-                    <Header />
+                    <Header active={header} />
                     <div className={cx('container')}>{children}</div>
                 </div>
                 <QueuePlayList />

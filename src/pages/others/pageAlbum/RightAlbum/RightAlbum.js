@@ -131,7 +131,7 @@ function RightAlbum({ data }) {
                                 </div>
                             )}
                         </div>
-                        <div className={cx('main')}>ALBUM</div>
+                        <div className={cx('main') + ' c-0'}>ALBUM</div>
                         <div className={cx('right-time')}>THỜI GIAN</div>
                     </div>
                     <div className={cx('list') + ' row'}>

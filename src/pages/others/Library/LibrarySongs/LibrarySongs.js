@@ -74,7 +74,7 @@ function LibrarySongs() {
                         <div className={cx('song')}>BÀI HÁT</div>
                     )}
                 </div>
-                <div className={cx('main')}>ALBUM</div>
+                <div className={cx('main') + ' c-0'}>ALBUM</div>
                 <div className={cx('right')}>THỜI GIAN</div>
             </div>
             <Container className={cx('body')}>

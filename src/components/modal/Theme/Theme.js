@@ -73,6 +73,7 @@ function Theme() {
     const handelModal = (e) => {
         if (e.target === e.currentTarget) {
             dispatch(zingAction.actions.modalTheme(false));
+            dispatch(zingAction.actions.booleanPreview(false));
         }
     };
     const handleCloseModal = () => {

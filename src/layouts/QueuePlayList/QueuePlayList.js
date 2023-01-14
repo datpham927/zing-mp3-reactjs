@@ -11,7 +11,6 @@ import { setModalPortal, setModalTimer, setModalVip } from '~/redux/action';
 import { setCurrentTimeAudio } from '~/redux/currentTimeAudio';
 import { deleteDataPlayList, setActivePlay, setIdAudio, setOpenQueueList, setPlayListAudio } from '~/redux/dataControl';
 import style from './QueuePlayList.module.scss';
-import { IconClose } from '~/components/Icons/Icons';
 
 const cx = className.bind(style);
 
@@ -112,6 +111,15 @@ function QueuePlayList() {
                             }}
                         />
                         <Button
+                            className={cx('btn-action', timer > 0 && 'active') + ' l-0 m-0'}
+                            iconLeft={<i className="icon ic-go-right"></i>}
+                            content={'Đóng'}
+                            primary
+                            onClick={() => {
+                                dispatch(setOpenQueueList(false));
+                            }}
+                        />
+                        <Button
                             className={cx('btn-action', 'btn-other')}
                             iconLeft={<i className="icon ic-more"></i>}
                             content={'Khác'}
@@ -139,15 +147,6 @@ function QueuePlayList() {
                                 </div>
                             </div>
                         )}
-                        <Button
-                            className={cx('btn-action', timer > 0 && 'active') + ' l-0 m-0'}
-                            iconLeft={<IconClose />}
-                            content={'Đóng'}
-                            primary
-                            onClick={() => {
-                                dispatch(setOpenQueueList(false));
-                            }}
-                        />
                     </div>
                 </div>
                 <div className={cx('body')}>

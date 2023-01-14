@@ -9,6 +9,7 @@ import toastMessage from '~/components/modal/toast';
 import { setBooleanEdit, setKindPlaylist, setModalAddPlayList, setModalPortalDelete } from '~/redux/action';
 import { setIdPlayList, setPlayListFavorite, setPlayListTitle } from '~/redux/FavoriteList';
 import styles from './ItemPlayList.module.scss';
+import { setOpenControl } from '~/redux/dataControl';
 
 const cx = classNames.bind(styles);
 

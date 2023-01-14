@@ -11,7 +11,7 @@ import ButtonAction from '~/components/Button/ButtonAction';
 import ItemChartBox from './ItemChartBox';
 import Loading from '~/components/load/Loading/Loading';
 import ContainerSongs from '~/components/container/ContainerSongs';
-import { setCurrentIndex } from '~/redux/dataControl';
+import { setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 
 const cx = className.bind(style);
 function ZingChart() {
@@ -26,6 +26,7 @@ function ZingChart() {
     }, []);
 
     const handleClickPlay = () => {
+        dispatch(setPlayListAudio(data?.RTChart?.items));
         if (data?.length > 0) {
             dispatch(setCurrentIndex(Math.floor(Math.random() * 100)));
         } else {

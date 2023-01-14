@@ -156,7 +156,7 @@ function ControlMain() {
             <audio
                 ref={audioRef}
                 src={src}
-                autoPlay={true}
+                autoPlay={activePlay && loadMusic}
                 onEnded={handleOnEnd}
                 onTimeUpdate={() => {
                     setPercent((100 * audioRef?.current.currentTime) / idAudio?.duration);

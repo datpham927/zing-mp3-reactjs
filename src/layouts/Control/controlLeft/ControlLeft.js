@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
 import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import toastMessage from '~/components/modal/toast';
 import { setSongFavorite } from '~/redux/FavoriteList';
 import style from './ControlLeft.module.scss';
+import { setOpenLyric } from '~/redux/action';
 const cx = className.bind(style);
 
 function ControlLeft() {
@@ -15,7 +17,6 @@ function ControlLeft() {
     const { user } = useSelector((state) => state.action);
     const [favorite, setFavorite] = useState([]);
     const dispatch = useDispatch();
-
     useEffect(() => {
         setFavorite(songFavorite.map((e) => e.encodeId));
     }, [songFavorite]);
@@ -25,7 +26,14 @@ function ControlLeft() {
 
     return (
         <div className={cx('left') + ' l-3 m-3 c-8'}>
-            <div className={cx('image', 'action')}>
+            <div
+                className={cx('image', 'action')}
+                onClick={() => {
+                    if (window.innerWidth <= 740) {
+                        dispatch(setOpenLyric(true));
+                    }
+                }}
+            >
                 <img src={idAudio?.thumbnail} alt="" />
             </div>
             <div className={cx('info')}>

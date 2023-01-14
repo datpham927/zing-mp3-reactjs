@@ -258,36 +258,11 @@
                 width: 100% !important;
                 height: auto !important;
                 padding-right: 0 !important;
-                & video {
-                    border-radius: 4px;
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-                    background-color: black;
-                }
+                margin: 15px 0;
             }
             .list {
                 width: 100% !important;
                 height: 50vh !important;
-                border-radius: 4px;
-                background-color: hsla(0, 0%, 100%, 0.10196078431372549);
-                overflow: hidden;
-                & h3 {
-                    padding: 20px;
-                    font-size: 18px;
-                    color: var(--text-primary);
-                }
-                .list-wrapper {
-                    height: 100%;
-                    overflow-y: scroll;
-                    &::-webkit-scrollbar {
-                        width: 4px;
-                        background-color: transparent;
-                    }
-                    &::-webkit-scrollbar-thumb {
-                        background-color: var(--alpha-bg);
-                    }
-                }
             }
         }
     }

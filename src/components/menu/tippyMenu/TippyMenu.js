@@ -46,6 +46,8 @@ function TippyMenu({ MENU_ITEM = [], children }) {
                                 dispatch(setCurrentUser(''));
                                 navigate('/');
                                 toastMessage('Đăng xuất thành công');
+                            } else if (item.title === 'Liên hệ') {
+                                navigate('/admin');
                             }
                         }}
                         onChange={onBack}

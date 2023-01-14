@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: var(--purple-primary) 1px 0 10px;
+    & a {
+        width: 30rem;
+        height: 30rem;
+        border-radius: 999px;
+        overflow: hidden;
+        & img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+    }
+    & h1 {
+        font-size: 4rem;
+        margin-top: 20px;
+    }
+}

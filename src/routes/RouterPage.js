@@ -40,6 +40,8 @@ import { v4 as uuidv4 } from 'uuid';
 import SongNew from '~/pages/primary/SongNew/SongNew';
 import Top100 from '~/pages/primary/Top100';
 import ZingChart from '~/pages/primary/ZingChart';
+import PagePgr from '~/pages/others/pagePgr/pagePgr';
+import PageAdmin from '~/pages/others/pageAdmin/PageAdmin';
 
 const RouterPage = () => {
     const location = useLocation();
@@ -102,6 +104,8 @@ const RouterPage = () => {
             <Route path={'/library/songs'} element={<LibrarySongs />}></Route>
             <Route path={'/library/play-list'} element={<LibraryPlaylist />}></Route>
             <Route path={'/library/recently'} element={<LibraryRecent />}></Route>
+            <Route path={'/pgr/:name/:id'} element={<PagePgr />}></Route>
+            <Route path={'/admin'} element={<PageAdmin />}></Route>
         </Routes>
     );
 };

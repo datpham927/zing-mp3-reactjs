@@ -109,6 +109,15 @@
                     }
                 }
             }
+            .upload {
+                height: 70vh;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                font-size: 4rem;
+                color: var(--text-secondary);
+                text-shadow: var(--purple-primary) 1px 0 10px;
+            }
         }
     }
     .background {
@@ -366,5 +375,11 @@
                 background-color: var(--purple-primary);
             }
         }
+    }
+}
+
+@media (max-width: 740px) {
+    .menu {
+        width: 250px;
     }
 }

@@ -7,7 +7,7 @@ const cx = className.bind(style);
 
 function ItemLyric({ data }) {
     const { currentTimeAudio } = useSelector((state) => state.currentTimeAudio);
-    let texts = '';
+    var texts = '';
     data.words.forEach((e) => {
         texts += e.data + ' ';
     });
@@ -15,13 +15,13 @@ function ItemLyric({ data }) {
     let end = data.words[data.words?.length - 1].endTime / 1000;
 
     const lyricView = document?.querySelector('.Lyric_active__BbzsP');
-    if (!lyricView) return;
     setTimeout(() => {
         smoothScrollIntoView(lyricView, {
             block: 'center',
             behavior: 'smooth',
         });
     }, 200);
+
     return (
         <li
             className={cx(

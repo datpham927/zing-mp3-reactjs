@@ -27,7 +27,6 @@ function Lyric() {
     const [open, setOpen] = useState(false);
     const [playFullscreen, setPlayFullScreen] = useState(false);
     const [bgr, setBgr] = useState(false);
-    const [openMenu, setOpenMenu] = useState(false);
     const dispatch = useDispatch();
     const { idAudio, activePlay } = useSelector((state) => state.dataControl);
     const { openLyric } = useSelector((state) => state.action);
@@ -39,12 +38,6 @@ function Lyric() {
         };
         api();
     }, [idAudio?.encodeId]);
-
-    const handle = (e) => {
-        if (!e.target.closest('.Lyric_setting__QRvsQ') && !e.target.closest('.Lyric_menu__2F3sy')) {
-            setOpenMenu(false);
-        }
-    };
 
     useEffect(() => {
         if (screens) {
@@ -115,7 +108,7 @@ function Lyric() {
                     )}
                 </div>
 
-                <div className={cx('content')} onClick={handle}>
+                <div className={cx('content')}>
                     <div className={cx('header')}>
                         <div className={cx('info-song-mb') + ' l-0 m-0'}>
                             <div className={cx('image-mb', activePlay && 'action-mb')}>
@@ -220,7 +213,6 @@ function Lyric() {
                                 iconLeft={<i className="icon ic-go-down"></i>}
                                 onClick={() => {
                                     dispatch(setOpenLyric(false));
-                                    setOpenMenu(false);
                                 }}
                                 className={cx('btn')}
                             />
@@ -228,7 +220,7 @@ function Lyric() {
                     </div>
 
                     <div className={cx('body')}>
-                        <div className={cx('left') + ' l-5 c-0'}>
+                        <div className={cx('left') + ' l-5 m-5  c-0'}>
                             <div className={cx('image')}>
                                 <img src={idAudio?.thumbnailM} alt="" />
                                 {activePlay && (
@@ -241,13 +233,17 @@ function Lyric() {
                                 )}
                             </div>
                         </div>
-                        <div className={cx('right') + ' l-7 c-12'}>
+                        {/* {data?.sentences?.length > 1 ? ( */}
+                        <div className={cx('right') + ' l-7 m-7 c-12'}>
                             <ul className={cx('lyric', size)}>
                                 {data?.sentences?.map((e) => (
                                     <ItemLyric data={e} key={uuidv4()} />
                                 ))}
                             </ul>
                         </div>
+                        {/* ) : (
+                            <div className={cx('upload')}>Đang cập nhật</div>
+                        )} */}
                     </div>
                 </div>
             </div>

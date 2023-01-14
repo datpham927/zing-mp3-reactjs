@@ -21,20 +21,21 @@ function AppLayout({ children }) {
     const mainRef = useRef();
 
     useEffect(() => {
+        const header = document.querySelector('.Header_wrapper__dNhyY');
         const handleScroll = (e) => {
             if (e.currentTarget.scrollTop === 0) {
                 if (e.target.clientWidth <= 740) {
-                    document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(0)';
+                    header.style.transform = 'translateY(0)';
                 } else {
                     alert('remove');
-                    document.querySelector('.Header_wrapper__dNhyY').classList.remove('Header_scroll__gDK86');
+                    header.classList.remove('Header_scroll__gDK86');
                 }
             } else {
                 if (e.target.clientWidth <= 740) {
-                    document.querySelector('.Header_wrapper__dNhyY').style.transform = 'translateY(-100%)';
+                    header.style.transform = 'translateY(-100%)';
                 } else {
                     alert('add');
-                    document.querySelector('.Header_wrapper__dNhyY').classList.add('Header_scroll__gDK86');
+                    header.classList.add();
                 }
             }
         };

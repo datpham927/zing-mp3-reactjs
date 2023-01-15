@@ -27,7 +27,9 @@ function ControlMain() {
     const [percent, setPercent] = useState(0);
     const dispatch = useDispatch();
     const listMusic = useSelector((state) => state.dataControl.playListAudio);
-    const { idAudio, repeat, shuffle, loadMusic, activePlay, volume } = useSelector((state) => state.dataControl);
+    const { idAudio, repeat, shuffle, loadMusic, activePlay, volume, currentVolume } = useSelector(
+        (state) => state.dataControl,
+    );
     const { currentTimeAudio, timer } = useSelector((state) => state.currentTimeAudio);
     const { openLyric } = useSelector((state) => state.action);
     const audioRef = useRef();
@@ -71,6 +73,8 @@ function ControlMain() {
             dispatch(setTimer(0));
             if (volume) {
                 audioRef.current.volume = 0;
+            } else {
+                audioRef.current.volume = currentVolume;
             }
             // sau timer nhạc sẽ dừng
         }, timer * 1000);

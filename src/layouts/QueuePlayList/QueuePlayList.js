@@ -56,7 +56,8 @@ function QueuePlayList() {
         };
     });
     useEffect(() => {
-        const songPlayView = document.querySelector('.ItemSong_queue-active__pGHaU');
+        // const songPlayView = document.querySelector('.ItemSong_queue-active__pGHaU');
+        const songPlayView = document.querySelector('.ItemSong_queue-active__YGrb2');
         if (songPlayView) {
             songPlayView?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
         }

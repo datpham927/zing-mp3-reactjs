@@ -55,7 +55,8 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
     };
 
     useEffect(() => {
-        const songPlayView = document.querySelector('.ItemSong_active__3E3Wz');
+        // const songPlayView = document.querySelector('.ItemSong_active__3E3Wz');
+        const songPlayView = document.querySelector('.ItemSong_active__FFdim');
         if (!songPlayView) return;
         setTimeout(() => {
             smoothScrollIntoView(songPlayView, {

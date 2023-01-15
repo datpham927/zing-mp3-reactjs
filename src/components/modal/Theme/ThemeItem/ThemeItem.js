@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './ThemeItem.module.scss';
 import { zingAction } from '~/redux/action';
-import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = classNames.bind(style);
 

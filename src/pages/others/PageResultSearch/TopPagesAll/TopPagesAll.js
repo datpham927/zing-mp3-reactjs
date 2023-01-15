@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setActivePlay, setIdAudio, setLoadMusic } from '~/redux/dataControl';
 

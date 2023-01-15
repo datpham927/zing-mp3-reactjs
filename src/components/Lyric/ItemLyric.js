@@ -16,14 +16,13 @@ function ItemLyric({ data }) {
     let start = data.words[0].startTime / 1000;
     let end = data.words[data.words?.length - 1].endTime / 1000;
 
-    const lyricView = document?.querySelector('.Lyric_active__BbzsP');
+    const lyricView = document?.querySelector('.Lyric_active__hB8VK');
     setTimeout(() => {
         smoothScrollIntoView(lyricView, {
             block: 'center',
             behavior: 'smooth',
         });
     }, 200);
-    console.log(lyricRef);
     return (
         <li
             ref={lyricRef}

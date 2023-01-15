@@ -4,7 +4,7 @@ const initialState = JSON.parse(localStorage.getItem('audio')) || {
     idAudio: [],
     playListAudio: [],
     recentList: [],
-    currentIndex: -1,
+    currentIndex: 1,
     repeat: false,
     shuffle: false,
     prev: false,

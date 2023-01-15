@@ -1,14 +1,23 @@
 import classNames from 'classnames/bind';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setActivePlay, setIdAudio, setLoadMusic } from '~/redux/dataControl';
 
 import styles from './TopPagesAll.module.scss';
 
 const cx = classNames.bind(styles);
 
 function TopPagesAll({ data, type = '' }) {
+    const dispatch = useDispatch();
+
+    const handlePlay = () => {
+        dispatch(setActivePlay(true));
+        dispatch(setIdAudio(data));
+        dispatch(setLoadMusic(data));
+    };
     return type === 'song' ? (
         <div className=" l-4 m-4 c-12 col">
-            <div className={cx('media')}>
+            <div className={cx('media')} onClick={handlePlay}>
                 <div className={cx('wrapper')}>
                     <div className={cx('song-thumb')}>
                         <img src={data?.thumbnail} alt="" />

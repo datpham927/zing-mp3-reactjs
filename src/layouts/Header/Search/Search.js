@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import style from './Search.module.scss';
@@ -30,7 +30,8 @@ function Search() {
     const { value } = useSelector((state) => state.action);
     const debouncedValue = useDebounce(value, 500);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        setKeywords([]);
         if (!debouncedValue.trim()) {
             setKeywords([]);
             setShowResult(true);

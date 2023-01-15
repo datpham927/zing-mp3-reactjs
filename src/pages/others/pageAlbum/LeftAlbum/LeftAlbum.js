@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames/bind';
 import ButtonAction from '~/components/Button/ButtonAction';
 import style from './LeftAlbum.module.scss';
@@ -73,12 +74,12 @@ function LeftAlbum({ data }) {
                 </h3>
                 <div className={cx('artist')}>
                     {data?.artists?.map((i, index) => (
-                        <>
+                        <span key={uuidv4}>
                             <span>
                                 <Link to={i?.link}>{i?.name}</Link>
                             </span>
                             {index < data?.artists?.length - 1 && ', '}
-                        </>
+                        </span>
                     ))}
                 </div>
                 {booleanKindPlaylist && (

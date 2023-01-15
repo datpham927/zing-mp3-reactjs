@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import { setOpenLyric } from '~/redux/action';
@@ -20,11 +20,6 @@ function ControlRight() {
         dispatch(setCurrentVolume(newVolume / 100));
         dispatch(setChangerVolume(newVolume));
     };
-    useEffect(() => {
-        if (audioRef?.volume) {
-            audioRef.volume = changerVolume / 100;
-        }
-    }, [changerVolume]);
     return (
         <div className={cx('right') + ' l-3 m-3 c-0'}>
             <Button

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import className from 'classnames/bind';
+import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import smoothScrollIntoView from 'smooth-scroll-into-view-if-needed';
 import style from './Lyric.module.scss';
@@ -11,6 +12,7 @@ function ItemLyric({ data }) {
     data.words.forEach((e) => {
         texts += e.data + ' ';
     });
+    const lyricRef = useRef();
     let start = data.words[0].startTime / 1000;
     let end = data.words[data.words?.length - 1].endTime / 1000;
 
@@ -21,9 +23,10 @@ function ItemLyric({ data }) {
             behavior: 'smooth',
         });
     }, 200);
-
+    console.log(lyricRef);
     return (
         <li
+            ref={lyricRef}
             className={cx(
                 'item',
                 currentTimeAudio >= start && currentTimeAudio < end && 'active',

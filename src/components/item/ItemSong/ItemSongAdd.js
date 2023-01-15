@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -125,12 +126,12 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
                             </div>
                             <span className={cx('singer')}>
                                 {data?.artists?.map((i, index) => (
-                                    <>
+                                    <span key={uuidv4()}>
                                         <span>
                                             <Link to={i.link}>{i.name}</Link>
                                         </span>
                                         {index < data?.artists?.length - 1 && ', '}
-                                    </>
+                                    </span>
                                 ))}
                             </span>
                         </div>

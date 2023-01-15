@@ -9,7 +9,6 @@ import toastMessage from '~/components/modal/toast';
 import { setBooleanEdit, setKindPlaylist, setModalAddPlayList, setModalPortalDelete } from '~/redux/action';
 import { setIdPlayList, setPlayListFavorite, setPlayListTitle } from '~/redux/FavoriteList';
 import styles from './ItemPlayList.module.scss';
-import { setOpenControl } from '~/redux/dataControl';
 
 const cx = classNames.bind(styles);
 
@@ -27,14 +26,14 @@ function ItemPlayList({ data, type = '', description, className }) {
     };
 
     const handleOnClick = (e) => {
-        if (e.target === e.currentTarget || e.target.closest('.ItemPlayList_icon-play__e5DCq')) {
+        if (e.target === e.currentTarget || e.target.closest('.Button_wrapper__z9hhf')) {
             navigate(data.link);
             dispatch(setPlayListTitle([data.title, data.link]));
             dispatch(setKindPlaylist(false));
         }
     };
     const handleOnClickPrivate = (e) => {
-        if (e.target === e.currentTarget || e.target.closest('.ItemPlayList_icon-play__e5DCq')) {
+        if (e.target === e.currentTarget || e.target.closest('.Button_wrapper__z9hhf')) {
             navigate(data.link);
             dispatch(setPlayListTitle([data.title, data.link]));
             dispatch(setKindPlaylist(true));

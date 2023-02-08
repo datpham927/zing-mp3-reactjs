@@ -48,7 +48,12 @@ function RightAlbum({ data }) {
     };
     useEffect(() => {
         const close = (e) => {
-            if (!e.target.closest('.Album_menu__4gae5') && !e.target.closest('.RightAlbum_icon-sort__q26X1')) {
+            // if (!e.target.closest('.Album_menu__4gae5') && !e.target.closest('.RightAlbum_icon-sort__q26X1')) {
+            //     setOpenMenu(false);
+            // }
+            if (e.target.className.includes('Sort') || e.target.className.includes('icon-sort')) {
+                setOpenMenu(() => !openMenu);
+            } else {
                 setOpenMenu(false);
             }
         };
@@ -56,7 +61,7 @@ function RightAlbum({ data }) {
         return () => {
             document.body.removeEventListener('click', close);
         };
-    });
+    }, []);
     useEffect(() => {
         if (all) {
             dispatch(setSelectionAll(true));

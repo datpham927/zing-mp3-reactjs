@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ButtonAction from '~/components/Button/ButtonAction';
-import Follow from '~/components/number/follow/Follow';
+import Follow from '~/components/hooks/Follow';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 
 import styles from './ItemArtists.module.scss';

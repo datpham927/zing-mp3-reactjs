@@ -7,8 +7,8 @@ import { useDispatch } from 'react-redux';
 import { setDataFollow } from '~/redux/dataFollow';
 import { setModalFollow } from '~/redux/action';
 
-import FormatDate from '~/components/number/time/FormatDate';
-import Follow from '~/components/number/follow/Follow';
+import FormatDate from '~/components/hooks/FormatDate';
+import Follow from '~/components/hooks/Follow';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 
 const cx = className.bind(style);
@@ -24,7 +24,7 @@ function ItemFollowing({ data }) {
         img = data.content?.thumbnail;
     }
     const dispatch = useDispatch();
-    const handelClick = (e) => {
+    const handleClick = (e) => {
         dispatch(setDataFollow(e));
         dispatch(setModalFollow(true));
     };
@@ -56,7 +56,7 @@ function ItemFollowing({ data }) {
                 </div>
                 <div className={cx('body')}>
                     <div className={cx('title')}>{data?.shortDescription}</div>
-                    <div className={cx('main')} onClick={() => handelClick(data)}>
+                    <div className={cx('main')} onClick={() => handleClick(data)}>
                         <LoadImg>
                             {img ? (
                                 <img src={img} alt="" />

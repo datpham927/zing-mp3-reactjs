@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import * as searchApi from '~/components/Api/Service';
 import Button from '~/components/Button';
 import ButtonAction from '~/components/Button/ButtonAction';
-import Follow from '~/components/number/follow/Follow';
+import Follow from '~/components/hooks/Follow';
 import { setActivePlay, setCurrentIndex, setPlayListAudio } from '~/redux/dataControl';
 import style from './ArtistHero.module.scss';
 

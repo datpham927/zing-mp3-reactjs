@@ -9,7 +9,7 @@ import { setOpenLyric, zingAction } from '~/redux/action';
 import styles from './ItemSong.module.scss';
 import { setSongFavorite } from '~/redux/FavoriteList';
 import { setActivePlay, setLoadMusic } from '~/redux/dataControl';
-import Duration from '~/components/number/time/Duration';
+import Duration from '~/components/hooks/Duration';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { IconLoadMusic } from '~/components/Icons/Icons';
 import toastMessage from '~/components/modal/toast';

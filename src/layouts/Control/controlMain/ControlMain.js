@@ -14,7 +14,7 @@ import {
     setRepeat,
     setShuffle,
 } from '~/redux/dataControl';
-import Duration from '~/components/number/time/Duration';
+import Duration from '~/components/hooks/Duration';
 import { IconLoadControl } from '~/components/Icons/Icons';
 import { setCurrentTimeAudio } from '~/redux/currentTimeAudio';
 import { useLayoutEffect } from 'react';

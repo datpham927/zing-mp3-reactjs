@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames/bind';
 import ButtonAction from '~/components/Button/ButtonAction';
 import style from './LeftAlbum.module.scss';
-import Follow from '~/components/number/follow/Follow';
+import Follow from '~/components/hooks/Follow';
 import Button from '~/components/Button';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

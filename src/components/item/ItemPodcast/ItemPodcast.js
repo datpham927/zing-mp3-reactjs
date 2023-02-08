@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import Button from '~/components/Button';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import toastMessage from '~/components/modal/toast';
-import FormatDate from '~/components/number/time/FormatDate';
-import Minute from '~/components/number/time/Minute';
+import FormatDate from '~/components/hooks/FormatDate';
 import style from './ItemPodcast.module.scss';
+import Minute from '~/components/hooks/Minute';
 
 const cx = className.bind(style);
 

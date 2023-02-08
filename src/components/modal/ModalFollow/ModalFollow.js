@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
-import Follow from '~/components/number/follow/Follow';
+import Follow from '~/components/hooks/Follow';
 import { Icon } from '~/components/Icons';
 import { setModalFollow } from '~/redux/action';
 import style from './ModalFollow.module.scss';
-import FormatDate from '~/components/number/time/FormatDate';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import toastMessage from '../toast';
+import FormatDate from '~/components/hooks/FormatDate';
 const cx = className.bind(style);
 function ModalFollow() {
     const [selection, setSelection] = useState(false);

@@ -70,7 +70,7 @@ const themesModal = {
 
 function Theme() {
     const dispatch = useDispatch();
-    const handelModal = (e) => {
+    const handleModal = (e) => {
         if (e.target === e.currentTarget) {
             dispatch(zingAction.actions.modalTheme(false));
             dispatch(zingAction.actions.booleanPreview(false));
@@ -81,7 +81,7 @@ function Theme() {
         dispatch(zingAction.actions.booleanPreview(false));
     };
     return (
-        <div className={cx('modal-topic')} onClick={(e) => handelModal(e)}>
+        <div className={cx('modal-topic')} onClick={(e) => handleModal(e)}>
             <div className={cx('topic')}>
                 <div className={cx('topic-header')}>
                     <h1>Giao Diện</h1>

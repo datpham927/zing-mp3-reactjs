@@ -7,7 +7,7 @@ import styles from './ItemAlBum.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import { setActivePlay, setIdAudio, setLoadMusic } from '~/redux/dataControl';
-import Duration from '~/components/number/time/Duration';
+import Duration from '~/components/hooks/Duration';
 import { setPlayListTitle } from '~/redux/FavoriteList';
 import { IconLoadMusic } from '~/components/Icons/Icons';
 

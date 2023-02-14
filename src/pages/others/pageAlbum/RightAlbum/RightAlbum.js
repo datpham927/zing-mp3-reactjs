@@ -48,9 +48,6 @@ function RightAlbum({ data }) {
     };
     useEffect(() => {
         const close = (e) => {
-            // if (!e.target.closest('.Album_menu__4gae5') && !e.target.closest('.RightAlbum_icon-sort__q26X1')) {
-            //     setOpenMenu(false);
-            // }
             if (e.target.className.includes('Sort') || e.target.className.includes('icon-sort')) {
                 setOpenMenu(() => !openMenu);
             } else {

@@ -28,6 +28,8 @@ function Category() {
     const topic = datas?.topic;
     const nations = datas?.nations;
     const genre = datas?.genre;
+
+    console.log(topic);
     return datas?.length !== 0 ? (
         <div>
             <div className={cx('header')}>

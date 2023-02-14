@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadImg from '~/components/load/loadImg/LoadImg';
-import Duration from '~/components/number/time/Duration';
+import Duration from '~/components/hooks/time/Duration';
 import { setActivePlay } from '~/redux/dataControl';
 import { setChangerDataMv, setIndexOpenMv, setPlayMv } from '~/redux/dataMV';
 import styles from './ItemVideo.module.scss';

@@ -14,12 +14,12 @@ import {
     setRepeat,
     setShuffle,
 } from '~/redux/dataControl';
-import Duration from '~/components/number/time/Duration';
 import { IconLoadControl } from '~/components/Icons/Icons';
 import { setCurrentTimeAudio } from '~/redux/currentTimeAudio';
 import { useLayoutEffect } from 'react';
 import { forwardRef } from 'react';
 import { setTimer } from '~/redux/action';
+import Duration from '~/components/hooks/time/Duration';
 const cx = className.bind(style);
 
 function ControlMain() {

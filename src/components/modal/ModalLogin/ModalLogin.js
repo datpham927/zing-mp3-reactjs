@@ -3,7 +3,7 @@ import className from 'classnames/bind';
 import { v4 as uuidv4 } from 'uuid';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
-import { auth } from '~/firebasse/firebase';
+import { auth } from '~/firebasse/config';
 import { setCurrentUser, setOpenModalLogin } from '~/redux/action';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
@@ -22,21 +22,27 @@ function ModalLogin() {
     const handleUser = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider);
+
+        dispatch(setOpenModalLogin(false));
+    };
+    useEffect(() => {
         onAuthStateChanged(auth, (currents) => {
             if (currents?.displayName) {
+                console.log(currents);
+                const { displayName, email, photoURL } = currents;
+
                 dispatch(
                     setCurrentUser({
                         user: true,
-                        displayName: currents.displayName,
-                        email: currents.displayName,
-                        photoURL: currents.photoURL,
+                        displayName,
+                        email,
+                        photoURL,
                     }),
                 );
                 toastMessage('Đăng nhập thành công');
             }
         });
-        dispatch(setOpenModalLogin(false));
-    };
+    }, []);
     const imgs = [
         'https://htran844.github.io/hihi/img/fb/a8.jpg',
         'https://htran844.github.io/hihi/img/ig/i36.jpg',

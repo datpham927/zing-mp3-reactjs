@@ -8,8 +8,8 @@ function ItemTopic({ data }) {
     return (
         <div className={cx('topic-item') + ' l-4  m-4 col'}>
             <div className={cx('topic-item-img')}>
-                <LoadImg>
-                    <img src={data.thumbnailM} alt="" />
+                <LoadImg className={cx('LoadImg')}>
+                    <img src={data.thumbnailM || data.thumbnail} alt="" />
                 </LoadImg>
                 <div className={cx('topic-content')}>
                     <h3>{data?.title}</h3>

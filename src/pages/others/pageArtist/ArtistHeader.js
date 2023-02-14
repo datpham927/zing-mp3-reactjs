@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
 import ButtonAction from '~/components/Button/ButtonAction';
-import Follow from '~/components/number/follow/Follow';
+import Follow from '~/components/hooks/follow/Follow';
 import { zingArtist } from '~/redux/dataArtist';
 import style from './PageArtist.module.scss';
 

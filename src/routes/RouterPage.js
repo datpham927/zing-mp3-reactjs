@@ -47,7 +47,7 @@ const RouterPage = () => {
     const location = useLocation();
 
     return (
-        <Routes location={location} key={uuidv4()}>
+        <Routes location={location}>
             <Route path={'mymusic'} element={<Private />}></Route>
             <Route path={''} element={<Home />}></Route>
             <Route path={'zing-chart'} element={<ZingChart />}></Route>

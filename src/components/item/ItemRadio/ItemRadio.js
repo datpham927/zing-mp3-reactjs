@@ -1,7 +1,7 @@
 import className from 'classnames/bind';
 import LoadImg from '~/components/load/loadImg/LoadImg';
 import toastMessage from '~/components/modal/toast';
-import Follow from '~/components/number/follow/Follow';
+import Follow from '~/components/hooks/follow/Follow';
 
 import style from './ItemRadio.module.scss';
 const cx = className.bind(style);

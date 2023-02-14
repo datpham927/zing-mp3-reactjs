@@ -5,7 +5,7 @@ import 'tippy.js/dist/tippy.css';
 import Tippy from '@tippyjs/react/headless';
 import ItemMenu from '../ItemMenu/ItemMenu';
 import { useState } from 'react';
-import { auth } from '~/firebasse/firebase';
+import { auth } from '~/firebasse/config';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from '~/redux/action';

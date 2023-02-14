@@ -30,7 +30,6 @@ function ModalLogin() {
             if (currents?.displayName) {
                 console.log(currents);
                 const { displayName, email, photoURL } = currents;
-
                 dispatch(
                     setCurrentUser({
                         user: true,

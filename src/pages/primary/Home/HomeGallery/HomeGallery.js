@@ -1,6 +1,6 @@
 /* eslint-disable no-const-assign */
 import className from 'classnames/bind';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import style from './HomeGallery.module.scss';
@@ -9,37 +9,43 @@ const cx = className.bind(style);
 function HomeGallery({ data }) {
     const [heightImg, setHeightImg] = useState(0);
     const itemRef = useRef();
-    const listImg = document.querySelectorAll('.HomeGallery_item-image__2Df6B');
-    const autoChange = () => {
-        let numberIndex = 0;
-        const change = () => {
-            listImg.forEach((item, i) => {
-                if (i === numberIndex) {
-                    item.classList.replace('HomeGallery_second__b5Uio', 'HomeGallery_first__Nlpab');
-                } else if (i === numberIndex + 1) {
-                    item.classList.replace('HomeGallery_third__7WCGB', 'HomeGallery_second__b5Uio');
-                } else if (i === numberIndex + 2) {
-                    item.classList.replace('HomeGallery_four__ZDitJ', 'HomeGallery_third__7WCGB');
-                } else {
-                    item.classList.replace('HomeGallery_first__Nlpab', 'HomeGallery_four__ZDitJ');
-                }
-                if (numberIndex === listImg?.length - 2) {
-                    listImg[0].classList.replace('HomeGallery_four__ZDitJ', 'HomeGallery_third__7WCGB');
-                }
-                if (numberIndex === listImg?.length - 1) {
-                    listImg[0].classList.replace('HomeGallery_third__7WCGB', 'HomeGallery_second__b5Uio');
-                    listImg[1].classList.replace('HomeGallery_four__ZDitJ', 'HomeGallery_third__7WCGB');
-                }
-            });
-            numberIndex++;
-            if (numberIndex > listImg?.length - 1) {
-                numberIndex = 0;
-            }
-        };
-        setInterval(() => change(), 3000);
-    };
 
-    listImg?.length > 0 && autoChange();
+    useEffect(() => {
+        const listImg = document?.querySelectorAll(`.${cx('item-image')}`);
+        let interval;
+        const autoChange = () => {
+            let numberIndex = 0;
+            const change = () => {
+                listImg.forEach((item, i) => {
+                    if (i === numberIndex) {
+                        item.classList.replace(`${cx('second')}`, `${cx('first')}`);
+                    } else if (i === numberIndex + 1) {
+                        item.classList.replace(`${cx('third')}`, `${cx('second')}`);
+                    } else if (i === numberIndex + 2) {
+                        item.classList.replace(`${cx('four')}`, `${cx('third')}`);
+                    } else {
+                        item.classList.replace(`${cx('first')}`, `${cx('four')}`);
+                    }
+                    if (numberIndex === listImg?.length - 2) {
+                        listImg[0].classList.replace(`${cx('four')}`, `${cx('third')}`);
+                    }
+                    if (numberIndex === listImg?.length - 1) {
+                        listImg[0].classList.replace(`${cx('third')}`, `${cx('second')}`);
+                        listImg[1].classList.replace(`${cx('four')}`, `${cx('third')}`);
+                    }
+                });
+                numberIndex++;
+                if (numberIndex > listImg?.length - 1) {
+                    numberIndex = 0;
+                }
+            };
+            interval = setInterval(() => change(), 2000);
+        };
+
+        listImg?.length > 0 && autoChange();
+
+        return () => interval && clearInterval(interval);
+    }, []);
 
     return (
         <div className={cx('gallery')} style={{ height: heightImg }}>

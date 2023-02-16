@@ -1,8 +1,7 @@
 const { createSlice } = require('@reduxjs/toolkit');
 
 const initialState = {
-    currentTimeAudio: JSON.parse(localStorage.getItem('ChangerTimer')) || 0, //thời gian hiện tại của bài nhạc
-    // thay đổi liên tục nên phải viết riêng
+    currentTimeAudio: JSON.parse(localStorage.getItem('ChangerTimer')) || 0,
 };
 
 const currentTime = createSlice({

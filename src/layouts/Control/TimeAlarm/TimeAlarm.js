@@ -20,7 +20,7 @@ function TimeAlarm() {
             }, 1000);
         }
         setTimeAlarm(new Date(timer * 1000).toISOString().substring(11, 19));
-        return () => clearInterval(time);
+        return () => time && clearInterval(time);
     }, [timer]);
 
     return (

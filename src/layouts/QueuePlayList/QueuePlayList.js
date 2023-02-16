@@ -52,7 +52,7 @@ function QueuePlayList() {
         };
         document.body.addEventListener('click', close);
         return () => {
-            document.body.removeEventListener('click', close);
+            document.body?.removeEventListener('click', close);
         };
     });
     useEffect(() => {

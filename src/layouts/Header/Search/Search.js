@@ -42,6 +42,7 @@ function Search() {
         const fetchApi = async () => {
             const data = await searchApi.getSearch(debouncedValue);
             setKeywords(data.items);
+            setChangeBtn(true);
         };
         fetchApi();
         // eslint-disable-next-line react-hooks/exhaustive-deps

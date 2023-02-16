@@ -11,8 +11,9 @@ function HomeGallery({ data }) {
     const itemRef = useRef();
 
     useEffect(() => {
-        const listImg = document?.querySelectorAll(`.${cx('item-image')}`);
         let interval;
+        const listImg = document.querySelectorAll(`.${cx('item-image')}`);
+        console.log(listImg);
         const autoChange = () => {
             let numberIndex = 0;
             const change = () => {
@@ -38,14 +39,15 @@ function HomeGallery({ data }) {
                 if (numberIndex > listImg?.length - 1) {
                     numberIndex = 0;
                 }
+                console.log('hihi');
             };
             interval = setInterval(() => change(), 2000);
         };
-
         listImg?.length > 0 && autoChange();
 
         return () => interval && clearInterval(interval);
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    });
 
     return (
         <div className={cx('gallery')} style={{ height: heightImg }}>

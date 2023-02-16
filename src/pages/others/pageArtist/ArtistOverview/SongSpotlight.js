@@ -42,7 +42,7 @@ function SongSpotlight({ data }) {
         listImg?.length > 0 && autoChangeImg();
 
         return () => interval && clearInterval(interval);
-    }, []);
+    });
 
     return (
         <div lassName={cx('song')}>

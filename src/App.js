@@ -4,15 +4,11 @@ import RouterPage from './routes/RouterPage';
 
 function App() {
     return (
-        <div>
-            <BrowserRouter>
-                <div className="App">
-                    <AppLayout>
-                        <RouterPage />
-                    </AppLayout>
-                </div>
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <AppLayout>
+                <RouterPage />
+            </AppLayout>
+        </BrowserRouter>
     );
 }
 

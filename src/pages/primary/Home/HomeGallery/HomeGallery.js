@@ -46,7 +46,7 @@ function HomeGallery({ data }) {
 
         return () => interval && clearInterval(interval);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    });
+    }, []);
 
     return (
         <div className={cx('gallery')} style={{ height: heightImg }}>

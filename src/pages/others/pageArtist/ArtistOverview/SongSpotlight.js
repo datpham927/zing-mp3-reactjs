@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 
 function SongSpotlight({ data }) {
     useEffect(() => {
-        const listImg = document.querySelectorAll(`.${cx('image')}`);
+        const listImg = document.querySelectorAll(`.image-selector`);
         let interval;
         const autoChangeImg = () => {
             let indexImg = 1;
@@ -50,16 +50,18 @@ function SongSpotlight({ data }) {
                 <div className={cx('left') + ' l-4'}>
                     {data?.items?.map((item, index) => (
                         <img
-                            className={cx(
-                                'image',
-                                index === 0
-                                    ? 'img-first'
-                                    : index === 1
-                                    ? 'img-second'
-                                    : index === 2
-                                    ? 'img-third'
-                                    : 'img-four',
-                            )}
+                            className={
+                                cx(
+                                    'image',
+                                    index === 0
+                                        ? 'img-first'
+                                        : index === 1
+                                        ? 'img-second'
+                                        : index === 2
+                                        ? 'img-third'
+                                        : 'img-four',
+                                ) + ' image-selector'
+                            }
                             src={item?.thumbnailM}
                             alt=""
                         />

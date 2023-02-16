@@ -22,10 +22,7 @@ function PageArtist() {
         };
         fetchApi();
     }, [id.name]);
-    const navigate = useNavigate();
-    useEffect(() => {
-        navigate(-1);
-    }, []);
+
     const data = useSelector((state) => state.dataArtist.dataArtist);
     return data?.length !== 0 ? (
         <div className={cx('wrapper')}>

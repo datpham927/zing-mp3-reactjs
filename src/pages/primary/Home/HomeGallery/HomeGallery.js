@@ -13,7 +13,7 @@ function HomeGallery({ data }) {
     useEffect(() => {
         let interval;
         const text = cx('item-image');
-        const listImg = document.querySelectorAll('.' + text);
+        const listImg = document?.querySelectorAll('.' + text);
         console.log(listImg);
         const autoChange = () => {
             let numberIndex = 0;

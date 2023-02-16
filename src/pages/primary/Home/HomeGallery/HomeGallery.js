@@ -12,27 +12,35 @@ function HomeGallery({ data }) {
 
     useEffect(() => {
         let interval;
-        const listImg = document?.querySelectorAll(`.${cx('item-image')}`);
-        console.log(listImg);
+        const listImg = document?.querySelectorAll(`.${cx('item-image').replace('+', 'l')}`);
         const autoChange = () => {
             let numberIndex = 0;
             const change = () => {
                 listImg.forEach((item, i) => {
                     if (i === numberIndex) {
-                        item.classList.replace(`${cx('second')}`, `${cx('first')}`);
+                        item.classList.replace(`${cx('second').replace('+', 'l')}`, `${cx('first').replace('+', 'l')}`);
                     } else if (i === numberIndex + 1) {
-                        item.classList.replace(`${cx('third')}`, `${cx('second')}`);
+                        item.classList.replace(`${cx('third').replace('+', 'l')}`, `${cx('second').replace('+', 'l')}`);
                     } else if (i === numberIndex + 2) {
-                        item.classList.replace(`${cx('four')}`, `${cx('third')}`);
+                        item.classList.replace(`${cx('four').replace('+', 'l')}`, `${cx('third').replace('+', 'l')}`);
                     } else {
-                        item.classList.replace(`${cx('first')}`, `${cx('four')}`);
+                        item.classList.replace(`${cx('first').replace('+', 'l')}`, `${cx('four').replace('+', 'l')}`);
                     }
                     if (numberIndex === listImg?.length - 2) {
-                        listImg[0].classList.replace(`${cx('four')}`, `${cx('third')}`);
+                        listImg[0].classList.replace(
+                            `${cx('four').replace('+', 'l')}`,
+                            `${cx('third').replace('+', 'l')}`,
+                        );
                     }
                     if (numberIndex === listImg?.length - 1) {
-                        listImg[0].classList.replace(`${cx('third')}`, `${cx('second')}`);
-                        listImg[1].classList.replace(`${cx('four')}`, `${cx('third')}`);
+                        listImg[0].classList.replace(
+                            `${cx('third').replace('+', 'l')}`,
+                            `${cx('second').replace('+', 'l')}`,
+                        );
+                        listImg[1].classList.replace(
+                            `${cx('four').replace('+', 'l')}`,
+                            `${cx('third').replace('+', 'l')}`,
+                        );
                     }
                 });
                 numberIndex++;
@@ -60,7 +68,7 @@ function HomeGallery({ data }) {
                             'item-image',
                             index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : 'four',
                             ' l-4 m-6 c-12',
-                        )}
+                        ).replace('+', 'l')}
                         onLoad={() => setHeightImg(itemRef.current.offsetHeight)}
                     >
                         <Link to={item.link}>

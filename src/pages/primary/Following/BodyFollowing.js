@@ -41,7 +41,7 @@ function BodyFollowing() {
                 setIndex(index + 1);
             }
         };
-        document.querySelector('.AppLayout_main__Dvwp4')?.addEventListener('scroll', onScroll);
+        document.getElementById('main')?.addEventListener('scroll', onScroll);
     }, [data?.length]);
 
     return data?.length !== 0 ? (

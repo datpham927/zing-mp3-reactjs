@@ -37,7 +37,7 @@ function AppLayout({ children }) {
             <div className={cx('Wrapper', booleanControl && 'active')}>
                 <Modal />
                 <Sidebar />
-                <div className={cx('main')} ref={mainRef}>
+                <div id="main" className={cx('main')} ref={mainRef}>
                     <Header active={header} />
                     <div className={cx('container')}>{children}</div>
                 </div>

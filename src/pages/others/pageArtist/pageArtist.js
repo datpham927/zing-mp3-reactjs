@@ -2,7 +2,7 @@
 import classNames from 'classnames/bind';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { artist } from '~/components/Api/Service';
 import Loading from '~/components/load/Loading/Loading';
 import { setDataArtist } from '~/redux/dataArtist';

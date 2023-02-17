@@ -18,8 +18,15 @@ function MvBody() {
     const id = useLocation().pathname.split('/').pop().split('.')[0];
 
     useEffect(() => {
+        setData([]);
+        setIndex(1);
+        setHideBtn(true);
+    }, [id]);
+
+    useEffect(() => {
         const api = async () => {
             const datas = await getMv(id, index);
+
             if (data?.length === 0) {
                 setData(datas?.items || []);
             } else {
@@ -31,8 +38,7 @@ function MvBody() {
             }
         };
         api();
-    }, [index]);
-
+    }, [index, id]);
     useEffect(() => {
         const onScroll = (e) => {
             const scrollTop = e.target.scrollTop;
@@ -43,9 +49,10 @@ function MvBody() {
                 setIndex(index + 1);
             }
         };
-        document.querySelector('.AppLayout_main__Dvwp4')?.addEventListener('scroll', onScroll);
-    }, [data?.length]);
+        document.getElementById('main')?.addEventListener('scroll', onScroll);
 
+        return () => document.getElementById('main').removeEventListener('scroll', onScroll);
+    }, [data?.length]);
     return data?.length > 0 ? (
         <div className={cx('body')}>
             <KindMusic />

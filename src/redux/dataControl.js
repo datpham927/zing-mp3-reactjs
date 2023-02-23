@@ -56,7 +56,7 @@ export const zingAudio = createSlice({
                 if (state.shuffle && !state.booleanQueueList) {
                     let shuffle;
                     do {
-                        shuffle = Math.floor(Math.random() * state.playListAudio?.length);
+                        shuffle = Math.floor(Math.random() * state.playListAudio?.length - 1);
                     } while (state.playListAudio[shuffle]?.streamingStatus === 2);
                     state.currentIndex = shuffle;
                     state.idAudio = state.playListAudio[state.currentIndex];

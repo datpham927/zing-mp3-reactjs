@@ -23,7 +23,12 @@ function RightAlbum({ data }) {
 
     useEffect(() => {
         dispatch(setPlayListAudio(newDataSong));
-        const index = Math.floor(Math.random() * newDataSong?.length - 1);
+        let index;
+        if (newDataSong?.length === 1) {
+            index = 0;
+        } else {
+            index = Math.floor(Math.random() * newDataSong?.length);
+        }
         dispatch(setCurrentIndex(index));
         if (activePlay) {
             dispatch(setLoadMusic(false));

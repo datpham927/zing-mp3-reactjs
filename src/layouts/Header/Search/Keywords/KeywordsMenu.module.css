@@ -1,25 +1,25 @@
 .item {
-  display: flex;
-  line-height: 40px;
-  border-radius: 4px;
-  padding: 0 10px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
+    display: flex;
+    line-height: 40px;
+    border-radius: 4px;
+    padding: 0 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
 }
 .item:hover {
-  background-color: rgba(225, 225, 225, 0.1);
-  color: var(--link-text-hover);
+    background-color: rgba(225, 225, 225, 0.1);
+    color: var(--link-text-hover);
 }
 .item span {
-  font-size: 14px;
-  margin-right: 10px;
-  color: var(--text-primary);
-  cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+    color: var(--text-primary);
+    cursor: pointer;
 }
 .item span i {
-  font-size: 1.6rem;
-  cursor: pointer;
-  color: var(--text-secondary);
-}/*# sourceMappingURL=KeywordsMenu.module.css.map */
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+} /*# sourceMappingURL=KeywordsMenu.module.css.map */

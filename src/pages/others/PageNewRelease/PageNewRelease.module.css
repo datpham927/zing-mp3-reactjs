@@ -1,46 +1,46 @@
 .NewRelease .header .top {
-  display: flex;
-  padding: 50px 0;
-  align-items: center;
+    display: flex;
+    padding: 50px 0;
+    align-items: center;
 }
 .NewRelease .header .top h1 {
-  font-size: 4rem;
+    font-size: 4rem;
 }
 .NewRelease .header .top .btn {
-  background-color: var(--purple-primary);
-  margin-left: 10px;
+    background-color: var(--purple-primary);
+    margin-left: 10px;
 }
 .NewRelease .header .navbar-menu {
-  display: flex;
-  border-bottom: 1px solid var(--border-primary);
+    display: flex;
+    border-bottom: 1px solid var(--border-primary);
 }
 .NewRelease .header .navbar-menu .navbar-link a {
-  color: var(--text-secondary);
-  display: block;
-  border-bottom: 2px solid transparent;
-  padding: 15px 0;
+    color: var(--text-secondary);
+    display: block;
+    border-bottom: 2px solid transparent;
+    padding: 15px 0;
 }
 .NewRelease .header .navbar-menu .navbar-link .active {
-  color: var(--text-primary);
-  border-bottom: 2px solid var(--purple-primary);
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--purple-primary);
 }
 .NewRelease .header .navbar-menu .navbar-link + .navbar-link {
-  margin-left: 40px;
+    margin-left: 40px;
 }
 .NewRelease .header .select-menu {
-  display: flex;
-  margin-top: 30px;
-  margin-left: -10px;
+    display: flex;
+    margin-top: 30px;
+    margin-left: -10px;
 }
 .NewRelease .body .body-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: -38px;
-  border-bottom: 1px solid var(--border-secondary);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -38px;
+    border-bottom: 1px solid var(--border-secondary);
 }
 .NewRelease .body .body-header .text {
-  color: var(--text-secondary);
-  padding: 20px 0 10px 30px;
-  font-size: 1.2rem;
-  font-weight: 500;
-}/*# sourceMappingURL=PageNewRelease.module.css.map */
+    color: var(--text-secondary);
+    padding: 20px 0 10px 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+} /*# sourceMappingURL=PageNewRelease.module.css.map */

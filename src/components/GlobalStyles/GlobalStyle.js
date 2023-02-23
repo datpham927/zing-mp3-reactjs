@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import './gird.css';
 import './GlobalStyles.module.scss';
 import Background from '../background/Background';
@@ -14,8 +13,5 @@ function GlobalStyles({ children }) {
         </ChangerColor>
     );
 }
-GlobalStyles.prototype = {
-    children: PropTypes.node,
-};
 
 export default GlobalStyles;

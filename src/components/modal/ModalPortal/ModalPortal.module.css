@@ -1,23 +1,23 @@
 .portal {
-  width: 500px;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: var(--primary-bg);
+    width: 500px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--primary-bg);
 }
 .portal h3 {
-  font-size: 18px;
-  color: var(--text-primary);
-  margin-bottom: 10px;
+    font-size: 18px;
+    color: var(--text-primary);
+    margin-bottom: 10px;
 }
 .portal span {
-  color: var(--text-primary);
+    color: var(--text-primary);
 }
 .portal .action {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
 }
 .portal .action .btn {
-  padding: 5px 10px;
-  margin-left: 10px;
-}/*# sourceMappingURL=ModalPortal.module.css.map */
+    padding: 5px 10px;
+    margin-left: 10px;
+} /*# sourceMappingURL=ModalPortal.module.css.map */

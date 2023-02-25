@@ -14,27 +14,32 @@ function ContainerPlaylist({
     className,
     scroll,
 }) {
-    return spotlight
-        ? data && (
-              <Container
-                  scroll={scroll}
-                  title={title}
-                  data={data}
-                  link={link}
-                  all={all}
-                  spotlight={spotlight}
-                  className={className}
-              >
-                  {data?.items.map(
-                      (e, i) => i < index && <ItemPlayList description={description} data={e} key={uuidv4()} />,
-                  )}
-              </Container>
-          )
-        : data && (
-              <Container scroll={scroll} title={title} link={link} all={all} className={className}>
-                  {data?.map((e, i) => i < index && <ItemPlayList description={description} data={e} key={uuidv4()} />)}
-              </Container>
-          );
+    if (spotlight) {
+        return (
+            data && (
+                <Container
+                    scroll={scroll}
+                    title={title}
+                    data={data}
+                    link={link}
+                    all={all}
+                    spotlight={spotlight}
+                    className={className}
+                >
+                    {data?.items.map(
+                        (e, i) => i < index && <ItemPlayList description={description} data={e} key={uuidv4()} />,
+                    )}
+                </Container>
+            )
+        );
+    }
+    return (
+        data && (
+            <Container scroll={scroll} title={title} link={link} all={all} className={className}>
+                {data?.map((e, i) => i < index && <ItemPlayList description={description} data={e} key={uuidv4()} />)}
+            </Container>
+        )
+    );
 }
 
 export default memo(ContainerPlaylist);

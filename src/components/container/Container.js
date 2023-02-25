@@ -16,42 +16,48 @@ function Container({
     swiper,
     scroll,
 }) {
-    return spotlight ? (
-        <div className={cx('wrapper', { scroll })}>
-            <div className={cx('header-spotlight')}>
-                <div className={cx('image')}>
-                    <img src={data?.top?.thumbnail || data?.subTitle?.thumbnail} alt="" />
-                </div>
-                <div className={cx('content')}>
-                    <p className={cx('subtitle')}>{data?.title ? data?.title : subtitle}</p>
-                    <h1 className={cx('title')}>
-                        <Link to={data?.top?.link || data?.subTitle?.link}>
-                            {data?.top?.artists?.name || data?.subTitle?.name}
-                        </Link>
-                    </h1>
-                </div>
-            </div>
-            <div className={cx('container', className)}>
-                <div className={cx('body') + ' row'}>{children}</div>
-            </div>
-        </div>
-    ) : swiper ? (
-        <div className={cx('container', className)}>
-            {title && (
-                <div className={cx('header')}>
-                    <h1 className={cx('title')}>{title}</h1>
-                    {all && (
-                        <div className={cx('all')} onClick={onClick}>
-                            <Link to={link}>
-                                TẤT CẢ <i className="icon ic-go-right"></i>
+    if (spotlight) {
+        return (
+            <div className={cx('wrapper', { scroll })}>
+                <div className={cx('header-spotlight')}>
+                    <div className={cx('image')}>
+                        <img src={data?.top?.thumbnail || data?.subTitle?.thumbnail} alt="" />
+                    </div>
+                    <div className={cx('content')}>
+                        <p className={cx('subtitle')}>{data?.title ? data?.title : subtitle}</p>
+                        <h1 className={cx('title')}>
+                            <Link to={data?.top?.link || data?.subTitle?.link}>
+                                {data?.top?.artists?.name || data?.subTitle?.name}
                             </Link>
-                        </div>
-                    )}
+                        </h1>
+                    </div>
                 </div>
-            )}
-            {children}
-        </div>
-    ) : (
+                <div className={cx('container', className)}>
+                    <div className={cx('body') + ' row'}>{children}</div>
+                </div>
+            </div>
+        );
+    } else if (swiper) {
+        return (
+            <div className={cx('container', className)}>
+                {title && (
+                    <div className={cx('header')}>
+                        <h1 className={cx('title')}>{title}</h1>
+                        {all && (
+                            <div className={cx('all')} onClick={onClick}>
+                                <Link to={link}>
+                                    TẤT CẢ <i className="icon ic-go-right"></i>
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                )}
+                {children}
+            </div>
+        );
+    }
+
+    return (
         <div className={cx('container', className, { scroll })}>
             {title && (
                 <div className={cx('header')}>

@@ -104,13 +104,18 @@ function ModalLogin() {
                     >
                         Click vào đây để dùng thử
                     </div>
-                    <div
-                        className={cx('close')}
-                        onClick={() => {
-                            dispatch(setOpenModalLogin(false));
-                        }}
-                    >
-                        <ion-icon name="close-outline"></ion-icon>
+                    <div className={cx('header')}>
+                        <div className={cx('contact')}>
+                            <a href="https://www.facebook.com/profile.php?id=100012882123870">Contact me</a>
+                        </div>
+                        <div
+                            className={cx('close')}
+                            onClick={() => {
+                                dispatch(setOpenModalLogin(false));
+                            }}
+                        >
+                            <ion-icon name="close-outline"></ion-icon>
+                        </div>
                     </div>
                 </div>
             </ModalWrapper>

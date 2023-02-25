@@ -64,7 +64,7 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
     };
 
     return (
-        <li className={cx('item', 'add') + ' l-12 m-12 c-12 scol'}>
+        <li className={cx('item', 'add') + ' l-12 m-12 c-12  '}>
             <div
                 className={cx(
                     'media',

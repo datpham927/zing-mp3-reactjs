@@ -18,21 +18,23 @@ function ItemLyric({ data }) {
     let end = data.words[data.words?.length - 1].endTime / 1000;
 
     useEffect(() => {
-        // const lyricView = document?.querySelector('.Lyric_active__BbzsP');
-        const lyricView = document?.querySelector('.Lyric_active__hB8VK');
-        setTimeout(() => {
+        const lyricView = document?.querySelector('.selector');
+        const timeout = setTimeout(() => {
             smoothScrollIntoView(lyricView, {
                 block: 'center',
                 behavior: 'smooth',
             });
         }, 10);
-    }, []);
+        return () => clearTimeout(timeout);
+    });
+    const checkActive = currentTimeAudio >= start && currentTimeAudio < end;
     return (
         <li
             ref={lyricRef}
             className={cx(
                 'item',
-                currentTimeAudio >= start && currentTimeAudio < end && 'active',
+                checkActive && 'active',
+                checkActive && 'selector',
                 currentTimeAudio > end && 'is-over',
             )}
         >

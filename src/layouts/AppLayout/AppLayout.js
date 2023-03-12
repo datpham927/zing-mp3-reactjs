@@ -30,7 +30,7 @@ function AppLayout({ children }) {
             }
         };
         mainRef.current.addEventListener('scroll', handleScroll);
-        return () => mainRef.current.removeEventListener('click', handleScroll);
+        return () => mainRef.current?.removeEventListener('click', handleScroll);
     }, []);
     return (
         <>

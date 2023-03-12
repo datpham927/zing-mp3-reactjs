@@ -32,7 +32,7 @@ function PlayMv() {
     const idMv = pathname.split('/').pop().split('.')[0];
 
     useEffect(() => {
-        setFavorite(mvFavorite.map((e) => e.encodeId));
+        setFavorite(mvFavorite.map((e) => e?.encodeId));
     }, [mvFavorite]);
 
     useEffect(() => {

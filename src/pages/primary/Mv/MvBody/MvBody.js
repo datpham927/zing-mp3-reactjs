@@ -51,7 +51,7 @@ function MvBody() {
         };
         document.getElementById('main')?.addEventListener('scroll', onScroll);
 
-        return () => document.getElementById('main').removeEventListener('scroll', onScroll);
+        return () => document.getElementById('main')?.removeEventListener('scroll', onScroll);
     }, [data?.length]);
     return data?.length > 0 ? (
         <div className={cx('body')}>

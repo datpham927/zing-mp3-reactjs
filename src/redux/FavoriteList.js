@@ -18,10 +18,10 @@ export const zingFavorite = createSlice({
             if (state.songFavorite?.length === 0) {
                 state.songFavorite.push(action.payload);
             } else {
-                const id = state.songFavorite.map((e) => e.encodeId);
-                const check = id.includes(action.payload.encodeId);
+                const id = state.songFavorite.map((e) => e?.encodeId);
+                const check = id.includes(action.payload?.encodeId);
                 if (check) {
-                    state.songFavorite = state.songFavorite.filter((e) => e.encodeId !== action.payload.encodeId);
+                    state.songFavorite = state.songFavorite.filter((e) => e?.encodeId !== action.payload?.encodeId);
                 } else {
                     state.songFavorite.push(action.payload);
                 }
@@ -33,10 +33,10 @@ export const zingFavorite = createSlice({
             if (state.mvFavorite?.length === 0) {
                 state.mvFavorite.push(action.payload);
             } else {
-                const id = state.mvFavorite.map((e) => e.encodeId);
-                const check = id.includes(action.payload.encodeId);
+                const id = state.mvFavorite.map((e) => e?.encodeId);
+                const check = id.includes(action.payload?.encodeId);
                 if (check) {
-                    state.mvFavorite = state.mvFavorite.filter((e) => e.encodeId !== action.payload.encodeId);
+                    state.mvFavorite = state.mvFavorite.filter((e) => e?.encodeId !== action.payload?.encodeId);
                 } else {
                     state.mvFavorite.push(action.payload);
                 }
@@ -48,11 +48,11 @@ export const zingFavorite = createSlice({
             if (state.playListFavorite?.length === 0) {
                 state.playListFavorite.push(action.payload);
             } else {
-                const id = state.playListFavorite.map((e) => e.encodeId);
-                const check = id.includes(action.payload.encodeId);
+                const id = state.playListFavorite.map((e) => e?.encodeId);
+                const check = id.includes(action.payload?.encodeId);
                 if (check) {
                     state.playListFavorite = state.playListFavorite.filter(
-                        (e) => e.encodeId !== action.payload.encodeId,
+                        (e) => e?.encodeId !== action.payload?.encodeId,
                     );
                 } else {
                     state.playListFavorite.push(action.payload);
@@ -73,10 +73,10 @@ export const zingFavorite = createSlice({
                 if (state.addPlayList?.length === 0) {
                     state.addPlayList.push(action.payload);
                 } else {
-                    const id = state.addPlayList.map((e) => e.encodeId);
-                    const check = id.includes(action.payload.encodeId);
+                    const id = state.addPlayList.map((e) => e?.encodeId);
+                    const check = id.includes(action.payload?.encodeId);
                     if (check) {
-                        state.addPlayList = state.addPlayList.filter((e) => e.encodeId !== action.payload.encodeId);
+                        state.addPlayList = state.addPlayList.filter((e) => e?.encodeId !== action.payload?.encodeId);
                     } else {
                         state.addPlayList.push(action.payload);
                     }
@@ -104,12 +104,12 @@ export const zingFavorite = createSlice({
             if (state.privatePlayLists?.length === 1) {
                 state.privatePlayLists = [];
             } else {
-                state.privatePlayLists = state.privatePlayLists.filter((e) => e.encodeId !== state.idDeletePlayList);
+                state.privatePlayLists = state.privatePlayLists.filter((e) => e?.encodeId !== state.idDeletePlayList);
             }
             localStorage.setItem('private', JSON.stringify(state));
         },
         setEditPlayList: (state, action) => {
-            const id = state.privatePlayLists.map((e) => e.encodeId);
+            const id = state.privatePlayLists.map((e) => e?.encodeId);
             const index = id.indexOf(state.idDeletePlayList);
             state.privatePlayLists[index].title = action.payload;
             localStorage.setItem('private', JSON.stringify(state));

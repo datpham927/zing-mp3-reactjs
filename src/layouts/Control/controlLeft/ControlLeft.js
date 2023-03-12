@@ -18,7 +18,7 @@ function ControlLeft() {
     const [favorite, setFavorite] = useState([]);
     const dispatch = useDispatch();
     useEffect(() => {
-        setFavorite(songFavorite.map((e) => e.encodeId));
+        setFavorite(songFavorite.map((e) => e?.encodeId));
     }, [songFavorite]);
     const handleLike = () => {
         user ? dispatch(setSongFavorite(idAudio)) : toastMessage('Bạn vui lòng đăng nhập');

@@ -23,7 +23,7 @@ function LeftAlbum({ data }) {
     const { playListFavorite } = useSelector((state) => state.Favorite);
     const { user } = useSelector((state) => state.action);
     useEffect(() => {
-        setFavorite(playListFavorite?.map((e) => e.encodeId));
+        setFavorite(playListFavorite?.map((e) => e?.encodeId));
     }, [playListFavorite]);
     const handleLike = () => {
         user ? dispatch(setPlayListFavorite(data)) : toastMessage('Bạn vui lòng đăng nhập');
@@ -66,7 +66,7 @@ function LeftAlbum({ data }) {
                             iconLeft={<i className="icon ic-edit"></i>}
                             onClick={() => {
                                 dispatch(setModalAddPlayList(true));
-                                dispatch(setIdPlayList(data.encodeId));
+                                dispatch(setIdPlayList(data?.encodeId));
                                 dispatch(setBooleanEdit(true));
                             }}
                         />
@@ -106,9 +106,9 @@ function LeftAlbum({ data }) {
                         <Button
                             onClick={() => handleLike()}
                             primary
-                            content={favorite.includes(data.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
+                            content={favorite.includes(data?.encodeId) ? 'Xóa khỏi thư viện' : 'Thêm vào Thư viện'}
                             iconLeft={
-                                favorite.includes(data.encodeId) ? (
+                                favorite.includes(data?.encodeId) ? (
                                     <i className="icon ic-like-full"></i>
                                 ) : (
                                     <i className="icon ic-like"></i>

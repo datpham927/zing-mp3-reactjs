@@ -25,11 +25,11 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
     const { user } = useSelector((state) => state.action);
 
     useEffect(() => {
-        setFavorite(songFavorite?.map((e) => e.encodeId));
+        setFavorite(songFavorite?.map((e) => e?.encodeId));
     }, [songFavorite]);
 
     useEffect(() => {
-        setCheckbox(addPlayList?.map((e) => e.encodeId));
+        setCheckbox(addPlayList?.map((e) => e?.encodeId));
     }, [addPlayList]);
 
     const handleLike = () => {
@@ -39,7 +39,7 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
             onClick();
-            if (data.encodeId === idAudio.encodeId) {
+            if (data?.encodeId === idAudio?.encodeId) {
                 dispatch(setLoadMusic(true));
             } else {
                 dispatch(setLoadMusic(false));
@@ -68,7 +68,7 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
             <div
                 className={cx(
                     'media',
-                    (data.encodeId === idAudio?.encodeId || checkbox.includes(data.encodeId)) &&
+                    (data?.encodeId === idAudio?.encodeId || checkbox.includes(data?.encodeId)) &&
                         (type === 'private' ? 'is-active' : 'active'),
                 )}
             >
@@ -78,7 +78,7 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
                             className={cx(
                                 'action-checkbox',
                                 !checkBox && 'not-checkbox',
-                                checkbox.includes(data.encodeId) && 'active-checkbox',
+                                checkbox.includes(data?.encodeId) && 'active-checkbox',
                             )}
                         >
                             <i className="icon ic-song"></i>
@@ -86,7 +86,7 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
                                 <input
                                     type="checkBox"
                                     onClick={handleCheckbox}
-                                    checked={checkbox.includes(data.encodeId)}
+                                    checked={checkbox.includes(data?.encodeId)}
                                 ></input>
                             </div>
                         </div>
@@ -152,16 +152,16 @@ function ItemSongAdd({ data, onClick, checkBox = false, type = '' }) {
                                 iconLeft={<i className="icon ic-karaoke"></i>}
                             />
                             <Button
-                                className={cx('icon', favorite?.includes(data.encodeId) && user && 'active-tym')}
+                                className={cx('icon', favorite?.includes(data?.encodeId) && user && 'active-tym')}
                                 onClick={() => handleLike()}
                                 small
                                 content={
-                                    favorite?.includes(data.encodeId) && user
+                                    favorite?.includes(data?.encodeId) && user
                                         ? 'Xóa khỏi thư viện'
                                         : 'Thêm vào Thư viện'
                                 }
                                 iconLeft={
-                                    favorite?.includes(data.encodeId) && user ? (
+                                    favorite?.includes(data?.encodeId) && user ? (
                                         <i className="icon ic-like-full"></i>
                                     ) : (
                                         <i className="icon ic-like"></i>

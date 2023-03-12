@@ -33,9 +33,9 @@ function LibrarySongs() {
 
     const handleAddPlayList = () => {
         const listNew = [...playListAudio];
-        const arrId = listNew.map((e) => e.encodeId);
+        const arrId = listNew.map((e) => e?.encodeId);
         addPlayList.forEach((e) => {
-            const check = arrId.includes(e.encodeId);
+            const check = arrId.includes(e?.encodeId);
             if (!check) {
                 listNew.unshift(e);
             }

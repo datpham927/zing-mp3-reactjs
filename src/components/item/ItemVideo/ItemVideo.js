@@ -32,8 +32,8 @@ function ItemVideo({ data }) {
                     <LoadImg className={cx('load-video')}>
                         <div className={cx('video-img')} onClick={handleOnclick}>
                             <img src={data.thumbnailM} alt="" />
-                            <div className={cx('play', id === data.encodeId && 'active')}>
-                                {playMv && id === data.encodeId ? (
+                            <div className={cx('play', id === data?.encodeId && 'active')}>
+                                {playMv && id === data?.encodeId ? (
                                     <p style={{ fontSize: '1.4rem' }}>Đang phát </p>
                                 ) : (
                                     <i className="icon ic-play-circle-outline"></i>

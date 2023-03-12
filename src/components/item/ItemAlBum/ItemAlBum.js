@@ -21,7 +21,7 @@ function ItemAlbum({ data, onClick }) {
         if (data?.streamingStatus === 1) {
             dispatch(setIdAudio(data));
             dispatch(setPlayListTitle([]));
-            if (data.encodeId === idAudio?.encodeId) {
+            if (data?.encodeId === idAudio?.encodeId) {
                 dispatch(setLoadMusic(true));
             } else {
                 dispatch(setLoadMusic(false));
@@ -36,7 +36,7 @@ function ItemAlbum({ data, onClick }) {
     };
     return (
         <div className={cx('item', data?.streamingStatus === 2 && 'vip') + ' l-4 m-4 c-12'}>
-            <div className={cx('include', data.encodeId === idAudio?.encodeId && 'active')} onDoubleClick={handlePlay}>
+            <div className={cx('include', data?.encodeId === idAudio?.encodeId && 'active')} onDoubleClick={handlePlay}>
                 <div className={cx('left')}>
                     <div className={cx('wrapper-img')}>
                         <LoadImg className={cx('image')}>

@@ -24,7 +24,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
-        setFavorite(songFavorite?.map((e) => e.encodeId));
+        setFavorite(songFavorite?.map((e) => e?.encodeId));
     }, [songFavorite]);
 
     const handleLike = () => {
@@ -33,7 +33,7 @@ function ItemSong({ data, type = '', index = '', onClick, className }) {
     const handlePlay = () => {
         if (data?.streamingStatus === 1) {
             onClick();
-            if (data?.encodeId === idAudio.encodeId) {
+            if (data?.encodeId === idAudio?.encodeId) {
                 dispatch(setLoadMusic(true));
             } else {
                 dispatch(setLoadMusic(false));

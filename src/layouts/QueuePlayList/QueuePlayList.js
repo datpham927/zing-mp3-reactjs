@@ -30,8 +30,8 @@ function QueuePlayList() {
             dispatch(setIdAudio(e));
         } else {
             const listNew = [...playListAudio];
-            const arrId = listNew.map((e) => e.encodeId);
-            const check = arrId.includes(e.encodeId);
+            const arrId = listNew.map((e) => e?.encodeId);
+            const check = arrId.includes(e?.encodeId);
             if (!check) {
                 listNew.unshift(e);
             }

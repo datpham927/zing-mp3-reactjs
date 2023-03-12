@@ -9,7 +9,7 @@ import { setModalAddPlayList } from '~/redux/action';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import style from './ModalAddPlayList.module.scss';
 import { v4 as uuidv4 } from 'uuid';
-import { setCreatePlayList, setEditPlayList } from '~/redux/FavoriteList';
+import { setAddPlayList, setCreatePlayList, setEditPlayList, setPlayListFavorite } from '~/redux/FavoriteList';
 import { useNavigate } from 'react-router-dom';
 import toastMessage from '../toast';
 const cx = className.bind(style);

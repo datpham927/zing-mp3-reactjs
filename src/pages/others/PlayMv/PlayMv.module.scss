@@ -74,13 +74,16 @@
                             -webkit-line-clamp: 1;
                             overflow: hidden;
                         }
-                        & span {
-                            & a {
-                                font-size: 1.4rem;
-                                color: var(--text-secondary);
-                                display: -webkit-box;
-                                -webkit-box-orient: vertical;
-                                -webkit-line-clamp: 1;
+                        & div{
+                            display: flex;
+                            & span {
+                                & a {
+                                    font-size: 1.4rem;
+                                    color: var(--text-secondary);
+                                    display: -webkit-box;
+                                    -webkit-box-orient: vertical;
+                                    -webkit-line-clamp: 1;
+                                }
                             }
                         }
                     }

@@ -1,5 +1,5 @@
 import className from 'classnames/bind';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
@@ -40,7 +40,7 @@ function QueuePlayList() {
             setConvertTab(true);
         }
     };
-    useEffect(() => {
+    useLayoutEffect(() => {
         const close = (e) => {
             if (
                 !e.target.closest('.QueuePlayList_other__f6T33') &&

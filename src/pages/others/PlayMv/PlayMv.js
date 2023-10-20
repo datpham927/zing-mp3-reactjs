@@ -115,14 +115,14 @@ function PlayMv() {
                                 </div>
                                 <div className={cx('info')}>
                                     <h3>{header[0]?.title}</h3>
-                                    {header[0]?.artists?.map((i, index) => (
+                                    <div className='names'> {header[0]?.artists?.map((i, index) => (
                                         <>
                                             <span>
                                                 <Link to={i.link}>{i.name}</Link>
                                             </span>
                                             {index < header[0]?.artists?.length - 1 && ', '}
                                         </>
-                                    ))}
+                                    ))}</div>
                                 </div>
                                 <Button
                                     onClick={handleLike}

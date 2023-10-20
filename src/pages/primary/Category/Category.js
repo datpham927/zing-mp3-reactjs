@@ -7,8 +7,8 @@ import ButtonAction from '~/components/Button/ButtonAction';
 import Container from '~/components/container/Container';
 import ContainerPlaylist from '~/components/container/ContainerPlayList';
 import ItemTopic from '~/components/item/ItemTopic/ItemTopic';
-import Loading from '~/components/load/Loading/Loading';
 import style from './Category.module.scss';
+import Loading from '~/components/load/Loading/Loading';
 
 const cx = className.bind(style);
 

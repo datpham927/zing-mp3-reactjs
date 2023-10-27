@@ -43,9 +43,8 @@ function ModalLogin() {
         });
     }, []);
     const imgs = [
-        'https://htran844.github.io/hihi/img/fb/a8.jpg',
-        'https://htran844.github.io/hihi/img/ig/i36.jpg',
-        'https://htran844.github.io/hihi/img/fb/b8.jpg',
+        'https://static2.yan.vn/YanNews/2167221/202012/son-tung-tro-lai-cdm-chi-ra-poster-bai-hat-giong-phim-trung-34ba995c.jpg',
+        'https://menback.com/wp-content/uploads/2020/03/Ribi-Sachi-anh-dep.jpg',
     ];
     useEffect(() => {
         window.onload = function () {

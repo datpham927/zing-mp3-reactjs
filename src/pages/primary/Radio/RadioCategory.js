@@ -16,7 +16,7 @@ function RadioCategory({ data }) {
                         <div className="l-3 m-3 c-6 col">
                             <div
                                 className={cx('episode-item')}
-                                onClick={() => toastMessage('phần này gọi api được không')}
+                                onClick={() => toastMessage('Đang phát triển!')}
                             >
                                 <LoadImg className={cx('padding-img')}>
                                     <img src={i.thumbnail} alt={i.title} />

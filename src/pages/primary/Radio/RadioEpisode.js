@@ -52,7 +52,7 @@ function RadioEpisode({ data }) {
                         <div className={'col'}>
                             <div
                                 className={cx('episode-item')}
-                                onClick={() => toastMessage('phần này gọi api được không')}
+                                onClick={() => toastMessage('Đang phát triển!')}
                             >
                                 <LoadImg className={cx('padding-img')}>
                                     <img src={i.thumbnail} alt={i.title} />

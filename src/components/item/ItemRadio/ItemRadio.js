@@ -8,7 +8,7 @@ const cx = className.bind(style);
 function ItemRadio({ data, col = 'l-2 m-2-4' }) {
     return (
         <div className={`col` + col}>
-            <div className={cx('radio-item')} onClick={() => toastMessage('phần này gọi api được không')}>
+            <div className={cx('radio-item')} onClick={() => toastMessage('Đang phát triển!')}>
                 <LoadImg className={cx('image')} radius>
                     <div className={cx('wrapper-image')}>
                         <div className={cx('image')}>

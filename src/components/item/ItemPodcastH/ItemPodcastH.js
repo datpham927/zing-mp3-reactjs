@@ -8,7 +8,7 @@ const cx = className.bind(style);
 function ItemPodcastH({ data, col = 'l-12 m-12' }) {
     return (
         <div className={`${col} col`}>
-            <div className={cx('podcast-item')} onClick={() => toastMessage('phần này gọi api được không')}>
+            <div className={cx('podcast-item')} onClick={() => toastMessage('Đang phát triển!')}>
                 <div
                     className={cx('cover')}
                     style={{

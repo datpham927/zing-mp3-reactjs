@@ -1,73 +1,52 @@
-/* eslint-disable no-const-assign */
-import className from 'classnames/bind';
-import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import style from './HomeGallery.module.scss';
-const cx = className.bind(style);
+import classNames from 'classnames/bind'; // Import classNames để tạo class động
+import { useEffect, useRef, useState } from 'react'; // Import các hook từ React
+import { Link } from 'react-router-dom'; // Import Link để điều hướng giữa các trang
+import style from './HomeGallery.module.scss'; // Import file style
+
+const cx = classNames.bind(style); // Tạo function `cx` để bind class với CSS module
 
 function HomeGallery({ data }) {
-    const [heightImg, setHeightImg] = useState(0);
-    const itemRef = useRef();
+    const [heightImg, setHeightImg] = useState(0); // State lưu chiều cao của hình ảnh
+    const [numberIndex, setNumberIndex] = useState(0); // State lưu vị trí hình ảnh hiện tại
+    const itemRefs = useRef([]); // useRef để lưu danh sách tham chiếu đến các hình ảnh
 
     useEffect(() => {
-        let interval;
-        const listImg = document?.querySelectorAll('.item-image-selector');
-        console.log(listImg);
-        const autoChange = () => {
-            let numberIndex = 0;
-            const change = () => {
-                listImg.forEach((item, i) => {
-                    if (i === numberIndex) {
-                        item.classList.replace(`${cx('second')}`, `${cx('first')}`);
-                    } else if (i === numberIndex + 1) {
-                        item.classList.replace(`${cx('third')}`, `${cx('second')}`);
-                    } else if (i === numberIndex + 2) {
-                        item.classList.replace(`${cx('four')}`, `${cx('third')}`);
-                    } else {
-                        item.classList.replace(`${cx('first')}`, `${cx('four')}`);
-                    }
-                    if (numberIndex === listImg?.length - 2) {
-                        listImg[0].classList.replace(`${cx('four')}`, `${cx('third')}`);
-                    }
-                    if (numberIndex === listImg?.length - 1) {
-                        listImg[0].classList.replace(`${cx('third')}`, `${cx('second')}`);
-                        listImg[1].classList.replace(`${cx('four')}`, `${cx('third')}`);
-                    }
-                });
-                numberIndex++;
-                if (numberIndex > listImg?.length - 1) {
-                    numberIndex = 0;
-                }
-            };
-            interval = setInterval(() => change(), 2000);
-        };
-        listImg?.length > 0 && autoChange();
-
-        return () => interval && clearInterval(interval);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    });
+        if (!data?.items?.length) return; // Nếu không có dữ liệu thì không chạy hiệu ứng
+        // Thiết lập interval để tự động thay đổi ảnh sau mỗi 2 giây
+        const interval = setInterval(() => {
+            setNumberIndex((prevIndex) => (prevIndex + 1) % data.items.length);
+        }, 2000);
+        return () => clearInterval(interval); // Cleanup interval khi component unmount
+    }, [data]); // Chạy lại khi `data` thay đổi
+    useEffect(() => {
+        // Sau khi dữ liệu được render, lấy chiều cao của ảnh đầu tiên
+        if (itemRefs.current[0]) {
+            setHeightImg(itemRefs.current[0].offsetHeight);
+        }
+    }, [data]); // Chạy lại khi `data` thay đổi
 
     return (
         <div className={cx('gallery')} style={{ height: heightImg }}>
+            {/* Đặt chiều cao theo hình ảnh đầu tiên để tránh layout nhảy */}
             <div className={cx('gallery-wrapper')}>
-                {data?.items?.map((item, index) => (
-                    <div
-                        key={uuidv4()}
-                        ref={itemRef}
-                        className={
-                            cx(
-                                'item-image',
-                                index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : 'four',
-                            ) + ' l-4 m-6 c-12 item-image-selector'
-                        }
-                        onLoad={() => setHeightImg(itemRef.current.offsetHeight)}
-                    >
-                        <Link to={item.link}>
-                            <img src={item.banner} alt="" />
-                        </Link>
-                    </div>
-                ))}
+                {data.items.map((item, index) => {
+                    const classOrder = ['first', 'second', 'third', 'four']; // Danh sách class định sẵn cho vị trí ảnh
+                    const position = (index - numberIndex + data.items.length) % data.items.length;
+                    // Xác định vị trí của ảnh hiện tại dựa trên `numberIndex`
+                    return (
+                        <div
+                            key={item.id || index} // Key giúp React nhận diện phần tử duy nhất
+                            ref={(el) => (itemRefs.current[index] = el)} // Gán ref vào phần tử để truy xuất DOM
+                            className={`${cx('item-image', classOrder[position])} l-4 m-6 c-12`}
+                            // Thêm class động dựa vào vị trí hiện tại của ảnh
+                        >
+                            <Link to={item.link}>
+                                <img src={item.banner} alt="" />
+                                {/* Hiển thị ảnh, có thể thêm alt mô tả */}
+                            </Link>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

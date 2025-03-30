@@ -16,8 +16,10 @@ function HomeGallery({ data }) {
         const interval = setInterval(() => {
             setNumberIndex((prevIndex) => (prevIndex + 1) % data.items.length);
         }, 2000);
+
         return () => clearInterval(interval); // Cleanup interval khi component unmount
     }, [data]); // Chạy lại khi `data` thay đổi
+
     useEffect(() => {
         // Sau khi dữ liệu được render, lấy chiều cao của ảnh đầu tiên
         if (itemRefs.current[0]) {
@@ -33,6 +35,7 @@ function HomeGallery({ data }) {
                     const classOrder = ['first', 'second', 'third', 'four']; // Danh sách class định sẵn cho vị trí ảnh
                     const position = (index - numberIndex + data.items.length) % data.items.length;
                     // Xác định vị trí của ảnh hiện tại dựa trên `numberIndex`
+
                     return (
                         <div
                             key={item.id || index} // Key giúp React nhận diện phần tử duy nhất
